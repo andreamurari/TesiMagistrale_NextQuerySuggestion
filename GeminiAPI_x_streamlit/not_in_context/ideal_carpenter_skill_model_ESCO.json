@@ -1,0 +1,1156 @@
+{
+  "id": null,
+  "className": "Occupation",
+  "classId": "http://data.europa.eu/esco/model#Occupation",
+  "uri": "http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4",
+  "title": "carpenter",
+  "referenceLanguage": [
+    "en"
+  ],
+  "preferredLabel": "carpenter",
+  "alternativeLabel": {
+    "de": {
+      "10": "Ausbauzimmerer",
+      "5": "Ausbauzimmerin",
+      "8": "Bauschreiner",
+      "12": "Bauschreinerin",
+      "0": "Bauzimmerer",
+      "3": "Bauzimmerin",
+      "4": "Holzbauer",
+      "9": "Holzbauerin",
+      "13": "Treppenbauzimmerer",
+      "11": "Treppenbauzimmerin",
+      "7": "Zimmerer",
+      "1": "Zimmerfrau",
+      "2": "Zimmerin",
+      "6": "Zimmermann"
+    },
+    "fi": [
+      "rakennuspuuseppä"
+    ],
+    "sv": {
+      "1": "finsnickare",
+      "3": "inredningssnickare",
+      "2": "maskinsnickare",
+      "0": "möbelsnickare"
+    },
+    "pt": {
+      "6": "Carpinteira",
+      "0": "Carpinteira de cofragens",
+      "7": "Carpinteira de limpos",
+      "9": "Carpinteira de toscos",
+      "5": "Carpinteiro",
+      "1": "Carpinteiro de cofragens",
+      "3": "Carpinteiro de limpos",
+      "2": "Carpinteiro de toscos",
+      "8": "Marceneira",
+      "4": "Marceneiro"
+    },
+    "bg": [
+      "дърводелец, строителен"
+    ],
+    "el": [
+      "ξυλουργός"
+    ],
+    "mt": [
+      "ħaddiema li tgħaqqad l-għamara",
+      "ħaddiem li jgħaqqad l-għamara"
+    ],
+    "lt": {
+      "0": "dailidė",
+      "2": "rėmintojas",
+      "1": "stalius"
+    },
+    "en": {
+      "6": "carpentry framer",
+      "1": "commercial carpenter",
+      "3": "craft carpenter",
+      "0": "craftsman carpenter",
+      "7": "frame-maker",
+      "2": "heritage carpentry",
+      "4": "joiner",
+      "8": "joiner supervisor",
+      "9": "joinery worker",
+      "10": "timber worker",
+      "5": "woodworker"
+    },
+    "hr": [
+      "tesar",
+      "tesarica"
+    ],
+    "lv": {
+      "0": "būvgaldnieks",
+      "3": "galdnieks",
+      "1": "namdare",
+      "2": "namdaris"
+    },
+    "it": {
+      "3": "carpentiera",
+      "4": "carpentiera edile",
+      "6": "carpentiere",
+      "5": "carpentiere edile",
+      "0": "falegname",
+      "2": "falegname edile",
+      "1": "falegname industriale"
+    },
+    "fr": {
+      "1": "charpentier",
+      "3": "charpentière",
+      "0": "menuisier",
+      "2": "menuisière"
+    },
+    "hu": [
+      "asztalos"
+    ],
+    "es": {
+      "0": "carpintera",
+      "1": "carpintero",
+      "3": "ebanista",
+      "2": "especialista en marquetería"
+    },
+    "cs": {
+      "2": "stavební truhlář",
+      "3": "stavební truhlářka",
+      "1": "tesař",
+      "0": "tesařka"
+    },
+    "sk": {
+      "1": "tesár",
+      "0": "tesárka"
+    },
+    "sl": {
+      "3": "stavbna tesarka",
+      "1": "stavbni tesar",
+      "0": "tesar",
+      "2": "tesarka"
+    },
+    "ga": [
+      "frámaitheoir"
+    ],
+    "pl": [
+      "stolarz budowlany"
+    ],
+    "da": [
+      "bygningssnedker",
+      "snedker"
+    ],
+    "ro": {
+      "0": "dulgher",
+      "4": "dulgheriță",
+      "3": "dulgherăreasă",
+      "6": "fabricant de rame",
+      "5": "fabricantă de rame",
+      "1": "tâmplar",
+      "2": "tâmplăriță"
+    },
+    "nl": {
+      "5": "houtbewerker",
+      "3": "houtbewerkster",
+      "7": "schrijnwerker",
+      "2": "schrijnwerkster",
+      "0": "timmerman",
+      "6": "timmerman binnenwerk",
+      "4": "timmervrouw",
+      "1": "timmervrouw binnenwerk"
+    }
+  },
+  "preferredTerm": {
+    "roles": [
+      "neutral",
+      "male",
+      "standard male",
+      "female",
+      "standard female"
+    ],
+    "label": "carpenter"
+  },
+  "alternativeTerms": [
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "commercial carpenter"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "heritage carpentry"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "joiner"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "timber worker"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "carpentry framer"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "craft carpenter"
+    },
+    {
+      "roles": [
+        "male"
+      ],
+      "label": "craftsman carpenter"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "frame-maker"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "joinery worker"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "woodworker"
+    },
+    {
+      "roles": [
+        "neutral",
+        "male",
+        "female"
+      ],
+      "label": "joiner supervisor"
+    }
+  ],
+  "description": {
+    "de": {
+      "literal": "Zimmerer sägen, formen und montieren Holzelemente für Gebäude und andere Bauwerken. Sie verwenden für ihre Arbeit auch Materialien wie Kunststoffe und Metalle. Zimmerer fertigen die Rahmen für nach der Holrahmenbauweise errichtete Häuser.",
+      "mimetype": "plain/text"
+    },
+    "no": {
+      "literal": "Tømrere kapper, former og monterer treelementer for bygging av bygninger og andre konstruksjoner. De bruker også materialer som plast og metall under byggingen. Tømrere lager trerammene for å støtte bygninger med trerammer.",
+      "mimetype": "plain/text"
+    },
+    "fi": {
+      "literal": "Kirvesmiehet veistävät, muovaavat ja kokoavat puisia rakennusosia rakennusten ja muiden rakenteiden rakentamista varten. He käyttävät myös muovia, metallia ja muita materiaaleja. Kirvesmiehet rakentavat puurunkoja, joilla tuetaan puurunkoisia rakennuksia.",
+      "mimetype": "plain/text"
+    },
+    "pt": {
+      "literal": "Os carpinteiros cortam, moldam e montam elementos em madeira para a construção de edifícios e outras estruturas. Também utilizam materiais como o plástico e o metal nas suas criações. Os carpinteiros criam as estruturas de madeira para apoiar edifícios com estrutura em madeira.",
+      "mimetype": "plain/text"
+    },
+    "bg": {
+      "literal": "Дърводелците режат, моделират и сглобяват дървени елементи за строителството на сгради и други постройки. Те използват също така материали като пластмаса и метал. Дърводелците създават дървени каси за поддържане на сгради с дървена конструкция.",
+      "mimetype": "plain/text"
+    },
+    "lt": {
+      "literal": "Dailidės pjauna, formuoja ir surenka medinius elementus, skirtus pastatų ir kitų statinių statybai. Savo kūriniuose jie taip pat naudoja tokias medžiagas, kaip plastikas ir metalas. Dailidės kuria medinius karkasus medinio karkaso pastatams įrėminti.",
+      "mimetype": "plain/text"
+    },
+    "lv": {
+      "literal": "Namdari izgriež, pielāgo un montē koka elementus ēku un citu būvju celtniecībai. Savā darbā viņi izmanto arī tādus materiālus kā plastmasa un metāls. Namdari izveido koka rāmjus, kas balsta koka karkasa ēkas.",
+      "mimetype": "plain/text"
+    },
+    "hr": {
+      "literal": "Tesari režu, oblikuju i sklapaju drvene elemente za izgradnju zgrada i drugih konstrukcija. Koriste se i materijalima kao što su plastika i metal. Tesari izrađuju drvene okvire za potporu zgradama s drvenim okvirima.",
+      "mimetype": "plain/text"
+    },
+    "fr": {
+      "literal": "Les charpentiers/charpentières coupent, façonnent et assemblent des éléments en bois pour la construction de bâtiments et de structures diverses. Ils/Elles utilisent également des matériaux tels que le plastique et le métal dans leurs créations. Ils/Elles construisent les charpentes en bois destinées à soutenir les bâtiments à ossature en bois.",
+      "mimetype": "plain/text"
+    },
+    "hu": {
+      "literal": "Az ácsok feldarabolják, formára vágják és összeszerelik az épületek és egyéb építmények építésére szolgáló faelemeket. Műanyagot és fémet is felhasználnak építményeikhez. Az ács favázakat épít, amelyek fakeretes épületek alátámasztására szolgálnak.",
+      "mimetype": "plain/text"
+    },
+    "uk": {
+      "literal": "Теслярі ріжуть, формують і збирають дерев’яні елементи для будівництва будівель та інших споруд. Вони також використовують такі матеріали, як-от пластик і метал у своїх виробах. Теслярі створюють дерев’яні рами для підтримки будівель з дерев’яним каркасом.\n\t",
+      "mimetype": "plain/text"
+    },
+    "sk": {
+      "literal": "Tesári režú, tvarujú a spájajú drevené prvky na výstavbu budov a iných stavieb. Pri práci používajú aj materiály ako plasty a kov. Vyrábajú drevené rámy, ktoré držia budovy s drevenou konštrukciou.",
+      "mimetype": "plain/text"
+    },
+    "sl": {
+      "literal": "Tesarji razrežejo, oblikujejo in sestavijo lesene elemente za gradnjo stavb in drugih objektov. Pri svojem delu uporabljajo tudi materiale, kot sta plastika in kovina. Tesarji izdelujejo lesena ogrodja, ki podpirajo stavbne dele hiše.",
+      "mimetype": "plain/text"
+    },
+    "ga": {
+      "literal": "Gearrann, múnlaíonn agus bailíonn siúinéirí eilimintí adhmaid chun foirgnimh agus struchtúir eile a thógáil. Baineann siad úsáid freisin as ábhair amhail plaisteach agus miotal i gcruthú na n-ábhar sin. Cruthaíonn siúinéirí na frámaí adhmaid chun tacú le foirgnimh fráma adhmaid.",
+      "mimetype": "plain/text"
+    },
+    "sv": {
+      "literal": "Snickare skär, formar och monterar ihop trädetaljer för uppförande av byggnader och andra konstruktioner. De använder även andra material i sitt arbete, till exempel plast och metall. Snickare framställer trästommar för byggnader med trästomme.",
+      "mimetype": "plain/text"
+    },
+    "el": {
+      "literal": "Οι ξυλουργοί κόβουν, διαμορφώνουν και συναρμολογούν ξύλινα στοιχεία για την κατασκευή κτιρίων και άλλων κατασκευών. Χρησιμοποιούν επίσης υλικά όπως το πλαστικό και το μέταλλο. Οι ξυλουργοί κατασκευάζουν τα ξύλινα πλαίσια για κτίρια με ξύλινο σκελετό.",
+      "mimetype": "plain/text"
+    },
+    "mt": {
+      "literal": "Il-mastrudaxxi jaqtgħu, jifformw u jimmuntaw elementi tal-injam għall-kostruzzjoni ta’ bini u strutturi oħra. Dawn jużaw ukoll materjali bħall-plastik u l-metall fil-kreazzjonijiet tagħhom. Il-mastrudaxxi joħolqu l-oqfsa tal-injam biex jappoġġjaw bini bi frejm tal-injam.",
+      "mimetype": "plain/text"
+    },
+    "en": {
+      "literal": "Carpenters cut, shape and assemble wooden elements for the construction of buildings and other structures. They also use materials such as plastic and metal in their creations. Carpenters create the wooden frames to support wood framed buildings.",
+      "mimetype": "plain/text"
+    },
+    "is": {
+      "literal": "Trésmiðir saga, móta og setja saman viðarhluti í byggingum og öðrum mannvirkjum.  Þeir nota einnig efni á borð við plast og málm við sköpun sína. Trésmiðir búa til viðarramma til að styðja byggingar úr viðarrömmum.",
+      "mimetype": "plain/text"
+    },
+    "it": {
+      "literal": "I carpentieri tagliano, scolpiscono e assemblano elementi in legno per la costruzione di edifici e altre strutture. Inoltre, nelle loro realizzazioni, utilizzano materiali quali plastica e metallo. Creano i telai di legno per sostenere gli edifici dotati di questi telai.",
+      "mimetype": "plain/text"
+    },
+    "es": {
+      "literal": "Los carpinteros cortan, moldean y ensamblan piezas de madera para la construcción de edificios y otras estructuras. También utilizan materiales como el plástico y el metal en sus creaciones. Los carpinteros crean los marcos de madera que sustentan los edificios con armazón de madera.",
+      "mimetype": "plain/text"
+    },
+    "et": {
+      "literal": "Puusepad lõikavad, kujundavad ja koostavad puitelemente hoonete ja muude rajatiste ehitamiseks. Nad kasutavad oma töös ka selliseid materjale nagu plast ja metall. Puusepad ehitavad puitsõrestikuga hoonete puitsõrestikke.",
+      "mimetype": "plain/text"
+    },
+    "cs": {
+      "literal": "Tesaři řežou, tvarují a montují dřevěné prvky na stavbu budov a jiných staveb. Ve své tvorbě rovněž používají materiály, jako je plast a kov. Tesaři vytvářejí dřevěné rámy, které podporují budovy s dřevěnou konstrukcí.",
+      "mimetype": "plain/text"
+    },
+    "ar": {
+      "literal": "يقوم النجّارون بقطع وتشكيل وتجميع العناصر الخشبية لبناء المباني والهياكل الأخرى. كما يستخدمون المواد مثل البلاستيك والمعادن في صناعاتهم. ويصنع النجّارون الإطارات الخشبية لدعم المباني الخشبية.",
+      "mimetype": "plain/text"
+    },
+    "pl": {
+      "literal": "Cieśle zajmują się wycinaniem, formowaniem i montażem drewnianych elementów do budowy budynków i innych struktur. Do wykonania swoich wyrobów wykorzystują również inne materiały, np. tworzywa sztuczne i metal. Cieśle wykonują drewniane ramy do podpierania budynków o konstrukcji drewnianej.",
+      "mimetype": "plain/text"
+    },
+    "da": {
+      "literal": "Tømrere saver, former og samler træelementer til opførelse af bygninger og andre konstruktioner. De anvender også materialer som plast og metal i deres værker. Tømrere skaber trærammer til træbyggeri.",
+      "mimetype": "plain/text"
+    },
+    "ro": {
+      "literal": "Dulgherii taie, modelează și asamblează elemente din lemn pentru construcția de clădiri și alte structuri. În creațiile lor folosesc și materiale precum plasticul și metalul. Dulgherii creează cadre de lemn pentru a susține construcțiile din lemn.",
+      "mimetype": "plain/text"
+    },
+    "nl": {
+      "literal": "Timmermannen zagen, vormen en monteren houten elementen voor de bouw van gebouwen en andere bouwwerken. Zij gebruiken ook materialen als kunststof en metaal. Timmermannen creëren de houten frames ter ondersteuning van de gebouwen van hout.",
+      "mimetype": "plain/text"
+    }
+  },
+  "definition": null,
+  "scopeNote": null,
+  "status": "released",
+  "code": "7115.1",
+  "codes": [
+    {
+      "datatype": "",
+      "value": "7115.1"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4&language=en",
+      "uri": "http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4",
+      "title": "carpenter"
+    },
+    "isTopConceptInScheme": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/taxonomy?uri=http://data.europa.eu/esco/concept-scheme/member-occupations&language=en",
+        "uri": "http://data.europa.eu/esco/concept-scheme/member-occupations",
+        "title": "ESCO member occupations"
+      }
+    ],
+    "isInScheme": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/taxonomy?uri=http://data.europa.eu/esco/concept-scheme/occupations&language=en",
+        "uri": "http://data.europa.eu/esco/concept-scheme/occupations",
+        "title": "ESCO Occupations"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/taxonomy?uri=http://data.europa.eu/esco/concept-scheme/member-occupations&language=en",
+        "uri": "http://data.europa.eu/esco/concept-scheme/member-occupations",
+        "title": "ESCO member occupations"
+      }
+    ],
+    "regulatedProfessionNote": {
+      "href": "https://ec.europa.eu/esco/api/resource/concept?uri=http://data.europa.eu/esco/regulated-professions/unregulated&language=en",
+      "uri": "http://data.europa.eu/esco/regulated-professions/unregulated",
+      "title": "To see if and how this occupation is regulated in EU Member States, EEA countries or Switzerland please consult the Regulated Professions Database of the Commission. Regulated Professions Database: http://ec.europa.eu/growth/single-market/services/free-movement-professionals/qualifications-recognition_en"
+    },
+    "broaderIscoGroup": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/concept?uri=http://data.europa.eu/esco/isco/C7115&language=en",
+        "uri": "http://data.europa.eu/esco/isco/C7115",
+        "title": "Carpenters and joiners",
+        "code": "7115"
+      }
+    ],
+    "hasEssentialSkill": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c3c3b550-f95e-4f1c-bdf3-ad1465e7b2ab&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c3c3b550-f95e-4f1c-bdf3-ad1465e7b2ab",
+        "title": "create wood joints",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8fc9753d-810d-414a-ba0e-139c99f0b201&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8fc9753d-810d-414a-ba0e-139c99f0b201",
+        "title": "keep sawing equipment in good condition",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5&language=en",
+        "uri": "http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5",
+        "title": "install wood elements in structures",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5&language=en",
+        "uri": "http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5",
+        "title": "wood cuts",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+        "title": "use safety equipment in construction",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/acc74047-f59f-4935-afc0-45ec43b9b57a&language=en",
+        "uri": "http://data.europa.eu/esco/skill/acc74047-f59f-4935-afc0-45ec43b9b57a",
+        "title": "define part requirements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/a47cfa4f-30f5-4306-b23d-11fbacd7f189&language=en",
+        "uri": "http://data.europa.eu/esco/skill/a47cfa4f-30f5-4306-b23d-11fbacd7f189",
+        "title": "install wood hardware",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205&language=en",
+        "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+        "title": "inspect construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097",
+        "title": "woodworking tools",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9&language=en",
+        "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+        "title": "use measurement instruments",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2&language=en",
+        "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
+        "title": "interpret 2D plans",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
+        "title": "install construction profiles",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe&language=en",
+        "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+        "title": "follow health and safety procedures in construction",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6&language=en",
+        "uri": "http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6",
+        "title": "apply wood finishes",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+        "title": "interpret 3D plans",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9&language=en",
+        "uri": "http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9",
+        "title": "sort waste",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e&language=en",
+        "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+        "title": "types of wood",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/65b32af2-3665-49a4-8eec-d3b2138ec09b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/65b32af2-3665-49a4-8eec-d3b2138ec09b",
+        "title": "identify wood warp",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02&language=en",
+        "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+        "title": "clean wood surface",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
+        "title": "create smooth wood surface",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+        "title": "transport construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
+        "title": "join wood elements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/80e257a9-5725-4faf-ba94-d1675ccc878d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/80e257a9-5725-4faf-ba94-d1675ccc878d",
+        "title": "keep track of wooden elements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b",
+        "title": "snap chalk line",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00&language=en",
+        "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+        "title": "work ergonomically",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      }
+    ],
+    "hasOptionalSkill": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/d13f1685-9848-4c9e-a40a-686ddb407858&language=en",
+        "uri": "http://data.europa.eu/esco/skill/d13f1685-9848-4c9e-a40a-686ddb407858",
+        "title": "asbestos removal regulations",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/96e78f7e-a14f-4ec3-80bf-e3098f50fdba&language=en",
+        "uri": "http://data.europa.eu/esco/skill/96e78f7e-a14f-4ec3-80bf-e3098f50fdba",
+        "title": "operate wood router",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/db8b59b2-5e51-4944-bd2e-2c5f4b1ebabd&language=en",
+        "uri": "http://data.europa.eu/esco/skill/db8b59b2-5e51-4944-bd2e-2c5f4b1ebabd",
+        "title": "loading charts for transportation of goods",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
+        "title": "maintain equipment",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
+        "title": "estimate restoration costs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8e1dd4a6-0d0e-4c0a-828d-da98a8248f44&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8e1dd4a6-0d0e-4c0a-828d-da98a8248f44",
+        "title": "create cutting plan",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed&language=en",
+        "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+        "title": "set up temporary construction site infrastructure",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/05f05855-acac-4366-a6ee-42f0bebe3780&language=en",
+        "uri": "http://data.europa.eu/esco/skill/05f05855-acac-4366-a6ee-42f0bebe3780",
+        "title": "operate crosscut saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
+        "title": "calculate needs for construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c8665888-bf94-4ca8-accb-0b8ab1e82e09&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c8665888-bf94-4ca8-accb-0b8ab1e82e09",
+        "title": "operate table saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+        "title": "answer requests for quotation",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260",
+        "title": "use sander",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19&language=en",
+        "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+        "title": "keep records of work progress",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0",
+        "title": "construct wood roofs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896&language=en",
+        "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+        "title": "keep personal administration",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+        "title": "energy performance of buildings",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
+        "title": "apply restoration techniques",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+        "title": "work in a construction team",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae&language=en",
+        "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+        "title": "secure working area",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f&language=en",
+        "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+        "title": "monitor stock level",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+        "title": "process incoming construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+        "title": "maintain work area cleanliness",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266&language=en",
+        "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+        "title": "follow safety procedures when working at heights",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2a8834b9-33a6-4abf-b0a4-219925a331bd&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2a8834b9-33a6-4abf-b0a4-219925a331bd",
+        "title": "operate band saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea&language=en",
+        "uri": "http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea",
+        "title": "assess conservation needs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966&language=en",
+        "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+        "title": "order construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8&language=en",
+        "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
+        "title": "program a CNC controller",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783&language=en",
+        "uri": "http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783",
+        "title": "install insulation material",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7",
+        "title": "use squaring pole",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d",
+        "title": "build scaffolding",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      }
+    ]
+  },
+  "embedded": {
+    "ancestors": [
+      {
+        "title": "carpenter",
+        "_links": {
+          "self": {
+            "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4&language=en",
+            "uri": "http://data.europa.eu/esco/occupation/2a22ff9e-de3b-408d-b312-5034896cc4f4"
+          }
+        },
+        "parents": [
+          "http://data.europa.eu/esco/isco/C7115"
+        ]
+      },
+      {
+        "title": "Carpenters and joiners",
+        "_links": {
+          "self": {
+            "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/isco/C7115&language=en",
+            "uri": "http://data.europa.eu/esco/isco/C7115"
+          }
+        },
+        "parents": [
+          "http://data.europa.eu/esco/isco/C711"
+        ]
+      },
+      {
+        "title": "Building frame and related trades workers",
+        "_links": {
+          "self": {
+            "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/isco/C711&language=en",
+            "uri": "http://data.europa.eu/esco/isco/C711"
+          }
+        },
+        "parents": [
+          "http://data.europa.eu/esco/isco/C71"
+        ]
+      },
+      {
+        "title": "Building and related trades workers, excluding electricians",
+        "_links": {
+          "self": {
+            "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/isco/C71&language=en",
+            "uri": "http://data.europa.eu/esco/isco/C71"
+          }
+        },
+        "parents": [
+          "http://data.europa.eu/esco/isco/C7"
+        ]
+      },
+      {
+        "title": "Craft and related trades workers",
+        "_links": {
+          "self": {
+            "href": "https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/isco/C7&language=en",
+            "uri": "http://data.europa.eu/esco/isco/C7"
+          }
+        },
+        "parents": []
+      }
+    ]
+  },
+  "essentialSkills": {
+    "skill": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6&language=en",
+        "uri": "http://data.europa.eu/esco/skill/e040fb97-ac17-4cd0-bf74-7e96c83811b6",
+        "title": "apply wood finishes",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02&language=en",
+        "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+        "title": "clean wood surface",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5df6be8c-c4ff-4bef-b744-3d502e5e5330",
+        "title": "create smooth wood surface",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c3c3b550-f95e-4f1c-bdf3-ad1465e7b2ab&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c3c3b550-f95e-4f1c-bdf3-ad1465e7b2ab",
+        "title": "create wood joints",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/acc74047-f59f-4935-afc0-45ec43b9b57a&language=en",
+        "uri": "http://data.europa.eu/esco/skill/acc74047-f59f-4935-afc0-45ec43b9b57a",
+        "title": "define part requirements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe&language=en",
+        "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+        "title": "follow health and safety procedures in construction",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/65b32af2-3665-49a4-8eec-d3b2138ec09b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/65b32af2-3665-49a4-8eec-d3b2138ec09b",
+        "title": "identify wood warp",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205&language=en",
+        "uri": "http://data.europa.eu/esco/skill/50f2d23c-b3fb-48a5-967b-14fd0a6dd205",
+        "title": "inspect construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8ed53702-3e4e-4637-a4c3-9dc8f4281019",
+        "title": "install construction profiles",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5&language=en",
+        "uri": "http://data.europa.eu/esco/skill/11c0bfec-6bc8-4ec0-a535-91bd65be92c5",
+        "title": "install wood elements in structures",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/a47cfa4f-30f5-4306-b23d-11fbacd7f189&language=en",
+        "uri": "http://data.europa.eu/esco/skill/a47cfa4f-30f5-4306-b23d-11fbacd7f189",
+        "title": "install wood hardware",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2&language=en",
+        "uri": "http://data.europa.eu/esco/skill/dfce2aba-783e-4e17-9c17-e74aca505ec2",
+        "title": "interpret 2D plans",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/aafbb139-02c6-4f35-bc62-ff73faf97d6d",
+        "title": "interpret 3D plans",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2e8e2acf-5d58-4d99-807d-2ed77a6c8b17",
+        "title": "join wood elements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8fc9753d-810d-414a-ba0e-139c99f0b201&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8fc9753d-810d-414a-ba0e-139c99f0b201",
+        "title": "keep sawing equipment in good condition",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/80e257a9-5725-4faf-ba94-d1675ccc878d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/80e257a9-5725-4faf-ba94-d1675ccc878d",
+        "title": "keep track of wooden elements",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2da864d4-339f-40ab-91c0-9f8d229a2c0b",
+        "title": "snap chalk line",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9&language=en",
+        "uri": "http://data.europa.eu/esco/skill/110d7aa3-e44e-4cce-a927-8d4de615f3d9",
+        "title": "sort waste",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4af56376-7b2f-4ced-ac58-0c3967bd1e83",
+        "title": "transport construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9&language=en",
+        "uri": "http://data.europa.eu/esco/skill/b92758d4-4591-4df1-9ceb-f907aa71ebd9",
+        "title": "use measurement instruments",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c643e59b-d74c-4f44-b76e-6e1d96c05ec4",
+        "title": "use safety equipment in construction",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00&language=en",
+        "uri": "http://data.europa.eu/esco/skill/156f8c5b-894a-4ccc-a70e-37a2726f3f00",
+        "title": "work ergonomically",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      }
+    ],
+    "knowledge": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e&language=en",
+        "uri": "http://data.europa.eu/esco/skill/cf2005ee-c788-4283-81d9-b443dfdf2c2e",
+        "title": "types of wood",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5&language=en",
+        "uri": "http://data.europa.eu/esco/skill/bb933bf6-e9a6-4dd8-8c88-0d8bacae30a5",
+        "title": "wood cuts",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4c06a716-6363-4308-b548-88f7a3e70097",
+        "title": "woodworking tools",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      }
+    ]
+  },
+  "optionalSkills": {
+    "knowledge": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/d13f1685-9848-4c9e-a40a-686ddb407858&language=en",
+        "uri": "http://data.europa.eu/esco/skill/d13f1685-9848-4c9e-a40a-686ddb407858",
+        "title": "asbestos removal regulations",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4e09e2d2-e317-47d2-bf5e-1d6c66be3efc",
+        "title": "energy performance of buildings",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/db8b59b2-5e51-4944-bd2e-2c5f4b1ebabd&language=en",
+        "uri": "http://data.europa.eu/esco/skill/db8b59b2-5e51-4944-bd2e-2c5f4b1ebabd",
+        "title": "loading charts for transportation of goods",
+        "skillType": "http://data.europa.eu/esco/skill-type/knowledge"
+      }
+    ],
+    "skill": [
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2206af0c-3deb-48c5-a544-b9983d347da3",
+        "title": "answer requests for quotation",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/20b9852f-a445-4097-8273-4a18fa6bfff0",
+        "title": "apply restoration techniques",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea&language=en",
+        "uri": "http://data.europa.eu/esco/skill/1e25d043-0307-4e50-8a19-9e7cce22caea",
+        "title": "assess conservation needs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d&language=en",
+        "uri": "http://data.europa.eu/esco/skill/91991706-cd8e-4795-9784-715fc0250c8d",
+        "title": "build scaffolding",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5d9dd44a-81f8-4710-bd4d-af27ec5c2139",
+        "title": "calculate needs for construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/d03444d5-e127-4087-9295-29f0666c84d0",
+        "title": "construct wood roofs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/8e1dd4a6-0d0e-4c0a-828d-da98a8248f44&language=en",
+        "uri": "http://data.europa.eu/esco/skill/8e1dd4a6-0d0e-4c0a-828d-da98a8248f44",
+        "title": "create cutting plan",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0&language=en",
+        "uri": "http://data.europa.eu/esco/skill/827ebc71-b406-483e-9617-33c63dd487a0",
+        "title": "estimate restoration costs",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266&language=en",
+        "uri": "http://data.europa.eu/esco/skill/fafbb75f-ec35-4cc2-996a-20c85ef6c266",
+        "title": "follow safety procedures when working at heights",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783&language=en",
+        "uri": "http://data.europa.eu/esco/skill/7eea6974-d606-4175-b95e-f66554816783",
+        "title": "install insulation material",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896&language=en",
+        "uri": "http://data.europa.eu/esco/skill/9df34bc3-25d4-4452-a896-4d19b94ef896",
+        "title": "keep personal administration",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19&language=en",
+        "uri": "http://data.europa.eu/esco/skill/ccfbdaad-b91d-4bfe-bd0e-d30b33587f19",
+        "title": "keep records of work progress",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5033c2fb-ec55-4b8e-b0a4-9379593f1e1c",
+        "title": "maintain equipment",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505&language=en",
+        "uri": "http://data.europa.eu/esco/skill/5598739b-6718-4cff-8402-91d7f65b1505",
+        "title": "maintain work area cleanliness",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f&language=en",
+        "uri": "http://data.europa.eu/esco/skill/44f6a65f-6be7-4818-9a66-73908797283f",
+        "title": "monitor stock level",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2a8834b9-33a6-4abf-b0a4-219925a331bd&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2a8834b9-33a6-4abf-b0a4-219925a331bd",
+        "title": "operate band saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/05f05855-acac-4366-a6ee-42f0bebe3780&language=en",
+        "uri": "http://data.europa.eu/esco/skill/05f05855-acac-4366-a6ee-42f0bebe3780",
+        "title": "operate crosscut saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/c8665888-bf94-4ca8-accb-0b8ab1e82e09&language=en",
+        "uri": "http://data.europa.eu/esco/skill/c8665888-bf94-4ca8-accb-0b8ab1e82e09",
+        "title": "operate table saw",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/96e78f7e-a14f-4ec3-80bf-e3098f50fdba&language=en",
+        "uri": "http://data.europa.eu/esco/skill/96e78f7e-a14f-4ec3-80bf-e3098f50fdba",
+        "title": "operate wood router",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966&language=en",
+        "uri": "http://data.europa.eu/esco/skill/9f1bd2a4-91af-4b60-aeb3-0fe1f4434966",
+        "title": "order construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b&language=en",
+        "uri": "http://data.europa.eu/esco/skill/a3e0224a-c952-4b4e-b664-d7186f62715b",
+        "title": "process incoming construction supplies",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8&language=en",
+        "uri": "http://data.europa.eu/esco/skill/bf942c60-8539-4951-83ee-63f770da1cb8",
+        "title": "program a CNC controller",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae&language=en",
+        "uri": "http://data.europa.eu/esco/skill/6ed2fb8d-3580-497f-8a21-30a0ada5caae",
+        "title": "secure working area",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed&language=en",
+        "uri": "http://data.europa.eu/esco/skill/ef2adfe8-d7a5-465d-bbe6-8f9e913ae7ed",
+        "title": "set up temporary construction site infrastructure",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2aa6039e-c747-4f74-a61e-e96a195f3260",
+        "title": "use sander",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7&language=en",
+        "uri": "http://data.europa.eu/esco/skill/2a2cf590-67fd-473b-8ae0-f1f7d46bcbe7",
+        "title": "use squaring pole",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      },
+      {
+        "href": "https://ec.europa.eu/esco/api/resource/skill?uri=http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955&language=en",
+        "uri": "http://data.europa.eu/esco/skill/4fa2d6ba-4fff-4f21-bddd-4a54ae840955",
+        "title": "work in a construction team",
+        "skillType": "http://data.europa.eu/esco/skill-type/skill"
+      }
+    ]
+  }
+}

@@ -1,0 +1,431 @@
+material_id;keywords
+9;Continuity, Discontinuity
+20;Polar coordinates
+21;Product rule
+22;Product rule
+24;Product rule, Trigonometric rules
+25;Product rule
+26;Product rule
+27;Product rule
+28;Product rule
+29;Product rule
+30;Product rule
+31;Solution of a linear system, Consistent system, Inconsistent system
+32;Solution of a linear system, Consistent system, Inconsistent system
+33;Solution of a linear system, Consistent system, Inconsistent system
+34;Solution of a linear system, Consistent system, Inconsistent system, Undetermined linear system, Homogeneous system
+35;Solution of a linear system
+36;Solution of a linear system, Consistent system, Inconsistent system, Undetermined linear system
+38;Exponential function, Logarithmic function
+39;Simplify expressions, Square roots
+40;Simplify expressions
+41;Simplify expressions, Logarithmic function
+42;Simplify expressions
+43;Simplify expressions
+44;Simplify expressions, Rearranging equations
+45;Simplify expressions
+46;Exponential function, Simplify expressions
+47;Simplify expressions, Logarithmic function
+48;Square linear system, Solution of a linear system, Consistent system, Cramer linear system
+49;Square linear system, Solution of a linear system, Consistent system, Inconsistent system, Undetermined linear system
+50;Square linear system, Solution of a linear system, Consistent system, Inconsistent system, Undetermined linear system
+51;Square linear system, Solution of a linear system, Consistent system, Inconsistent system, Undetermined linear system
+52;Matrix multiplication, Commuting matrices, Matrix operations, Matrix equation, Rank, Matrix condensation, Linearly independent rows, Inverse of a matrix , Determinant computation,  Properties of the determinant, Symmetric matrix, Hermitian matrix
+54;Matrix multiplication, Commuting matrices, Matrix operations, Matrix equation, Rank, Inverse of a matrix , Determinant computation,  Properties of the determinant, Symmetric matrix
+55;Matrix operations, Inverse of a matrix 
+56;Determinant computation,  Properties of the determinant
+66;Linear programming
+74;Fundamental theorem of Calculus, Direct integrals 
+79;Fundamental theorem of Calculus, Direct integrals 
+80;Fundamental theorem of Calculus, Direct integrals 
+81;Fundamental theorem of Calculus, Direct integrals 
+82;Fundamental theorem of Calculus, Direct integrals 
+83;Fundamental theorem of Calculus, Direct integrals 
+84;Fundamental theorem of Calculus,  Integration by parts
+86;Fundamental theorem of Calculus, Direct integrals 
+87;Fundamental theorem of Calculus, Direct integrals 
+88;Fundamental theorem of Calculus,  Integration by parts
+89;Fundamental theorem of Calculus,  Integration by parts
+90;Fundamental theorem of Calculus,  Integration by parts,  Trigonometric functions
+91;Fundamental theorem of Calculus,  Integration by parts
+92;Fundamental theorem of Calculus,  Integration by parts
+93;Fundamental theorem of Calculus,  Integration by parts
+95;Fundamental theorem of Calculus,  Trigonometric functions
+96;Fundamental theorem of Calculus, Trigonometric substitution
+97;Fundamental theorem of Calculus, Trigonometric substitution
+98;Fundamental theorem of Calculus, Trigonometric substitution
+99;Fundamental theorem of Calculus, Partial fractions decomposition
+100;Fundamental theorem of Calculus, Partial fractions decomposition
+101;Fundamental theorem of Calculus, Partial fractions decomposition
+102;Fundamental theorem of Calculus, Partial fractions decomposition
+103;Fundamental theorem of Calculus, Area of a planar region 
+104;Fundamental theorem of Calculus, Area of a planar region 
+105;Fundamental theorem of Calculus, Area of a planar region 
+106;Fundamental theorem of Calculus, Area of a planar region 
+107;Fundamental theorem of Calculus, Area of a planar region 
+108;Fundamental theorem of Calculus, Area of a planar region 
+109;Fundamental theorem of Calculus, Area of a planar region 
+110;Fundamental theorem of Calculus, Volume of revolution
+111;Fundamental theorem of Calculus, Volume of revolution
+112;Fundamental theorem of Calculus, Volume of revolution
+114;Fundamental theorem of Calculus, Volume of revolution
+116;Fundamental theorem of Calculus, Volume of revolution
+117;Fundamental theorem of Calculus, Volume of revolution
+118;Fundamental theorem of Calculus, Volume of revolution
+119;Fundamental theorem of Calculus, Volume of revolution
+120;Fundamental theorem of Calculus, Volume of revolution
+121;Fundamental theorem of Calculus,  Integration by parts
+122;Fundamental theorem of Calculus, Trigonometric substitution
+123;Fundamental theorem of Calculus, Partial fractions decomposition
+124;Fundamental theorem of Calculus, Area of a planar region 
+125;Fundamental theorem of Calculus, Volume of revolution
+126;Fundamental theorem of Calculus, Area of a planar region 
+128;Fundamental theorem of Calculus,  Integration by parts
+129;Integration by parts
+130;Direct inspection, Simple integration
+131;Rational functions
+132;Substitution
+133;Trigonometric substitution
+134;Power of trigonometric functions
+135;Direct inspection
+136;Substitution
+137;Substitution, Integration by parts, Direct inspection
+138;Trigonometric substitution, Trigonometric functions, Trigonometric identities
+142;Logarithmic function
+143;Sample, Population, Frequency, Relative frequency, Mean, Standard deviation, Variance, Median, Mode, Data type, Quantile
+144;Frequency, Relative frequency, Stem and Leaf diagram
+145;Frequency, Mean, Variance, Median, Mode, Quantile, Interquartile range
+146;Hypothesis testing, Confidence interval, Point estimate, Student distribution
+147;Chi square distribution, Hypothesis testing
+148;Hypothesis testing, Confidence interval
+149;Linear regression
+150;Chi square distribution, Hypothesis testing, Student distribution
+151;Quantile, Chi square distribution, Student distribution
+153;Mean, Median, Interquartile range, Outliers
+156;Cartesian equations of a line, Cartesian equations of a plane
+157;Cartesian equations of a line, Cartesian equations of a plane, Intersection
+159;Hypothesis testing
+161;Hypothesis testing, Student distribution
+163;Linear differential equation, Constant coefficient ODE, Characteristic equation, Undetermined coefficient method, Parameters variation method
+164;Locus
+165;Linear programming, Duality theory
+166;Linear programming
+167;Linear programming
+168;Linear programming, Simplex method, Excel solver add-in
+169;Simplex method, Excel solver add-in, Duality theory, Sensitivity analysis
+173;Basis, Change-of-basis matrix
+175;Homogeneous equation
+176;Separable variables equation, Integral form
+177;Exact differential form
+178;Cauchy problem, Exact differential form, Integrating factor, Integral form
+179;Vector subspace, Dimension
+180;Vector space
+181;Vector subspace
+182;Vector subspace, Linear combination, Span
+183;Linear combination, Basis, Change-of-basis matrix
+184;Basis, Dimension
+185;Basis, Euclidean spaces, Orthogonal basis
+186;Linear differential equation
+187;Linear differential equation, Bernoulli equation
+188;Bernoulli equation, Ricatti equation
+189;Integral curve, Linear differential equation, Cauchy problem
+194;Linear transformation
+195;Injective linear transformation, Isomorphism
+196;Kernel, Range
+197;Matrix of a linear transformation
+198;Basis
+199;Span
+200;Vector subspace, Span
+201;Linear dependence, Linear independence
+202;Linear combination
+205;Limits
+206;Minimum, Maximum, Stationary point, Saddle point, Second derivative test
+207;Limits
+208;Minimum, Maximum, Lagrange multipliers, Constrained optimization
+209;Continuity
+212;Linear transformation, Composition of linear transformations
+213;Linear transformation, Rotation
+214;Linear transformation, Rotation
+215;Linear transformation, Invertible linear transformation, Composition of linear transformations
+216;Vector subspace, Basis, Dimension
+217;Euclidean spaces, Orthogonal basis
+218;Euclidean spaces, Orthogonal basis
+219;Gradient, Directional derivative
+220;Gradient, First order, Tangent plane
+221;One variable, Two variables, More than two variable, Chain rule, Trigonometric rules
+222;Second order, First order, Third order, Higher order, Trigonometric rules
+224;Linearity, Linear transformation
+225;Kernel, Range
+228;Orthogonality, Distance, Locus
+229;Cross product, Orthogonality
+230;Scalar product, Orthogonality, Collinearity, Locus
+231;Orthogonality, Orthogonal projection, Distance
+232;Orthogonality, Orthogonal projection, Distance
+233;Scalar product
+234;Scalar product, Orthogonality, Distance
+235;Simple graph
+236;Simple graph, Isomorphic graphs, Complement of a graph
+237;Complete graph, Subgraph, Regular graph, Bipartite graph
+238;Simple graph, Incidence matrix , Adjacency matrix, Directed graph
+239;Simple graph, Path, Cycle and circuit, Connectivity of a graph
+240;Cycle and circuit
+241;Planar graph, Complete graph, Subgraph, Bipartite graph, Euler's Formula
+242;Planar graph, Chromatic number, Adjacent vertices
+243;Tree, Spanning tree
+244;Path, Shortest path, Kruskal algorithm, Dijkstra algorithm, Weighted graph
+245;Distance, Locus
+246;Axioms of probability
+247;Event, Addition, multiplication, and total probability rules
+248;Conditional probability
+249;Event, Conditional probability
+250;Sample space, Bayes' Theorem, Conditional probability
+251;Sample space, Event, Random experiments
+252;Sample space, Event, Independence
+253;Sample space, Event, Independence, Conditional probability
+254;Sample space, Event, Addition, multiplication, and total probability rules
+255;Event, Conditional probability, Addition, multiplication, and total probability rules
+256;Continuity
+257;Geometrical figures, Polygons
+258;Geometric transformations, Symmetry
+259;Symmetry
+260;Geometrical figures, Classification of geometrical figures, Quadrilaterals
+261;Triangles, Angles
+262;Triangles, Angles
+263;Triangles, Triangle inequality
+264;Geometrical figures, Classification of geometrical figures, Triangles
+265;Geometric solids, Classification of geometric solids, Polyhedrons, Polygons, Symmetry
+267;Vector subspace, Span
+268;Geometric solids, Polyhedrons
+269;Excel solver add-in
+270;Triangles, Angles
+271;Continuity, Limits
+274;Real part, Frequency, Cross product, Distance, Linear differential equation, Lagrange's interpolation
+278;Linear programming, Minimum cost method
+279;Linear programming, Minimum cost method
+280;Triple integration, Cylindrical coordinates
+281;Triple integration, Volume, Rectangular coordinates
+282;Triple integration, Rectangular coordinates
+283;Triple integration, Cylindrical coordinates
+284;Triple integration, Spherical coordinates
+285;Triple integration, Spherical coordinates
+286;Triple integration, Spherical coordinates
+287;Triple integration, Spherical coordinates
+288;Triple integration, Cylindrical coordinates
+289;Triple integration, Spherical coordinates, Volume
+290;Triple integration, Spherical coordinates, Volume
+291;Triple integration, Cylindrical coordinates, Volume
+292;Triple integration, Spherical coordinates, Volume
+293;Triple integration, Cylindrical coordinates, Volume
+294;Triple integration, Cylindrical coordinates, Volume
+295;Triple integration, Spherical coordinates, Volume
+296;Triple integration, Volume, Rectangular coordinates
+297;Triple integration, Cylindrical coordinates, Volume
+298;Triple integration, Spherical coordinates, Volume
+299;Triple integration, Rectangular coordinates
+300;Triple integration, Rectangular coordinates
+301;Triple integration, Rectangular coordinates
+302;Triple integration, Rectangular coordinates
+303;Triple integration, Cylindrical coordinates, Rectangular coordinates
+304;Triple integration, Cylindrical coordinates
+305;Triple integration, Spherical coordinates
+306;Triple integration, Cylindrical coordinates, Volume
+307;Triple integration, Rectangular coordinates
+308;Triple integration, Cylindrical coordinates
+309;Triple integration, Volume, Rectangular coordinates
+310;Triple integration, Rectangular coordinates
+311;Triple integration, Rectangular coordinates
+312;Triple integration, Rectangular coordinates
+313;Triple integration, Rectangular coordinates
+314;Triple integration, Rectangular coordinates
+315;Triple integration, Cylindrical coordinates
+316;Triple integration, Volume, Rectangular coordinates
+317;Triple integration, Volume, Rectangular coordinates
+318;Triple integration, Rectangular coordinates
+319;Triple integration, Rectangular coordinates
+320;Triple integration, Rectangular coordinates
+321;Triple integration, Rectangular coordinates
+322;Triple integration, Rectangular coordinates
+323;Triple integration, Rectangular coordinates
+324;Triple integration, Rectangular coordinates
+325;Triple integration, Rectangular coordinates
+326;Triple integration, Rectangular coordinates
+327;Triple integration, Cylindrical coordinates, Volume
+328;Triple integration, Volume, Rectangular coordinates
+329;Triple integration, Volume, Rectangular coordinates
+330;Triple integration, Cylindrical coordinates
+331;Triple integration, Cylindrical coordinates
+332;Triple integration, Cylindrical coordinates
+333;Triple integration, Cylindrical coordinates
+334;Triple integration, Cylindrical coordinates, Volume
+335;Triple integration, Cylindrical coordinates, Volume
+336;Triple integration, Cylindrical coordinates, Volume
+337;Triple integration, Cylindrical coordinates, Volume
+338;Triple integration, Cylindrical coordinates
+339;Triple integration, Cylindrical coordinates
+340;Triple integration, Spherical coordinates
+341;Triple integration, Spherical coordinates
+342;Triple integration, Spherical coordinates
+343;Triple integration, Spherical coordinates
+344;Triple integration, Spherical coordinates
+345;Triple integration, Spherical coordinates, Volume
+346;Triple integration, Spherical coordinates, Volume
+347;Triple integration, Spherical coordinates, Volume
+348;Triple integration, Spherical coordinates, Volume
+349;Triple integration, Spherical coordinates
+350;Triple integration, Spherical coordinates
+351;Triple integration, Spherical coordinates
+372;Operations with complex numbers
+373;Modulus of a complex number, Trigonometric form, Algebraic form
+375;Operations with complex numbers, Complex coefficients 
+376;Modulus of a complex number, Trigonometric form, Principal argument, Algebraic form
+377;Real part, Imaginary part, Modulus of a complex number, Conjugate number, Algebraic form, Equations involving complex numbers
+378;Cartesian coordinates, Iterate integrals, x-simple region (type II)
+379;Cartesian coordinates, Iterate integrals
+380;Cartesian coordinates, y-simple region (type I)
+381;Polar coordinates, Area 
+382;Cartesian coordinates, x-simple region (type II)
+383;Cartesian coordinates, Iterate integrals
+384;Cartesian coordinates, Area , y-simple region (type I)
+385;Cartesian coordinates, x-simple region (type II), Changing order of integration
+387;Cartesian coordinates, y-simple region (type I)
+388;Cartesian coordinates, y-simple region (type I)
+389;Simplify expressions, Absolute value
+390;Cartesian coordinates, Iterate integrals
+391;Cartesian coordinates, Area , y-simple region (type I)
+392;Cartesian coordinates, y-simple region (type I)
+393;Polar coordinates, Iterate integrals
+394;Cartesian coordinates, y-simple region (type I)
+395;Polar coordinates, Iterate integrals
+396;Cartesian coordinates, Polar coordinates
+397;Polar coordinates
+398;Polar coordinates, Iterate integrals
+399;Polar coordinates, Iterate integrals
+400;Cartesian coordinates, Area , y-simple region (type I)
+401;Linear equations, Quadratic equations, Simplify expressions
+403;Cartesian coordinates, Area , y-simple region (type I)
+404;Cartesian coordinates, Area , y-simple region (type I)
+406;Cartesian coordinates, Changing order of integration
+407;Cartesian coordinates, Changing order of integration
+408;Cartesian coordinates, x-simple region (type II)
+409;Cartesian coordinates, Area , y-simple region (type I)
+410;Cartesian coordinates, y-simple region (type I)
+411;Cartesian coordinates, Area , y-simple region (type I)
+412;Cartesian coordinates, Changing order of integration
+413;Cartesian coordinates, x-simple region (type II)
+414;Cartesian coordinates, y-simple region (type I)
+415;Cartesian coordinates, Iterate integrals
+416;Cartesian coordinates, x-simple region (type II)
+417;Cartesian coordinates, Changing order of integration
+418;Cartesian coordinates, Iterate integrals
+419;Cartesian coordinates, Area , y-simple region (type I)
+420;Cartesian coordinates, Iterate integrals
+421;Cartesian coordinates, x-simple region (type II)
+422;Cartesian coordinates, Area , x-simple region (type II)
+423;Cartesian coordinates, Changing order of integration
+424;Polar coordinates
+425;Definition, Surface integral of a scalar function
+426;Definition, Surface integral of a scalar function
+427;Definition, Surface integral of a scalar function
+428;Surface integral of a scalar function
+429;Surface integral of a scalar function
+430;Surface integral of a scalar function
+431;Surface integral of a scalar function
+432;Definition, Surface integral of a scalar function
+433;Definition, Surface integral of a scalar function
+434;Surface integral of a scalar function
+435;Surface integral of a scalar function
+436;Surface integral of a scalar function
+437;Surface integral of a scalar function
+438;Surface integral of a scalar function
+439;Surface integral of a scalar function
+440;Surface integral of a scalar function
+441;Surface integral of a scalar function
+442;Surface integral of a scalar function
+443;Surface integral of a scalar function
+444;Closed surface, Surface integral of a vector field
+445;Closed surface, Surface integral of a vector field
+446;Open surface, Surface integral of a vector field
+447;Closed surface, Surface integral of a vector field
+448;Open surface, Surface integral of a vector field
+449;Open surface, Surface integral of a vector field
+450;Open surface, Surface integral of a vector field
+451;Closed surface, Surface integral of a vector field
+452;Closed surface, Surface integral of a vector field
+453;Open surface, Surface integral of a vector field
+454;Closed surface, Surface integral of a vector field
+455;Closed surface, Surface integral of a vector field
+456;Closed surface, Surface integral of a vector field
+457;Closed surface, Surface integral of a vector field
+458;Surface integral of a scalar function
+459;Surface integral of a scalar function
+460;Surface integral of a scalar function
+461;Surface integral of a scalar function
+462;Surface integral of a scalar function
+463;Surface integral of a scalar function
+464;Surface integral of a scalar function
+465;Surface integral of a scalar function
+466;Surface integral of a scalar function
+467;Open surface, Surface integral of a vector field
+468;Open surface, Surface integral of a vector field
+469;Open surface, Surface integral of a vector field
+470;Closed surface, Surface integral of a vector field
+471;Open surface, Surface integral of a vector field
+472;Surface integral of a vector field
+473;Open surface, Surface integral of a vector field
+474;Divergence theorem
+475;Divergence theorem
+476;Divergence theorem
+477;Divergence theorem
+478;Divergence theorem
+479;Divergence theorem
+480;Divergence theorem
+481;Divergence theorem
+482;Divergence theorem
+888;Absolute value, Solution range, Inequations
+889;Absolute value, Solution range, Inequations
+890;Linear equations, Rearranging equations
+891;Rearranging equations, Nonlinear equations
+892;Quadratic equations, Solution range, Inequations
+893;Quadratic equations, Solution range, Inequations
+894;Solution range, Inequations, Nonlinear equations
+895;Solution range, Inequations, Nonlinear equations
+896;Linear equations, Quadratic equations, Simplify expressions
+897;Simplify expressions, Root’s equation
+898;Imaginary part, Operations with complex numbers, Complex coefficients 
+899;Real part, Complex plane , Exponential form, Regions in the complex plane
+900;Conjugate number, Operations with complex numbers
+901;Principal argument, Exponential form
+902;Complex plane , Regions in the complex plane
+903;Modulus of a complex number, Polar representation, Principal argument
+904;Operations with complex numbers, Powers of complex numbers
+906;Bisection method, Nonlinear equation, Absolute error
+907;Gauss-Seidel method, Relative error
+909;Jacobi method, Relative error
+910;Lagrange's interpolation, Polynomial interpolation
+911;Least square method, Polynomial regression
+912;Polynomial interpolation, Newton’s interpolation
+913;Newton’s method, Nonlinear equation
+914;Three points rule, Simpson's rule
+915;Simpson's rule, Trapezoidal rule
+943;Arithmetic sequence, Closed formula
+944;Generating function, Closed formula
+946;Geometric sequence, Patterns
+947;Homogeneous linear recurrences, Non-homogeneous linear recurrence
+948;Arithmetic sequence, Patterns
+949;Cardinality, Subset, Superset, Power set, Proper subset
+950;Complement of a set, Intersection of sets, Set, Union of sets, Set difference
+951;Binary relation, Cartesian product, Equivalence relation, Reflexive binary relation, Symmetric binary relation
+952;Intersection of sets, Set, Union of sets, Venn diagram, Element of a set
+953;Magnitude of vectors, Vector Operations
+954;Scalar product, Cross product, Vector Operations
+955;Scalar triple product, Vector Operations
+956;Orthogonality, Collinearity, Relative position of vectors
+957;Constant coefficient ODE, Characteristic equation, Wronskian, Undetermined coefficient method
+958;Integrating factor, Euler's method, Elimination method, Linear system, Lagrange's method
+959;Trace of a matrix, Symmetric matrix
+960;Spectrum, Spectral radius, Spectral shift
+961;Inverse matrix, Orthonormal matrix, Power matrix
+962;Eigenvalues, Eigenvectors, Eigenspace
+963;Diagonalization, Diagonalization with orthonormal basis, Similar matrices
+964;Characteristic polynomial, Determinant
+965;Dependent system, Independent system
