@@ -5,3 +5,4 @@
 5 - Analisi educational_offer
 6 - Capire come passare datasets al modello (Utilizzo RAG) ✅
 7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
+8 - Rimosso Rag perché si è rotto il codice per generarlo, ora devo poter selezionare uno studente prima di lanciare l'app così che vengono selezionati solo i dati relativi all'utente selezionato
