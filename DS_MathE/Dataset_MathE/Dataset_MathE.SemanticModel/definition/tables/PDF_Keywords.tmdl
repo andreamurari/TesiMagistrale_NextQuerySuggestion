@@ -1,0 +1,34 @@
+table PDF_Keywords
+	lineageTag: 72487389-4166-4c16-a673-9a406de1d131
+
+	column material_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1eed4371-252b-47ac-b368-38da6540035f
+		summarizeBy: sum
+		sourceColumn: material_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column keywords
+		dataType: string
+		lineageTag: 7bb32736-a306-43a8-8380-b23e1136c90e
+		summarizeBy: none
+		sourceColumn: keywords
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PDF_Keywords = m
+		mode: import
+		source =
+				let
+				    Origine = Csv.Document(File.Contents("C:\Users\murar\Desktop\Tesi\MathE\datasets\PDF_Keywords.csv"),[Delimiter=";", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Intestazioni alzate di livello" = Table.PromoteHeaders(Origine, [PromoteAllScalars=true]),
+				    #"Modificato tipo" = Table.TransformColumnTypes(#"Intestazioni alzate di livello",{{"material_id", Int64.Type}, {"keywords", type text}})
+				in
+				    #"Modificato tipo"
+
+	annotation PBI_NavigationStepName = Navigazione
+
+	annotation PBI_ResultType = Table
+

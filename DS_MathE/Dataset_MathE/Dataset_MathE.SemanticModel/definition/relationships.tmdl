@@ -1,0 +1,18 @@
+relationship 55a505cc-5c73-41b8-a3e9-12e04c3cc9e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Assessment_Information.date
+	toColumn: LocalDateTable_01a3334d-880e-4412-9676-03ab877925ad.Date
+
+relationship 9a6d9372-483f-ae8b-ba53-8994109a8ba7
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Assessment_Information.question_id
+	toColumn: MathE_public.'Question ID'
+
+relationship f573057e-efb7-a331-34db-fb04eb3e033e
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Assessment_Information.student_id
+	toColumn: MathE_public.'Student ID'
+

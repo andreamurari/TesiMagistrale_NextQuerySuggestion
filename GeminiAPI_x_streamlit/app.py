@@ -14,117 +14,13 @@ try:
 except ImportError:
     load_dotenv = None
 
+selected_student = 3538
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_CONTEXT_DIR = BASE_DIR / "context"
 
-
-
-def _safe_read_text(file_path: Path, max_chars: int = 12000) -> str:
-    for enc in ("utf-8", "utf-8-sig", "latin1"):
-        try:
-            text = file_path.read_text(encoding=enc, errors="replace")
-            return text[:max_chars]
-        except Exception:
-            continue
-    return ""
-
-
-def _format_table_preview(df: pd.DataFrame, max_rows: int) -> str:
-    preview = df.head(max_rows)
-    if preview.empty:
-        return "(empty table)"
-    return preview.to_string(index=False)
-
-
-def _filter_assessment_rows(df: pd.DataFrame, student_value: int) -> pd.DataFrame:
-    if df.empty:
-        return df
-
-    normalized_columns = {str(column).strip().lower().replace(" ", "_"): column for column in df.columns}
-    student_column = None
-    for candidate in ("student_id", "studentid", "id_student", "idstudente"):
-        if candidate in normalized_columns:
-            student_column = normalized_columns[candidate]
-            break
-
-    if student_column is None:
-        return df
-
-    numeric_values = pd.to_numeric(df[student_column], errors="coerce")
-    filtered = df[numeric_values == student_value]
-    return filtered
-
-
-@st.cache_data(show_spinner=False)
-def load_context_folder(
-    folder_path: str,
-    max_rows: int = 120,
-    max_chars_per_file: int = 12000,
-    sel_student: int = 36,
-):
-    folder = Path(folder_path)
-    if not folder.exists() or not folder.is_dir():
-        return "", [], [f"Folder not found: {folder_path}"]
-
-    loaded_files = []
-    errors = []
-    chunks = []
-
-    for file_path in sorted(folder.rglob("*")):
-        if not file_path.is_file():
-            continue
-
-        ext = file_path.suffix.lower()
-        rel_name = str(file_path.relative_to(folder))
-        content = ""
-
-        try:
-            if ext in {".xlsx", ".xls"}:
-                excel_book = pd.read_excel(file_path, sheet_name=None)
-                sheet_chunks = []
-                for sheet_name, df in excel_book.items():
-                    if file_path.name.lower() == "assessment_information.xlsx":
-                        df = _filter_assessment_rows(df, sel_student)
-                    sheet_chunks.append(f"\n[SHEET: {sheet_name}]\n{_format_table_preview(df, max_rows)}")
-                content = "\n".join(sheet_chunks)
-
-            elif ext == ".csv":
-                try:
-                    df = pd.read_csv(file_path, sep=";")
-                    if len(df.columns) < 2:
-                        df = pd.read_csv(file_path, sep=",")
-                except Exception:
-                    df = pd.read_csv(file_path, encoding="latin1")
-                content = _format_table_preview(df, max_rows)
-
-            elif ext == ".json":
-                data = json.loads(_safe_read_text(file_path, max_chars=max_chars_per_file))
-                content = json.dumps(data, indent=2, ensure_ascii=False)
-
-            elif ext in {".txt", ".md", ".sql"}:
-                content = _safe_read_text(file_path, max_chars=max_chars_per_file)
-
-            else:
-                continue
-
-            if not content.strip():
-                continue
-
-            content = content[:max_chars_per_file]
-            block = (
-                f"\n--- INIZIO FILE: {rel_name} ---\n"
-                f"{content}\n"
-                f"--- FINE FILE: {rel_name} ---\n"
-            )
-            chunks.append(block)
-            loaded_files.append(rel_name)
-
-        except Exception as exc:
-            errors.append(f"{rel_name}: {exc}")
-
-    return "\n".join(chunks), loaded_files, errors
-
+context = pd.read_excel('context/Assesment_Information.xlsx')
+context = context[context['student_id'] == selected_student]
 
 def build_system_prompt(context_data: str) -> str:
     return f"""

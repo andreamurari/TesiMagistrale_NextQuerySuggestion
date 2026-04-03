@@ -1,0 +1,42 @@
+table 'DataGEMS Chat examples'
+	lineageTag: ca89d024-4968-457c-a05e-4ed05ed181b9
+
+	column academic_position
+		dataType: string
+		lineageTag: b9a62e85-137e-42b6-a1af-bcb38707061b
+		summarizeBy: none
+		sourceColumn: academic_position
+
+		annotation SummarizationSetBy = Automatic
+
+	column question
+		dataType: string
+		lineageTag: 7d33ad87-b8a5-46f5-abaa-c86b31f6ac31
+		summarizeBy: none
+		sourceColumn: question
+
+		annotation SummarizationSetBy = Automatic
+
+	column expeted_answer
+		dataType: string
+		lineageTag: a8286075-7d1c-406c-8865-05bafcb50509
+		summarizeBy: none
+		sourceColumn: expeted_answer
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DataGEMS Chat examples' = m
+		mode: import
+		source =
+				let
+				    Origine = Excel.Workbook(File.Contents("C:\Users\murar\Desktop\Tesi\MathE\datasets\DataGEMS Chat examples.xlsx"), null, true),
+				    Folha2_Sheet = Origine{[Item="Folha2",Kind="Sheet"]}[Data],
+				    #"Modificato tipo" = Table.TransformColumnTypes(Folha2_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Rinominate colonne" = Table.RenameColumns(#"Modificato tipo",{{"Column1", "academic_position"}, {"Column2", "question"}, {"Column3", "expeted_answer"}})
+				in
+				    #"Rinominate colonne"
+
+	annotation PBI_NavigationStepName = Navigazione
+
+	annotation PBI_ResultType = Table
+

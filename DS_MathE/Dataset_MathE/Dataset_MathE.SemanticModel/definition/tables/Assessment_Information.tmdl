@@ -1,0 +1,115 @@
+table Assessment_Information
+	lineageTag: f3461e66-426d-455e-8536-b414ca500021
+
+	column student_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6524b01a-5fd9-4779-83bb-ee70e5e9e490
+		summarizeBy: sum
+		sourceColumn: student_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column question_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f51b0c5-01f2-4418-9e9a-0aab96d80c8d
+		summarizeBy: none
+		sourceColumn: question_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column answer
+		dataType: int64
+		formatString: 0
+		lineageTag: a3879aff-df3e-4d40-988c-05ff9f6709b0
+		summarizeBy: sum
+		sourceColumn: answer
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dc8f5da9-30a6-419c-8c73-7d437458afa7
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variazione
+			isDefault
+			relationship: 55a505cc-5c73-41b8-a3e9-12e04c3cc9e8
+			defaultHierarchy: LocalDateTable_01a3334d-880e-4412-9676-03ab877925ad.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: string
+		lineageTag: d2d54c28-dcef-4de2-b153-b173cf1d94a4
+		summarizeBy: none
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column option_selected
+		dataType: string
+		lineageTag: b9f30a8b-c990-4eeb-a709-2d24e5829e4b
+		summarizeBy: none
+		sourceColumn: option_selected
+
+		annotation SummarizationSetBy = Automatic
+
+	column Topic
+		dataType: string
+		lineageTag: b29659e5-166b-4c6c-ad01-edba2648d743
+		summarizeBy: none
+		sourceColumn: Topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subtopic
+		dataType: string
+		lineageTag: cdb69201-9a19-4101-a19a-d7fded1a7f8c
+		summarizeBy: none
+		sourceColumn: Subtopic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lecturer_level
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ed20f42-18b9-4f67-bbab-0310037209dc
+		summarizeBy: sum
+		sourceColumn: Lecturer_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Algorithm_level
+		dataType: int64
+		formatString: 0
+		lineageTag: 713a0f1d-457d-4653-a673-d4f7bb1a5ce1
+		summarizeBy: sum
+		sourceColumn: Algorithm_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typology
+		dataType: string
+		lineageTag: 39853f45-e337-4322-b123-38cc8a89cf00
+		summarizeBy: none
+		sourceColumn: Typology
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Assessment_Information = m
+		mode: import
+		source =
+				let
+				    Origine = Excel.Workbook(File.Contents("C:\Users\murar\Desktop\Tesi\MathE\datasets\Assessment_Information.xlsx"), null, true),
+				    Sheet1_Sheet = Origine{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Intestazioni alzate di livello" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Modificato tipo" = Table.TransformColumnTypes(#"Intestazioni alzate di livello",{{"student_id", Int64.Type}, {"question_id", Int64.Type}, {"answer", Int64.Type}, {"date", type datetime}, {"duration", type any}, {"option_selected", type any}, {"Topic", type text}, {"Subtopic", type text}, {"Lecturer_level", Int64.Type}, {"Algorithm_level", Int64.Type}, {"Typology", type text}})
+				in
+				    #"Modificato tipo"
+
+	annotation PBI_ResultType = Table
+

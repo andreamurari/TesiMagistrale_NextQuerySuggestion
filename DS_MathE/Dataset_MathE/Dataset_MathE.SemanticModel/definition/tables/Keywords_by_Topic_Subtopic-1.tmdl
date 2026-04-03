@@ -1,0 +1,43 @@
+table Keywords_by_Topic_Subtopic-1
+	lineageTag: 47237d66-209c-4941-a568-5b8a1d357b24
+
+	column Topic
+		dataType: string
+		lineageTag: 01772d44-df11-4b06-bcc1-2c607b4041d3
+		summarizeBy: none
+		sourceColumn: Topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subtopic
+		dataType: string
+		lineageTag: fa92d57c-e281-46d6-a3fd-3fdef5a333b4
+		summarizeBy: none
+		sourceColumn: Subtopic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Keywords
+		dataType: string
+		lineageTag: db4c7cda-ba8b-487b-8e8e-05a678d5e1be
+		summarizeBy: none
+		sourceColumn: Keywords
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Keywords_by_Topic_Subtopic-1 = m
+		mode: import
+		source =
+				let
+				    Origine = Excel.Workbook(File.Contents("C:\Users\murar\Desktop\Tesi\MathE\Keywords_by_Topic_Subtopic-1.xls"), null, true),
+				    platform__course1 = Origine{[Name="platform__course"]}[Data],
+				    #"Modificato tipo" = Table.TransformColumnTypes(platform__course1,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Intestazioni alzate di livello" = Table.PromoteHeaders(#"Modificato tipo", [PromoteAllScalars=true]),
+				    #"Modificato tipo1" = Table.TransformColumnTypes(#"Intestazioni alzate di livello",{{"Topic", type text}, {"Subtopic", type text}, {"Keywords", type text}})
+				in
+				    #"Modificato tipo1"
+
+	annotation PBI_NavigationStepName = Navigazione
+
+	annotation PBI_ResultType = Table
+

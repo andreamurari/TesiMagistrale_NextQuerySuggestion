@@ -1,0 +1,52 @@
+table Teaching_Material_Information
+	lineageTag: cd36b82f-a534-47d1-aa7a-7e028fe28502
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b576195a-a1e2-410c-8d74-cd0e047379a7
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: e472ba62-52db-4204-a42f-fb69f17a0075
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Topic
+		dataType: string
+		lineageTag: f14c457e-e65c-4027-a56d-09232ba3461b
+		summarizeBy: none
+		sourceColumn: Topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subtopic
+		dataType: string
+		lineageTag: 058881ff-e3d6-48fb-af8f-53c4c41d2d9a
+		summarizeBy: none
+		sourceColumn: Subtopic
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Teaching_Material_Information = m
+		mode: import
+		source =
+				let
+				    Origine = Excel.Workbook(File.Contents("C:\Users\murar\Desktop\Tesi\MathE\datasets\Teaching_Material_Information.xlsx"), null, true),
+				    Sheet1_Sheet = Origine{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Intestazioni alzate di livello" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Modificato tipo" = Table.TransformColumnTypes(#"Intestazioni alzate di livello",{{"id", Int64.Type}, {"clicks", Int64.Type}, {"Topic", type text}, {"Subtopic", type text}})
+				in
+				    #"Modificato tipo"
+
+	annotation PBI_NavigationStepName = Navigazione
+
+	annotation PBI_ResultType = Table
+
