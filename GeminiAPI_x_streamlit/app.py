@@ -1,5 +1,7 @@
 import json
 import os
+import re
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -15,6 +17,7 @@ except ImportError:
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_CONTEXT_DIR = BASE_DIR / "context"
+
 
 
 def _safe_read_text(file_path: Path, max_chars: int = 12000) -> str:
@@ -34,8 +37,32 @@ def _format_table_preview(df: pd.DataFrame, max_rows: int) -> str:
     return preview.to_string(index=False)
 
 
+def _filter_assessment_rows(df: pd.DataFrame, student_value: int) -> pd.DataFrame:
+    if df.empty:
+        return df
+
+    normalized_columns = {str(column).strip().lower().replace(" ", "_"): column for column in df.columns}
+    student_column = None
+    for candidate in ("student_id", "studentid", "id_student", "idstudente"):
+        if candidate in normalized_columns:
+            student_column = normalized_columns[candidate]
+            break
+
+    if student_column is None:
+        return df
+
+    numeric_values = pd.to_numeric(df[student_column], errors="coerce")
+    filtered = df[numeric_values == student_value]
+    return filtered
+
+
 @st.cache_data(show_spinner=False)
-def load_context_folder(folder_path: str, max_rows: int = 120, max_chars_per_file: int = 12000):
+def load_context_folder(
+    folder_path: str,
+    max_rows: int = 120,
+    max_chars_per_file: int = 12000,
+    sel_student: int = 36,
+):
     folder = Path(folder_path)
     if not folder.exists() or not folder.is_dir():
         return "", [], [f"Folder not found: {folder_path}"]
@@ -57,6 +84,8 @@ def load_context_folder(folder_path: str, max_rows: int = 120, max_chars_per_fil
                 excel_book = pd.read_excel(file_path, sheet_name=None)
                 sheet_chunks = []
                 for sheet_name, df in excel_book.items():
+                    if file_path.name.lower() == "assessment_information.xlsx":
+                        df = _filter_assessment_rows(df, sel_student)
                     sheet_chunks.append(f"\n[SHEET: {sheet_name}]\n{_format_table_preview(df, max_rows)}")
                 content = "\n".join(sheet_chunks)
 
@@ -137,14 +166,56 @@ def build_history_text(messages, max_turns: int = 8) -> str:
     return "\n".join(lines)
 
 
+def _extract_retry_delay_seconds(error_text: str) -> float | None:
+    match = re.search(r"retry(?:\s*in)?\s*([0-9]+(?:\.[0-9]+)?)s", error_text, flags=re.IGNORECASE)
+    if match:
+        return max(1.0, float(match.group(1)))
+    match = re.search(r"'retryDelay':\s*'([0-9]+)s'", error_text)
+    if match:
+        return max(1.0, float(match.group(1)))
+    return None
+
+
+def _is_hard_quota_error(error_text: str) -> bool:
+    lowered = error_text.lower()
+    return (
+        "resource_exhausted" in lowered
+        or "quota exceeded" in lowered
+        or "free_tier" in lowered
+        or "limit: 0" in lowered
+    )
+
+
 def ask_gemini(model_name: str, api_key: str, system_prompt: str, user_prompt: str) -> str:
     client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
-        model=model_name,
-        contents=user_prompt,
-        config=types.GenerateContentConfig(system_instruction=system_prompt),
-    )
-    return (response.text or "").strip()
+    last_error = None
+
+    for attempt in range(1, 4):
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=user_prompt,
+                config=types.GenerateContentConfig(system_instruction=system_prompt),
+            )
+            return (response.text or "").strip()
+        except Exception as exc:
+            last_error = exc
+            error_text = str(exc)
+
+            if _is_hard_quota_error(error_text):
+                raise RuntimeError(
+                    "Gemini quota is exhausted for the selected model. "
+                    "This usually means the free-tier limit is unavailable for this project or model. "
+                    "Enable billing, switch to a project with quota, or use a different API key."
+                ) from exc
+
+            retry_delay = _extract_retry_delay_seconds(error_text)
+            if retry_delay is None or attempt == 3:
+                raise RuntimeError(f"Gemini request failed after {attempt} attempt(s): {exc}") from exc
+
+            time.sleep(retry_delay)
+
+    raise RuntimeError(f"Gemini request failed: {last_error}")
 
 
 def main():
@@ -167,6 +238,7 @@ def main():
 
         st.subheader("Context")
         context_folder = st.text_input("Context folder", value=str(DEFAULT_CONTEXT_DIR))
+        sel_student = st.number_input("Student ID", min_value=0, value=3538, step=1)
         max_rows = st.slider("Max rows per table", min_value=20, max_value=500, value=120, step=20)
         max_chars = st.slider("Max characters per file", min_value=2000, max_value=30000, value=12000, step=1000)
 
@@ -179,6 +251,7 @@ def main():
             context_folder,
             max_rows=max_rows,
             max_chars_per_file=max_chars,
+            sel_student=int(sel_student),
         )
 
     st.info(f"Loaded context files: {len(loaded_files)}")
