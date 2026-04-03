@@ -5,7 +5,12 @@
 5 - Analisi educational_offer
 6 - Capire come passare datasets al modello (Utilizzo RAG) ✅
 7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
-8 - Rimosso Rag perché si è rotto il codice per generarlo, ora devo poter selezionare uno studente prima di lanciare l'app così che vengono selezionati solo i dati relativi all'utente selezionato. Pensare evnetualmente a splittare il dataset di uno studente in mesi trascorsi, cosi da mantenere la questione temporale (es. ultime 2 settimane -> argomento fresco, tra 2 e 4 settimane trascorse -> argomento leggermente lapsato, tra 4 e 8 settimane argomento mediamente lapsato, oltre le 8 settimane argomento pesantemente lapsato) cosi da avere:
+8 - Rimosso Rag perché si è rotto il codice per generarlo, ora devo poter selezionare uno studente prima di lanciare l'app così che vengono selezionati solo i dati relativi all'utente selezionato. Pensare evnetualmente a splittare il dataset di uno studente in mesi trascorsi, cosi da mantenere la questione temporale:
+	- ultime 2 settimane -> argomento fresco
+	- tra 2 e 4 settimane trascorse -> argomento leggermente lapsato
+	- tra 4 e 8 settimane argomento mediamente lapsato
+	- oltre le 8 settimane argomento pesantemente lapsato) 
+cosi da avere:
 
 				Argomento	|	Grado di laps	|	Performance
 			      __________________|_______________________|____________________
@@ -13,4 +18,4 @@
 				A		|	Medio		|	0,4
 				A		|	Pesante		|	0,2
 				B		|	Leggero		|	0,5
-	
+9 - Decidere come trattare i -1 nell' Assessment_Information ['answer']
