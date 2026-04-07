@@ -1,26 +1,14 @@
-import json
 import os
-import re
-import time
-from pathlib import Path
+from datetime import timedelta
 
 import pandas as pd
 import streamlit as st
 from google import genai
-from google.genai import types
+from dotenv import load_dotenv
 
-try:
-    from dotenv import load_dotenv
-except ImportError:
-    load_dotenv = None
+load_dotenv()
 
-selected_student = 3538
 
-BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_CONTEXT_DIR = BASE_DIR / "context"
-
-context = pd.read_excel('context/Assesment_Information.xlsx')
-context = context[context['student_id'] == selected_student]
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
@@ -47,8 +35,7 @@ def ensure_state():
 
 
 def get_api_key() -> str:
-    env_key = os.getenv("GEMINI_API_KEY", "")
-    return st.session_state.get("gemini_api_key", env_key)
+    return os.getenv("GEMINI_API_KEY", "")
 
 
 def build_history_text(messages, max_turns: int = 8) -> str:
@@ -62,149 +49,118 @@ def build_history_text(messages, max_turns: int = 8) -> str:
     return "\n".join(lines)
 
 
-def _extract_retry_delay_seconds(error_text: str) -> float | None:
-    match = re.search(r"retry(?:\s*in)?\s*([0-9]+(?:\.[0-9]+)?)s", error_text, flags=re.IGNORECASE)
-    if match:
-        return max(1.0, float(match.group(1)))
-    match = re.search(r"'retryDelay':\s*'([0-9]+)s'", error_text)
-    if match:
-        return max(1.0, float(match.group(1)))
-    return None
+def load_context_data(student_id: int) -> pd.DataFrame:
+    path = "context/Assessment_Information.xlsx"
+    df = pd.read_excel(path)
+    required_cols = {"student_id", "date", "Algorithm_level", "answer", "Topic", "Subtopic"}
+    missing = required_cols.difference(df.columns)
+    if missing:
+        raise ValueError(f"Missing columns in {path}: {sorted(missing)}")
 
+    filtered = df[df["student_id"] == student_id].copy()
+    if filtered.empty:
+        return pd.DataFrame(columns=["Topic", "Subtopic", "knowledge_score"])
 
-def _is_hard_quota_error(error_text: str) -> bool:
-    lowered = error_text.lower()
-    return (
-        "resource_exhausted" in lowered
-        or "quota exceeded" in lowered
-        or "free_tier" in lowered
-        or "limit: 0" in lowered
+    filtered["date"] = pd.to_datetime(filtered["date"])
+    last_interaction = filtered["date"].max()
+    filtered["days_since_last_interaction"] = (last_interaction - filtered["date"]).dt.days
+
+    step_1 = timedelta(days=15)
+    step_2 = timedelta(days=30)
+    step_3 = timedelta(days=60)
+
+    filtered["lapse_score"] = pd.cut(
+        filtered["days_since_last_interaction"],
+        bins=[-1, step_1.days, step_2.days, step_3.days, float("inf")],
+        labels=["1", "0.6", "0.3", "0.1"],
     )
 
+    filtered["knowledge_score"] = (
+        filtered["Algorithm_level"] * filtered["lapse_score"].astype(float) * filtered["answer"]
+    )
 
-def ask_gemini(model_name: str, api_key: str, system_prompt: str, user_prompt: str) -> str:
+    result = (
+        filtered[["Topic", "Subtopic", "knowledge_score"]]
+        .groupby(["Topic", "Subtopic"], as_index=False)
+        .agg({"knowledge_score": "sum"})
+    )
+    return result
+
+
+def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str, user_prompt: str) -> str:
     client = genai.Client(api_key=api_key)
-    last_error = None
-
-    for attempt in range(1, 4):
-        try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=user_prompt,
-                config=types.GenerateContentConfig(system_instruction=system_prompt),
-            )
-            return (response.text or "").strip()
-        except Exception as exc:
-            last_error = exc
-            error_text = str(exc)
-
-            if _is_hard_quota_error(error_text):
-                raise RuntimeError(
-                    "Gemini quota is exhausted for the selected model. "
-                    "This usually means the free-tier limit is unavailable for this project or model. "
-                    "Enable billing, switch to a project with quota, or use a different API key."
-                ) from exc
-
-            retry_delay = _extract_retry_delay_seconds(error_text)
-            if retry_delay is None or attempt == 3:
-                raise RuntimeError(f"Gemini request failed after {attempt} attempt(s): {exc}") from exc
-
-            time.sleep(retry_delay)
-
-    raise RuntimeError(f"Gemini request failed: {last_error}")
+    full_prompt = (
+        f"{system_prompt}\n\n"
+        f"Conversation so far:\n{history_text if history_text else 'No previous messages.'}\n\n"
+        f"User question:\n{user_prompt}"
+    )
+    response = client.models.generate_content(model=model, contents=full_prompt)
+    return (response.text or "").strip()
 
 
 def main():
-    if load_dotenv is not None:
-        load_dotenv()
-
-    st.set_page_config(page_title="Gemini Data Assistant", page_icon="\U0001F4DA", layout="wide")
-    st.title("Gemini Interface for Your Thesis")
-    st.caption("Chat with Gemini using the files available in the context folder")
+    st.set_page_config(page_title="Gemini Assistant", page_icon="AI", layout="wide")
+    st.title("Gemini API - Simple Interface")
+    st.caption("Ask questions with a small context-aware assistant.")
+    model = "gemini-2.5-flash"
 
     ensure_state()
 
     with st.sidebar:
-        st.header("Configuration")
-        model_name = st.selectbox(
-            "Model",
-            options=["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"],
-            index=0,
-        )
-
-        st.subheader("Context")
-        context_folder = st.text_input("Context folder", value=str(DEFAULT_CONTEXT_DIR))
-        sel_student = st.number_input("Student ID", min_value=0, value=3538, step=1)
-        max_rows = st.slider("Max rows per table", min_value=20, max_value=500, value=120, step=20)
-        max_chars = st.slider("Max characters per file", min_value=2000, max_value=30000, value=12000, step=1000)
-
+        st.header("Settings")
+        student_id = st.number_input("Student ID", min_value=1, value=80, step=1)
+        st.caption(f"Model: {model}")
         if st.button("Clear chat"):
             st.session_state.messages = []
             st.rerun()
 
-    with st.spinner("Loading context..."):
-        context_data, loaded_files, load_errors = load_context_folder(
-            context_folder,
-            max_rows=max_rows,
-            max_chars_per_file=max_chars,
-            sel_student=int(sel_student),
-        )
+    api_key = get_api_key()
 
-    st.info(f"Loaded context files: {len(loaded_files)}")
-    if load_errors:
-        with st.expander("Loading error details"):
-            for err in load_errors:
-                st.write(f"- {err}")
+    try:
+        context_data = load_context_data(int(student_id))
+        context_text = context_data.to_string(index=False) if not context_data.empty else "No rows for this student."
+    except Exception as exc:
+        context_text = f"Context unavailable: {exc}"
 
-    with st.expander("Loaded files preview"):
-        for name in loaded_files:
-            st.write(f"- {name}")
+    with st.expander("Preview context", expanded=False):
+        st.text(context_text)
 
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    for msg in st.session_state.messages:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-    user_input = st.chat_input("Write your question...")
+    user_prompt = st.chat_input("Write your question...")
+    if not user_prompt:
+        return
 
-    if user_input:
-        api_key = get_api_key()
-        if not api_key:
-            st.error("Enter the Gemini API Key in the sidebar before continuing.")
-            return
-        if not context_data:
-            st.error("No context available. Check the context folder path.")
-            return
+    st.session_state.messages.append({"role": "user", "content": user_prompt})
+    with st.chat_message("user"):
+        st.markdown(user_prompt)
 
-        st.session_state.messages.append({"role": "user", "content": user_input})
-        with st.chat_message("user"):
-            st.markdown(user_input)
-
-        history_text = build_history_text(st.session_state.messages)
-        system_prompt = build_system_prompt(context_data)
-        prompt = (
-            "RECENT CONVERSATION:\n"
-            f"{history_text}\n\n"
-            "CURRENT QUESTION:\n"
-            f"{user_input}"
-        )
-
+    if not api_key:
+        warning = "Missing GEMINI_API_KEY in .env file."
+        st.session_state.messages.append({"role": "assistant", "content": warning})
         with st.chat_message("assistant"):
-            with st.spinner("Gemini is thinking..."):
-                try:
-                    answer = ask_gemini(
-                        model_name=model_name,
-                        api_key=api_key,
-                        system_prompt=system_prompt,
-                        user_prompt=prompt,
-                    )
-                    if not answer:
-                        answer = "I did not receive a valid response from the model."
-                except Exception as exc:
-                    answer = f"Error while calling Gemini: {exc}"
-                st.markdown(answer)
+            st.warning(warning)
+        return
 
-        st.session_state.messages.append({"role": "assistant", "content": answer})
+    system_prompt = build_system_prompt(context_text)
+    history_text = build_history_text(st.session_state.messages[:-1])
+
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            try:
+                reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt)
+                if not reply:
+                    reply = "No response text returned by Gemini."
+            except Exception as exc:
+                reply = f"Gemini request failed: {exc}"
+
+            st.markdown(reply)
+            st.session_state.messages.append({"role": "assistant", "content": reply})
 
 
 if __name__ == "__main__":
     main()
+
+
