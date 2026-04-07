@@ -88,7 +88,14 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     return result
 
 
-def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str, user_prompt: str) -> str:
+def call_gemini(
+    api_key: str,
+    model: str,
+    system_prompt: str,
+    history_text: str,
+    user_prompt: str,
+    temperature: float,
+) -> str:
     client = genai.Client(api_key=api_key)
     full_prompt = (
         f"{system_prompt}\n\n"
@@ -100,6 +107,7 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
         model=model,
         contents=full_prompt,
         config=types.GenerateContentConfig(
+            temperature=temperature,
             tools=[types.Tool(google_search=types.GoogleSearch())],
         ),
     )
@@ -117,6 +125,7 @@ def main():
     with st.sidebar:
         st.header("Settings")
         student_id = st.number_input("Student ID", min_value=1, value=80, step=1)
+        temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.2, step=0.1)
         st.caption(f"Model: {model}")
         if st.button("Clear chat"):
             st.session_state.messages = []
@@ -158,7 +167,14 @@ def main():
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt)
+                reply = call_gemini(
+                    api_key,
+                    model,
+                    system_prompt,
+                    history_text,
+                    user_prompt,
+                    temperature,
+                )
                 if not reply:
                     reply = "No response text returned by Gemini."
             except Exception as exc:
