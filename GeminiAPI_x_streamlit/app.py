@@ -4,6 +4,7 @@ from datetime import timedelta
 import pandas as pd
 import streamlit as st
 from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -91,10 +92,17 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
     client = genai.Client(api_key=api_key)
     full_prompt = (
         f"{system_prompt}\n\n"
+        "You can search the web when the question needs up-to-date or external information.\n\n"
         f"Conversation so far:\n{history_text if history_text else 'No previous messages.'}\n\n"
         f"User question:\n{user_prompt}"
     )
-    response = client.models.generate_content(model=model, contents=full_prompt)
+    response = client.models.generate_content(
+        model=model,
+        contents=full_prompt,
+        config=types.GenerateContentConfig(
+            tools=[types.Tool(google_search=types.GoogleSearch())],
+        ),
+    )
     return (response.text or "").strip()
 
 
