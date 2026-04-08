@@ -1,21 +1,25 @@
-1 - Lettura Paper klamp ✅
-2 - Crea interfaccia e connetti LLM via API ✅
-3 - Dare struttura al dataset MathE ed performare EDA (userò anche power bi per comodoità nella creazione del modello) ✅
-4 - EDA su ogni tabella di MathE ✅
-5 - Analisi educational_offer
-6 - Capire come passare datasets al modello (Utilizzo RAG) ✅
-7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
-8 - Rimosso Rag perché si è rotto il codice per generarlo, ora devo poter selezionare uno studente prima di lanciare l'app così che vengono selezionati solo i dati relativi all'utente selezionato. Pensare evnetualmente a splittare il dataset di uno studente in mesi trascorsi, cosi da mantenere la questione temporale:
-	- ultime 2 settimane -> argomento fresco
-	- tra 2 e 4 settimane trascorse -> argomento leggermente lapsato
-	- tra 4 e 8 settimane argomento mediamente lapsato
-	- oltre le 8 settimane argomento pesantemente lapsato) 
-cosi da avere:
+	✅	1 - Lettura Paper klamp 
+	✅	2 - Crea interfaccia e connetti LLM via API 
+	✅	3 - Dare struttura al dataset MathE ed performare EDA (userò anche power bi per comodoità nella creazione del modello) 
+	✅	4 - EDA su ogni tabella di MathE 
+	✅	5 - Analisi educational_offer
+	✅	6 - Capire come passare datasets al modello (Utilizzo RAG) 
+	⚠️   7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
+	✅	8 - Rimosso Rag perché si è rotto il codice per generarlo, ripassando ll'intero dataset filtrato per uno student ID si riscontrano i seguenti problemi:
+			- Exceeding token limit
+			- Il modello fatica ad interpretare una semantica non esplicita
 
-				Argomento	|	Grado di laps	|	Performance
-			      __________________|_______________________|____________________
-				A		|	Fresco		|	0,7
-				A		|	Medio		|	0,4
-				A		|	Pesante		|	0,2
-				B		|	Leggero		|	0,5
-9 - Decidere come trattare i -1 nell' Assessment_Information ['answer']
+	✅	9 - Ora devo poter selezionare uno studente prima di lanciare l'app così che vengono selezionati solo i dati relativi all'utente selezionato. Pensare evnetualmente a splittare il dataset di uno studente in mesi trascorsi, cosi da mantenere la questione temporale:
+			- ultime 2 settimane -> argomento fresco
+			- tra 2 e 4 settimane trascorse -> argomento leggermente lapsato
+			- tra 4 e 8 settimane argomento mediamente lapsato
+			- oltre le 8 settimane argomento pesantemente lapsato
+			cosi da avere:
+
+					Argomento	|	Grado di laps	|	Performance
+				________________|___________________|____________________
+						A		|	Fresco			|	0,7
+						A		|	Medio			|	0,4
+						A		|	Pesante			|	0,2
+						B		|	Leggero			|	0,5
+	⚠️	 10 - Decidere come trattare i -1 nell' Assessment_Information ['answer']

@@ -1,3 +1,4 @@
+from multiprocessing import context
 import os
 from datetime import timedelta
 
@@ -76,15 +77,22 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         labels=["1", "0.6", "0.3", "0.1"],
     )
 
+    filtered["lapse_score"] = filtered["lapse_score"].astype(float)
+    
     filtered["knowledge_score"] = (
-        filtered["Algorithm_level"] * filtered["lapse_score"].astype(float) * filtered["answer"]
+        filtered["Algorithm_level"] * filtered["lapse_score"] * filtered["answer"]
     )
-
+    
+    filtered["Subtopic"] = filtered["Subtopic"].fillna(filtered["Topic"])
+    
     result = (
-        filtered[["Topic", "Subtopic", "knowledge_score"]]
+        filtered[["Topic", "Subtopic", "lapse_score", "knowledge_score"]]
         .groupby(["Topic", "Subtopic"], as_index=False)
-        .agg({"knowledge_score": "sum"})
+        .agg({"lapse_score": "sum", "knowledge_score": "sum"})
     )
+    
+    result["lapse_score"] = 1/result["lapse_score"]
+
     return result
 
 
