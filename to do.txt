@@ -1,10 +1,17 @@
 	✅	1 - Lettura Paper klamp 
+	
 	✅	2 - Crea interfaccia e connetti LLM via API 
+	
 	✅	3 - Dare struttura al dataset MathE ed performare EDA (userò anche power bi per comodoità nella creazione del modello) 
+	
 	✅	4 - EDA su ogni tabella di MathE 
+	
 	✅	5 - Analisi educational_offer
+	
 	✅	6 - Capire come passare datasets al modello (Utilizzo RAG) 
+	
 	⚠️   7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
+	
 	✅	8 - Rimosso Rag perché si è rotto il codice per generarlo, ripassando ll'intero dataset filtrato per uno student ID si riscontrano i seguenti problemi:
 			- Exceeding token limit
 			- Il modello fatica ad interpretare una semantica non esplicita
@@ -18,10 +25,11 @@
 
 					Argomento	|	Grado di laps	|	Performance
 				________________|___________________|____________________
-						A		|	Fresco			|	0,7
+						A		|	Minimo			|	0,7
 						A		|	Medio			|	0,4
 						A		|	Pesante			|	0,2
 						B		|	Leggero			|	0,5
+	
 	✅	10 - Dare accesso ad internet all' LLM per cercare ulteriori informazioni
 	⚠️	 11 - Decidere come trattare i -1 nell' Assessment_Information ['answer']
 	⚠️	 12 - Decidere come valutare le performance del modello
