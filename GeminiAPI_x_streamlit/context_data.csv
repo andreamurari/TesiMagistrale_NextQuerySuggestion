@@ -1,0 +1,1025 @@
+Topic,Subtopic,lapse_score,knowledge_score
+Analytic Geometry,Analytic Geometry,0.2014492753623188,4.7
+Complex Numbers,Complex Numbers,0.1,0.2
+Differential Equations,Differential Equations,0.1,1.2000000000000002
+Differentiation,Derivatives,0.1625,2.1
+Differentiation,Differentiation,0.1,0.5
+Differentiation,Implicit Differentiation and Chain Rule,0.1,0.8
+Differentiation,Partial Differentiation,0.1,0.7000000000000001
+Discrete Mathematics,Recursivity,0.1,1.6
+Discrete Mathematics,Set Theory,0.1,4.0
+Fundamental Mathematics,"Algebraic expressions, Equations, and Inequalities",0.1,1.2000000000000002
+Fundamental Mathematics,Elementary Geometry,0.35,0.1
+Graph Theory,Graph Theory,0.1,0.1
+Integration,Double Integration,0.1,0.4
+Integration,Integration Techniques,0.1,0.1
+Integration,Surface Integrals,0.1,0.7000000000000001
+Integration,Triple Integration,0.1,0.0
+Linear Algebra,Eigenvalues and Eigenvectors,0.1,1.3
+Linear Algebra,Matrices and Determinants,0.1416666666666666,7.800000000000001
+Optimization,Linear Optimization,0.1,0.4
+Optimization,Nonlinear Optimization,0.3571428571428571,4.3
+Real Functions of Several Variables,"Limits, Continuity, Domain and Image",0.1,0.2
+Real Functions of a Single Variable,"Domain, Image and Graphics",0.1,0.1
+Real Functions of a Single Variable,Limits and Continuity,0.1,0.2
+Statistics,Statistics,0.1,0.3
+Artificial Intelligence (AI),Machine Learning and Deep Learning,0.1,0.1
+Artificial Intelligence (AI),AI Ethics and Algorithmic Bias,0.1,0.1
+Artificial Intelligence (AI),"Generative AI (text, images, video)",0.1,0.1
+Artificial Intelligence (AI),Automation and the Future of Work,0.1,0.1
+Artificial Intelligence (AI),NLP (Natural Language Processing),0.1,0.1
+Artificial Intelligence (AI),Computer Vision,0.1,0.1
+Artificial Intelligence (AI),AI in Medicine and Diagnostics,0.1,0.1
+Artificial Intelligence (AI),Collaborative Robotics (Cobots),0.1,0.1
+Artificial Intelligence (AI),Regulation and AI Act,0.1,0.1
+Artificial Intelligence (AI),Technological Singularity,0.1,0.1
+Climate Change and Sustainability,"Renewable Energies (solar, wind, hydrogen)",0.1,0.1
+Climate Change and Sustainability,Circular Economy and Recycling,0.1,0.1
+Climate Change and Sustainability,Electric Mobility and Micro-mobility,0.1,0.1
+Climate Change and Sustainability,Regenerative Agriculture,0.1,0.1
+Climate Change and Sustainability,Industrial Decarbonization,0.1,0.1
+Climate Change and Sustainability,Biodiversity Conservation,0.1,0.1
+Climate Change and Sustainability,Sustainable Architecture (Green Building),0.1,0.1
+Climate Change and Sustainability,Fast Fashion vs. Slow Fashion,0.1,0.1
+Climate Change and Sustainability,Microplastic Pollution,0.1,0.1
+Climate Change and Sustainability,Carbon Credit Market,0.1,0.1
+Space Exploration,Colonization of Mars,0.1,0.1
+Space Exploration,Commercial Space Tourism,0.1,0.1
+Space Exploration,Asteroid Mining,0.1,0.1
+Space Exploration,Space Telescopes (James Webb and successors),0.1,0.1
+Space Exploration,Ion and Nuclear Propulsion,0.1,0.1
+Space Exploration,Search for Extraterrestrial Life (SETI),0.1,0.1
+Space Exploration,Private Space Stations,0.1,0.1
+Space Exploration,Space Debris (Kessler Syndrome),0.1,0.1
+Space Exploration,Artemis and the Return to the Moon,0.1,0.1
+Space Exploration,Exophysics and Habitable Planets,0.1,0.1
+Mental Health and Wellness,Neuroplasticity and Habits,0.1,0.1
+Mental Health and Wellness,Impact of Social Media on the Psyche,0.1,0.1
+Mental Health and Wellness,Meditation and Mindfulness,0.1,0.1
+Mental Health and Wellness,Anxiety Disorders in the Digital Age,0.1,0.1
+Mental Health and Wellness,Biohacking and Sleep Optimization,0.1,0.1
+Mental Health and Wellness,Psychedelic-Assisted Therapy,0.1,0.1
+Mental Health and Wellness,Occupational Burnout,0.1,0.1
+Mental Health and Wellness,Positive Psychology,0.1,0.1
+Mental Health and Wellness,Nutrition and the Gut-Brain Axis,0.1,0.1
+Mental Health and Wellness,Emotional Resilience,0.1,0.1
+Finance and New Economies,Cryptocurrencies and Blockchain,0.1,0.1
+Finance and New Economies,Decentralized Finance (DeFi),0.1,0.1
+Finance and New Economies,"ESG Investments (Environmental, Social, Governance)",0.1,0.1
+Finance and New Economies,Inflation and Monetary Policies,0.1,0.1
+Finance and New Economies,Universal Basic Income (UBI),0.1,0.1
+Finance and New Economies,Gig Economy and Workers' Rights,0.1,0.1
+Finance and New Economies,Emerging Markets (BRICS+),0.1,0.1
+Finance and New Economies,Algorithmic Trading,0.1,0.1
+Finance and New Economies,E-commerce and New Retail Models,0.1,0.1
+Finance and New Economies,Financial Cybersecurity,0.1,0.1
+History of Ancient Civilizations,The Egypt of the Pharaohs,0.1,0.1
+History of Ancient Civilizations,Greek Philosophy and Democracy,0.1,0.1
+History of Ancient Civilizations,The Roman Empire: Rise and Fall,0.1,0.1
+History of Ancient Civilizations,"Pre-Columbian Civilizations (Maya, Aztecs, Inca)",0.1,0.1
+History of Ancient Civilizations,The Silk Road and Cultural Exchange,0.1,0.1
+History of Ancient Civilizations,The Chinese Imperial Dynasties,0.1,0.1
+History of Ancient Civilizations,Mesopotamia: The Cradle of Writing,0.1,0.1
+History of Ancient Civilizations,The Vikings and Norse Expansion,0.1,0.1
+History of Ancient Civilizations,The Islamic Golden Age,0.1,0.1
+History of Ancient Civilizations,Underwater Archaeology,0.1,0.1
+Biotechnology and Genetics,Genomic Editing (CRISPR),0.1,0.1
+Biotechnology and Genetics,Tissue Engineering and Synthetic Organs,0.1,0.1
+Biotechnology and Genetics,Longevity and Anti-aging Medicine,0.1,0.1
+Biotechnology and Genetics,mRNA Vaccines and Gene Therapies,0.1,0.1
+Biotechnology and Genetics,Bioethics and Cloning,0.1,0.1
+Biotechnology and Genetics,Human Microbiome,0.1,0.1
+Biotechnology and Genetics,GMOs and Food Security,0.1,0.1
+Biotechnology and Genetics,Early Molecular Diagnostics,0.1,0.1
+Biotechnology and Genetics,Brain-Computer Interfaces (Neuralink),0.1,0.1
+Biotechnology and Genetics,DNA Synthesis,0.1,0.1
+Philosophy and Critical Thinking,Stoicism and Modern Application,0.1,0.1
+Philosophy and Critical Thinking,Existentialism and the Search for Meaning,0.1,0.1
+Philosophy and Critical Thinking,Utilitarian vs. Deontological Ethics,0.1,0.1
+Philosophy and Critical Thinking,Philosophy of Mind,0.1,0.1
+Philosophy and Critical Thinking,Posthumanism and Transhumanism,0.1,0.1
+Philosophy and Critical Thinking,Logic and Argumentative Fallacies,0.1,0.1
+Philosophy and Critical Thinking,Political Philosophy: From the Social Contract to Today,0.1,0.1
+Philosophy and Critical Thinking,Aesthetics and the Concept of Beauty,0.1,0.1
+Philosophy and Critical Thinking,Nihilism and Liquid Society,0.1,0.1
+Philosophy and Critical Thinking,Epistemology: What Can We Know?,0.1,0.1
+Cybersecurity and Privacy,Ethical Hacking and Penetration Testing,0.1,0.1
+Cybersecurity and Privacy,Quantum Cryptography,0.1,0.1
+Cybersecurity and Privacy,Cyber Warfare,0.1,0.1
+Cybersecurity and Privacy,Personal Data Protection (GDPR),0.1,0.1
+Cybersecurity and Privacy,Deepfakes and Disinformation,0.1,0.1
+Cybersecurity and Privacy,Internet of Things (IoT) Security,0.1,0.1
+Cybersecurity and Privacy,Social Engineering and Phishing,0.1,0.1
+Cybersecurity and Privacy,Online Anonymity and the Dark Web,0.1,0.1
+Cybersecurity and Privacy,Digital Identity and Biometrics,0.1,0.1
+Cybersecurity and Privacy,Ransomware and Threats to Infrastructure,0.1,0.1
+Future of Cities (Urban Planning),Smart Cities and Urban Sensors,0.1,0.1
+Future of Cities (Urban Planning),15-Minute Cities,0.1,0.1
+Future of Cities (Urban Planning),Urban Vertical Farming,0.1,0.1
+Future of Cities (Urban Planning),Smart Waste Management,0.1,0.1
+Future of Cities (Urban Planning),Autonomous Public Transport,0.1,0.1
+Future of Cities (Urban Planning),Regeneration of Suburbs,0.1,0.1
+Future of Cities (Urban Planning),Tactical Urbanism,0.1,0.1
+Future of Cities (Urban Planning),Flood Resilience (Sponge Cities),0.1,0.1
+Future of Cities (Urban Planning),Co-housing and New Ways of Living,0.1,0.1
+Future of Cities (Urban Planning),Light and Noise Pollution,0.1,0.1
+Social and Behavioral Psychology,Group Dynamics and Conformity,0.1,0.1
+Social and Behavioral Psychology,Psychology of Crowds,0.1,0.1
+Social and Behavioral Psychology,Cognitive Biases,0.1,0.1
+Social and Behavioral Psychology,Non-verbal Communication,0.1,0.1
+Social and Behavioral Psychology,Persuasion and Sensory Marketing,0.1,0.1
+Social and Behavioral Psychology,Game Theory Applied to Social Sciences,0.1,0.1
+Social and Behavioral Psychology,Empathy and Mirror Neurons,0.1,0.1
+Social and Behavioral Psychology,Leadership and Charisma,0.1,0.1
+Social and Behavioral Psychology,Conflict Resolution,0.1,0.1
+Social and Behavioral Psychology,Consumer Psychology,0.1,0.1
+Materials Science,Graphene and Nanomaterials,0.1,0.1
+Materials Science,Biodegradable Plastics,0.1,0.1
+Materials Science,Self-healing Materials,0.1,0.1
+Materials Science,Room-temperature Superconductors,0.1,0.1
+Materials Science,Aerogels and Extreme Insulation,0.1,0.1
+Materials Science,Metamaterials and Invisibility,0.1,0.1
+Materials Science,3D Printing of Metals and Ceramics,0.1,0.1
+Materials Science,Light Alloys for Aerospace,0.1,0.1
+Materials Science,Materials for Energy Storage,0.1,0.1
+Materials Science,Biomimetics: Nature-inspired Materials,0.1,0.1
+Cinema and Storytelling,Evolution of Narrative (from Myths to TV Series),0.1,0.1
+Cinema and Storytelling,"The ""Hero's Journey"" Theory",0.1,0.1
+Cinema and Storytelling,Directing and Framing Language,0.1,0.1
+Cinema and Storytelling,Visual Effects (VFX) and CGI,0.1,0.1
+Cinema and Storytelling,Editing as Emotional Rhythm,0.1,0.1
+Cinema and Storytelling,Auteur Cinema vs. Blockbuster,0.1,0.1
+Cinema and Storytelling,Screenwriting and Dialogues,0.1,0.1
+Cinema and Storytelling,Sound Design in Cinema,0.1,0.1
+Cinema and Storytelling,New Streaming and Distribution Platforms,0.1,0.1
+Cinema and Storytelling,Narrative Virtual Reality (VR),0.1,0.1
+Contemporary Geopolitics,New Technological Cold War (USA-China),0.1,0.1
+Contemporary Geopolitics,Conflicts over Water Resources,0.1,0.1
+Contemporary Geopolitics,Energy Sovereignty in Europe,0.1,0.1
+Contemporary Geopolitics,The Rise of India as a Global Power,0.1,0.1
+Contemporary Geopolitics,The Role of the United Nations in the 21st Century,0.1,0.1
+Contemporary Geopolitics,Cyber Espionage between States,0.1,0.1
+Contemporary Geopolitics,Migrations and Demographic Changes,0.1,0.1
+Contemporary Geopolitics,Geopolitics of the Arctic,0.1,0.1
+Contemporary Geopolitics,"Military Alliances (NATO, AUKUS)",0.1,0.1
+Contemporary Geopolitics,Soft Power and Cultural Diplomacy,0.1,0.1
+Music and Sound Design,History of Jazz and Blues,0.1,0.1
+Music and Sound Design,Electronic Music Production,0.1,0.1
+Music and Sound Design,Psychoacoustics: How We Perceive Sound,0.1,0.1
+Music and Sound Design,Music Recommendation Algorithms,0.1,0.1
+Music and Sound Design,Sound Synthesis and Sampling,0.1,0.1
+Music and Sound Design,Music as Therapy,0.1,0.1
+Music and Sound Design,Evolution of Musical Instruments,0.1,0.1
+Music and Sound Design,Copyright and Streaming in the Music Industry,0.1,0.1
+Music and Sound Design,Sound Design for Video Games,0.1,0.1
+Music and Sound Design,Ethnomusicology,0.1,0.1
+Nutrition and Food Science,Ketogenic Diet and Intermittent Fasting,0.1,0.1
+Nutrition and Food Science,Functional Foods and Nutraceuticals,0.1,0.1
+Nutrition and Food Science,Impact of Lab-grown Meat,0.1,0.1
+Nutrition and Food Science,Microbiota and Immune Health,0.1,0.1
+Nutrition and Food Science,Modern Food Intolerances and Allergies,0.1,0.1
+Nutrition and Food Science,Refined Sugars and Metabolic Syndrome,0.1,0.1
+Nutrition and Food Science,Plant Proteins and the Future of Food,0.1,0.1
+Nutrition and Food Science,Molecular Gastronomy,0.1,0.1
+Nutrition and Food Science,Global Food Security,0.1,0.1
+Nutrition and Food Science,Hydration and Cognitive Performance,0.1,0.1
+Literature and Writing,The Dystopian Genre in the 20th Century,0.1,0.1
+Literature and Writing,Contemporary Poetry and Slam Poetry,0.1,0.1
+Literature and Writing,Creative Writing and World-building,0.1,0.1
+Literature and Writing,Post-colonial Literature,0.1,0.1
+Literature and Writing,The Role of Literary Prizes,0.1,0.1
+Literature and Writing,Self-publishing and the Digital Revolution,0.1,0.1
+Literature and Writing,Textual Analysis and Literary Criticism,0.1,0.1
+Literature and Writing,Children's Literature and Education,0.1,0.1
+Literature and Writing,Historical Novel vs. Magical Realism,0.1,0.1
+Literature and Writing,Editorial Translation and Linguistic Challenges,0.1,0.1
+Modern Physics,Quantum Mechanics and Entanglement,0.1,0.1
+Modern Physics,Einstein's General Relativity,0.1,0.1
+Modern Physics,Dark Matter and Dark Energy,0.1,0.1
+Modern Physics,Particle Physics (CERN),0.1,0.1
+Modern Physics,String Theory,0.1,0.1
+Modern Physics,Thermodynamics and the Arrow of Time,0.1,0.1
+Modern Physics,Controlled Nuclear Fusion,0.1,0.1
+Modern Physics,Gravitational Waves,0.1,0.1
+Modern Physics,Multiverse and Inflationary Cosmology,0.1,0.1
+Modern Physics,Chaos Physics and Complex Systems,0.1,0.1
+Sport and Human Performance,Sports Science and Biomechanics,0.1,0.1
+Sport and Human Performance,Sports Psychology and Peak Performance,0.1,0.1
+Sport and Human Performance,Technological Doping and Bioethics,0.1,0.1
+Sport and Human Performance,Evolution of eSports,0.1,0.1
+Sport and Human Performance,"Recovery Methods (Cryotherapy, Oxygen)",0.1,0.1
+Sport and Human Performance,Data Analysis (Big Data) in Teams,0.1,0.1
+Sport and Human Performance,Elite Sports Nutrition,0.1,0.1
+Sport and Human Performance,Extreme Sports and Risk Management,0.1,0.1
+Sport and Human Performance,The Social Role of the Olympics,0.1,0.1
+Sport and Human Performance,Mental Training and Visualization,0.1,0.1
+Education and Learning,EdTech: Technology in the Classroom,0.1,0.1
+Education and Learning,Lifelong Learning,0.1,0.1
+Education and Learning,Montessori Method and Alternative Approaches,0.1,0.1
+Education and Learning,Gamification of Educational Processes,0.1,0.1
+Education and Learning,Neuroscience of Learning,0.1,0.1
+Education and Learning,Soft Skills vs. Hard Skills,0.1,0.1
+Education and Learning,The Future of Universities,0.1,0.1
+Education and Learning,Homeschooling and Self-directed Learning,0.1,0.1
+Education and Learning,Digital Literacy and Media Education,0.1,0.1
+Education and Learning,Inclusive Teaching and Special Educational Needs (SEN),0.1,0.1
+Robotics and Automation,Humanoid Robots and Facial Mimicry,0.1,0.1
+Robotics and Automation,Drones for Logistics and Surveillance,0.1,0.1
+Robotics and Automation,Exoskeletons for Rehabilitation and Work,0.1,0.1
+Robotics and Automation,Underwater Robotics (Abyssal Exploration),0.1,0.1
+Robotics and Automation,Swarm Robotics (Swarm Intelligence),0.1,0.1
+Robotics and Automation,Automation in Industrial Processes (Industry 5.0),0.1,0.1
+Robotics and Automation,Educational Robotics for Children,0.1,0.1
+Robotics and Automation,Minimally Invasive Robotic Surgery,0.1,0.1
+Robotics and Automation,Predictive Maintenance via Sensors,0.1,0.1
+Robotics and Automation,Robots for Elderly Care,0.1,0.1
+Design and Interior Architecture,Minimalism and Scandinavian/Japandi Style,0.1,0.1
+Design and Interior Architecture,Biophilic Design (Integrating Nature),0.1,0.1
+Design and Interior Architecture,Color Psychology in Environments,0.1,0.1
+Design and Interior Architecture,Lighting Design and Circadian Wellness,0.1,0.1
+Design and Interior Architecture,Ergonomics in Working from Home (Home Office),0.1,0.1
+Design and Interior Architecture,Recycled Materials in Furniture Design,0.1,0.1
+Design and Interior Architecture,Home Automation and Integrated Smart Homes,0.1,0.1
+Design and Interior Architecture,Tiny Houses and Space Optimization,0.1,0.1
+Design and Interior Architecture,Inclusive and Universal Design,0.1,0.1
+Design and Interior Architecture,History of Design: from Bauhaus to Postmodern,0.1,0.1
+Contemporary Sociology,Digital Tribalism and Echo Chambers,0.1,0.1
+Contemporary Sociology,Loneliness and Isolation in Big Cities,0.1,0.1
+Contemporary Sociology,New Family and Relational Structures,0.1,0.1
+Contemporary Sociology,"The Impact of ""Digital Nomads"" on Local Communities",0.1,0.1
+Contemporary Sociology,Cancel Culture,0.1,0.1
+Contemporary Sociology,Generational Divide (Boomer vs Gen Z),0.1,0.1
+Contemporary Sociology,"The Concept of ""Third Places"" (Squares, Cafes, Parks)",0.1,0.1
+Contemporary Sociology,Sociology of Time and Speed,0.1,0.1
+Contemporary Sociology,Social Mobility and Meritocracy,0.1,0.1
+Contemporary Sociology,Youth Cultures and Urban Subcultures,0.1,0.1
+Astronomy and Astrophysics,Life Cycle of Stars: from Nebulae to White Dwarfs,0.1,0.1
+Astronomy and Astrophysics,Black Holes and the Event Horizon,0.1,0.1
+Astronomy and Astrophysics,Pulsars and Magnetars,0.1,0.1
+Astronomy and Astrophysics,The Expansion of the Universe and Hubble's Constant,0.1,0.1
+Astronomy and Astrophysics,Cosmic Microwave Background Radiation,0.1,0.1
+Astronomy and Astrophysics,Formation of Planetary Systems,0.1,0.1
+Astronomy and Astrophysics,Active Galaxies and Quasars,0.1,0.1
+Astronomy and Astrophysics,Astrochemistry: Organic Molecules in Space,0.1,0.1
+Astronomy and Astrophysics,Cataclysmic Events (Supernovae and Gamma-ray Bursts),0.1,0.1
+Astronomy and Astrophysics,The Arrow of Time in Cosmology,0.1,0.1
+Gastronomy and Culinary Cultures,"Fermentation (Koji, Kombucha, Kimchi)",0.1,0.1
+Gastronomy and Culinary Cultures,History of Spices and Trade Routes,0.1,0.1
+Gastronomy and Culinary Cultures,Fusion Cuisine and Cultural Identity,0.1,0.1
+Gastronomy and Culinary Cultures,Street Food as Human Heritage,0.1,0.1
+Gastronomy and Culinary Cultures,Oenology: Terroir and Native Grape Varieties,0.1,0.1
+Gastronomy and Culinary Cultures,Specialty Coffee and Extraction Techniques,0.1,0.1
+Gastronomy and Culinary Cultures,Sourdough Baking,0.1,0.1
+Gastronomy and Culinary Cultures,Technical Pastry and Chemical Balancing,0.1,0.1
+Gastronomy and Culinary Cultures,Umami: The Fifth Taste,0.1,0.1
+Gastronomy and Culinary Cultures,Food Waste and Scraps Cooking,0.1,0.1
+Engineering and Megaprojects,Next-generation Suspension and Cable-stayed Bridges,0.1,0.1
+Engineering and Megaprojects,Underwater and Transcontinental Tunnels,0.1,0.1
+Engineering and Megaprojects,Anti-seismic Skyscrapers and Mass Dampers,0.1,0.1
+Engineering and Megaprojects,Dams and Water Resources Management,0.1,0.1
+Engineering and Megaprojects,Infrastructure for Hyperloop,0.1,0.1
+Engineering and Megaprojects,Airports of the Future and Flow Management,0.1,0.1
+Engineering and Megaprojects,Geotechnical Engineering and Soil Stability,0.1,0.1
+Engineering and Megaprojects,Large Terrestrial Telescopes (ELT),0.1,0.1
+Engineering and Megaprojects,Generation IV Nuclear Fission Power Plants,0.1,0.1
+Engineering and Megaprojects,Decommissioning of Old Industrial Structures,0.1,0.1
+Languages and Linguistics,Origin of Language and Protolanguages,0.1,0.1
+Languages and Linguistics,Dialects and Preservation of Endangered Languages,0.1,0.1
+Languages and Linguistics,Semantics and Pragmatics of Communication,0.1,0.1
+Languages and Linguistics,Evolution of Internet Slang,0.1,0.1
+Languages and Linguistics,Language Learning in Adulthood,0.1,0.1
+Languages and Linguistics,Sign Language and Visual Communication,0.1,0.1
+Languages and Linguistics,Machine Translation and Neural Limits,0.1,0.1
+Languages and Linguistics,Etymology of Common Words,0.1,0.1
+Languages and Linguistics,Bilingualism and Cognitive Development,0.1,0.1
+Languages and Linguistics,Construction of Artificial Languages (Conlangs like Esperanto),0.1,0.1
+Photography and Visual Arts,Analog vs Digital Photography,0.1,0.1
+Photography and Visual Arts,Composition and Rule of Thirds,0.1,0.1
+Photography and Visual Arts,Photojournalism and Image Ethics,0.1,0.1
+Photography and Visual Arts,Astrophotography: Capturing the Deep Sky,0.1,0.1
+Photography and Visual Arts,Cinematic Post-production (Color Grading),0.1,0.1
+Photography and Visual Arts,Street Photography and the Right to Privacy,0.1,0.1
+Photography and Visual Arts,Macro and Nature Photography,0.1,0.1
+Photography and Visual Arts,Use of Natural Light vs Flash Light,0.1,0.1
+Photography and Visual Arts,History of Photography: from Daguerreotypes to Instagram,0.1,0.1
+Photography and Visual Arts,Long Exposure and Creative Techniques,0.1,0.1
+Marine Sciences (Oceanography),Ocean Currents and Climate Regulation,0.1,0.1
+Marine Sciences (Oceanography),Coral Reefs and Bleaching,0.1,0.1
+Marine Sciences (Oceanography),Abyssal Fauna and Extreme Adaptations,0.1,0.1
+Marine Sciences (Oceanography),Ocean Acidification,0.1,0.1
+Marine Sciences (Oceanography),Energy from the Sea (Wave and Tidal),0.1,0.1
+Marine Sciences (Oceanography),Marine Archaeology and Shipwrecks,0.1,0.1
+Marine Sciences (Oceanography),Dead Zones (Hypoxia) in the Oceans,0.1,0.1
+Marine Sciences (Oceanography),Migrations of Great Cetaceans,0.1,0.1
+Marine Sciences (Oceanography),Seafloor Geology and Plate Tectonics,0.1,0.1
+Marine Sciences (Oceanography),Underwater Mineral Resources,0.1,0.1
+Time Management and Productivity,Pomodoro Technique and Time Blocking,0.1,0.1
+Time Management and Productivity,"""Getting Things Done"" (GTD) Method",0.1,0.1
+Time Management and Productivity,Deep Work and Intense Concentration,0.1,0.1
+Time Management and Productivity,Eliminating Digital Distractions,0.1,0.1
+Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),0.1,0.1
+Time Management and Productivity,Energy Management vs Time Management,0.1,0.1
+Time Management and Productivity,Morning and Evening Routines of Top Performers,0.1,0.1
+Time Management and Productivity,Effective Delegation and Outsourcing,0.1,0.1
+Time Management and Productivity,"Project Management Tools (Notion, Trello, Asana)",0.1,0.1
+Time Management and Productivity,Psychology of Procrastination,0.1,0.1
+Archaeology and Mysteries of the Past,"Dating Methods (Carbon-14, Dendrochronology)",0.1,0.1
+Archaeology and Mysteries of the Past,"Lost Civilizations (Doggerland, Atlantis between Myth and Reality)",0.1,0.1
+Archaeology and Mysteries of the Past,Hieroglyphs and Deciphering Dead Languages,0.1,0.1
+Archaeology and Mysteries of the Past,Great Human Migrations in Prehistory,0.1,0.1
+Archaeology and Mysteries of the Past,Megalithism: Stonehenge and Gobekli Tepe,0.1,0.1
+Archaeology and Mysteries of the Past,Construction Techniques of the Ancients,0.1,0.1
+Archaeology and Mysteries of the Past,Recent Archaeological Discoveries via Satellites (Lidar),0.1,0.1
+Archaeology and Mysteries of the Past,Human Evolution: Neanderthals and Denisovans,0.1,0.1
+Archaeology and Mysteries of the Past,Sunken Treasures and Ancient Trade Routes,0.1,0.1
+Archaeology and Mysteries of the Past,Museology and Repatriation of Artifacts,0.1,0.1
+Applied Mathematics and Theory,Chaos Theory and the Butterfly Effect,0.1,0.1
+Applied Mathematics and Theory,Prime Numbers and RSA Cryptography,0.1,0.1
+Applied Mathematics and Theory,The Golden Ratio in Nature and Art,0.1,0.1
+Applied Mathematics and Theory,Fractal Geometry,0.1,0.1
+Applied Mathematics and Theory,Probability and Statistics in Gambling,0.1,0.1
+Applied Mathematics and Theory,Topology: The Science of Deformable Shapes,0.1,0.1
+Applied Mathematics and Theory,Graph Theory and Social Networks,0.1,0.1
+Applied Mathematics and Theory,Great Unsolved Problems (Riemann Hypothesis),0.1,0.1
+Applied Mathematics and Theory,Sorting and Searching Algorithms,0.1,0.1
+Applied Mathematics and Theory,Financial Mathematics and Derivatives,0.1,0.1
+Fashion and Costume,History of Costume from the Renaissance to the 1900s,0.1,0.1
+Fashion and Costume,Haute Couture vs Prêt-à-porter,0.1,0.1
+Fashion and Costume,Technological Fabrics and Wearable Tech,0.1,0.1
+Fashion and Costume,Psychology of Clothing,0.1,0.1
+Fashion and Costume,The Vintage and Second-hand Market,0.1,0.1
+Fashion and Costume,Textile Production and Environmental Impact,0.1,0.1
+Fashion and Costume,The Influence of Pop Icons on Fashion,0.1,0.1
+Fashion and Costume,Trend Forecasting: How Trends are Born,0.1,0.1
+Fashion and Costume,Accessories and Their Symbolic Value,0.1,0.1
+Fashion and Costume,Fashion Branding and Visual Communication,0.1,0.1
+Botany and Gardening,Plant Physiology: How Plants Breathe,0.1,0.1
+Botany and Gardening,Succulents and Adaptations to Arid Climates,0.1,0.1
+Botany and Gardening,Urban Horticulture and Domestic Hydroponics,0.1,0.1
+Botany and Gardening,Fungi and Mycelial Networks (Wood Wide Web),0.1,0.1
+Botany and Gardening,Pruning and Grafting Techniques,0.1,0.1
+Botany and Gardening,Zen Gardens and Japanese Landscaping,0.1,0.1
+Botany and Gardening,Medicinal Plants and Phytotherapy,0.1,0.1
+Botany and Gardening,Pollinators and the Decline of Bees,0.1,0.1
+Botany and Gardening,Bonsai: The Art of Miniature Trees,0.1,0.1
+Botany and Gardening,Invasive Alien Species and Local Biodiversity,0.1,0.1
+Religions and Spirituality,History of the Major Monotheistic Religions,0.1,0.1
+Religions and Spirituality,"Eastern Philosophies (Buddhism, Taoism, Hinduism)",0.1,0.1
+Religions and Spirituality,Norse and Celtic Mythology,0.1,0.1
+Religions and Spirituality,Contemporary New Religious Movements,0.1,0.1
+Religions and Spirituality,Shamanism and Rites of Passage,0.1,0.1
+Religions and Spirituality,Sociology of Secularization,0.1,0.1
+Religions and Spirituality,The Concept of the Soul in Different Cultures,0.1,0.1
+Religions and Spirituality,"Sacred Architecture: Cathedrals, Mosques, and Temples",0.1,0.1
+Religions and Spirituality,Transcendental Meditation and Prayer,0.1,0.1
+Religions and Spirituality,Relationship between Science and Faith,0.1,0.1
+Criminology and Law,Criminal Psychology and Profiling,0.1,0.1
+Criminology and Law,Scientific Investigation Techniques (Forensics),0.1,0.1
+Criminology and Law,History of Punishment and Prison Systems,0.1,0.1
+Criminology and Law,Cybercrime and Transnational Crimes,0.1,0.1
+Criminology and Law,International Law and Human Rights,0.1,0.1
+Criminology and Law,Serial Killers: Analysis of Historical Cases,0.1,0.1
+Criminology and Law,Penal Mediation and Restorative Justice,0.1,0.1
+Criminology and Law,Corruption and White-collar Crimes,0.1,0.1
+Criminology and Law,Evolution of Digital Copyright Laws,0.1,0.1
+Criminology and Law,"Legal Bioethics (End of Life, Abortion, Euthanasia)",0.1,0.1
+Zoology and Animal Behavior,Intelligence of Primates and Cetaceans,0.1,0.1
+Zoology and Animal Behavior,Animal Communication (Chemical and Sound Signals),0.1,0.1
+Zoology and Animal Behavior,Hunting Strategies and Camouflage,0.1,0.1
+Zoology and Animal Behavior,Social Ethology: Hierarchy in Packs,0.1,0.1
+Zoology and Animal Behavior,Evolution of Species and Natural Selection,0.1,0.1
+Zoology and Animal Behavior,Domestic Animals and Co-evolution with Humans,0.1,0.1
+Zoology and Animal Behavior,Endangered Species and Recovery Programs,0.1,0.1
+Zoology and Animal Behavior,Seasonal Migrations of Birds,0.1,0.1
+Zoology and Animal Behavior,Parasitism and Symbiosis in Nature,0.1,0.1
+Zoology and Animal Behavior,Neurobiology of Social Insects,0.1,0.1
+Geology and Natural Phenomena,Plate Tectonics and Continental Drift,0.1,0.1
+Geology and Natural Phenomena,Volcanology: Types of Eruptions and Monitoring,0.1,0.1
+Geology and Natural Phenomena,Earthquakes: Measurement Scales and Prevention,0.1,0.1
+Geology and Natural Phenomena,"The Rock Cycle: Sedimentary, Magmatic, Metamorphic",0.1,0.1
+Geology and Natural Phenomena,Formation of Diamonds and Precious Stones,0.1,0.1
+Geology and Natural Phenomena,Coastal and Glacial Erosion,0.1,0.1
+Geology and Natural Phenomena,Paleontology: The Study of Fossils,0.1,0.1
+Geology and Natural Phenomena,Geomorphology of Canyons and Mountains,0.1,0.1
+Geology and Natural Phenomena,Earth's Magnetism and Pole Reversal,0.1,0.1
+Geology and Natural Phenomena,Geothermal Resources,0.1,0.1
+Marketing and Communication,Emotional Branding and Corporate Storytelling,0.1,0.1
+Marketing and Communication,Influencer Marketing,0.1,0.1
+Marketing and Communication,Neuromarketing: What Drives Purchasing,0.1,0.1
+Marketing and Communication,SEO and Search Engine Positioning,0.1,0.1
+Marketing and Communication,Social Media Management and Crisis Management,0.1,0.1
+Marketing and Communication,Subliminal Advertising and Visual Persuasion,0.1,0.1
+Marketing and Communication,Experiential Marketing,0.1,0.1
+Marketing and Communication,Data Analysis and Sales Funnels,0.1,0.1
+Marketing and Communication,Greenwashing and Ethical Marketing,0.1,0.1
+Marketing and Communication,Growth Hacking for Startups,0.1,0.1
+Physical Wellness and Biohacking,Cold Exposure (Wim Hof Method),0.1,0.1
+Physical Wellness and Biohacking,Targeted Nutritional Supplementation (Nootropics),0.1,0.1
+Physical Wellness and Biohacking,Biometric Data Monitoring (Wearables),0.1,0.1
+Physical Wellness and Biohacking,Red and Infrared Light Therapy,0.1,0.1
+Physical Wellness and Biohacking,Strength Training and Bone Density,0.1,0.1
+Physical Wellness and Biohacking,Flexibility and Joint Mobility,0.1,0.1
+Physical Wellness and Biohacking,Sleep Hygiene and Circadian Rhythms,0.1,0.1
+Physical Wellness and Biohacking,Breathing Techniques (Pranayama),0.1,0.1
+Physical Wellness and Biohacking,Digital Detox,0.1,0.1
+Physical Wellness and Biohacking,Active Longevity and Primary Prevention,0.1,0.1
+Logistics and Supply Chain,Automated Warehouse Management,0.1,0.1
+Logistics and Supply Chain,Last-mile Delivery Logistics,0.1,0.1
+Logistics and Supply Chain,"Intermodal Transport (Rail, Road, Sea)",0.1,0.1
+Logistics and Supply Chain,Risk Management in the Supply Chain,0.1,0.1
+Logistics and Supply Chain,Cold Chain (Cold Logistics for Pharmaceuticals and Food),0.1,0.1
+Logistics and Supply Chain,Blockchain for Goods Traceability,0.1,0.1
+Logistics and Supply Chain,Route Optimization via Algorithms,0.1,0.1
+Logistics and Supply Chain,Reverse Logistics and Returns Management,0.1,0.1
+Logistics and Supply Chain,Smart Ports and Customs Digitalization,0.1,0.1
+Logistics and Supply Chain,Sustainability in Heavy Transport,0.1,0.1
+Meteorology and Climatology,Numerical Weather Prediction Models,0.1,0.1
+Meteorology and Climatology,"Extreme Phenomena: Hurricanes, Tornadoes, and Cyclones",0.1,0.1
+Meteorology and Climatology,Gulf Stream and Thermohaline Circulation,0.1,0.1
+Meteorology and Climatology,Jet Stream Dynamics,0.1,0.1
+Meteorology and Climatology,Urban Microclimates and Heat Islands,0.1,0.1
+Meteorology and Climatology,"Meteorological Instrumentation (Radar, Satellites, Buoys)",0.1,0.1
+Meteorology and Climatology,Cloud Physics and Precipitation,0.1,0.1
+Meteorology and Climatology,Paleoclimatology: Studying the Climate of the Past,0.1,0.1
+Meteorology and Climatology,El Niño and La Niña (Southern Oscillation),0.1,0.1
+Meteorology and Climatology,Aeronautical and Nautical Meteorology,0.1,0.1
+Cultural Anthropology,Initiation Rites in Different Cultures,0.1,0.1
+Cultural Anthropology,Evolution of Kinship Structures,0.1,0.1
+Cultural Anthropology,Anthropology of Food: Taboos and Traditions,0.1,0.1
+Cultural Anthropology,Nomadic Cultures and Sedentarism,0.1,0.1
+Cultural Anthropology,Comparative Mythologies,0.1,0.1
+Cultural Anthropology,Symbolism and Rock Art,0.1,0.1
+Cultural Anthropology,Impact of Globalization on Indigenous Languages,0.1,0.1
+Cultural Anthropology,Urban Anthropology: Life in Megacities,0.1,0.1
+Cultural Anthropology,Systems of Gift and Reciprocity (The Potlatch),0.1,0.1
+Cultural Anthropology,Ethnobotany: The Relationship between Humans and Plants,0.1,0.1
+Video Games and Virtual Reality (Gaming),Game Design: Mechanics and Gameplay Loops,0.1,0.1
+Video Games and Virtual Reality (Gaming),History of Consoles and Home Computing,0.1,0.1
+Video Games and Virtual Reality (Gaming),Open World Architecture,0.1,0.1
+Video Games and Virtual Reality (Gaming),"Graphics Engines (Unreal Engine, Unity)",0.1,0.1
+Video Games and Virtual Reality (Gaming),Augmented Reality (AR) applied to Gaming,0.1,0.1
+Video Games and Virtual Reality (Gaming),Interactive Narrative and Branching Storylines,0.1,0.1
+Video Games and Virtual Reality (Gaming),Economy in MMO Games and Microtransactions,0.1,0.1
+Video Games and Virtual Reality (Gaming),Evolution of Artificial Intelligence in Enemies,0.1,0.1
+Video Games and Virtual Reality (Gaming),Cloud Gaming and the Future of Streaming,0.1,0.1
+Video Games and Virtual Reality (Gaming),Sound Design and Adaptive Music in Games,0.1,0.1
+Aerospace and Aeronautical Engineering,Aerodynamics and Flight Dynamics,0.1,0.1
+Aerospace and Aeronautical Engineering,"Jet Engines (Turbofans, Scramjets)",0.1,0.1
+Aerospace and Aeronautical Engineering,Avionics and Digital Control Systems,0.1,0.1
+Aerospace and Aeronautical Engineering,Composite Materials for Weight Reduction,0.1,0.1
+Aerospace and Aeronautical Engineering,Vertical Take-off and Landing Aircraft (VTOL),0.1,0.1
+Aerospace and Aeronautical Engineering,Global Air Traffic Management,0.1,0.1
+Aerospace and Aeronautical Engineering,Flight Safety and Accident Investigation,0.1,0.1
+Aerospace and Aeronautical Engineering,Helicopters and Rotor Physics,0.1,0.1
+Aerospace and Aeronautical Engineering,Wing Design and Lift,0.1,0.1
+Aerospace and Aeronautical Engineering,Hydrogen as Aviation Fuel,0.1,0.1
+Sociology of Work and Organization,Smart Working and Hybrid Work,0.1,0.1
+Sociology of Work and Organization,Servant Leadership and Talent Management,0.1,0.1
+Sociology of Work and Organization,"Diversity, Equity, and Inclusion (DEI) in the Company",0.1,0.1
+Sociology of Work and Organization,Organizational Psychology,0.1,0.1
+Sociology of Work and Organization,Four-day Workweek,0.1,0.1
+Sociology of Work and Organization,Upskilling and Reskilling the Workforce,0.1,0.1
+Sociology of Work and Organization,Organizational Well-being and Mobbing Prevention,0.1,0.1
+Sociology of Work and Organization,Corporate Culture and Sense of Belonging,0.1,0.1
+Sociology of Work and Organization,Automation and Job Displacement,0.1,0.1
+Sociology of Work and Organization,Managing Multicultural and Remote Teams,0.1,0.1
+Chemistry and Biochemistry,Periodic Table: Rare and Transuranic Elements,0.1,0.1
+Chemistry and Biochemistry,Organic Chemistry and Drug Synthesis,0.1,0.1
+Chemistry and Biochemistry,Polymers and Plastics Chemistry,0.1,0.1
+Chemistry and Biochemistry,Enzymes and Biological Catalysis,0.1,0.1
+Chemistry and Biochemistry,Electrochemistry: Batteries and Fuel Cells,0.1,0.1
+Chemistry and Biochemistry,Analytical Chemistry and Spectroscopy,0.1,0.1
+Chemistry and Biochemistry,Radioactivity and Nuclear Chemistry,0.1,0.1
+Chemistry and Biochemistry,Green Chemistry,0.1,0.1
+Chemistry and Biochemistry,Chemical Bonds and Molecular Orbitals,0.1,0.1
+Chemistry and Biochemistry,Protein Biochemistry and Folding,0.1,0.1
+Theater and Performing Arts,History of Greek and Roman Theater,0.1,0.1
+Theater and Performing Arts,Commedia dell'Arte and Masks,0.1,0.1
+Theater and Performing Arts,Stanislavski Method and Modern Acting,0.1,0.1
+Theater and Performing Arts,Theatrical Scenography and Lighting Design,0.1,0.1
+Theater and Performing Arts,Contemporary Dramaturgy,0.1,0.1
+Theater and Performing Arts,Opera and Musical Theater,0.1,0.1
+Theater and Performing Arts,Theater of the Absurd and Avant-gardes,0.1,0.1
+Theater and Performing Arts,Performance Art and Body Art,0.1,0.1
+Theater and Performing Arts,Theatrical Improvisation,0.1,0.1
+Theater and Performing Arts,Theatrical Directing: Vision and Interpretation,0.1,0.1
+Landscape Ecology and Forestry,Forest Management and Reforestation,0.1,0.1
+Landscape Ecology and Forestry,River Ecology and Basin Management,0.1,0.1
+Landscape Ecology and Forestry,Ecological Corridors for Wildlife,0.1,0.1
+Landscape Ecology and Forestry,Ecosystem Services of Nature,0.1,0.1
+Landscape Ecology and Forestry,Forest Fire Prevention,0.1,0.1
+Landscape Ecology and Forestry,Restoration of Degraded Habitats,0.1,0.1
+Landscape Ecology and Forestry,Agroforestry,0.1,0.1
+Landscape Ecology and Forestry,Dynamics of Plant Populations,0.1,0.1
+Landscape Ecology and Forestry,Impact of Exotic Species in Forests,0.1,0.1
+Landscape Ecology and Forestry,Conservation of Forest Soils,0.1,0.1
+Democracy and Political Systems,Electoral Systems (Proportional vs Majoritarian),0.1,0.1
+Democracy and Political Systems,Theory of the Separation of Powers,0.1,0.1
+Democracy and Political Systems,Populism and Mass Movements,0.1,0.1
+Democracy and Political Systems,"Federalism, Centralism, and Autonomies",0.1,0.1
+Democracy and Political Systems,Geopolitics of Human Rights,0.1,0.1
+Democracy and Political Systems,Lobbying and Pressure Groups,0.1,0.1
+Democracy and Political Systems,Transparency and the Fight against Political Corruption,0.1,0.1
+Democracy and Political Systems,Comparative Government Systems (Presidentialism vs Parliamentarism),0.1,0.1
+Democracy and Political Systems,Digital Participation and E-democracy,0.1,0.1
+Democracy and Political Systems,History of Democratic Thought,0.1,0.1
+Experimental Neuroscience,Mapping the Human Connectome,0.1,0.1
+Experimental Neuroscience,Biological Bases of Consciousness,0.1,0.1
+Experimental Neuroscience,Processes of Memorization and Forgetting,0.1,0.1
+Experimental Neuroscience,Neurobiology of Addictions,0.1,0.1
+Experimental Neuroscience,Sensory Perception and Synesthesia,0.1,0.1
+Experimental Neuroscience,Brain Development in Childhood and Adolescence,0.1,0.1
+Experimental Neuroscience,"Neurodegenerative Diseases (Alzheimer's, Parkinson's)",0.1,0.1
+Experimental Neuroscience,The Role of Dopamine and Serotonin,0.1,0.1
+Experimental Neuroscience,REM Sleep and Dream Activity,0.1,0.1
+Experimental Neuroscience,Post-traumatic Brain Plasticity,0.1,0.1
+Transport and Future Mobility,Magnetic Levitation Trains (Maglev),0.1,0.1
+Transport and Future Mobility,Level 5 Autonomous Driving,0.1,0.1
+Transport and Future Mobility,Mobility as a Service (MaaS),0.1,0.1
+Transport and Future Mobility,Infrastructure for Inductive Charging,0.1,0.1
+Transport and Future Mobility,Pedal-assisted Bicycles and Urban Cycling,0.1,0.1
+Transport and Future Mobility,Bus Rapid Transit (BRT) Systems,0.1,0.1
+Transport and Future Mobility,Drone Logistics in Urban Areas,0.1,0.1
+Transport and Future Mobility,Road Safety and Vision Zero,0.1,0.1
+Transport and Future Mobility,Decarbonization of Maritime Transport,0.1,0.1
+Transport and Future Mobility,Sharing Economy applied to Transport,0.1,0.1
+Comics and Graphic Novels,"History of American Comics (Golden, Silver, Modern Age)",0.1,0.1
+Comics and Graphic Novels,Evolution of Japanese Manga,0.1,0.1
+Comics and Graphic Novels,The Franco-Belgian School (Ligne Claire),0.1,0.1
+Comics and Graphic Novels,Graphic Journalism (Comics as Investigation),0.1,0.1
+Comics and Graphic Novels,Storyboarding and Panel Grammar,0.1,0.1
+Comics and Graphic Novels,Webtoons and Digital Comics,0.1,0.1
+Comics and Graphic Novels,Auteur Comics in Italy,0.1,0.1
+Comics and Graphic Novels,Superheroes: Archetypes and Deconstruction of the Myth,0.1,0.1
+Comics and Graphic Novels,Inking and Coloring Techniques,0.1,0.1
+Comics and Graphic Novels,Editing and Publishing,0.1,0.1
+Emergency Management and Civil Protection,Prediction and Prevention of Natural Risks,0.1,0.1
+Emergency Management and Civil Protection,Humanitarian Logistics in Disasters,0.1,0.1
+Emergency Management and Civil Protection,Crowd Management in Public Events,0.1,0.1
+Emergency Management and Civil Protection,Evacuation Plans and Psychology of Emergencies,0.1,0.1
+Emergency Management and Civil Protection,First Aid and Disaster Medicine,0.1,0.1
+Emergency Management and Civil Protection,Crisis Communication and Early Warning,0.1,0.1
+Emergency Management and Civil Protection,Satellite Technologies for Damage Monitoring,0.1,0.1
+Emergency Management and Civil Protection,Resilience of Critical Infrastructures,0.1,0.1
+Emergency Management and Civil Protection,Role of Organized Volunteering,0.1,0.1
+Emergency Management and Civil Protection,Pandemic Response and Biosecurity,0.1,0.1
+Aesthetics and Theory of Art,The Concept of the Sublime in Art,0.1,0.1
+Aesthetics and Theory of Art,Iconoclasm and the Destruction of Images,0.1,0.1
+Aesthetics and Theory of Art,The Social Function of Contemporary Art,0.1,0.1
+Aesthetics and Theory of Art,Semiotics of the Image,0.1,0.1
+Aesthetics and Theory of Art,Museology and Exhibition Curating,0.1,0.1
+Aesthetics and Theory of Art,Art Market and Auction Houses,0.1,0.1
+Aesthetics and Theory of Art,Restoration and Conservation of Artworks,0.1,0.1
+Aesthetics and Theory of Art,Generative and Algorithmic Art,0.1,0.1
+Aesthetics and Theory of Art,The Golden Ratio and Proportions in Art,0.1,0.1
+Aesthetics and Theory of Art,Street Art: Between Vandalism and Urban Enhancement,0.1,0.1
+Hydrology and Water Resources,The Water Cycle and Water Balance,0.1,0.1
+Hydrology and Water Resources,Seawater Desalination,0.1,0.1
+Hydrology and Water Resources,Groundwater Management (Aquifers),0.1,0.1
+Hydrology and Water Resources,Purification and Treatment of Wastewater,0.1,0.1
+Hydrology and Water Resources,Engineering of Urban Water Networks,0.1,0.1
+Hydrology and Water Resources,"Water Rights and the ""Blue Gold Wars""",0.1,0.1
+Hydrology and Water Resources,Chemical Pollution of Rivers,0.1,0.1
+Hydrology and Water Resources,Drip Irrigation Techniques and Agricultural Savings,0.1,0.1
+Hydrology and Water Resources,Flood Management and Retention Basins,0.1,0.1
+Hydrology and Water Resources,Drinking Water Quality and Health Standards,0.1,0.1
+Philosophy of Science (Epistemology),The Scientific Method: Induction vs Deduction,0.1,0.1
+Philosophy of Science (Epistemology),Karl Popper's Falsificationism,0.1,0.1
+Philosophy of Science (Epistemology),Paradigms and Scientific Revolutions (Thomas Kuhn),0.1,0.1
+Philosophy of Science (Epistemology),Relationship between Observer and Observed,0.1,0.1
+Philosophy of Science (Epistemology),Scientific Realism vs Antirealism,0.1,0.1
+Philosophy of Science (Epistemology),Ethics of Scientific Research,0.1,0.1
+Philosophy of Science (Epistemology),History of Science: from Galileo to Quantum Physics,0.1,0.1
+Philosophy of Science (Epistemology),The Role of Models and Simulations,0.1,0.1
+Philosophy of Science (Epistemology),Science and Pseudoscience: The Problem of Demarcation,0.1,0.1
+Philosophy of Science (Epistemology),Reductionism vs Holism,0.1,0.1
+Craftsmanship and Know-How,Woodworking and Cabinetmaking,0.1,0.1
+Craftsmanship and Know-How,Glass Art (Murano and beyond),0.1,0.1
+Craftsmanship and Know-How,Ceramics and Clay Modeling,0.1,0.1
+Craftsmanship and Know-How,Custom Tailoring and Pattern Making,0.1,0.1
+Craftsmanship and Know-How,Metalworking and Jewelry,0.1,0.1
+Craftsmanship and Know-How,Artisanal Bookbinding and Book Restoration,0.1,0.1
+Craftsmanship and Know-How,Loom Weaving and Natural Dyes,0.1,0.1
+Craftsmanship and Know-How,Leatherworking and Tanning Techniques,0.1,0.1
+Craftsmanship and Know-How,Luthiery: The Construction of Bowed Instruments,0.1,0.1
+Craftsmanship and Know-How,The Value of Craftsmanship in the Digital Age,0.1,0.1
+Applied Ethics,Clinical Bioethics and End-of-Life Decisions,0.1,0.1
+Applied Ethics,Ethics of Algorithms and Social Media,0.1,0.1
+Applied Ethics,Environmental Ethics and Animal Rights,0.1,0.1
+Applied Ethics,Business Ethics and Social Responsibility,0.1,0.1
+Applied Ethics,Rights of Future Generations,0.1,0.1
+Applied Ethics,Ethics of War and Autonomous Drones,0.1,0.1
+Applied Ethics,Sexual Morality and New Freedoms,0.1,0.1
+Applied Ethics,Ethics of Communication and Post-truth,0.1,0.1
+Applied Ethics,Distributive Justice and Global Poverty,0.1,0.1
+Applied Ethics,Academic and Scientific Integrity,0.1,0.1
+Urban Exploration and Outdoor,Mountaineering and History of Great Climbs,0.1,0.1
+Urban Exploration and Outdoor,Long-distance Trekking (Thru-hiking),0.1,0.1
+Urban Exploration and Outdoor,Bushcraft: Primitive Survival Techniques,0.1,0.1
+Urban Exploration and Outdoor,Speleology: Cave Exploration,0.1,0.1
+Urban Exploration and Outdoor,Orienteering and Navigation with Map and Compass,0.1,0.1
+Urban Exploration and Outdoor,Urban Exploration (Urbex) and Abandoned Sites,0.1,0.1
+Urban Exploration and Outdoor,Landscape Photography in Extreme Conditions,0.1,0.1
+Urban Exploration and Outdoor,Parkour and Movement in the Urban Environment,0.1,0.1
+Urban Exploration and Outdoor,Camping and Nomadic Life (Vanlife),0.1,0.1
+Urban Exploration and Outdoor,Management of National Parks and Nature Reserves,0.1,0.1
+Forensic Sciences and Investigation,DNA Analysis and Genetic Databases,0.1,0.1
+Forensic Sciences and Investigation,Forensic Toxicology: Detection of Poisons and Drugs,0.1,0.1
+Forensic Sciences and Investigation,Ballistics and Trajectory Analysis,0.1,0.1
+Forensic Sciences and Investigation,Dactyloscopy (Study of Fingerprints),0.1,0.1
+Forensic Sciences and Investigation,Forensic Entomology: Insects to Date Death,0.1,0.1
+Forensic Sciences and Investigation,Forensic Computing: Data Recovery from Seized Devices,0.1,0.1
+Forensic Sciences and Investigation,Forensic Anthropology: Identification from Skeletal Remains,0.1,0.1
+Forensic Sciences and Investigation,Bloodstain Pattern Analysis (BPA),0.1,0.1
+Forensic Sciences and Investigation,Judicial Graphology and Document Forgery,0.1,0.1
+Forensic Sciences and Investigation,Interrogation Techniques and Deception Detection,0.1,0.1
+Retail and Customer Experience,Visual Merchandising: The Organization of Display Spaces,0.1,0.1
+Retail and Customer Experience,Psychology of the Point of Sale and Purchasing Paths,0.1,0.1
+Retail and Customer Experience,Experience Personalization via Big Data,0.1,0.1
+Retail and Customer Experience,Loyalty Programs and Retention Strategies,0.1,0.1
+Retail and Customer Experience,Omnichannel Integration (Physical and Digital),0.1,0.1
+Retail and Customer Experience,Augmented Reality for Product Trial (Virtual Try-on),0.1,0.1
+Retail and Customer Experience,Management of Customer Flows and Queues,0.1,0.1
+Retail and Customer Experience,Predictive Customer Service via AI,0.1,0.1
+Retail and Customer Experience,The Future of Shopping Centers (Malls Transformed into Civic Centers),0.1,0.1
+Retail and Customer Experience,Mystery Shopping and Quality Control,0.1,0.1
+Publishing and Media,The Transition from Print to Digital-only,0.1,0.1
+Publishing and Media,Business Models: Subscriptions vs Advertising,0.1,0.1
+Publishing and Media,Podcasts and the Rise of Audio Entertainment,0.1,0.1
+Publishing and Media,Newsletters and the Curated Attention Economy,0.1,0.1
+Publishing and Media,Fact-checking and the Fight against Fake News,0.1,0.1
+Publishing and Media,Investigative Journalism and Source Protection,0.1,0.1
+Publishing and Media,Press Freedom and Global Censorship,0.1,0.1
+Publishing and Media,"Editorial Editing: The Figure of the ""Ghostwriter""",0.1,0.1
+Publishing and Media,Copyrights and Creative Commons Licenses,0.1,0.1
+Publishing and Media,The Impact of User-Generated Content (UGC),0.1,0.1
+Microeconomics and Local Markets,Theory of Supply and Demand,0.1,0.1
+Microeconomics and Local Markets,Economy of Italian Industrial Districts,0.1,0.1
+Microeconomics and Local Markets,"Local Markets and ""Zero Mile"" Circuits",0.1,0.1
+Microeconomics and Local Markets,Cooperativism and Social Enterprises,0.1,0.1
+Microeconomics and Local Markets,Purchasing Power and the Cost of Living,0.1,0.1
+Microeconomics and Local Markets,Microcredit for the Development of Small Businesses,0.1,0.1
+Microeconomics and Local Markets,Price Dynamics in the Local Real Estate Market,0.1,0.1
+Microeconomics and Local Markets,Fair Trade,0.1,0.1
+Microeconomics and Local Markets,The Impact of Tourism on City Economies,0.1,0.1
+Microeconomics and Local Markets,Cost-Benefit Analysis in Public Decisions,0.1,0.1
+Biophysics and Biomechanics,Structure and Dynamics of Cell Membranes,0.1,0.1
+Biophysics and Biomechanics,Molecular Motors and Intracellular Transport,0.1,0.1
+Biophysics and Biomechanics,Biomechanics of the Spine and Posture,0.1,0.1
+Biophysics and Biomechanics,Propagation of the Nerve Impulse (Hodgkin-Huxley Model),0.1,0.1
+Biophysics and Biomechanics,Interaction between Radiation and Biological Tissues,0.1,0.1
+Biophysics and Biomechanics,Gait Analysis and Movement Kinematics,0.1,0.1
+Biophysics and Biomechanics,Fluid Mechanics in the Circulatory System,0.1,0.1
+Biophysics and Biomechanics,Biophotonics: Light Emission by Organisms,0.1,0.1
+Biophysics and Biomechanics,Mathematical Modeling of Biological Systems,0.1,0.1
+Biophysics and Biomechanics,Thermodynamics of Vital Processes,0.1,0.1
+Animation Cinema,Traditional Hand-drawn Animation (2D),0.1,0.1
+Animation Cinema,"CGI and 3D Modeling (Pixar, Dreamworks)",0.1,0.1
+Animation Cinema,Stop-motion: The Art of Frame-by-Frame,0.1,0.1
+Animation Cinema,Japanese Anime and Their Global Impact,0.1,0.1
+Animation Cinema,History of Walt Disney Studios,0.1,0.1
+Animation Cinema,Motion Capture Techniques,0.1,0.1
+Animation Cinema,Storyboarding and Animatic for Pre-visualization,0.1,0.1
+Animation Cinema,Experimental and Avant-garde Animation,0.1,0.1
+Animation Cinema,Dubbing and Voice Characterization,0.1,0.1
+Animation Cinema,"Adult Animation (Adult Swim, Auteur Series)",0.1,0.1
+Human Resources (HR) Management,Recruiting Techniques and Behavioral Interviews,0.1,0.1
+Human Resources (HR) Management,Onboarding: Integrating New Employees,0.1,0.1
+Human Resources (HR) Management,Performance Evaluation and 360° Feedback,0.1,0.1
+Human Resources (HR) Management,Incentive Plans and Corporate Benefits,0.1,0.1
+Human Resources (HR) Management,Employer Branding: Attracting Top Talent,0.1,0.1
+Human Resources (HR) Management,Conflict Management and Internal Negotiation,0.1,0.1
+Human Resources (HR) Management,Continuous Training and Learning & Development,0.1,0.1
+Human Resources (HR) Management,Health and Safety in the Workplace,0.1,0.1
+Human Resources (HR) Management,Diversity & Inclusion Management,0.1,0.1
+Human Resources (HR) Management,"Managing the ""Great Resignation"" and Retention",0.1,0.1
+Volcanology and Geological Risks,"Types of Volcanoes: Shield, Stratovolcanoes, Calderas",0.1,0.1
+Volcanology and Geological Risks,Seismic and Geochemical Monitoring of Craters,0.1,0.1
+Volcanology and Geological Risks,Lahars and Pyroclastic Flows: The Greatest Dangers,0.1,0.1
+Volcanology and Geological Risks,Predicting Eruptions: Precursor Signals,0.1,0.1
+Volcanology and Geological Risks,Geothermal Energy: Power from Volcanic Heat,0.1,0.1
+Volcanology and Geological Risks,The Vesuvius Risk and the Phlegraean Fields,0.1,0.1
+Volcanology and Geological Risks,Submarine Volcanism and Emerging Islands,0.1,0.1
+Volcanology and Geological Risks,Impact of Volcanic Ash on Air Traffic,0.1,0.1
+Volcanology and Geological Risks,"History of Great Eruptions (Pompeii, Krakatoa, Tambora)",0.1,0.1
+Volcanology and Geological Risks,"Extraterrestrial Volcanoes (Io, Mars)",0.1,0.1
+Fashion Tech and Innovative Materials,Smart Clothes with Integrated Biometric Sensors,0.1,0.1
+Fashion Tech and Innovative Materials,Fabrics Produced by Fungi or Bacteria (Bio-fashion),0.1,0.1
+Fashion Tech and Innovative Materials,3D Printing of Clothing and Footwear,0.1,0.1
+Fashion Tech and Innovative Materials,Nanotechnologies for Water-repellent or Fireproof Fabrics,0.1,0.1
+Fashion Tech and Innovative Materials,Chemical Recycling of Textile Fibers,0.1,0.1
+Fashion Tech and Innovative Materials,Digital Fashion and Clothes for the Metaverse,0.1,0.1
+Fashion Tech and Innovative Materials,E-textiles and Flexible Circuits,0.1,0.1
+Fashion Tech and Innovative Materials,Supply Chain Traceability via NFC or QR Code,0.1,0.1
+Fashion Tech and Innovative Materials,Self-lacing Sneakers and Cushioning Technologies,0.1,0.1
+Fashion Tech and Innovative Materials,Sustainability of Natural vs Synthetic Dyes,0.1,0.1
+Epigraphy and Paleography,Study of Inscriptions on Stone and Metal,0.1,0.1
+Epigraphy and Paleography,"Evolution of Latin Scripts (Capital, Uncial, Gothic)",0.1,0.1
+Epigraphy and Paleography,Decipherment of Unknown Writing Systems,0.1,0.1
+Epigraphy and Paleography,"Ancient Writing Materials: Papyrus, Parchment, Wax",0.1,0.1
+Epigraphy and Paleography,History of the Phoenician Alphabet and Its Derivations,0.1,0.1
+Epigraphy and Paleography,Writing Instruments: From Stylus to Quill Pen,0.1,0.1
+Epigraphy and Paleography,Conservation and Restoration of Ancient Manuscripts,0.1,0.1
+Epigraphy and Paleography,Digitization of Historical Archives and Manuscripts,0.1,0.1
+Epigraphy and Paleography,Sigillography: The Study of Seals,0.1,0.1
+Epigraphy and Paleography,Relationship between Writing and Power in Medieval Courts,0.1,0.1
+Information and Software Engineering,Microservices Architectures,0.1,0.1
+Information and Software Engineering,"Cloud Computing: IaaS, PaaS, and SaaS",0.1,0.1
+Information and Software Engineering,Agile and Scrum Methodologies,0.1,0.1
+Information and Software Engineering,DevOps and Continuous Integration (CI/CD),0.1,0.1
+Information and Software Engineering,User Interface (UI) and User Experience (UX) Design,0.1,0.1
+Information and Software Engineering,Native vs Cross-platform App Development,0.1,0.1
+Information and Software Engineering,SQL vs NoSQL Databases,0.1,0.1
+Information and Software Engineering,API (Application Programming Interfaces) and Integrations,0.1,0.1
+Information and Software Engineering,Automated Testing and Code Quality Control,0.1,0.1
+Information and Software Engineering,"Containerization (Docker, Kubernetes)",0.1,0.1
+Insect Ethology (Entomology),Social Organization in Ant Colonies,0.1,0.1
+Insect Ethology (Entomology),Waggle Dance of Bees and Distance Communication,0.1,0.1
+Insect Ethology (Entomology),Metamorphosis: Biology and Hormonal Control,0.1,0.1
+Insect Ethology (Entomology),Defense Strategies: Camouflage and Aposematism,0.1,0.1
+Insect Ethology (Entomology),Insects as Bioindicators of Environmental Quality,0.1,0.1
+Insect Ethology (Entomology),Pollination and Co-evolution with Angiosperms,0.1,0.1
+Insect Ethology (Entomology),Parasitoid Insects and Biological Control in Agriculture,0.1,0.1
+Insect Ethology (Entomology),Bioacoustics: How Cicadas and Crickets Sing,0.1,0.1
+Insect Ethology (Entomology),Architecture of Hives and Anthills,0.1,0.1
+Insect Ethology (Entomology),"Insect Migrations (e.g., Monarch Butterfly)",0.1,0.1
+Network Theory and Complex Systems,Small Worlds: Six Degrees of Separation Theory,0.1,0.1
+Network Theory and Complex Systems,Robustness of Networks to Attacks and Failures,0.1,0.1
+Network Theory and Complex Systems,Spread of Epidemics and Information in Networks,0.1,0.1
+Network Theory and Complex Systems,Biological vs Artificial Neural Networks,0.1,0.1
+Network Theory and Complex Systems,Network Economics and Interconnected Markets,0.1,0.1
+Network Theory and Complex Systems,Topology of the Internet and the Web,0.1,0.1
+Network Theory and Complex Systems,Synchronization in Biological Systems,0.1,0.1
+Network Theory and Complex Systems,Centrality and Influence in Social Networks,0.1,0.1
+Network Theory and Complex Systems,Graph Theory Applied to Logistics,0.1,0.1
+Network Theory and Complex Systems,Emergent Behaviors in Flocks and Crowds,0.1,0.1
+Hydrogeology and Soil Management,Formation and Protection of Aquifers,0.1,0.1
+Hydrogeology and Soil Management,Subsidence and Lowering of Ground Level,0.1,0.1
+Hydrogeology and Soil Management,Hydrogeological Instability: Landslides and Mudslides,0.1,0.1
+Hydrogeology and Soil Management,Chemistry of Groundwater,0.1,0.1
+Hydrogeology and Soil Management,Soil Permeability and Urbanization,0.1,0.1
+Hydrogeology and Soil Management,Remediation of Contaminated Sites and Landfills,0.1,0.1
+Hydrogeology and Soil Management,Soil Erosion and Desertification,0.1,0.1
+Hydrogeology and Soil Management,Artesian Wells and Water Exploitation,0.1,0.1
+Hydrogeology and Soil Management,Modeling of Surface Runoff,0.1,0.1
+Hydrogeology and Soil Management,Slope Consolidation Techniques,0.1,0.1
+Developmental Psychology,Cognitive Development in Infants (Piaget),0.1,0.1
+Developmental Psychology,Attachment Theory (Bowlby),0.1,0.1
+Developmental Psychology,Language Acquisition and Developmental Milestones,0.1,0.1
+Developmental Psychology,The Importance of Play in Psychological Development,0.1,0.1
+Developmental Psychology,Adolescence: Identity Crisis and Detachment from Parents,0.1,0.1
+Developmental Psychology,Learning Disabilities (SpLD),0.1,0.1
+Developmental Psychology,Bullying and Cyberbullying: Prevention in Schools,0.1,0.1
+Developmental Psychology,Impact of Screens on Early Brain Development,0.1,0.1
+Developmental Psychology,Moral Development and Sense of Justice in Children,0.1,0.1
+Developmental Psychology,Sibling Dynamics and Birth Order,0.1,0.1
+Comparative Mythology and Folklore,"Universal Archetypes (The Great Flood, The Tree of Life)",0.1,0.1
+Comparative Mythology and Folklore,"Mythologies of Arctic Populations (Inuit, Sami)",0.1,0.1
+Comparative Mythology and Folklore,Urban Legends in the Digital Age (Creepypasta),0.1,0.1
+Comparative Mythology and Folklore,Solar and Lunar Deities in Different Cultures,0.1,0.1
+Comparative Mythology and Folklore,"Monsters and Legendary Creatures (Dragons, Chimeras, Yokai)",0.1,0.1
+Comparative Mythology and Folklore,Evolution of Folktales (from Grimm to Disney),0.1,0.1
+Comparative Mythology and Folklore,Cults of the Dead and World Funerary Traditions,0.1,0.1
+Comparative Mythology and Folklore,"Nature Spirits: Fairies, Gnomes, and Nymphs",0.1,0.1
+Comparative Mythology and Folklore,Animal Symbolism in Myths,0.1,0.1
+Comparative Mythology and Folklore,Festivals and Rituals Linked to Solstices and Equinoxes,0.1,0.1
+Energy Engineering and Storage,"Lithium-ion Batteries and Alternatives (Solid State, Sodium)",0.1,0.1
+Energy Engineering and Storage,Hydrogen Storage: Technical Challenges,0.1,0.1
+Energy Engineering and Storage,Pumped-storage Hydroelectricity,0.1,0.1
+Energy Engineering and Storage,Flywheels and Mechanical Energy Storage,0.1,0.1
+Energy Engineering and Storage,Microgrids and Energy Communities,0.1,0.1
+Energy Engineering and Storage,Energy Efficiency in Buildings (Class A+),0.1,0.1
+Energy Engineering and Storage,Industrial Waste Heat Recovery,0.1,0.1
+Energy Engineering and Storage,Smart Grids,0.1,0.1
+Energy Engineering and Storage,Supercapacitors for Ultra-fast Charging,0.1,0.1
+Energy Engineering and Storage,Concentrated and Thermodynamic Photovoltaics,0.1,0.1
+Welfare Policies and Healthcare,Comparing Healthcare Systems (Public vs Insurance-based),0.1,0.1
+Welfare Policies and Healthcare,Management of Chronic Diseases and Aging Population,0.1,0.1
+Welfare Policies and Healthcare,Vaccination Prevention and Public Health,0.1,0.1
+Welfare Policies and Healthcare,Financing of Social Protection Systems,0.1,0.1
+Welfare Policies and Healthcare,Pension Reforms and Financial Sustainability,0.1,0.1
+Welfare Policies and Healthcare,Telemedicine and Integrated Home Care,0.1,0.1
+Welfare Policies and Healthcare,Family Policies and Birth Rates,0.1,0.1
+Welfare Policies and Healthcare,Fighting Poverty and Unemployment Benefits,0.1,0.1
+Welfare Policies and Healthcare,Health Economics and Drug Cost Analysis,0.1,0.1
+Welfare Policies and Healthcare,Universal Access to Care in Developing Countries,0.1,0.1
+Chemical and Physical Oceanography,Salinity and Density of Water Masses,0.1,0.1
+Chemical and Physical Oceanography,Carbon Cycle in the Oceans and CO2 Absorption,0.1,0.1
+Chemical and Physical Oceanography,Nutrients and Primary Productivity (Phytoplankton),0.1,0.1
+Chemical and Physical Oceanography,Heavy Metal and Oil Pollution in Seas,0.1,0.1
+Chemical and Physical Oceanography,"Global Thermohaline Circulation (The ""Conveyor Belt"")",0.1,0.1
+Chemical and Physical Oceanography,Tidal Dynamics and Astronomical Forces,0.1,0.1
+Chemical and Physical Oceanography,Isotope Analysis for Paleoceanography,0.1,0.1
+Chemical and Physical Oceanography,Thermal Barriers and Haloclines,0.1,0.1
+Chemical and Physical Oceanography,Deep Water Upwelling Systems,0.1,0.1
+Chemical and Physical Oceanography,Impact of Ice Melt on Marine Density,0.1,0.1
+Lifestyle and Minimalist Cultures,Decluttering: Freeing Up Physical and Mental Space,0.1,0.1
+Lifestyle and Minimalist Cultures,Slow Living: Slowing Down Daily Rhythms,0.1,0.1
+Lifestyle and Minimalist Cultures,Capsule Wardrobe: Optimizing the Closet,0.1,0.1
+Lifestyle and Minimalist Cultures,Digital Nomadism and Material Minimalism,0.1,0.1
+Lifestyle and Minimalist Cultures,Zero Waste: Minimizing Household Waste,0.1,0.1
+Lifestyle and Minimalist Cultures,Minimalist Finance: Conscious Saving and Anti-consumerism,0.1,0.1
+Lifestyle and Minimalist Cultures,The Art of the Essential in Design and Furnishing,0.1,0.1
+Lifestyle and Minimalist Cultures,Walking Meditation and Reconnecting with the Environment,0.1,0.1
+Lifestyle and Minimalist Cultures,"Detox from Notifications and ""Always Connected""",0.1,0.1
+Lifestyle and Minimalist Cultures,Value of Experiences over Possession of Objects,0.1,0.1
+Nanotechnology,Nanomedicine: Targeted Drug Delivery,0.1,0.1
+Nanotechnology,Carbon Nanotubes and Their Applications,0.1,0.1
+Nanotechnology,Molecular Self-assembly,0.1,0.1
+Nanotechnology,Nanorobots for Cellular Repair,0.1,0.1
+Nanotechnology,Toxicology of Nanomaterials,0.1,0.1
+Nanotechnology,Nanoscale Sensors for Environmental Safety,0.1,0.1
+Nanotechnology,Nanofiltration for Water Purification,0.1,0.1
+Nanotechnology,Quantum Dots and Next-generation Screens,0.1,0.1
+Nanotechnology,Nanolithography for Ever-smaller Microchips,0.1,0.1
+Nanotechnology,Superhydrophobic Surfaces Inspired by Nature,0.1,0.1
+Soft Robotics,Electroactive Polymer Actuators,0.1,0.1
+Soft Robotics,Robots Inspired by Octopuses and Worms,0.1,0.1
+Soft Robotics,Robotic Grippers for Fragile Objects,0.1,0.1
+Soft Robotics,Pneumatic Artificial Muscles,0.1,0.1
+Soft Robotics,Biodegradable Robots for Environmental Use,0.1,0.1
+Soft Robotics,"Flexible Sensors and Robotic ""Skin""",0.1,0.1
+Soft Robotics,Flexible Endoscopic Medical Robotics,0.1,0.1
+Soft Robotics,Modeling of Deformable Solids,0.1,0.1
+Soft Robotics,Soft Robotics for Space Exploration,0.1,0.1
+Soft Robotics,Safe Human-Robot Interaction (Collaborative Soft Robots),0.1,0.1
+Digital Criminology and Forensics,Analysis of Markets on the Dark Web,0.1,0.1
+Digital Criminology and Forensics,Tracking Suspicious Cryptocurrency Transactions,0.1,0.1
+Digital Criminology and Forensics,Digital Footprinting and OSINT Investigations,0.1,0.1
+Digital Criminology and Forensics,Cloud Systems Forensic Analysis,0.1,0.1
+Digital Criminology and Forensics,Data Recovery from Damaged Devices,0.1,0.1
+Digital Criminology and Forensics,Psychology of the Cybercriminal,0.1,0.1
+Digital Criminology and Forensics,Prevention of Online Identity Theft,0.1,0.1
+Digital Criminology and Forensics,International Legislation on Cybercrime,0.1,0.1
+Digital Criminology and Forensics,Steganography: Hiding Messages in Images,0.1,0.1
+Digital Criminology and Forensics,Log Analysis and Intrusion Detection,0.1,0.1
+Sleep Sciences (Chronobiology),Sleep Architecture: NREM and REM Phases,0.1,0.1
+Sleep Sciences (Chronobiology),"Circadian Rhythms and ""Clock"" Genes",0.1,0.1
+Sleep Sciences (Chronobiology),The Impact of Blue Light on Melatonin,0.1,0.1
+Sleep Sciences (Chronobiology),"Sleep Disorders: Apnea, Insomnia, and Narcolepsy",0.1,0.1
+Sleep Sciences (Chronobiology),The Role of Sleep in Memory Consolidation,0.1,0.1
+Sleep Sciences (Chronobiology),Lucid Dreaming and Dream Control,0.1,0.1
+Sleep Sciences (Chronobiology),Social Jet Lag and Shift Work,0.1,0.1
+Sleep Sciences (Chronobiology),Glymphatic System and Nocturnal Brain Cleaning,0.1,0.1
+Sleep Sciences (Chronobiology),"Chronotypes: Larks, Owls, and Lions",0.1,0.1
+Sleep Sciences (Chronobiology),Sleepwalking and Parasomnias,0.1,0.1
+Textile Materials Engineering,"High-performance Synthetic Fibers (Kevlar, Nomex)",0.1,0.1
+Textile Materials Engineering,Smart Fabrics with Shape Memory,0.1,0.1
+Textile Materials Engineering,Mechanical Recycling of Wool and Cotton,0.1,0.1
+Textile Materials Engineering,Dry Dyeing for Water Saving,0.1,0.1
+Textile Materials Engineering,Breathable Fabrics and Gore-Tex Membranes,0.1,0.1
+Textile Materials Engineering,Synthetic Spider Silk and Biopolymers,0.1,0.1
+Textile Materials Engineering,Textile Filters for the Chemical Industry,0.1,0.1
+Textile Materials Engineering,Technical Textiles for Construction (Geotextiles),0.1,0.1
+Textile Materials Engineering,Protective Clothing for Extreme Environments,0.1,0.1
+Textile Materials Engineering,The Use of Silver and Copper as Antibacterials in Fabrics,0.1,0.1
+Behavioral Economics (Nudge Theory),Choice Architecture: Guiding Without Forcing,0.1,0.1
+Behavioral Economics (Nudge Theory),Confirmation Bias in Financial Decisions,0.1,0.1
+Behavioral Economics (Nudge Theory),The Anchoring Effect in Prices,0.1,0.1
+Behavioral Economics (Nudge Theory),Loss Aversion,0.1,0.1
+Behavioral Economics (Nudge Theory),Hyperbolic Discounting: Immediate vs Future Gratification,0.1,0.1
+Behavioral Economics (Nudge Theory),Social Norms as Economic Incentives,0.1,0.1
+Behavioral Economics (Nudge Theory),Gamification Applied to Energy Saving,0.1,0.1
+Behavioral Economics (Nudge Theory),Psychology of Taxes and Compliance,0.1,0.1
+Behavioral Economics (Nudge Theory),Prospect Theory by Kahneman and Tversky,0.1,0.1
+Behavioral Economics (Nudge Theory),"The Impact of ""Default"" in Opt-in/Opt-out Options",0.1,0.1
+Paleontology and Prehistoric Life,Mass Extinctions: Causes and Consequences,0.1,0.1
+Paleontology and Prehistoric Life,Evolution of Flying Reptiles (Pterosaurs),0.1,0.1
+Paleontology and Prehistoric Life,The Transition from Water to Land,0.1,0.1
+Paleontology and Prehistoric Life,Feathered Dinosaurs: The Link to Birds,0.1,0.1
+Paleontology and Prehistoric Life,Paleobotany: The First Forests of the Devonian,0.1,0.1
+Paleontology and Prehistoric Life,Pleistocene Megafauna: Mammoths and Saber-toothed Tigers,0.1,0.1
+Paleontology and Prehistoric Life,Exceptionally Preserved Fossils (Lagerstätten),0.1,0.1
+Paleontology and Prehistoric Life,Paleoecology: Reconstructing Past Ecosystems,0.1,0.1
+Paleontology and Prehistoric Life,The Cambrian Explosion and the Origin of Body Plans,0.1,0.1
+Paleontology and Prehistoric Life,Ancient DNA Analysis from Fossil Remains,0.1,0.1
+Computational Linguistics,Neural Machine Translation Algorithms,0.1,0.1
+Computational Linguistics,Speech Recognition and Text-to-Speech (TTS),0.1,0.1
+Computational Linguistics,Sentiment Analysis on Social Media,0.1,0.1
+Computational Linguistics,Large Language Models (LLM),0.1,0.1
+Computational Linguistics,Named Entity Recognition (NER),0.1,0.1
+Computational Linguistics,Word Embeddings and Vector Representation,0.1,0.1
+Computational Linguistics,Automated Syntactic Parsing,0.1,0.1
+Computational Linguistics,Automated Detection of Sarcasm and Irony,0.1,0.1
+Computational Linguistics,Conversational Interfaces and Chatbots,0.1,0.1
+Computational Linguistics,Resolution of Semantic Ambiguities,0.1,0.1
+Sociology of Media and Communication,Agenda-Setting Theory: Who Decides What We Talk About,0.1,0.1
+Sociology of Media and Communication,Spiral of Silence and Public Opinion,0.1,0.1
+Sociology of Media and Communication,The Medium is the Message (Marshall McLuhan),0.1,0.1
+Sociology of Media and Communication,Parasociality: The Bond with Influencers and Celebrities,0.1,0.1
+Sociology of Media and Communication,Digital Divide: Inequalities in Internet Access,0.1,0.1
+Sociology of Media and Communication,Participatory Culture and Prosumer,0.1,0.1
+Sociology of Media and Communication,The Impact of Reality TV on Social Perception,0.1,0.1
+Sociology of Media and Communication,Liquid Surveillance and the Control Society,0.1,0.1
+Sociology of Media and Communication,Recommendation Algorithms and Filter Bubbles,0.1,0.1
+Sociology of Media and Communication,Evolution of Political Propaganda in Media,0.1,0.1
+Hydroponics and Vertical Farming,NFT (Nutrient Film Technique) Systems,0.1,0.1
+Hydroponics and Vertical Farming,Aeroponics: Growing in the Mist,0.1,0.1
+Hydroponics and Vertical Farming,Aquaponics: Symbiosis between Fish and Plants,0.1,0.1
+Hydroponics and Vertical Farming,Management of pH and Electrical Conductivity (EC),0.1,0.1
+Hydroponics and Vertical Farming,Adjustable Spectrum LED Lighting,0.1,0.1
+Hydroponics and Vertical Farming,Climate Control in Closed Greenhouses (Indoor Farming),0.1,0.1
+Hydroponics and Vertical Farming,Reduction of Pesticide Use in Controlled Environments,0.1,0.1
+Hydroponics and Vertical Farming,Urban Agriculture in Containers,0.1,0.1
+Hydroponics and Vertical Farming,Harvest Automation in Vertical Farming,0.1,0.1
+Hydroponics and Vertical Farming,Alternative Substrates: Coconut Coir and Rockwool,0.1,0.1
+Plasma Physics and Nuclear Fusion,Magnetic Confinement (Tokamak and Stellarator),0.1,0.1
+Plasma Physics and Nuclear Fusion,Inertial Confinement via Lasers,0.1,0.1
+Plasma Physics and Nuclear Fusion,The ITER Project and International Cooperation,0.1,0.1
+Plasma Physics and Nuclear Fusion,Astrophysical Plasmas: Stellar Coronas and Nebulae,0.1,0.1
+Plasma Physics and Nuclear Fusion,"Industrial Applications of Plasma (Cutting, Deposition)",0.1,0.1
+Plasma Physics and Nuclear Fusion,Space Propulsion via Plasma,0.1,0.1
+Plasma Physics and Nuclear Fusion,Plasma Instabilities and Their Control,0.1,0.1
+Plasma Physics and Nuclear Fusion,Cold Nuclear Fusion: Reality or Myth?,0.1,0.1
+Plasma Physics and Nuclear Fusion,High-temperature Plasma Diagnostics,0.1,0.1
+Plasma Physics and Nuclear Fusion,The Future of Clean and Inexhaustible Energy,0.1,0.1
+Forensic and Legal Psychology,Reliability of Eyewitness Testimony,0.1,0.1
+Forensic and Legal Psychology,False Confessions and Interrogation Techniques,0.1,0.1
+Forensic and Legal Psychology,Capacity of Understanding and Will,0.1,0.1
+Forensic and Legal Psychology,Psychology of the Trial Process,0.1,0.1
+Forensic and Legal Psychology,Evaluation of Social Dangerousness,0.1,0.1
+Forensic and Legal Psychology,Parental Alienation Syndrome,0.1,0.1
+Forensic and Legal Psychology,Family and Penal Mediation,0.1,0.1
+Forensic and Legal Psychology,Profiling of the Unknown Offender,0.1,0.1
+Forensic and Legal Psychology,Victimology: Impact of the Crime on the Victim,0.1,0.1
+Forensic and Legal Psychology,Forensic Neuroscience: The Brain in the Dock,0.1,0.1
+Vernacular and Traditional Architecture,"Trulli, Sassi, and Hypogean Architectures",0.1,0.1
+Vernacular and Traditional Architecture,Earth and Straw Constructions,0.1,0.1
+Vernacular and Traditional Architecture,Nomadic Architecture: Yurts and Tepees,0.1,0.1
+Vernacular and Traditional Architecture,Ancient Natural Ventilation Systems (Wind Catchers),0.1,0.1
+Vernacular and Traditional Architecture,The Use of Dry Stone in the Agricultural Landscape,0.1,0.1
+Vernacular and Traditional Architecture,Climatic Adaptations in Alpine Architecture,0.1,0.1
+Vernacular and Traditional Architecture,Half-timbered Houses of Northern Europe,0.1,0.1
+Vernacular and Traditional Architecture,Stilt Houses and Lake Settlements,0.1,0.1
+Vernacular and Traditional Architecture,Conservation and Recovery of Abandoned Villages,0.1,0.1
+Vernacular and Traditional Architecture,Local Materials vs Industrial Materials,0.1,0.1
+Science of Brewing and Distillation,Chemistry of Barley Malting,0.1,0.1
+Science of Brewing and Distillation,Biology of Yeasts (Saccharomyces cerevisiae and pastorianus),0.1,0.1
+Science of Brewing and Distillation,Hops: Alpha Acids and Essential Oils,0.1,0.1
+Science of Brewing and Distillation,Mashing and Decoction Processes,0.1,0.1
+Science of Brewing and Distillation,Spontaneous Fermentations and Lactic Acid Bacteria,0.1,0.1
+Science of Brewing and Distillation,Distillation Techniques: Column vs Pot Still,0.1,0.1
+Science of Brewing and Distillation,Barrel Aging and Interaction with Wood,0.1,0.1
+Science of Brewing and Distillation,Sensory Analysis and Typical Defects (Off-flavors),0.1,0.1
+Science of Brewing and Distillation,History of the Gin and Rum Routes,0.1,0.1
+Science of Brewing and Distillation,"Scientific Mixology: Ice, Dilution, and Density",0.1,0.1
+Bioinformatics and Computational Biology,Human Genome Sequencing and Big Data,0.1,0.1
+Bioinformatics and Computational Biology,Protein Sequence Alignment,0.1,0.1
+Bioinformatics and Computational Biology,3D Modeling of Proteins (AlphaFold),0.1,0.1
+Bioinformatics and Computational Biology,Molecular Phylogenetics and Evolutionary Trees,0.1,0.1
+Bioinformatics and Computational Biology,"Biological Databases (GenBank, UniProt)",0.1,0.1
+Bioinformatics and Computational Biology,Molecular Dynamics Simulation,0.1,0.1
+Bioinformatics and Computational Biology,Gene Expression Analysis (RNA-Seq),0.1,0.1
+Bioinformatics and Computational Biology,Systems Biology: Mapping Metabolic Networks,0.1,0.1
+Bioinformatics and Computational Biology,Algorithms for the Discovery of New Drugs (Drug Discovery),0.1,0.1
+Bioinformatics and Computational Biology,Metagenomics: Studying Environmental DNA,0.1,0.1
+Ethics of New Technologies,Civil Rights in the Metaverse,0.1,0.1
+Ethics of New Technologies,Legal Responsibility of Autonomous Vehicles,0.1,0.1
+Ethics of New Technologies,Privacy in the Age of Mass Facial Recognition,0.1,0.1
+Ethics of New Technologies,Moral Implications of Human Enhancement,0.1,0.1
+Ethics of New Technologies,Gender and Race Bias in Selection Algorithms,0.1,0.1
+Ethics of New Technologies,Intellectual Property of AI-generated Works,0.1,0.1
+Ethics of New Technologies,Ethics of Workplace Surveillance,0.1,0.1
+Ethics of New Technologies,Environmental Sustainability of Data Centers,0.1,0.1
+Ethics of New Technologies,The Right to Be Forgotten and Permanent Digital Memory,0.1,0.1
+Ethics of New Technologies,Democracy and Manipulation via Micro-targeting,0.1,0.1
+Advanced Viticulture and Oenology,Influence of Soil (Pedology) on the Wine Profile,0.1,0.1
+Advanced Viticulture and Oenology,Canopy Management and Bunch Microclimate,0.1,0.1
+Advanced Viticulture and Oenology,"Vine Diseases: Downy Mildew, Powdery Mildew, and Phylloxera",0.1,0.1
+Advanced Viticulture and Oenology,Heroic Viticulture on Terraces,0.1,0.1
+Advanced Viticulture and Oenology,Amphora Vinification and Alternative Wine Vessels,0.1,0.1
+Advanced Viticulture and Oenology,Chemistry of Polyphenols and Tannins,0.1,0.1
+Advanced Viticulture and Oenology,Oxygen Management and Micro-oxygenation,0.1,0.1
+Advanced Viticulture and Oenology,"Organic, Biodynamic, and Natural Wines",0.1,0.1
+Advanced Viticulture and Oenology,Global Wine Market and Appellations of Origin,0.1,0.1
+Advanced Viticulture and Oenology,Climate Change and the Shifting of Wine Regions,0.1,0.1
+Atmospheric Sciences and Aeronomy,Ozone Chemistry and the Ozone Hole,0.1,0.1
+Atmospheric Sciences and Aeronomy,Atmospheric Aerosols and Cloud Nucleation,0.1,0.1
+Atmospheric Sciences and Aeronomy,"Optical Phenomena: Rainbows, Sun Dogs, and Glories",0.1,0.1
+Atmospheric Sciences and Aeronomy,Atmospheric Electricity and the Genesis of Lightning,0.1,0.1
+Atmospheric Sciences and Aeronomy,Ionosphere and Long-distance Radio Communications,0.1,0.1
+Atmospheric Sciences and Aeronomy,Transboundary Pollution of Air Masses,0.1,0.1
+Atmospheric Sciences and Aeronomy,Interaction between Ocean and Atmosphere,0.1,0.1
+Atmospheric Sciences and Aeronomy,Space Weather and Auroras,0.1,0.1
+Atmospheric Sciences and Aeronomy,Greenhouse Effect and Radiative Forcings,0.1,0.1
+Atmospheric Sciences and Aeronomy,Instrumentation for Vertical Sounding (Radiosondes),0.1,0.1
+Color Psychology and Visual Arts,Goethe's vs Newton's Theory of Color,0.1,0.1
+Color Psychology and Visual Arts,Color Perception and Eye Physiology,0.1,0.1
+Color Psychology and Visual Arts,Symbolic Colors in Different Cultures,0.1,0.1
+Color Psychology and Visual Arts,The Use of Color in Marketing and Branding,0.1,0.1
+Color Psychology and Visual Arts,Chromotherapy: Between Science and Belief,0.1,0.1
+Color Psychology and Visual Arts,Color in Hospital and School Architecture,0.1,0.1
+Color Psychology and Visual Arts,Historical Pigments: from Ultramarine Blue to Synthetics,0.1,0.1
+Color Psychology and Visual Arts,Color Contrasts and Visual Harmony,0.1,0.1
+Color Psychology and Visual Arts,Color and Synesthesia: Hearing Colors,0.1,0.1
+Color Psychology and Visual Arts,Evolution of Color Theory in Cinema,0.1,0.1
+Futurology and Tomorrow's Scenarios,Forecasting Methodologies (Delphi Method),0.1,0.1
+Futurology and Tomorrow's Scenarios,Post-energy Scarcity Scenarios,0.1,0.1
+Futurology and Tomorrow's Scenarios,Transhumanism and Mind Uploading,0.1,0.1
+Futurology and Tomorrow's Scenarios,The Future of Democracy in the Age of Algorithms,0.1,0.1
+Futurology and Tomorrow's Scenarios,Colonization of Extrasolar Planets: Dreams and Limits,0.1,0.1
+Futurology and Tomorrow's Scenarios,End of Privacy or Radical Transparency?,0.1,0.1
+Futurology and Tomorrow's Scenarios,Evolution of the Human Species (Homo Optimus),0.1,0.1
+Futurology and Tomorrow's Scenarios,The Impact of First Contact with Alien Civilizations,0.1,0.1
+Futurology and Tomorrow's Scenarios,Resource Management on a Earth of 10 Billion People,0.1,0.1
+Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",0.1,0.1

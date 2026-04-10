@@ -52,7 +52,7 @@ def build_history_text(messages, max_turns: int = 8) -> str:
 
 
 def load_context_data(student_id: int) -> pd.DataFrame:
-    path = "context/Assessment_Information.xlsx"
+    """path = "context/Assessment_Information.xlsx"
     df = pd.read_excel(path)
     required_cols = {"student_id", "date", "Algorithm_level", "answer", "Topic", "Subtopic"}
     missing = required_cols.difference(df.columns)
@@ -91,7 +91,9 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         .groupby(["Topic", "Subtopic"], as_index=False)
         .agg({"lapse_score": "sum", "knowledge_score": "sum"})
     )
+    """
     
+    result = pd.read_csv("context_data.csv")
     result["lapse_score"] = 1/result["lapse_score"]
 
     return result
