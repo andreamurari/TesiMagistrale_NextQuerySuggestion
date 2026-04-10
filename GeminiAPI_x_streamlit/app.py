@@ -60,6 +60,7 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         raise ValueError(f"Missing columns in {path}: {sorted(missing)}")
 
     filtered = df[df["student_id"] == student_id].copy()
+    filtered['answer'] = filtered['answer'].replace(-1, 0)
     if filtered.empty:
         return pd.DataFrame(columns=["Topic", "Subtopic", "knowledge_score"])
 
