@@ -32,11 +32,13 @@
 	
 	✅	10 - Dare accesso ad internet all' LLM per cercare ulteriori informazioni
 
-	✅	 11 - Decidere come trattare i -1 nell' Assessment_Information ['answer'] -> metto a 0
+	✅	11 - Decidere come trattare i -1 nell' Assessment_Information ['answer'] -> metto a 0
 	
 	⚠️	 12 - Decidere come valutare le performance del modello -> Provalo tu
 	
 	⚠️	 13 - Ha senso proiettare la tabella context in uno spazio di embedding per sommarizzare gli argomenti? -> si usa RAG
+
+	✅	14 - Crea dataset sintetico	
 
 	strutturare prompt spiegando semantica
 
