@@ -3,6 +3,7 @@ import os
 from datetime import timedelta
 
 import pandas as pd
+import numpy as np
 import streamlit as st
 from google import genai
 from google.genai import types
