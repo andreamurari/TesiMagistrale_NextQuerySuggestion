@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "e1410ee4f5ce1945f015",
   "position": {
-    "x": 45.555555555555557,
-    "y": 495.55555555555554,
+    "x": 45.35467946204065,
+    "y": 411.9716717802026,
     "z": 3000,
-    "height": 150,
-    "width": 623.33333333333337,
+    "height": 234.33251055387669,
+    "width": 1158.434104592955,
     "tabOrder": 3000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -50,7 +50,7 @@
                   "Function": 5
                 }
               },
-              "queryRef": "Sum(Assessment_Information.student_id)",
+              "queryRef": "CountNonNull(Assessment_Information.student_id)",
               "nativeQueryRef": "Conteggio di student_id"
             }
           ]
@@ -142,7 +142,7 @@
         }
       },
       {
-        "name": "b716c113cb0ee255dc23",
+        "name": "3ef483b8092914886f11",
         "field": {
           "Column": {
             "Expression": {
