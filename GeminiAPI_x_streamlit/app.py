@@ -91,9 +91,19 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         .groupby(["Topic", "Subtopic"], as_index=False)
         .agg({"lapse_score": "sum", "knowledge_score": "sum"})
     )
+    
+    result["lapse_score"] = 1/result["lapse_score"]
     """
     
     result = pd.read_csv("context_data.csv")
+    max_lapse = result['lapse_score'].max()
+    min_lapse = result['lapse_score'].min()
+    result['lapse_score'] = np.random.uniform(min_lapse, max_lapse, len(result)).round(3)
+    
+    max_knowledge = result['knowledge_score'].max()
+    min_knowledge = result['knowledge_score'].min()
+    result['knowledge_score'] = np.random.uniform(min_knowledge, max_knowledge, len(result)).round(3)
+    
     result["lapse_score"] = 1/result["lapse_score"]
 
     return result
