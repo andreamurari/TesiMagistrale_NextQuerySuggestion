@@ -51,18 +51,7 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         return pd.DataFrame()
         
     result = pd.read_csv("context_data.csv")
-    if result.empty:
-        return result
-        
-    max_lapse = result['lapse_score'].max()
-    min_lapse = result['lapse_score'].min()
-    result['lapse_score'] = np.random.uniform(min_lapse, max_lapse, len(result)).round(3)
     
-    max_knowledge = result['knowledge_score'].max()
-    min_knowledge = result['knowledge_score'].min()
-    result['knowledge_score'] = np.random.uniform(min_knowledge, max_knowledge, len(result)).round(3)
-    
-    result["lapse_score"] = 1 / (result["lapse_score"] + 0.001) # Added epsilon to avoid division by zero
     return result
 
 def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list) -> list:
