@@ -40,6 +40,6 @@
 
 	✅	14 - Crea dataset sintetico	
 
-	strutturare prompt spiegando semantica
+	⚠️   15 - Strutturare prompt spiegando semantica
 
-	ottimizzare token
+	⚠️ 	 16 - Ottimizzare token

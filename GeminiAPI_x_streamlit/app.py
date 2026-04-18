@@ -12,24 +12,24 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
 def build_system_prompt(context_data: str) -> str:
     return f"""
-You are an expert data analyst for a master's thesis.
-You have access to the tables and documents loaded below.
+        You are an expert tutor and data analyst for a master's thesis.
+        Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
 
-AVAILABLE DATA:
-{context_data}
+        STUDENT DATA (Filtered by current topic):
+        {context_data if context_data else "No specific data for this topic."}
 
-JOIN RULES:
-1. Files are linked through common keys (for example STUDENT_ID, COURSE_CODE).
-2. If information is missing in one table, look for it in the others using the keys.
-3. If you find naming differences (for example Student vs User), treat them as the same entity.
+        SUGGESTION RULES (Next Query Suggestion):
+        Always end your response with 2 or 3 suggested follow-up questions or exercises for the student. Use these rules based on the data above:
+        - If 'knowledge_score' is low (< 1.0), suggest queries to learn the basics of that Subtopic.
+        - If 'knowledge_score' is high but 'lapse_score' is also high (meaning they haven't practiced in a while), suggest a quick review or a challenge query to refresh their memory.
+        - If they are doing great in both, suggest advancing to the next logical complex Subtopic.
 
-Response style:
-- Be clear and concise.
-- If data is missing, say so explicitly.
-""".strip()
+        Response style:
+        - Be encouraging, clear, and concise.
+        - If you don't have data for a specific concept, answer based on your general knowledge but don't invent scores.
+        """.strip()
 
 
 def ensure_state():
@@ -110,6 +110,35 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     return result
 
 
+def extract_topic_from_query(api_key: str, model: str, user_prompt: str, unique_topics: list) -> str:
+    client = genai.Client(api_key=api_key)
+    topics_str = ", ".join(unique_topics)
+    
+    router_prompt = (
+        f"Analyze this user query: '{user_prompt}'\n"
+        f"Which of the following topics does it belong to? [{topics_str}]\n\n"
+        "Reply ONLY with the exact Topic name from the list. "
+        "If it doesn't match any specific topic, reply as if the user has zero knowledge of it."
+    )
+    
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=router_prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0, # Temperatura a 0 per avere output deterministici
+            ),
+        )
+        topic = (response.text or "General").strip()
+        # Controllo di sicurezza: se l'LLM ha allucinato e generato testo extra, forziamo General
+        if topic not in unique_topics:
+            return "General"
+        return topic
+    except Exception as e:
+        print(f"Router error: {e}")
+        return "General"
+
+
 def call_gemini(
     api_key: str,
     model: str,
@@ -138,8 +167,8 @@ def call_gemini(
 
 def main():
     st.set_page_config(page_title="Gemini Assistant", page_icon="AI", layout="wide")
-    st.title("Gemini API - Simple Interface")
-    st.caption("Ask questions with a small context-aware assistant.")
+    st.title("Tutor AI - Context-Aware")
+    st.caption("Chiedimi spiegazioni. Ti suggerirò cosa ripassare in base ai tuoi voti!")
     model = "gemini-2.5-flash"
 
     ensure_state()
@@ -155,14 +184,14 @@ def main():
 
     api_key = get_api_key()
 
+    # 1. Carica il dataset completo all'avvio (ma non lo passa ancora all'LLM)
     try:
-        context_data = load_context_data(int(student_id))
-        context_text = context_data.to_string(index=False) if not context_data.empty else "No rows for this student."
+        full_context_data = load_context_data(int(student_id))
+        unique_topics = full_context_data['Topic'].unique().tolist() if not full_context_data.empty else []
     except Exception as exc:
-        context_text = f"Context unavailable: {exc}"
-
-    with st.expander("Preview context", expanded=False):
-        st.text(context_text)
+        full_context_data = pd.DataFrame()
+        unique_topics = []
+        st.error(f"Impossibile caricare i dati: {exc}")
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
@@ -183,12 +212,26 @@ def main():
             st.warning(warning)
         return
 
-    system_prompt = build_system_prompt(context_text)
-    history_text = build_history_text(st.session_state.messages[:-1])
-
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
+                # [NUOVO] STEP 1: L'LLM capisce l'argomento (Router)
+                detected_topic = extract_topic_from_query(api_key, model, user_prompt, unique_topics)
+                
+                # [NUOVO] STEP 2: Filtriamo il dataframe
+                if detected_topic != "General" and not full_context_data.empty:
+                    filtered_df = full_context_data[full_context_data['Topic'] == detected_topic]
+                    context_text = filtered_df.to_string(index=False)
+                    st.info(f"🔍 Argomento individuato: **{detected_topic}**. Trovate {len(filtered_df)} metriche.")
+                else:
+                    context_text = "Nessuna metrica specifica trovata o domanda troppo generica."
+                    st.info("🔍 Argomento generico. Rispondo usando la conoscenza di base.")
+
+                # Costruiamo il prompt solo con i dati filtrati
+                system_prompt = build_system_prompt(context_text)
+                history_text = build_history_text(st.session_state.messages[:-1])
+
+                # [NUOVO] STEP 3: Generiamo la risposta con le suggestion personalizzate
                 reply = call_gemini(
                     api_key,
                     model,
@@ -204,7 +247,7 @@ def main():
 
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
-
+            
 
 if __name__ == "__main__":
     main()
