@@ -6,8 +6,30 @@ import streamlit as st
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
+
+def log_token_usage(step_name: str, usage_metadata):
+    """Save token usage data to a CSV file for later analysis."""
+    if not usage_metadata:
+        return
+        
+    log_file = "token_usage_log.csv"
+    
+    # Prepariamo la riga con i dati
+    new_data = pd.DataFrame([{
+        "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Step": step_name,
+        "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
+        "Output Tokens (Risposta)": usage_metadata.candidates_token_count,
+        "Total Tokens": usage_metadata.total_token_count
+    }])
+    
+    if not os.path.exists(log_file):
+        new_data.to_csv(log_file, index=False)
+    else:
+        new_data.to_csv(log_file, mode='a', header=False, index=False)
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
@@ -88,6 +110,9 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         
+        # Log token usage
+        log_token_usage("Router (Topic Extraction)", response.usage_metadata)
+        
         # Parse the guaranteed JSON array
         extracted_topics = json.loads(response.text)
         
@@ -122,6 +147,9 @@ def call_gemini(
             tools=[types.Tool(google_search=types.GoogleSearch())],
         ),
     )
+    
+    log_token_usage("Generator (Main RAG)", response.usage_metadata)
+    
     return (response.text or "").strip()
 
 def main():
