@@ -11,6 +11,7 @@ from datetime import datetime
 load_dotenv()
 
 DEFAULT_MODEL = "gemini-2.5-flash-lite"
+#DEFAULT_MODEL = "gemini-2.5-flash"
 
 def log_token_usage(step_name: str, usage_metadata):
     """Save token usage data to a CSV file for later analysis."""
@@ -254,7 +255,7 @@ def main():
                 # 2. Aggiorna immediatamente la memoria per il prossimo turno!
                 if target_topics and not full_df.empty:
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
-                    
+
                     # Selezioniamo solo 3 colonne, ignorando 'Topic' e i punteggi numerici grezzi
                     df_slim = filtered_df[['Subtopic', 'knowledge_label', 'lapse_label']]
                     context_text = df_slim.to_csv(index=False)
