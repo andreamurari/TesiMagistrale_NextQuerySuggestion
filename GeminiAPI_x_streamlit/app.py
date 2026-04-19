@@ -31,6 +31,48 @@ def log_token_usage(step_name: str, usage_metadata):
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
+def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tutor_reply: str) -> dict:
+    """An LLM judge that evaluates the consultant's response."""
+    
+    client = genai.Client(api_key=api_key)
+    
+    judge_prompt = f"""
+    You are an LLM judge that evaluates the consultant's response.
+    
+    Interaction data:
+    - User's question: "{question}"
+    - Topics identified by the Router: {target_topics}
+    - Consultant's response: "{tutor_reply}"
+    
+    EVALUATION CRITERIA:
+    1. Router Accuracy: Did the consultant use the correct topic information?
+    2. Proactivity: Did the consultant provide 2-3 follow-up suggestions as requested?
+    3. Tone: Is the tone encouraging and teacher-like?
+    
+    Evaluate the response by assigning a score from 1 to 10 for each criterion.
+    """
+    
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=judge_prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.0,
+            response_mime_type="application/json",
+            response_schema={
+                "type": "OBJECT",
+                "properties": {
+                    "router_score": {"type": "INTEGER"},
+                    "proactivity_score": {"type": "INTEGER"},
+                    "tone_score": {"type": "INTEGER"},
+                    "feedback_notes": {"type": "STRING"}
+                },
+                "required": ["router_score", "proactivity_score", "tone_score", "feedback_notes"]
+            }
+        )
+    )
+    
+    return json.loads(response.text)
+
 def build_system_prompt(context_data: str) -> str:
     return f"""
 You are an expert consultant and advisor for every task of the user.
