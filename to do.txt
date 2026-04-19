@@ -36,10 +36,10 @@
 	
 	⚠️	 12 - Decidere come valutare le performance del modello -> Provalo tu
 	
-	⚠️	 13 - Ha senso proiettare la tabella context in uno spazio di embedding per sommarizzare gli argomenti? -> si usa RAG
+	✅	 13 - Ha senso proiettare la tabella context in uno spazio di embedding per sommarizzare gli argomenti? -> si ma per dati tabellari uso stucture RAG al posto di embeddare.
 
 	✅	14 - Crea dataset sintetico	
 
-	⚠️   15 - Strutturare prompt spiegando semantica
+	✅   15 - Strutturare prompt spiegando semantica -> non è necessario in quanto i valori di lapse e knowledge sono ora descrittivi
 
 	⚠️ 	 16 - Ottimizzare token
