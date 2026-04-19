@@ -107,7 +107,7 @@ def ensure_state():
 def get_api_key() -> str:
     return os.getenv("GEMINI_API_KEY", "")
 
-def build_history_text(messages, max_turns: int = 8) -> str:
+def build_history_text(messages, max_turns: int = 2) -> str:
     if not messages:
         return ""
     selected = messages[-(max_turns * 2) :]
@@ -160,10 +160,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         
-        # --- CRITICAL FIX: THE MISSING LOGGING LINE ---
-        # Make sure the 'log_token_usage' function is accessible in this file!
-        log_token_usage("Router (Topic Extraction)", response.usage_metadata)
-        # ----------------------------------------------
+        # log_token_usage("Router (Topic Extraction)", response.usage_metadata)
         
         extracted_topics = json.loads(response.text)
         valid_topics = [t for t in extracted_topics if t in unique_topics]
@@ -255,10 +252,12 @@ def main():
                 )
                 
                 # 2. Aggiorna immediatamente la memoria per il prossimo turno!
-                if target_topics:
-                    st.session_state.active_topics = target_topics
+                if target_topics and not full_df.empty:
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
-                    context_text = filtered_df.to_string(index=False)
+                    
+                    # Selezioniamo solo 3 colonne, ignorando 'Topic' e i punteggi numerici grezzi
+                    df_slim = filtered_df[['Subtopic', 'knowledge_label', 'lapse_label']]
+                    context_text = df_slim.to_csv(index=False)
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
                 else:
                     context_text = ""
