@@ -1,0 +1,10 @@
+Timestamp,Step,Input Tokens (Prompt),Output Tokens (Risposta),Total Tokens
+2026-04-19 16:44:36,Router (Topic Extraction),668,14,682
+2026-04-19 16:44:39,Generator (Main RAG),486,205,691
+2026-04-19 16:46:11,Router (Topic Extraction),661,25,686
+2026-04-19 16:46:14,Generator (Main RAG),1240,100,1340
+2026-04-19 17:03:17,Generator (Main RAG),455,268,723
+2026-04-19 17:03:52,Generator (Main RAG),733,109,842
+2026-04-19 17:04:19,Generator (Main RAG),851,442,2182
+2026-04-19 17:05:25,Generator (Main RAG),1269,606,3183
+2026-04-19 17:05:53,Generator (Main RAG),1844,427,4145

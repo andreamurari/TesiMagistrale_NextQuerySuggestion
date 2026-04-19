@@ -35,7 +35,7 @@ def get_token_usage_for_query(log_file: str, query_start_row: int) -> dict:
 load_dotenv()
 
 API_KEY = os.getenv("GEMINI_API_KEY")
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-2.5-flash-lite"
 
 def run_automated_test():
     # 1. Define the Test Dataset (Strategic queries)

@@ -10,6 +10,8 @@ from datetime import datetime
 
 load_dotenv()
 
+DEFAULT_MODEL = "gemini-2.5-flash-lite"
+
 def log_token_usage(step_name: str, usage_metadata):
     """Save token usage data to a CSV file for later analysis."""
     if not usage_metadata:
@@ -53,7 +55,7 @@ def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tu
     """
     
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model=DEFAULT_MODEL,
         contents=judge_prompt,
         config=types.GenerateContentConfig(
             temperature=0.0,
@@ -95,6 +97,8 @@ Response style:
 def ensure_state():
     if "messages" not in st.session_state:
         st.session_state.messages = []
+    if "active_topics" not in st.session_state:
+        st.session_state.active_topics = []
 
 def get_api_key() -> str:
     return os.getenv("GEMINI_API_KEY", "")
@@ -118,23 +122,27 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     
     return result
 
-def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list) -> list:
+def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list, active_topics: list) -> list:
     """
-    Multi-label router that returns an array of the most relevant topics.
-    Uses Structured Outputs to guarantee a JSON array response.
+    Multi-label router with State Tracking.
     """
     if not unique_topics:
         return []
         
     client = genai.Client(api_key=api_key)
-    topics_str = ", ".join(unique_topics)
+    topics_str = ",".join(unique_topics)
+    
+    # Handle the first turn where active_topics might be empty
+    active_str = ",".join(active_topics) if active_topics else "None"
     
     router_prompt = (
-        f"User query: '{user_prompt}'\n\n"
-        f"Available topics: [{topics_str}]\n\n"
-        "Analyze the user query. Identify all relevant topics from the list. "
-        "If the query is a broad category (like 'math', 'cooking', or 'art'), select 3 to 5 of the most appropriate foundational sub-disciplines from the available topics. "
-        "Return ONLY an array of exact string matches from the provided list. Do not invent topics."
+        f"Previous Active Topics: [{active_str}]\n\n"
+        f"Current User Query: '{user_prompt}'\n\n"
+        f"Available Topics: [{topics_str}]\n\n"
+        "Task: Analyze the user query.\n"
+        "1. If the query is ambiguous (e.g., 'give me an exercise', 'tell me more', 'let's continue') and implicitly refers to the ongoing conversation, output the 'Previous Active Topics'.\n"
+        "2. If the query introduces a explicitly NEW subject (e.g., 'let's talk about History now'), ignore the previous topics and select the new relevant topics from the 'Available Topics'.\n"
+        "Return ONLY a JSON array of exact string matches."
     )
     
     try:
@@ -144,28 +152,23 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             config=types.GenerateContentConfig(
                 temperature=0.0,
                 response_mime_type="application/json",
-                # Enforce JSON array of strings output
-                response_schema={
-                    "type": "ARRAY", 
-                    "items": {"type": "STRING"}
-                },
+                response_schema={"type": "ARRAY", "items": {"type": "STRING"}},
             ),
         )
         
-        # Log token usage
+        # --- CRITICAL FIX: THE MISSING LOGGING LINE ---
+        # Make sure the 'log_token_usage' function is accessible in this file!
         log_token_usage("Router (Topic Extraction)", response.usage_metadata)
+        # ----------------------------------------------
         
-        # Parse the guaranteed JSON array
         extracted_topics = json.loads(response.text)
-        
-        # Security/Sanity check: keep only valid topics
         valid_topics = [t for t in extracted_topics if t in unique_topics]
         return valid_topics
         
     except Exception as e:
         print(f"Routing error: {e}")
         return []
-
+        
 def call_gemini(
     api_key: str,
     model: str,
@@ -197,7 +200,7 @@ def call_gemini(
 def main():
     st.set_page_config(page_title="Context-Aware Consultant", layout="wide")
     st.title("Intelligent RAG Consultant")
-    model = "gemini-2.5-flash"
+    model = DEFAULT_MODEL
 
     ensure_state()
 
@@ -238,11 +241,18 @@ def main():
     with st.chat_message("assistant"):
         with st.spinner("Analyzing intent..."):
             try:
-                # 1. Multi-label routing
-                target_topics = extract_relevant_topics(api_key, model, user_prompt, unique_topics)
+                # 1. Chiama il router passando i Topic attivi della sessione precedente
+                target_topics = extract_relevant_topics(
+                    api_key, 
+                    model, 
+                    user_prompt, 
+                    unique_topics, 
+                    st.session_state.active_topics
+                )
                 
-                # 2. DataFrame filtering using .isin() for multiple topics
-                if target_topics and not full_df.empty:
+                # 2. Aggiorna immediatamente la memoria per il prossimo turno!
+                if target_topics:
+                    st.session_state.active_topics = target_topics
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
                     context_text = filtered_df.to_string(index=False)
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
