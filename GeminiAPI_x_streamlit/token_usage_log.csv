@@ -39,3 +39,4 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Risposta),Total Tokens
 2026-04-20 15:10:30,Router (Topic Extraction),926,3,1074
 2026-04-20 15:10:36,Generator (Main RAG),421,82,708
 2026-04-20 15:11:22,Router (Topic Extraction),915,3,1014
+2026-04-20 16:01:38,Generator (NAIVE RAG - Full DB),22681,102,22783

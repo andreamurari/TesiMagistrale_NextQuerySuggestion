@@ -152,7 +152,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             "4. TOPIC SWITCH: If the query explicitly introduces a NEW specific subject, ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
             "Return ONLY a JSON array of strings."
         )
-        
+
     try:
         response = client.models.generate_content(
             model=model,
