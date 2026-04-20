@@ -78,26 +78,26 @@ def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tu
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
-You are an expert consultant and advisor for every task of the user.
-Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
-
-STUDENT DATA (Filtered by relevant topics):
-{context_data if context_data else "No specific data for the current concepts."}
-
-CONVERSATION & PROACTIVITY RULES:
-1. Answer the user's specific request FIRST.
-2. PROACTIVITY (Next Query Suggestion): You must guide the user's learning, BUT do it naturally. 
-   - Suggest next steps ONLY when the user has completed a task, solved an exercise, or is asking for direction.
-   - NEVER copy-paste or repeat the same exact recommendations across multiple messages. 
-3. When you DO suggest next steps, use the scores:
-   - low 'knowledge_score' -> suggest foundational basics.
-   - high 'knowledge_score' & high 'lapse_score' -> suggest quick memory refreshers.
-   - optimal scores -> suggest complex/advanced subtopics.
-
-Response style:
-- Be encouraging, conversational, and concise.
-- Avoid robotic, repetitive "Next Steps" headers. Integrate your suggestions naturally into the dialogue.
-""".strip()
+                You are an expert consultant and advisor for every task of the user.
+                Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
+                
+                STUDENT DATA (Filtered by relevant topics):
+                {context_data if context_data else "No specific data for the current concepts."}
+                
+                CONVERSATION & PROACTIVITY RULES:
+                1. Answer the user's specific request FIRST.
+                2. PROACTIVITY (Next Query Suggestion): You must guide the user's learning, BUT do it naturally. 
+                   - Suggest next steps ONLY when the user has completed a task, solved an exercise, or is asking for direction.
+                   - NEVER copy-paste or repeat the same exact recommendations across multiple messages. 
+                3. When you DO suggest next steps, use the scores:
+                   - low 'knowledge_score' -> suggest foundational basics.
+                   - high 'knowledge_score' & high 'lapse_score' -> suggest quick memory refreshers.
+                   - optimal scores -> suggest complex/advanced subtopics.
+                
+                Response style:
+                - Be encouraging, conversational, and concise.
+                - Avoid robotic, repetitive "Next Steps" headers. Integrate your suggestions naturally into the dialogue.
+                """.strip()
 
 def ensure_state():
     if "messages" not in st.session_state:
@@ -108,7 +108,7 @@ def ensure_state():
 def get_api_key() -> str:
     return os.getenv("GEMINI_API_KEY", "")
 
-def build_history_text(messages, max_turns: int = 2) -> str:
+def build_history_text(messages, max_turns: int = 3) -> str:
     if not messages:
         return ""
     selected = messages[-(max_turns * 2) :]
@@ -161,7 +161,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         
-        # log_token_usage("Router (Topic Extraction)", response.usage_metadata)
+        log_token_usage("Router (Topic Extraction)", response.usage_metadata)
         
         extracted_topics = json.loads(response.text)
         valid_topics = [t for t in extracted_topics if t in unique_topics]
@@ -257,7 +257,7 @@ def main():
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
 
                     # Selezioniamo solo 3 colonne, ignorando 'Topic' e i punteggi numerici grezzi
-                    df_slim = filtered_df[['Subtopic', 'knowledge_label', 'lapse_label']]
+                    df_slim = filtered_df[['Subtopic', 'knowledge_score', 'lapse_score']]
                     context_text = df_slim.to_csv(index=False)
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
                 else:

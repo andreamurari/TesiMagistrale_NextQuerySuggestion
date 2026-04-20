@@ -42,7 +42,7 @@
 
 	✅   15 - Strutturare prompt spiegando semantica -> non è necessario in quanto i valori di lapse e knowledge sono ora descrittivi
 
-	⚠️ 	 16 - Ottimizzare token
+	✅ 	 16 - Ottimizzare token
 
 	
 	
