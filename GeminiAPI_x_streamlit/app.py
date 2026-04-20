@@ -141,17 +141,18 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
     active_str = ",".join(active_topics) if active_topics else "None"
     
     router_prompt = (
-        f"Previous Active Topics: [{active_str}]\n\n"
-        f"Current User Query: '{user_prompt}'\n\n"
-        f"Available Topics: [{topics_str}]\n\n"
-        "Task: Analyze the user query IN CONTEXT of the Previous Active Topics.\n"
-        "Apply these STRICT rules to output ONLY a JSON array of exact string matches from Available Topics:\n"
-        "1. IMPLICIT CONTINUATION: If the query is ambiguous ('give me an exercise', 'tell me more') OR answers a question the AI just asked (e.g., 'the first one', 'an introduction'), output the 'Previous Active Topics'.\n"
-        "2. META-QUERIES: If the user asks about their grades, status, or situation (e.g., 'how am I doing?', 'what is my situation?'), DO NOT invent topics. Output the 'Previous Active Topics' so the system can evaluate their data in the current context.\n"
-        "3. TOPIC SWITCH: If the query explicitly introduces a NEW subject (e.g., 'let's talk about Biology now'), ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
-        "Return ONLY a JSON array of strings."
-    )
-    
+            f"Previous Active Topics: [{active_str}]\n\n"
+            f"Current User Query: '{user_prompt}'\n\n"
+            f"Available Topics: [{topics_str}]\n\n"
+            "Task: Analyze the user query IN CONTEXT of the Previous Active Topics.\n"
+            "Apply these STRICT rules to output ONLY a JSON array of exact string matches from Available Topics:\n"
+            "1. IMPLICIT CONTINUATION: If the query is ambiguous ('give me an exercise', 'tell me more') OR answers a question the AI just asked, output the 'Previous Active Topics'.\n"
+            "2. META-QUERIES: If the user asks about their grades, status, progress, or situation (e.g., 'how am I doing?', 'what is my situation?'), DO NOT invent topics. Output the 'Previous Active Topics' so the system can evaluate their data.\n"
+            "3. FUZZY MAPPING (BROAD CATEGORIES & EVERYDAY TERMS): If the user mentions a general interest, a broad domain, or a casual topic (e.g., 'math', 'fitness', 'the future', 'art', 'cooking', 'business') WITHOUT specifying the exact subtopic, intelligently select 2 to 4 of the closest matching foundational topics from the 'Available Topics' list (e.g., map 'fitness' to 'Sport and Human Performance', or 'the future' to 'Futurology and Tomorrow's Scenarios').\n"
+            "4. TOPIC SWITCH: If the query explicitly introduces a NEW specific subject, ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
+            "Return ONLY a JSON array of strings."
+        )
+        
     try:
         response = client.models.generate_content(
             model=model,
