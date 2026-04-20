@@ -10,8 +10,8 @@ from datetime import datetime
 
 load_dotenv()
 
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
-#DEFAULT_MODEL = "gemini-2.5-flash"
+#DEFAULT_MODEL = "gemini-2.5-flash-lite"
+DEFAULT_MODEL = "gemini-2.5-flash"
 
 def log_token_usage(step_name: str, usage_metadata):
     """Save token usage data to a CSV file for later analysis."""
@@ -144,10 +144,12 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
         f"Previous Active Topics: [{active_str}]\n\n"
         f"Current User Query: '{user_prompt}'\n\n"
         f"Available Topics: [{topics_str}]\n\n"
-        "Task: Analyze the user query.\n"
-        "1. If the query is ambiguous (e.g., 'give me an exercise', 'tell me more', 'let's continue') and implicitly refers to the ongoing conversation, output the 'Previous Active Topics'.\n"
-        "2. If the query introduces a explicitly NEW subject (e.g., 'let's talk about History now'), ignore the previous topics and select the new relevant topics from the 'Available Topics'.\n"
-        "Return ONLY a JSON array of exact string matches."
+        "Task: Analyze the user query IN CONTEXT of the Previous Active Topics.\n"
+        "Apply these STRICT rules to output ONLY a JSON array of exact string matches from Available Topics:\n"
+        "1. IMPLICIT CONTINUATION: If the query is ambiguous ('give me an exercise', 'tell me more') OR answers a question the AI just asked (e.g., 'the first one', 'an introduction'), output the 'Previous Active Topics'.\n"
+        "2. META-QUERIES: If the user asks about their grades, status, or situation (e.g., 'how am I doing?', 'what is my situation?'), DO NOT invent topics. Output the 'Previous Active Topics' so the system can evaluate their data in the current context.\n"
+        "3. TOPIC SWITCH: If the query explicitly introduces a NEW subject (e.g., 'let's talk about Biology now'), ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
+        "Return ONLY a JSON array of strings."
     )
     
     try:
@@ -204,6 +206,7 @@ def main():
     st.title("Intelligent RAG Consultant")
     model = DEFAULT_MODEL
 
+    # Assicurati che ensure_state() inizializzi sia 'messages' che 'active_topics'
     ensure_state()
 
     with st.sidebar:
@@ -212,10 +215,12 @@ def main():
         temperature = st.slider("Temperature", 0.0, 1.0, 0.4, 0.1)
         if st.button("Reset Chat"):
             st.session_state.messages = []
+            st.session_state.active_topics = [] # Resetta anche la memoria dei topic!
             st.rerun()
 
     api_key = get_api_key()
 
+    # Caricamento dati utente
     try:
         full_df = load_context_data(int(student_id))
         unique_topics = full_df['Topic'].unique().tolist() if not full_df.empty else []
@@ -224,10 +229,12 @@ def main():
         unique_topics = []
         st.error(f"Data loading failed: {e}")
 
+    # Renderizza la cronologia della chat
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
+    # Input dell'utente
     user_prompt = st.chat_input("Ask a question...")
     if not user_prompt:
         return
@@ -240,10 +247,11 @@ def main():
         st.error("API Key missing.")
         return
 
+    # Risposta dell'Assistente
     with st.chat_message("assistant"):
         with st.spinner("Analyzing intent..."):
             try:
-                # 1. Chiama il router passando i Topic attivi della sessione precedente
+                # 1. ROUTING: Chiama il router passando i Topic attivi della sessione precedente
                 target_topics = extract_relevant_topics(
                     api_key, 
                     model, 
@@ -252,22 +260,32 @@ def main():
                     st.session_state.active_topics
                 )
                 
-                # 2. Aggiorna immediatamente la memoria per il prossimo turno!
+                # 2. STATE TRACKING & TOKEN OPTIMIZATION
                 if target_topics and not full_df.empty:
+                    # SALVA IN MEMORIA: aggancia i nuovi topic per la prossima domanda
+                    st.session_state.active_topics = target_topics 
+                    
+                    # Filtra le righe del dataframe
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
 
-                    # Selezioniamo solo 3 colonne, ignorando 'Topic' e i punteggi numerici grezzi
+                    # OTTIMIZZAZIONE TOKEN: Elimina la colonna ridondante 'Topic' e usa il CSV
                     df_slim = filtered_df[['Subtopic', 'knowledge_score', 'lapse_score']]
                     context_text = df_slim.to_csv(index=False)
+                    
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
                 else:
+                    # SVUOTA LA MEMORIA: l'utente ha cambiato discorso senza un topic noto
+                    st.session_state.active_topics = [] 
                     context_text = ""
-                    st.info("🌐 No relevant topics found.")
+                    st.info("🌐 No relevant topics found. Using general knowledge.")
 
+                # Costruisce il prompt finale
                 system_prompt = build_system_prompt(context_text)
+                
+                # 3. SLIDING WINDOW: Passa solo l'ultimo scambio (max_turns=1) per evitare il memory leak dei token!
                 history_text = build_history_text(st.session_state.messages[:-1])
 
-                # 3. Generation
+                # 4. GENERATION: Chiama il modello principale
                 reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
