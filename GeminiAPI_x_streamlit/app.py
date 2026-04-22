@@ -76,27 +76,39 @@ def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tu
     
     return json.loads(response.text)
 
-def build_system_prompt(context_data: str) -> str:
+def build_system_prompt(context_data: str, verbosity: str = "concise") -> str:
+    
+    # Mappiamo il parametro in istruzioni rigide
+    length_rules = {
+        "short": "Keep your answer extremely brief. Maximum 2 sentences. Get straight to the point.",
+        "concise": "Provide a balanced, concise response. Use 1 or 2 short paragraphs. Bullet points are encouraged.",
+        "detailed": "Provide a comprehensive and detailed explanation. Break the response into multiple paragraphs with clear headings."
+    }
+    
+    selected_rule = length_rules.get(verbosity, length_rules["concise"])
+
     return f"""
                 You are an expert consultant and advisor for every task of the user.
-                Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
                 
-                STUDENT DATA (Filtered by relevant topics):
+                STUDENT DATA:
                 {context_data if context_data else "No specific data for the current concepts."}
+                
+                CONVERSATION RULES:
+                1. Answer the user's specific request FIRST.
+                2. PROACTIVITY: Suggest next steps ONLY when appropriate. NEVER repeat the exact same recommendations.
+                
+                LENGTH AND STYLE CONSTRAINT (CRITICAL):
+                - {selected_rule}
+                - Be encouraging and conversational.
                 
                 CONVERSATION & PROACTIVITY RULES:
                 1. Answer the user's specific request FIRST.
-                2. PROACTIVITY (Next Query Suggestion): You must guide the user's learning, BUT do it naturally. 
-                   - Suggest next steps ONLY when the user has completed a task, solved an exercise, or is asking for direction.
-                   - NEVER copy-paste or repeat the same exact recommendations across multiple messages. 
-                3. When you DO suggest next steps, use the scores:
-                   - low 'knowledge_score' -> suggest foundational basics.
-                   - high 'knowledge_score' & high 'lapse_score' -> suggest quick memory refreshers.
-                   - optimal scores -> suggest complex/advanced subtopics.
-                
-                Response style:
-                - Be encouraging, conversational, and concise.
-                - Avoid robotic, repetitive "Next Steps" headers. Integrate your suggestions naturally into the dialogue.
+                2. PROACTIVITY (Next Query Suggestion): Guide the user's learning naturally. NEVER copy-paste or repeat the exact same recommendations.
+                3. RECOMMENDATION MATRIX (Use the exact labels from the Student Data):
+                   - If 'Extremely low knowledge' or 'Low knowledge': Strongly suggest starting with foundational basics and core theory.
+                   - If 'Extremely lapsed' or 'Highly lapsed' (and knowledge is at least moderate): Suggest a quick memory refresher, a summary, or a warm-up exercise.
+                   - If 'High knowledge' or 'Extremely high knowledge' (and not heavily lapsed): Congratulate them and suggest advanced problems, edge cases, or complex applications.
+                   - If 'Not lapsed' or 'Slightly lapsed' (with low knowledge): Suggest focusing entirely on practice, since the theory is fresh but the skill is weak.
                 """.strip()
 
 def ensure_state():
