@@ -46,7 +46,7 @@
 
 	⚠️	 17 - Router si perde dopo un paio di iterazioni, forse potrebbe avere senso lasciarlo piu morbido ma farli fare una sola iterazioe al primo mesaggio
 
-	⚠️	 18 - E' vero che
+	⚠️	 18 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione certe su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
 
 
 	
