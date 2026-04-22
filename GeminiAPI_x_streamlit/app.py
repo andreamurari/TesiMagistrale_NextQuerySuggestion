@@ -25,7 +25,7 @@ def log_token_usage(step_name: str, usage_metadata):
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Step": step_name,
         "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
-        "Output Tokens (Risposta)": usage_metadata.candidates_token_count,
+        "Output Tokens (Answer)": usage_metadata.candidates_token_count,
         "Total Tokens": usage_metadata.total_token_count
     }])
     
