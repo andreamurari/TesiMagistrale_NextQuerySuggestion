@@ -46,6 +46,7 @@
 
 	⚠️	 17 - Router si perde dopo un paio di iterazioni, forse potrebbe avere senso lasciarlo piu morbido ma farli fare una sola iterazioe al primo mesaggio
 
+	⚠️	 18 - E' vero che
 
 
 	
@@ -57,5 +58,7 @@
 	Riprendere il concetto di entità familiare, non familiare e lapsed per il nqs (es. Ti interesserebbe approfondire questo concetto non familiare, rivedere questo concetto lapsato o spostarci su un concetto familiare?)
 
 	Vedi metodi statistici per sommarizzare i profili utente (MOOC).
+
+
 
 

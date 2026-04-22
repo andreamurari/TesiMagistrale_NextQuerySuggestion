@@ -56,3 +56,5 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Risposta),Total Tokens
 2026-04-22 11:17:41,Generator (NAIVE RAG - Full DB),22728,721,23449
 2026-04-22 11:18:05,Generator (NAIVE RAG - Full DB),23509,972,24481
 2026-04-22 11:18:32,Generator (NAIVE RAG - Full DB),23761,972,24733
+2026-04-22 11:40:31,Generator (NAIVE RAG - Full DB),22730,327,23057
+2026-04-22 11:43:44,Generator (NAIVE RAG - Full DB),23363,1526,24889
