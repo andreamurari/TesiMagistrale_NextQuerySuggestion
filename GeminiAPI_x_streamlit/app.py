@@ -9,9 +9,8 @@ from dotenv import load_dotenv
 from datetime import datetime
 
 load_dotenv()
-
-#DEFAULT_MODEL = "gemini-2.5-flash-lite"
-DEFAULT_MODEL = "gemini-2.5-flash"
+DEFAULT_MODEL = "gemini-2.5-flash-lite"
+#DEFAULT_MODEL = "gemini-2.5-flash"
 
 def ensure_state():
     if "messages" not in st.session_state:
@@ -206,69 +205,7 @@ def update_context_data(student_id: int, topic: str, subtopic: str, new_k_score:
         df.loc[mask, 'lapse_score'] = new_l_score
         
     df.to_csv(file_path, index=False)
-
-def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
-    """L'LLM-as-a-Judge che valuta l'apprendimento e aggiorna il CSV."""
-    if not context_text:
-        return # Non facciamo aggiornamenti se non stiamo parlando di un topic noto
-        
-    client = genai.Client(api_key=api_key)
-    
-    judge_prompt = f"""
-    You are an educational data analyst. Analyze this interaction and update the student's semantic scores based on their performance.
-
-    CURRENT DATA (Subtopics and scores):
-    {context_data}
-
-    User Query: "{user_query}"
-    Tutor Response: "{tutor_response}"
-
-    TASK:
-    1. Identify which 'Topic' and 'Subtopic' was discussed.
-    2. If the user successfully learned/answered, output a higher knowledge label and 'Not lapsed'.
-    3. If they struggled, lower knowledge and increase lapse.
-    
-    Valid Knowledge Labels: 'Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge'
-    Valid Lapse Labels: 'Not lapsed', 'Slightly lapsed', 'Moderately lapsed', 'Highly lapsed', 'Extremely lapsed'
-    """
-    
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash-lite", # Usiamo il modello ultra-veloce e leggero
-            contents=judge_prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.0,
-                response_mime_type="application/json",
-                response_schema={
-                    "type": "OBJECT",
-                    "properties": {
-                        "topic": {"type": "STRING"},
-                        "subtopic": {"type": "STRING"},
-                        "new_knowledge_score": {"type": "STRING"},
-                        "new_lapse_score": {"type": "STRING"},
-                        "reasoning": {"type": "STRING"}
-                    },
-                    "required": ["topic", "subtopic", "new_knowledge_score", "new_lapse_score"]
-                }
-            )
-        )
-        
-        # Registra i token anche del giudice
-        log_token_usage("Evaluator (Post-Interaction)", response.usage_metadata)
-        
-        result = json.loads(response.text)
-        update_context_data(
-            student_id=student_id,
-            topic=result["topic"],
-            subtopic=result["subtopic"],
-            new_k_score=result["new_knowledge_score"],
-            new_l_score=result["new_lapse_score"]
-        )
-        print(f"Update Success: {result.get('reasoning', 'Scores updated')}")
-        
-    except Exception as e:
-        print(f"Background evaluation failed: {e}")
-                
+               
 def call_gemini(
     api_key: str,
     model: str,
@@ -393,17 +330,6 @@ def main():
             # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
-            
-            # --- NUOVO: CLOSED-LOOP UPDATE ---
-            # Valuta e aggiorna il CSV in background senza bloccare la chat visiva
-            if context_text and "Error" not in reply:
-                evaluate_and_update_scores(
-                    api_key=api_key,
-                    student_id=int(student_id),
-                    context_text=context_text,
-                    user_query=user_prompt,
-                    tutor_response=reply
-                )
                 
 if __name__ == "__main__":
     main()

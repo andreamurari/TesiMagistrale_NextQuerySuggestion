@@ -58,3 +58,11 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens
 2026-04-22 11:18:32,Generator (NAIVE RAG - Full DB),23761,972,24733
 2026-04-22 11:40:31,Generator (NAIVE RAG - Full DB),22730,327,23057
 2026-04-22 11:43:44,Generator (NAIVE RAG - Full DB),23363,1526,24889
+2026-04-24 11:33:10,Router (Topic Extraction),926,5,933
+2026-04-24 11:33:15,Generator (Main RAG),389,318,707
+2026-04-24 11:36:27,Router (Topic Extraction),926,5,931
+2026-04-24 11:36:32,Generator (Main RAG),390,394,784
+2026-04-24 11:39:35,Router (Topic Extraction),921,5,928
+2026-04-24 11:39:40,Generator (Main RAG),791,385,1991
+2026-04-24 11:45:07,Generator (NAIVE RAG - Full DB),22682,58,22740
+2026-04-24 11:45:28,Generator (NAIVE RAG - Full DB),22747,337,45854
