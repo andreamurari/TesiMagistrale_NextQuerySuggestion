@@ -1,4 +1,4 @@
-Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens
+Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latency (s)
 2026-04-19 16:44:36,Router (Topic Extraction),668,14,682
 2026-04-19 16:44:39,Generator (Main RAG),486,205,691
 2026-04-19 16:46:11,Router (Topic Extraction),661,25,686
@@ -66,3 +66,10 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens
 2026-04-24 11:39:40,Generator (Main RAG),791,385,1991
 2026-04-24 11:45:07,Generator (NAIVE RAG - Full DB),22682,58,22740
 2026-04-24 11:45:28,Generator (NAIVE RAG - Full DB),22747,337,45854
+2026-04-24 11:56:52,Router (Topic Extraction),926,5,931
+2026-04-24 11:57:55,Router (Topic Extraction),927,5,934,1.07
+2026-04-24 11:58:01,Generator (Main RAG),391,404,795,2.67
+2026-04-24 12:10:01,Router (Topic Extraction),927,5,934,1.81
+2026-04-24 12:13:41,Generator (NAIVE RAG - Full DB),22682,219,23424,
+2026-04-24 12:22:44,Generator (NAIVE RAG - Full DB),22682,238,23466,5.28
+2026-04-24 12:24:44,Generator (NAIVE RAG - Full DB),22681,196,23713,12.08

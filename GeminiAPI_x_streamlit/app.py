@@ -6,6 +6,7 @@ import streamlit as st
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+import time
 from datetime import datetime
 
 load_dotenv()
@@ -96,6 +97,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
         )
 
     try:
+        start_time = time.time()
         response = client.models.generate_content(
             model=model,
             contents=router_prompt,
@@ -106,7 +108,9 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         
-        log_token_usage("Router (Topic Extraction)", response.usage_metadata)
+        end_time = time.time()
+        latency = end_time - start_time
+        log_token_usage("Router (Topic Extraction)", response.usage_metadata, latency)
         
         extracted_topics = json.loads(response.text)
         valid_topics = [t for t in extracted_topics if t in unique_topics]
@@ -116,27 +120,27 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
         print(f"Routing error: {e}")
         return []
 
-def log_token_usage(step_name: str, usage_metadata):
-    """Save token usage data to a CSV file for later analysis."""
+def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0):
+    """Save token usage and latency data to a CSV file."""
     if not usage_metadata:
         return
         
     log_file = "token_usage_log.csv"
     
-    # Prepariamo la riga con i dati
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Step": step_name,
         "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
         "Output Tokens (Answer)": usage_metadata.candidates_token_count,
-        "Total Tokens": usage_metadata.total_token_count
+        "Total Tokens": usage_metadata.total_token_count,
+        "Latency (s)": round(latency_seconds, 2)
     }])
     
     if not os.path.exists(log_file):
         new_data.to_csv(log_file, index=False)
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
-
+        
 def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tutor_reply: str) -> dict:
     """An LLM judge that evaluates the consultant's response."""
     
@@ -221,19 +225,26 @@ def call_gemini(
         f"Conversation history:\n{history_text if history_text else 'No previous messages.'}\n\n"
         f"User question:\n{user_prompt}"
     )
-    response = client.models.generate_content(
-        model=model,
-        contents=full_prompt,
-        config=types.GenerateContentConfig(
-            temperature=temperature,
-            tools=[types.Tool(google_search=types.GoogleSearch())],
-        ),
-    )
     
-    log_token_usage("Generator (Main RAG)", response.usage_metadata)
-    
-    return (response.text or "").strip()
-
+    try:
+        start_time = time.time()
+        response = client.models.generate_content(
+            model=model,
+            contents=full_prompt,
+            config=types.GenerateContentConfig(
+                temperature=temperature,
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+            ),
+        )
+        
+        end_time = time.time()
+        latency = end_time - start_time
+        log_token_usage("Generator (Main RAG)", response.usage_metadata, latency)
+        
+        return (response.text or "").strip()
+    except Exception as e:
+        print(f"Generation error: {e}")
+        
 def main():
     st.set_page_config(page_title="Context-Aware Consultant", layout="wide")
     st.title("Intelligent RAG Consultant")

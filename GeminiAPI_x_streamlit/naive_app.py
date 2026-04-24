@@ -5,13 +5,15 @@ from google import genai
 from google.genai import types
 from dotenv import load_dotenv
 from datetime import datetime
+import time
 
 load_dotenv()
 
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
+#DEFAULT_MODEL = "gemini-2.5-flash-lite"
+DEFAULT_MODEL = "gemini-2.5-flash"
 
-def log_token_usage(step_name: str, usage_metadata):
-    """Save token usage data to a CSV file for later analysis."""
+def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0):
+    """Save token usage and latency data to a CSV file."""
     if not usage_metadata:
         return
         
@@ -22,7 +24,8 @@ def log_token_usage(step_name: str, usage_metadata):
         "Step": step_name,
         "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
         "Output Tokens (Answer)": usage_metadata.candidates_token_count,
-        "Total Tokens": usage_metadata.total_token_count
+        "Total Tokens": usage_metadata.total_token_count,
+        "Latency (s)": round(latency_seconds, 2) # Nuova colonna arrotondata a 2 decimali
     }])
     
     if not os.path.exists(log_file):
@@ -91,6 +94,9 @@ def call_gemini(
         f"Conversation history:\n{history_text if history_text else 'No previous messages.'}\n\n"
         f"User question:\n{user_prompt}"
     )
+
+    start_time = time.time()
+        
     response = client.models.generate_content(
         model=model,
         contents=full_prompt,
@@ -100,8 +106,9 @@ def call_gemini(
         ),
     )
     
+    latency = time.time() - start_time
     # We rename the step to easily distinguish it in the Excel log
-    log_token_usage("Generator (NAIVE RAG - Full DB)", response.usage_metadata)
+    log_token_usage("Generator (NAIVE RAG - Full DB)", response.usage_metadata, latency)
     
     return (response.text or "").strip()
 
