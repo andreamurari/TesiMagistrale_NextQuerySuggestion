@@ -13,104 +13,6 @@ load_dotenv()
 #DEFAULT_MODEL = "gemini-2.5-flash-lite"
 DEFAULT_MODEL = "gemini-2.5-flash"
 
-def log_token_usage(step_name: str, usage_metadata):
-    """Save token usage data to a CSV file for later analysis."""
-    if not usage_metadata:
-        return
-        
-    log_file = "token_usage_log.csv"
-    
-    # Prepariamo la riga con i dati
-    new_data = pd.DataFrame([{
-        "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Step": step_name,
-        "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
-        "Output Tokens (Answer)": usage_metadata.candidates_token_count,
-        "Total Tokens": usage_metadata.total_token_count
-    }])
-    
-    if not os.path.exists(log_file):
-        new_data.to_csv(log_file, index=False)
-    else:
-        new_data.to_csv(log_file, mode='a', header=False, index=False)
-
-def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tutor_reply: str) -> dict:
-    """An LLM judge that evaluates the consultant's response."""
-    
-    client = genai.Client(api_key=api_key)
-    
-    judge_prompt = f"""
-    You are an LLM judge that evaluates the consultant's response.
-    
-    Interaction data:
-    - User's question: "{question}"
-    - Topics identified by the Router: {target_topics}
-    - Consultant's response: "{tutor_reply}"
-    
-    EVALUATION CRITERIA:
-    1. Router Accuracy: Did the consultant use the correct topic information?
-    2. Proactivity: Did the consultant provide 2-3 follow-up suggestions as requested?
-    3. Tone: Is the tone encouraging and teacher-like?
-    
-    Evaluate the response by assigning a score from 1 to 10 for each criterion.
-    """
-    
-    response = client.models.generate_content(
-        model=DEFAULT_MODEL,
-        contents=judge_prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.0,
-            response_mime_type="application/json",
-            response_schema={
-                "type": "OBJECT",
-                "properties": {
-                    "router_score": {"type": "INTEGER"},
-                    "proactivity_score": {"type": "INTEGER"},
-                    "tone_score": {"type": "INTEGER"},
-                    "feedback_notes": {"type": "STRING"}
-                },
-                "required": ["router_score", "proactivity_score", "tone_score", "feedback_notes"]
-            }
-        )
-    )
-    
-    return json.loads(response.text)
-
-def build_system_prompt(context_data: str, verbosity: str = "concise") -> str:
-    
-    # Mappiamo il parametro in istruzioni rigide
-    length_rules = {
-        "short": "Keep your answer extremely brief. Maximum 2 sentences. Get straight to the point.",
-        "concise": "Provide a balanced, concise response. Use 1 or 2 short paragraphs. Bullet points are encouraged.",
-        "detailed": "Provide a comprehensive and detailed explanation. Break the response into multiple paragraphs with clear headings."
-    }
-    
-    selected_rule = length_rules.get(verbosity, length_rules["concise"])
-
-    return f"""
-                You are an expert consultant and advisor for every task of the user.
-                
-                STUDENT DATA:
-                {context_data if context_data else "No specific data for the current concepts."}
-                
-                CONVERSATION RULES:
-                1. Answer the user's specific request FIRST.
-                2. PROACTIVITY: Suggest next steps ONLY when appropriate. NEVER repeat the exact same recommendations.
-                
-                LENGTH AND STYLE CONSTRAINT (CRITICAL):
-                - {selected_rule}
-                - Be encouraging and conversational.
-                
-                CONVERSATION & PROACTIVITY RULES:
-                1. Answer the user's specific request FIRST.
-                2. PROACTIVITY (Next Query Suggestion): Guide the user's learning naturally. NEVER copy-paste or repeat the exact same recommendations.
-                3. RECOMMENDATION MATRIX (Use the exact labels from the Student Data):
-                   - If 'Extremely low knowledge' or 'Low knowledge': Strongly suggest starting with foundational basics and core theory.
-                   - If 'Extremely lapsed' or 'Highly lapsed' (and knowledge is at least moderate): Suggest a quick memory refresher, a summary, or a warm-up exercise.
-                   - If 'High knowledge' or 'Extremely high knowledge' (and not heavily lapsed): Congratulate them and suggest advanced problems, edge cases, or complex applications.
-                   - If 'Not lapsed' or 'Slightly lapsed' (with low knowledge): Suggest focusing entirely on practice, since the theory is fresh but the skill is weak.
-                """.strip()
-
 def ensure_state():
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -119,6 +21,35 @@ def ensure_state():
 
 def get_api_key() -> str:
     return os.getenv("GEMINI_API_KEY", "")
+
+def build_system_prompt(context_data: str, verbosity: str = "concise") -> str:
+    length_rules = {
+        "short": "Keep your answer extremely brief. Maximum 2 sentences.",
+        "concise": "Provide a balanced, concise response. Use short paragraphs and bullets.",
+        "detailed": "Provide a comprehensive explanation with multiple paragraphs and headers."
+    }
+    
+    selected_rule = length_rules.get(verbosity, length_rules["concise"])
+
+    return f"""
+You are an expert consultant and advisor.
+                
+STUDENT DATA:
+{context_data if context_data else "No specific data for the current concepts."}
+                
+LENGTH AND STYLE CONSTRAINT:
+- {selected_rule}
+- Be encouraging, conversational, and avoid robotic headers like "Next Steps".
+
+CONVERSATION & PROACTIVITY RULES:
+1. Answer the user's specific request FIRST.
+2. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
+3. RECOMMENDATION MATRIX:
+   - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
+   - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
+   - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
+   - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
+""".strip()
 
 def build_history_text(messages, max_turns: int = 3) -> str:
     if not messages:
@@ -185,7 +116,159 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
     except Exception as e:
         print(f"Routing error: {e}")
         return []
+
+def log_token_usage(step_name: str, usage_metadata):
+    """Save token usage data to a CSV file for later analysis."""
+    if not usage_metadata:
+        return
         
+    log_file = "token_usage_log.csv"
+    
+    # Prepariamo la riga con i dati
+    new_data = pd.DataFrame([{
+        "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Step": step_name,
+        "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
+        "Output Tokens (Answer)": usage_metadata.candidates_token_count,
+        "Total Tokens": usage_metadata.total_token_count
+    }])
+    
+    if not os.path.exists(log_file):
+        new_data.to_csv(log_file, index=False)
+    else:
+        new_data.to_csv(log_file, mode='a', header=False, index=False)
+
+def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tutor_reply: str) -> dict:
+    """An LLM judge that evaluates the consultant's response."""
+    
+    client = genai.Client(api_key=api_key)
+    
+    judge_prompt = f"""
+    You are an LLM judge that evaluates the consultant's response.
+    
+    Interaction data:
+    - User's question: "{question}"
+    - Topics identified by the Router: {target_topics}
+    - Consultant's response: "{tutor_reply}"
+    
+    EVALUATION CRITERIA:
+    1. Router Accuracy: Did the consultant use the correct topic information?
+    2. Proactivity: Did the consultant provide 2-3 follow-up suggestions as requested?
+    3. Tone: Is the tone encouraging and teacher-like?
+    
+    Evaluate the response by assigning a score from 1 to 10 for each criterion.
+    """
+    
+    response = client.models.generate_content(
+        model=DEFAULT_MODEL,
+        contents=judge_prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.0,
+            response_mime_type="application/json",
+            response_schema={
+                "type": "OBJECT",
+                "properties": {
+                    "router_score": {"type": "INTEGER"},
+                    "proactivity_score": {"type": "INTEGER"},
+                    "tone_score": {"type": "INTEGER"},
+                    "feedback_notes": {"type": "STRING"}
+                },
+                "required": ["router_score", "proactivity_score", "tone_score", "feedback_notes"]
+            }
+        )
+    )
+    
+    return json.loads(response.text)
+
+def update_context_data(student_id: int, topic: str, subtopic: str, new_k_score: str, new_l_score: str, file_path: str = "context_data.csv"):
+    """Aggiorna il file CSV con le nuove etichette di punteggio."""
+    if not os.path.exists(file_path):
+        return
+        
+    df = pd.read_csv(file_path)
+    
+    # Cerca la riga esatta
+    mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
+    
+    if df[mask].empty:
+        # Se non esiste, crea una nuova riga
+        new_row = pd.DataFrame([{
+            'student_id': student_id,
+            'Topic': topic,
+            'Subtopic': subtopic,
+            'knowledge_score': new_k_score,
+            'lapse_score': new_l_score
+        }])
+        df = pd.concat([df, new_row], ignore_index=True)
+    else:
+        # Aggiorna i valori esistenti
+        df.loc[mask, 'knowledge_score'] = new_k_score
+        df.loc[mask, 'lapse_score'] = new_l_score
+        
+    df.to_csv(file_path, index=False)
+
+def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
+    """L'LLM-as-a-Judge che valuta l'apprendimento e aggiorna il CSV."""
+    if not context_text:
+        return # Non facciamo aggiornamenti se non stiamo parlando di un topic noto
+        
+    client = genai.Client(api_key=api_key)
+    
+    judge_prompt = f"""
+    You are an educational data analyst. Analyze this interaction and update the student's semantic scores based on their performance.
+
+    CURRENT DATA (Subtopics and scores):
+    {context_data}
+
+    User Query: "{user_query}"
+    Tutor Response: "{tutor_response}"
+
+    TASK:
+    1. Identify which 'Topic' and 'Subtopic' was discussed.
+    2. If the user successfully learned/answered, output a higher knowledge label and 'Not lapsed'.
+    3. If they struggled, lower knowledge and increase lapse.
+    
+    Valid Knowledge Labels: 'Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge'
+    Valid Lapse Labels: 'Not lapsed', 'Slightly lapsed', 'Moderately lapsed', 'Highly lapsed', 'Extremely lapsed'
+    """
+    
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash-lite", # Usiamo il modello ultra-veloce e leggero
+            contents=judge_prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0,
+                response_mime_type="application/json",
+                response_schema={
+                    "type": "OBJECT",
+                    "properties": {
+                        "topic": {"type": "STRING"},
+                        "subtopic": {"type": "STRING"},
+                        "new_knowledge_score": {"type": "STRING"},
+                        "new_lapse_score": {"type": "STRING"},
+                        "reasoning": {"type": "STRING"}
+                    },
+                    "required": ["topic", "subtopic", "new_knowledge_score", "new_lapse_score"]
+                }
+            )
+        )
+        
+        # Registra i token anche del giudice
+        log_token_usage("Evaluator (Post-Interaction)", response.usage_metadata)
+        
+        result = json.loads(response.text)
+        update_context_data(
+            student_id=student_id,
+            topic=result["topic"],
+            subtopic=result["subtopic"],
+            new_k_score=result["new_knowledge_score"],
+            new_l_score=result["new_lapse_score"]
+        )
+        print(f"Update Success: {result.get('reasoning', 'Scores updated')}")
+        
+    except Exception as e:
+        print(f"Background evaluation failed: {e}")
+                
 def call_gemini(
     api_key: str,
     model: str,
@@ -299,13 +382,28 @@ def main():
                 history_text = build_history_text(st.session_state.messages[:-1])
 
                 # 4. GENERATION: Chiama il modello principale
+                # ... [Il tuo codice esistente per routing e generazione] ...
+
+                # 4. GENERATION: Chiama il modello principale
                 reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
                 reply = f"Error during generation: {e}"
 
+            # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
-
+            
+            # --- NUOVO: CLOSED-LOOP UPDATE ---
+            # Valuta e aggiorna il CSV in background senza bloccare la chat visiva
+            if context_text and "Error" not in reply:
+                evaluate_and_update_scores(
+                    api_key=api_key,
+                    student_id=int(student_id),
+                    context_text=context_text,
+                    user_query=user_prompt,
+                    tutor_response=reply
+                )
+                
 if __name__ == "__main__":
     main()
