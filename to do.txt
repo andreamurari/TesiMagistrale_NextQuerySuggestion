@@ -1,4 +1,8 @@
-	✅	1 - Lettura Paper klamp 
+	✅	1 - Lettura Paper:
+				- klamp
+				- Exercise Recommendation with Preferences and Expectations Based on Ability Computation 
+				- Predicting Students’ Final Exam Scores from their Course Activities
+				- Predicting Long-Term Student Outcomes from Short-Term EdTech Log Data
 	
 	✅	2 - Crea interfaccia e connetti LLM via API 
 	
@@ -34,7 +38,7 @@
 
 	✅	11 - Decidere come trattare i -1 nell' Assessment_Information ['answer'] -> metto a 0
 	
-	⚠️	 12 - Decidere come valutare le performance del modello -> Provalo tu
+	✅	 12 - Decidere come valutare le performance del modello -> Provalo tu
 	
 	✅	13 - Ha senso proiettare la tabella context in uno spazio di embedding per sommarizzare gli argomenti? -> si ma per dati tabellari uso stucture RAG al posto di embeddare.
 
@@ -46,6 +50,6 @@
 
 	✅	17 - Router si perde dopo un paio di iterazioni, forse potrebbe avere senso lasciarlo piu morbido ma farli fare una sola iterazioe al primo mesaggio -> soluzione: ripassiamo i topics della precedente query alla query corrente
 
-	⚠️ 	 18 - Aggiungi interest score
+	✅ 	 18 - Aggiungi interest score
 
-	⚠️	 19 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione verte su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
+	✅	 19 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione verte su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
