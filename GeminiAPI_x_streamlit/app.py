@@ -49,6 +49,10 @@ CONVERSATION & PROACTIVITY RULES:
    - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
    - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
    - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
+4. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
+5. INTEREST SCORE: 
+    - If the user has a high interest score, suggest engaging, real-world applications. If low, suggest ways to spark curiosity.
+    - If the user ask for some suggestions, keep in mind to provide suggestions that are in line with their interest level.
 """.strip()
 
 def build_history_text(messages, max_turns: int = 3) -> str:
@@ -313,7 +317,7 @@ def main():
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
 
                     # OTTIMIZZAZIONE TOKEN: Elimina la colonna ridondante 'Topic' e usa il CSV
-                    df_slim = filtered_df[['Subtopic', 'knowledge_score', 'lapse_score']]
+                    df_slim = filtered_df[['Subtopic', 'knowledge_score', 'lapse_score', 'interest_score']]
                     context_text = df_slim.to_csv(index=False)
                     
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
