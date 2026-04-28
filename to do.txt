@@ -10,7 +10,7 @@
 	
 	✅	6 - Capire come passare datasets al modello (Utilizzo RAG) 
 	
-	⚠️   7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente)
+	✅   7 - Capire come passare profilo al modello (RAG per pescare utente + Metodo statistico per riassumere utente) -> passo il dataset filtrato per un utente
 	
 	✅	8 - Rimosso Rag perché si è rotto il codice per generarlo, ripassando ll'intero dataset filtrato per uno student ID si riscontrano i seguenti problemi:
 			- Exceeding token limit
@@ -46,19 +46,6 @@
 
 	✅	17 - Router si perde dopo un paio di iterazioni, forse potrebbe avere senso lasciarlo piu morbido ma farli fare una sola iterazioe al primo mesaggio -> soluzione: ripassiamo i topics della precedente query alla query corrente
 
-	⚠️	 18 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione certe su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
+	⚠️ 	 18 - Aggiungi interest score
 
-
-	
-	
-	NOTE:
-
-	RL(?) su temi gia conosciuti (es. in fase di iscrizione chiedo gli interessi [tipo pinterest], poi confronto le ricerche su browser dell'utente con questi interessi per confermare o meno l'interesse dell'utente verso questi ed aggiornare eventuali nuovi)
-
-	Riprendere il concetto di entità familiare, non familiare e lapsed per il nqs (es. Ti interesserebbe approfondire questo concetto non familiare, rivedere questo concetto lapsato o spostarci su un concetto familiare?)
-
-	Vedi metodi statistici per sommarizzare i profili utente (MOOC).
-
-
-
-
+	⚠️	 19 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione verte su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
