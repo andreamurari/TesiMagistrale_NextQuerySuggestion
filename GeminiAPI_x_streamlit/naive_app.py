@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 import streamlit as st
 from google import genai
@@ -9,8 +10,8 @@ import time
 
 load_dotenv()
 
-# DEFAULT_MODEL = "gemini-2.5-flash-lite"
-DEFAULT_MODEL = "gemini-2.5-flash"
+DEFAULT_MODEL_LITE = "gemini-2.5-flash-lite"
+DEFAULT_MODEL_PRO = "gemini-2.5-flash"
 
 def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0):
     """Save token usage and latency data to a CSV file."""
@@ -22,8 +23,8 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Step": step_name,
-        "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
-        "Output Tokens (Answer)": usage_metadata.candidates_token_count,
+        "Input Tokens": usage_metadata.prompt_token_count,
+        "Output Tokens": usage_metadata.candidates_token_count,
         "Total Tokens": usage_metadata.total_token_count,
         "Latency (s)": round(latency_seconds, 2)
     }])
@@ -32,6 +33,120 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
         new_data.to_csv(log_file, index=False)
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
+
+def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
+    """Applica la Media Mobile Esponenziale ai punteggi e ricalcola le categorie (Versione Naive)."""
+    ALPHA = 0.8 
+    
+    if not os.path.exists(file_path):
+        cols = ['student_id', 'Topic', 'Subtopic', 'lapse_score', 'knowledge_score', 'interest_score', 'lapse_category', 'knowledge_category', 'interest_category']
+        df = pd.DataFrame(columns=cols)
+    else:
+        df = pd.read_csv(file_path)
+    
+    mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
+    
+    if df[mask].empty:
+        new_row = pd.DataFrame([{
+            'student_id': student_id,
+            'Topic': topic,
+            'Subtopic': subtopic,
+            'knowledge_score': inter_k,
+            'lapse_score': inter_l,
+            'interest_score': inter_i,
+            'knowledge_category': 'Moderate knowledge',
+            'lapse_category': 'Not lapsed',
+            'interest_category': 'Moderate interest'
+        }])
+        df = pd.concat([df, new_row], ignore_index=True)
+    else:
+        old_k = df.loc[mask, 'knowledge_score'].values[0]
+        old_l = df.loc[mask, 'lapse_score'].values[0]
+        old_i = df.loc[mask, 'interest_score'].values[0]
+        
+        df.loc[mask, 'knowledge_score'] = (old_k * ALPHA) + (inter_k * (1 - ALPHA))
+        df.loc[mask, 'lapse_score']     = (old_l * ALPHA) + (inter_l * (1 - ALPHA))
+        df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
+
+    try:
+        df['lapse_category'] = pd.qcut(df['lapse_score'].rank(method='first'), q=5, 
+                                       labels=['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed'])
+        df['knowledge_category'] = pd.qcut(df['knowledge_score'].rank(method='first'), q=5, 
+                                           labels=['Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge'])
+        df['interest_category'] = pd.qcut(df['interest_score'].rank(method='first'), q=5, 
+                                          labels=['Extremely low interest', 'Low interest', 'Moderate interest', 'High interest', 'Extremely high interest'])
+    except ValueError as e:
+        print(f"Warning: Not enough diverse data to qcut yet. {e}")
+
+    df.to_csv(file_path, index=False)
+
+def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
+    """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
+    if not context_text:
+        return
+        
+    client = genai.Client(api_key=api_key)
+    
+    judge_prompt = f"""
+    You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
+    Score them from 0 to 100 on three metrics.
+
+    CURRENT STATE:
+    {context_text}
+
+    INTERACTION:
+    User Query: "{user_query}"
+    Tutor Response: "{tutor_response}"
+
+    SCORING RULES (0 to 100):
+    1. interaction_knowledge: 0 (completely failed/clueless) to 100 (perfect understanding/correct answer).
+    2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
+    3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
+    
+    CRITICAL INSTRUCTIONS:
+    - Output ONLY valid JSON.
+    - DO NOT include conversational text, explanations, or markdown blocks (no ```json).
+    - Provide exactly the 5 fields requested in the schema.
+    """
+    
+    try:
+        start_time = time.time()
+        response = client.models.generate_content(
+            model=DEFAULT_MODEL_LITE, 
+            contents=judge_prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0,
+                response_mime_type="application/json",
+                response_schema={
+                    "type": "OBJECT",
+                    "properties": {
+                        "topic": {"type": "STRING"},
+                        "subtopic": {"type": "STRING"},
+                        "interaction_knowledge": {"type": "NUMBER"},
+                        "interaction_lapse": {"type": "NUMBER"},
+                        "interaction_interest": {"type": "NUMBER"}
+                    },
+                    "required": ["topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
+                }
+            )
+        )
+        
+        latency = time.time() - start_time
+        log_token_usage("Evaluator (NAIVE EMA Post-Interaction)", response.usage_metadata, latency)
+        
+        result = json.loads(response.text)
+        update_context_data(
+            student_id=student_id,
+            topic=result["topic"],
+            subtopic=result["subtopic"],
+            inter_k=result["interaction_knowledge"],
+            inter_l=result["interaction_lapse"],
+            inter_i=result["interaction_interest"]
+        )
+        print(f"EMA Update Success for: {result['subtopic']}")
+        
+    except Exception as e:
+        print(f"Background evaluation failed: {e}")
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
@@ -121,7 +236,7 @@ def call_gemini(
 def main():
     st.set_page_config(page_title="Naive Consultant (No Router)", layout="wide")
     st.title("Naive RAG (Full DB Test)")
-    model = DEFAULT_MODEL
+    model = DEFAULT_MODEL_PRO
 
     ensure_state()
 
@@ -162,8 +277,6 @@ def main():
             try:
                 # DUMP DELL'INTERO DATAFRAME
                 if not full_df.empty:
-                    # Includiamo 'Topic' perché il modello naive deve capire le categorie da solo,
-                    # e passiamo le Category semantiche al posto degli score crudi.
                     df_slim = full_df[['Topic', 'Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
                 else:
@@ -180,6 +293,16 @@ def main():
 
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
+            
+            # --- NUOVO: CLOSED-LOOP UPDATE SULLA VERSIONE NAIVE ---
+            if context_text and "Error" not in reply:
+                evaluate_and_update_scores(
+                    api_key=api_key,
+                    student_id=int(student_id),
+                    context_text=context_text,
+                    user_query=user_prompt,
+                    tutor_response=reply
+                )
 
 if __name__ == "__main__":
     main()
