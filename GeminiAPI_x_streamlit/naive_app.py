@@ -9,7 +9,7 @@ import time
 
 load_dotenv()
 
-#DEFAULT_MODEL = "gemini-2.5-flash-lite"
+# DEFAULT_MODEL = "gemini-2.5-flash-lite"
 DEFAULT_MODEL = "gemini-2.5-flash"
 
 def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0):
@@ -25,7 +25,7 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
         "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
         "Output Tokens (Answer)": usage_metadata.candidates_token_count,
         "Total Tokens": usage_metadata.total_token_count,
-        "Latency (s)": round(latency_seconds, 2) # Nuova colonna arrotondata a 2 decimali
+        "Latency (s)": round(latency_seconds, 2)
     }])
     
     if not os.path.exists(log_file):
@@ -35,27 +35,30 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
-            You are an expert consultant and advisor.
-            Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
+You are an expert consultant and advisor.
+Your goal is to answer the user's questions and proactively suggest what they should study next based on their learning data.
 
-            ENTIRE STUDENT DATABASE:
-            {context_data if context_data else "No data available."}
+ENTIRE STUDENT DATABASE:
+{context_data if context_data else "No data available."}
 
-            CONVERSATION & PROACTIVITY RULES:
-            1. Identify the relevant topic from the database above based on the user's prompt.
-            2. Answer the user's specific request FIRST.
-            3. PROACTIVITY (Next Query Suggestion): Guide the user's learning naturally. 
-            - Suggest next steps ONLY when the user has completed a task or asks for direction.
-            - NEVER copy-paste or repeat recommendations. 
-            4. When suggesting next steps, use the scores of the identified topic:
-            - low 'knowledge_score' -> suggest foundational basics.
-            - high 'knowledge_score' & high 'lapse_score' -> suggest quick memory refreshers.
-            - optimal scores -> suggest complex/advanced subtopics.
+CONVERSATION & PROACTIVITY RULES:
+1. Identify the relevant topic from the database above based on the user's prompt.
+2. Answer the user's specific request FIRST.
+3. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
+4. RECOMMENDATION MATRIX:
+   - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
+   - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
+   - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
+   - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
+5. INTEREST SCORE: 
+    - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
+    - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
+    - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.
 
-            Response style:
-            - Be encouraging, conversational, and concise.
-            - Avoid robotic "Next Steps" headers. Integrate naturally.
-            """.strip()
+Response style:
+- Be encouraging, conversational, and concise.
+- Avoid robotic "Next Steps" headers. Integrate naturally.
+""".strip()
 
 def ensure_state():
     if "messages" not in st.session_state:
@@ -95,22 +98,25 @@ def call_gemini(
         f"User question:\n{user_prompt}"
     )
 
-    start_time = time.time()
+    try:
+        start_time = time.time()
+            
+        response = client.models.generate_content(
+            model=model,
+            contents=full_prompt,
+            config=types.GenerateContentConfig(
+                temperature=temperature,
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+            ),
+        )
         
-    response = client.models.generate_content(
-        model=model,
-        contents=full_prompt,
-        config=types.GenerateContentConfig(
-            temperature=temperature,
-            tools=[types.Tool(google_search=types.GoogleSearch())],
-        ),
-    )
-    
-    latency = time.time() - start_time
-    # We rename the step to easily distinguish it in the Excel log
-    log_token_usage("Generator (NAIVE RAG - Full DB)", response.usage_metadata, latency)
-    
-    return (response.text or "").strip()
+        latency = time.time() - start_time
+        log_token_usage("Generator (NAIVE RAG - Full DB)", response.usage_metadata, latency)
+        
+        return (response.text or "").strip()
+    except Exception as e:
+        print(f"Generation error: {e}")
+        return f"Error: {e}"
 
 def main():
     st.set_page_config(page_title="Naive Consultant (No Router)", layout="wide")
@@ -156,8 +162,9 @@ def main():
             try:
                 # DUMP DELL'INTERO DATAFRAME
                 if not full_df.empty:
-                    # Dobbiamo reinserire 'Topic' perché il modello deve capire le categorie da solo
-                    df_slim = full_df[['Topic', 'Subtopic', 'knowledge_score', 'lapse_score']]
+                    # Includiamo 'Topic' perché il modello naive deve capire le categorie da solo,
+                    # e passiamo le Category semantiche al posto degli score crudi.
+                    df_slim = full_df[['Topic', 'Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
                 else:
                     context_text = ""

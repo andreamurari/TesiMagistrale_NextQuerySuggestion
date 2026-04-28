@@ -73,3 +73,15 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latenc
 2026-04-24 12:13:41,Generator (NAIVE RAG - Full DB),22682,219,23424,
 2026-04-24 12:22:44,Generator (NAIVE RAG - Full DB),22682,238,23466,5.28
 2026-04-24 12:24:44,Generator (NAIVE RAG - Full DB),22681,196,23713,12.08
+2026-04-28 13:38:03,Router (Topic Extraction),864,37,903,0.99
+2026-04-28 13:38:14,Generator (Main RAG),1163,845,2292,7.34
+2026-04-28 13:38:20,Evaluator (Post-Interaction) - Router based,1937,160,2097,4.36
+2026-04-28 13:40:42,Router (Topic Extraction),854,4,860,4.66
+2026-04-28 13:40:49,Generator (Main RAG),399,135,788,3.86
+2026-04-28 13:40:56,Evaluator (Post-Interaction) - Router based,464,219,683,3.47
+2026-04-28 13:41:16,Router (Topic Extraction),856,4,862,1.03
+2026-04-28 13:41:21,Generator (Main RAG),543,154,804,2.02
+2026-04-28 13:41:27,Evaluator (Post-Interaction) - Router based,482,229,711,3.65
+2026-04-28 13:57:52,Router (Topic Extraction),865,20,887,2.07
+2026-04-28 13:57:59,Generator (Main RAG),966,364,1516,3.62
+2026-04-28 13:58:03,Evaluator (EMA Post-Interaction),1181,55,1236,1.72

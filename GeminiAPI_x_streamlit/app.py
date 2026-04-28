@@ -1,7 +1,6 @@
 import os
 import json
 import pandas as pd
-import numpy as np
 import streamlit as st
 from google import genai
 from google.genai import types
@@ -10,8 +9,8 @@ import time
 from datetime import datetime
 
 load_dotenv()
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
-#DEFAULT_MODEL = "gemini-2.5-flash"
+DEFAULT_MODEL_LITE = "gemini-2.5-flash-lite"
+DEFAULT_MODEL_PRO = "gemini-2.5-flash"
 
 def ensure_state():
     if "messages" not in st.session_state:
@@ -51,8 +50,9 @@ CONVERSATION & PROACTIVITY RULES:
    - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
 4. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
 5. INTEREST SCORE: 
-    - If the user has a high interest score, suggest engaging, real-world applications. If low, suggest ways to spark curiosity.
-    - If the user ask for some suggestions, keep in mind to provide suggestions that are in line with their interest level.
+    - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
+    - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
+    - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.
 """.strip()
 
 def build_history_text(messages, max_turns: int = 3) -> str:
@@ -66,25 +66,19 @@ def build_history_text(messages, max_turns: int = 3) -> str:
     return "\n".join(lines)
 
 def load_context_data(student_id: int) -> pd.DataFrame:
-    # Simulated loading process
     if not os.path.exists("context_data.csv"):
         return pd.DataFrame()
         
     result = pd.read_csv("context_data.csv")
-    
     return result
 
 def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list, active_topics: list) -> list:
-    """
-    Multi-label router with State Tracking.
-    """
+    """Multi-label router with State Tracking."""
     if not unique_topics:
         return []
         
     client = genai.Client(api_key=api_key)
     topics_str = ",".join(unique_topics)
-    
-    # Handle the first turn where active_topics might be empty
     active_str = ",".join(active_topics) if active_topics else "None"
     
     router_prompt = (
@@ -95,7 +89,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             "Apply these STRICT rules to output ONLY a JSON array of exact string matches from Available Topics:\n"
             "1. IMPLICIT CONTINUATION: If the query is ambiguous ('give me an exercise', 'tell me more') OR answers a question the AI just asked, output the 'Previous Active Topics'.\n"
             "2. META-QUERIES: If the user asks about their grades, status, progress, or situation (e.g., 'how am I doing?', 'what is my situation?'), DO NOT invent topics. Output the 'Previous Active Topics' so the system can evaluate their data.\n"
-            "3. FUZZY MAPPING (BROAD CATEGORIES & EVERYDAY TERMS): If the user mentions a general interest, a broad domain, or a casual topic (e.g., 'math', 'fitness', 'the future', 'art', 'cooking', 'business') WITHOUT specifying the exact subtopic, intelligently select 2 to 4 of the closest matching foundational topics from the 'Available Topics' list (e.g., map 'fitness' to 'Sport and Human Performance', or 'the future' to 'Futurology and Tomorrow's Scenarios').\n"
+            "3. FUZZY MAPPING: If the user mentions a general interest or broad category WITHOUT specifying the exact subtopic, intelligently select 2 to 4 of the closest matching foundational topics from the 'Available Topics' list.\n"
             "4. TOPIC SWITCH: If the query explicitly introduces a NEW specific subject, ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
             "Return ONLY a JSON array of strings."
         )
@@ -111,14 +105,11 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
                 response_schema={"type": "ARRAY", "items": {"type": "STRING"}},
             ),
         )
-        
-        end_time = time.time()
-        latency = end_time - start_time
+        latency = time.time() - start_time
         log_token_usage("Router (Topic Extraction)", response.usage_metadata, latency)
         
         extracted_topics = json.loads(response.text)
-        valid_topics = [t for t in extracted_topics if t in unique_topics]
-        return valid_topics
+        return [t for t in extracted_topics if t in unique_topics]
         
     except Exception as e:
         print(f"Routing error: {e}")
@@ -134,8 +125,8 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Step": step_name,
-        "Input Tokens (Prompt)": usage_metadata.prompt_token_count,
-        "Output Tokens (Answer)": usage_metadata.candidates_token_count,
+        "Input Tokens": usage_metadata.prompt_token_count,
+        "Output Tokens": usage_metadata.candidates_token_count,
         "Total Tokens": usage_metadata.total_token_count,
         "Latency (s)": round(latency_seconds, 2)
     }])
@@ -144,84 +135,128 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
         new_data.to_csv(log_file, index=False)
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
-        
-def evaluate_tutor_response(api_key: str, question: str, target_topics: list, tutor_reply: str) -> dict:
-    """An LLM judge that evaluates the consultant's response."""
-    
-    client = genai.Client(api_key=api_key)
-    
-    judge_prompt = f"""
-    You are an LLM judge that evaluates the consultant's response.
-    
-    Interaction data:
-    - User's question: "{question}"
-    - Topics identified by the Router: {target_topics}
-    - Consultant's response: "{tutor_reply}"
-    
-    EVALUATION CRITERIA:
-    1. Router Accuracy: Did the consultant use the correct topic information?
-    2. Proactivity: Did the consultant provide 2-3 follow-up suggestions as requested?
-    3. Tone: Is the tone encouraging and teacher-like?
-    
-    Evaluate the response by assigning a score from 1 to 10 for each criterion.
-    """
-    
-    response = client.models.generate_content(
-        model=DEFAULT_MODEL,
-        contents=judge_prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.0,
-            response_mime_type="application/json",
-            response_schema={
-                "type": "OBJECT",
-                "properties": {
-                    "router_score": {"type": "INTEGER"},
-                    "proactivity_score": {"type": "INTEGER"},
-                    "tone_score": {"type": "INTEGER"},
-                    "feedback_notes": {"type": "STRING"}
-                },
-                "required": ["router_score", "proactivity_score", "tone_score", "feedback_notes"]
-            }
-        )
-    )
-    
-    return json.loads(response.text)
 
-def update_context_data(student_id: int, topic: str, subtopic: str, new_k_score: str, new_l_score: str, file_path: str = "context_data.csv"):
-    """Aggiorna il file CSV con le nuove etichette di punteggio."""
-    if not os.path.exists(file_path):
-        return
-        
-    df = pd.read_csv(file_path)
+def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
+    """Applica la Media Mobile Esponenziale ai punteggi e ricalcola le categorie."""
     
-    # Cerca la riga esatta
+    # FATTORE DI SMORZAMENTO (Alpha)
+    # 0.8 = 80% del voto è storico, 20% dipende dall'ultima risposta.
+    # Abbassalo (es. 0.6) se vuoi che il sistema reagisca più velocemente ai cambiamenti.
+    ALPHA = 0.8 
+    
+    if not os.path.exists(file_path):
+        # Assicurati che l'header del CSV contenga sia gli score che le category
+        cols = ['student_id', 'Topic', 'Subtopic', 'lapse_score', 'knowledge_score', 'interest_score', 'lapse_category', 'knowledge_category', 'interest_category']
+        df = pd.DataFrame(columns=cols)
+    else:
+        df = pd.read_csv(file_path)
+    
     mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
     
     if df[mask].empty:
-        # Se non esiste, crea una nuova riga
+        # Inserisci i numeri MA ANCHE le etichette di default per il "Cold Start"
         new_row = pd.DataFrame([{
             'student_id': student_id,
             'Topic': topic,
             'Subtopic': subtopic,
-            'knowledge_score': new_k_score,
-            'lapse_score': new_l_score
+            'knowledge_score': inter_k,
+            'lapse_score': inter_l,
+            'interest_score': inter_i,
+            'knowledge_category': 'Moderate knowledge',
+            'lapse_category': 'Not lapsed',
+            'interest_category': 'Moderate interest'
         }])
         df = pd.concat([df, new_row], ignore_index=True)
-    else:
-        # Aggiorna i valori esistenti
-        df.loc[mask, 'knowledge_score'] = new_k_score
-        df.loc[mask, 'lapse_score'] = new_l_score
         
+    else:
+        old_k = df.loc[mask, 'knowledge_score'].values[0]
+        old_l = df.loc[mask, 'lapse_score'].values[0]
+        old_i = df.loc[mask, 'interest_score'].values[0]
+        
+        df.loc[mask, 'knowledge_score'] = (old_k * ALPHA) + (inter_k * (1 - ALPHA))
+        df.loc[mask, 'lapse_score']     = (old_l * ALPHA) + (inter_l * (1 - ALPHA))
+        df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
+
+    # RICALCOLO DELLE CATEGORIE (Usiamo rank() per proteggere qcut da array con troppi valori identici)
+    try:
+        df['lapse_category'] = pd.qcut(df['lapse_score'].rank(method='first'), q=5, 
+                                       labels=['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed'])
+        df['knowledge_category'] = pd.qcut(df['knowledge_score'].rank(method='first'), q=5, 
+                                           labels=['Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge'])
+        df['interest_category'] = pd.qcut(df['interest_score'].rank(method='first'), q=5, 
+                                          labels=['Extremely low interest', 'Low interest', 'Moderate interest', 'High interest', 'Extremely high interest'])
+    except ValueError as e:
+        print(f"Warning: Not enough diverse data to qcut yet. {e}")
+
+    # Salva su disco
     df.to_csv(file_path, index=False)
-               
-def call_gemini(
-    api_key: str,
-    model: str,
-    system_prompt: str,
-    history_text: str,
-    user_prompt: str,
-    temperature: float,
-) -> str:
+    
+def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
+    """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
+    if not context_text:
+        return
+        
+    client = genai.Client(api_key=api_key)
+    
+    judge_prompt = f"""
+    You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
+    Score them from 0 to 100 on three metrics.
+
+    CURRENT STATE:
+    {context_text}
+
+    INTERACTION:
+    User Query: "{user_query}"
+    Tutor Response: "{tutor_response}"
+
+    SCORING RULES (0 to 100):
+    1. interaction_knowledge: 0 (completely failed/clueless) to 100 (perfect understanding/correct answer).
+    2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
+    3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
+    
+    Return a JSON with the topic/subtopic identified and the three numerical scores.
+    """
+    
+    try:
+        start_time = time.time()
+        response = client.models.generate_content(
+            model=DEFAULT_MODEL_LITE, 
+            contents=judge_prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0,
+                response_mime_type="application/json",
+                response_schema={
+                    "type": "OBJECT",
+                    "properties": {
+                        "topic": {"type": "STRING"},
+                        "subtopic": {"type": "STRING"},
+                        "interaction_knowledge": {"type": "NUMBER"},
+                        "interaction_lapse": {"type": "NUMBER"},
+                        "interaction_interest": {"type": "NUMBER"}
+                    },
+                    "required": ["topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
+                }
+            )
+        )
+        
+        latency = time.time() - start_time
+        log_token_usage("Evaluator (EMA Post-Interaction)", response.usage_metadata, latency)
+        
+        result = json.loads(response.text)
+        update_context_data(
+            student_id=student_id,
+            topic=result["topic"],
+            subtopic=result["subtopic"],
+            inter_k=result["interaction_knowledge"],
+            inter_l=result["interaction_lapse"],
+            inter_i=result["interaction_interest"]
+        )
+        print(f"EMA Update Success for: {result['subtopic']}")
+        
+    except Exception as e:
+        print(f"Background evaluation failed: {e}")
+
+def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str, user_prompt: str, temperature: float) -> str:
     client = genai.Client(api_key=api_key)
     full_prompt = (
         f"{system_prompt}\n\n"
@@ -241,20 +276,18 @@ def call_gemini(
             ),
         )
         
-        end_time = time.time()
-        latency = end_time - start_time
+        latency = time.time() - start_time
         log_token_usage("Generator (Main RAG)", response.usage_metadata, latency)
         
         return (response.text or "").strip()
     except Exception as e:
         print(f"Generation error: {e}")
+        return f"Error: {e}"
         
 def main():
     st.set_page_config(page_title="Context-Aware Consultant", layout="wide")
     st.title("Intelligent RAG Consultant")
-    model = DEFAULT_MODEL
 
-    # Assicurati che ensure_state() inizializzi sia 'messages' che 'active_topics'
     ensure_state()
 
     with st.sidebar:
@@ -263,12 +296,11 @@ def main():
         temperature = st.slider("Temperature", 0.0, 1.0, 0.4, 0.1)
         if st.button("Reset Chat"):
             st.session_state.messages = []
-            st.session_state.active_topics = [] # Resetta anche la memoria dei topic!
+            st.session_state.active_topics = []
             st.rerun()
 
     api_key = get_api_key()
 
-    # Caricamento dati utente
     try:
         full_df = load_context_data(int(student_id))
         unique_topics = full_df['Topic'].unique().tolist() if not full_df.empty else []
@@ -277,12 +309,10 @@ def main():
         unique_topics = []
         st.error(f"Data loading failed: {e}")
 
-    # Renderizza la cronologia della chat
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    # Input dell'utente
     user_prompt = st.chat_input("Ask a question...")
     if not user_prompt:
         return
@@ -295,49 +325,35 @@ def main():
         st.error("API Key missing.")
         return
 
-    # Risposta dell'Assistente
     with st.chat_message("assistant"):
         with st.spinner("Analyzing intent..."):
             try:
-                # 1. ROUTING: Chiama il router passando i Topic attivi della sessione precedente
+                # 1. Routing
                 target_topics = extract_relevant_topics(
                     api_key, 
-                    model, 
+                    DEFAULT_MODEL_LITE, 
                     user_prompt, 
                     unique_topics, 
                     st.session_state.active_topics
                 )
                 
-                # 2. STATE TRACKING & TOKEN OPTIMIZATION
+                # 2. Context Extraction
                 if target_topics and not full_df.empty:
-                    # SALVA IN MEMORIA: aggancia i nuovi topic per la prossima domanda
                     st.session_state.active_topics = target_topics 
-                    
-                    # Filtra le righe del dataframe
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
-
-                    # OTTIMIZZAZIONE TOKEN: Elimina la colonna ridondante 'Topic' e usa il CSV
-                    df_slim = filtered_df[['Subtopic', 'knowledge_score', 'lapse_score', 'interest_score']]
+                    df_slim = filtered_df[['Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
-                    
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
                 else:
-                    # SVUOTA LA MEMORIA: l'utente ha cambiato discorso senza un topic noto
                     st.session_state.active_topics = [] 
                     context_text = ""
                     st.info("🌐 No relevant topics found. Using general knowledge.")
 
-                # Costruisce il prompt finale
                 system_prompt = build_system_prompt(context_text)
-                
-                # 3. SLIDING WINDOW: Passa solo l'ultimo scambio (max_turns=1) per evitare il memory leak dei token!
-                history_text = build_history_text(st.session_state.messages[:-1])
+                history_text = build_history_text(st.session_state.messages[:-1], max_turns=3)
 
-                # 4. GENERATION: Chiama il modello principale
-                # ... [Il tuo codice esistente per routing e generazione] ...
-
-                # 4. GENERATION: Chiama il modello principale
-                reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt, temperature)
+                # 3. Generation
+                reply = call_gemini(api_key, DEFAULT_MODEL_PRO, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
                 reply = f"Error during generation: {e}"
@@ -345,6 +361,16 @@ def main():
             # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
+            
+            # 4. Closed-Loop Update (Background)
+            if context_text and "Error" not in reply:
+                evaluate_and_update_scores(
+                    api_key=api_key,
+                    student_id=int(student_id),
+                    context_text=context_text,
+                    user_query=user_prompt,
+                    tutor_response=reply
+                )
                 
 if __name__ == "__main__":
     main()
