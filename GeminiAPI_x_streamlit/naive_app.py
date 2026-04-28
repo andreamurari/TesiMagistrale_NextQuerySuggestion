@@ -132,7 +132,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         )
         
         latency = time.time() - start_time
-        log_token_usage("Evaluator (NAIVE EMA Post-Interaction)", response.usage_metadata, latency)
+        log_token_usage("Evaluator_Naive", response.usage_metadata, latency)
         
         result = json.loads(response.text)
         update_context_data(
@@ -226,7 +226,7 @@ def call_gemini(
         )
         
         latency = time.time() - start_time
-        log_token_usage("Generator (NAIVE RAG - Full DB)", response.usage_metadata, latency)
+        log_token_usage("Generator_Naive", response.usage_metadata, latency)
         
         return (response.text or "").strip()
     except Exception as e:

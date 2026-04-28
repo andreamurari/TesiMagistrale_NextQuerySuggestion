@@ -106,7 +106,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         latency = time.time() - start_time
-        log_token_usage("Router (Topic Extraction)", response.usage_metadata, latency)
+        log_token_usage("Router_RB", response.usage_metadata, latency)
         
         extracted_topics = json.loads(response.text)
         return [t for t in extracted_topics if t in unique_topics]
@@ -240,7 +240,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         )
         
         latency = time.time() - start_time
-        log_token_usage("Evaluator (EMA Post-Interaction)", response.usage_metadata, latency)
+        log_token_usage("Evaluator_RB", response.usage_metadata, latency)
         
         result = json.loads(response.text)
         update_context_data(
@@ -277,7 +277,7 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
         )
         
         latency = time.time() - start_time
-        log_token_usage("Generator (Main RAG)", response.usage_metadata, latency)
+        log_token_usage("Generator_RB", response.usage_metadata, latency)
         
         return (response.text or "").strip()
     except Exception as e:
