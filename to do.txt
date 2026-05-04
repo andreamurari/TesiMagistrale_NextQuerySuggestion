@@ -55,4 +55,5 @@
 	✅	19 - Riassumere i concetti della conversazione e aggiornare il file contesto: se la conversazione verte su temi nuovi allora aggiungere una riga, altrimenti aggiornare la knowledge e il lapse
 
 
-If I introduce a new topic, it seems to lead the user only to that new topic. (Naive)
+If I introduce a new topic (that is in context_data), it seems to lead the user only to that new topic. (Naive)
+If I talnk about a new topic that is not in context_data, it seems to lead the user only to that most similar topic in context_data. (Naive)
