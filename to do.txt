@@ -56,4 +56,7 @@
 
 
 If I introduce a new topic (that is in context_data), it seems to lead the user only to that new topic. (Naive)
-If I talnk about a new topic that is not in context_data, it seems to lead the user only to that most similar topic in context_data. (Naive)
+If I talnk about a new topic that is not in context_data, it seems to lead the user only to that most similar topic in context_data. (Naive, see interaction at 2026-05-04 16:02:43
+2026-05-04 16:03:41
+2026-05-04 16:05:04
+2026-05-04 16:05:57)
