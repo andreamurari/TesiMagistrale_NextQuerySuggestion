@@ -115,11 +115,11 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         
     client = genai.Client(api_key=api_key)
     
-    judge_prompt = f"""
+        judge_prompt = f"""
     You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
     Score them from 0 to 100 on three metrics.
 
-    CURRENT STATE:
+    CURRENT STATE (Reference Data):
     {context_text}
 
     INTERACTION:
@@ -133,8 +133,8 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     
     CRITICAL INSTRUCTIONS:
     - Output ONLY valid JSON.
-    - DO NOT include conversational text, explanations, or markdown blocks (no ```json).
-    - Provide exactly the 5 fields requested in the schema.
+    - MATCHING RULE: The "topic" and "subtopic" MUST BE EXACT COPY-PASTED STRINGS from the 'CURRENT STATE' table above. Do NOT invent new categories or swap them.
+    - Provide exactly the 5 fields requested in the schema.    
     """
     
     try:
@@ -187,13 +187,14 @@ ENTIRE STUDENT DATABASE:
 CONVERSATION & PROACTIVITY RULES:
 1. Identify the relevant topic from the database above based on the user's prompt.
 2. Answer the user's specific request FIRST.
-3. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
-4. RECOMMENDATION MATRIX:
+3. AVOID FORCED ALIGNMENT: If the user's explicit request does not strictly match the provided user data/context, DO NOT present the retrieved data as the solution to their current query. Address the user's prompt directly first using your general knowledge. Afterward, transition conversationally to provide proactive recommendations based on their profile (e.g., 'On a separate note, looking at your profile/recent activity, I also noticed...').
+4. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
+5. RECOMMENDATION MATRIX:
    - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
    - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
    - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
    - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
-5. INTEREST SCORE: 
+6. INTEREST SCORE: 
     - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
     - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
     - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.

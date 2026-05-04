@@ -41,15 +41,16 @@ LENGTH AND STYLE CONSTRAINT:
 - Be encouraging, conversational, and avoid robotic headers like "Next Steps".
 
 CONVERSATION & PROACTIVITY RULES:
-1. Answer the user's specific request FIRST.
-2. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
-3. RECOMMENDATION MATRIX:
+1. Answer the user's specific request FIRST, using your general knowledge if the provided STUDENT DATA does not strictly match the user's current topic.
+2. AVOID FORCED ALIGNMENT: If the user's explicit request does not strictly match the provided user data/context, DO NOT present the retrieved data as the solution to their current query. Address the user's prompt directly first using your general knowledge. Afterward, transition conversationally to provide proactive recommendations based on their profile (e.g., 'On a separate note, looking at your profile/recent activity, I also noticed...').
+3. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
+4. RECOMMENDATION MATRIX:
    - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
    - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
    - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
    - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
-4. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
-5. INTEREST SCORE: 
+5. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
+6. INTEREST SCORE: 
     - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
     - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
     - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.
@@ -217,7 +218,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
     Score them from 0 to 100 on three metrics.
 
-    CURRENT STATE:
+    CURRENT STATE (Reference Data):
     {context_text}
 
     INTERACTION:
@@ -229,7 +230,10 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
     3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
-    Return a JSON with the topic/subtopic identified and the three numerical scores.
+    CRITICAL INSTRUCTIONS:
+    - Output ONLY valid JSON.
+    - MATCHING RULE: The "topic" and "subtopic" MUST BE EXACT COPY-PASTED STRINGS from the 'CURRENT STATE' table above. Do NOT invent new categories or swap them.
+    - Provide exactly the 5 fields requested in the schema.    
     """
     
     try:
