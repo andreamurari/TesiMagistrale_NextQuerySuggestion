@@ -115,7 +115,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         
     client = genai.Client(api_key=api_key)
     
-        judge_prompt = f"""
+    judge_prompt = f"""
     You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
     Score them from 0 to 100 on three metrics.
 
