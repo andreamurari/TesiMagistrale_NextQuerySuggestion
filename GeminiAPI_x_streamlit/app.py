@@ -136,6 +136,27 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
+def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: str = "All (Naive)"):
+    """Salva i log della conversazione in un CSV per l'analisi dei case studies della tesi."""
+    log_file = "chat_logs.csv"
+    
+    # Pulizia del testo per evitare che le virgole rompano il CSV o l'Excel
+    safe_query = user_query.replace('\n', ' ').replace('\r', '')
+    safe_response = ai_response.replace('\n', ' \\n ') # Manteniamo un segno di a capo per leggerlo poi
+    
+    new_data = pd.DataFrame([{
+        "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Architecture": architecture, # 'Router-Based' o 'Naive Full DB'
+        "Active_Topics": active_topics,
+        "User_Query": safe_query,
+        "AI_Response": safe_response
+    }])
+    
+    if not os.path.exists(log_file):
+        new_data.to_csv(log_file, index=False)
+    else:
+        new_data.to_csv(log_file, mode='a', header=False, index=False)
+
 def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
     """Applica la Media Mobile Esponenziale ai punteggi e ricalcola le categorie."""
     
@@ -361,6 +382,15 @@ def main():
             # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
+            
+            if "Error" not in reply:
+                topics_str = ", ".join(st.session_state.active_topics) if st.session_state.active_topics else "None"
+                log_chat_interaction(
+                    architecture="RB",
+                    user_query=user_prompt,
+                    ai_response=reply,
+                    active_topics=topics_str
+                )
             
             # 4. Closed-Loop Update (Background)
             if context_text and "Error" not in reply:

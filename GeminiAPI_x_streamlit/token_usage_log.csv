@@ -81,3 +81,6 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latenc
 2026-04-28 13:57:52,Router_RB,865,20,887,2.07
 2026-04-28 13:57:59,Generator_RB,966,364,1516,3.62
 2026-04-28 13:58:03,Evaluator_RB,1181,55,1236,1.72
+2026-05-04 11:01:30,Generator_Naive,26729,335,27238,4.88
+2026-05-04 11:04:25,Generator_Naive,26729,445,27888,8.42
+2026-05-04 11:04:34,Evaluator_Naive,27054,62,27116,6.03
