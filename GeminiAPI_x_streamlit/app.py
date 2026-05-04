@@ -137,10 +137,10 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
 def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: str = "All (Naive)"):
-    """Salva i log della conversazione in un CSV per l'analisi dei case studies della tesi."""
+    """Save chat interaction logs to a CSV file for thesis case study analysis."""
     log_file = "chat_logs.csv"
     
-    # Pulizia del testo per evitare che le virgole rompano il CSV o l'Excel
+    # Clean the text to avoid breaking the CSV or Excel
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
     safe_response = ai_response.replace('\n', ' \\n ') # Manteniamo un segno di a capo per leggerlo poi
     
@@ -158,37 +158,33 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
 def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
-    """Applica la Media Mobile Esponenziale ai punteggi e ricalcola le categorie."""
-    
-    # FATTORE DI SMORZAMENTO (Alpha)
-    # 0.8 = 80% del voto è storico, 20% dipende dall'ultima risposta.
-    # Abbassalo (es. 0.6) se vuoi che il sistema reagisca più velocemente ai cambiamenti.
+    """Apply EMA to scores and recalculate categories."""
     ALPHA = 0.8 
     
     if not os.path.exists(file_path):
-        # Assicurati che l'header del CSV contenga sia gli score che le category
         cols = ['student_id', 'Topic', 'Subtopic', 'lapse_score', 'knowledge_score', 'interest_score', 'lapse_category', 'knowledge_category', 'interest_category']
         df = pd.DataFrame(columns=cols)
     else:
         df = pd.read_csv(file_path)
+        for col in ['knowledge_score', 'lapse_score', 'interest_score']:
+            if col in df.columns:
+                df[col] = df[col].astype(float)
     
     mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
     
     if df[mask].empty:
-        # Inserisci i numeri MA ANCHE le etichette di default per il "Cold Start"
         new_row = pd.DataFrame([{
             'student_id': student_id,
             'Topic': topic,
             'Subtopic': subtopic,
-            'knowledge_score': inter_k,
-            'lapse_score': inter_l,
-            'interest_score': inter_i,
+            'knowledge_score': float(inter_k),
+            'lapse_score': float(inter_l),
+            'interest_score': float(inter_i),
             'knowledge_category': 'Moderate knowledge',
             'lapse_category': 'Not lapsed',
             'interest_category': 'Moderate interest'
         }])
         df = pd.concat([df, new_row], ignore_index=True)
-        
     else:
         old_k = df.loc[mask, 'knowledge_score'].values[0]
         old_l = df.loc[mask, 'lapse_score'].values[0]
@@ -198,7 +194,6 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         df.loc[mask, 'lapse_score']     = (old_l * ALPHA) + (inter_l * (1 - ALPHA))
         df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
 
-    # RICALCOLO DELLE CATEGORIE (Usiamo rank() per proteggere qcut da array con troppi valori identici)
     try:
         df['lapse_category'] = pd.qcut(df['lapse_score'].rank(method='first'), q=5, 
                                        labels=['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed'])
@@ -209,9 +204,8 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     except ValueError as e:
         print(f"Warning: Not enough diverse data to qcut yet. {e}")
 
-    # Salva su disco
     df.to_csv(file_path, index=False)
-    
+        
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
     """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
     if not context_text:

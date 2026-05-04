@@ -56,7 +56,7 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
 def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
-    """Applica la Media Mobile Esponenziale ai punteggi e ricalcola le categorie (Versione Naive)."""
+    """Apply EMA to scores and recalculate categories."""
     ALPHA = 0.8 
     
     if not os.path.exists(file_path):
@@ -64,6 +64,13 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         df = pd.DataFrame(columns=cols)
     else:
         df = pd.read_csv(file_path)
+        
+        # --- FIX PANDAS DTYPE CRASH ---
+        # Forza le colonne dei punteggi a essere float (decimali) in modo che possano
+        # accogliere i risultati con la virgola dell'EMA senza andare in errore int64.
+        for col in ['knowledge_score', 'lapse_score', 'interest_score']:
+            if col in df.columns:
+                df[col] = df[col].astype(float)
     
     mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
     
@@ -72,9 +79,9 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
             'student_id': student_id,
             'Topic': topic,
             'Subtopic': subtopic,
-            'knowledge_score': inter_k,
-            'lapse_score': inter_l,
-            'interest_score': inter_i,
+            'knowledge_score': float(inter_k),
+            'lapse_score': float(inter_l),
+            'interest_score': float(inter_i),
             'knowledge_category': 'Moderate knowledge',
             'lapse_category': 'Not lapsed',
             'interest_category': 'Moderate interest'
@@ -100,7 +107,7 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         print(f"Warning: Not enough diverse data to qcut yet. {e}")
 
     df.to_csv(file_path, index=False)
-
+    
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
     """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
     if not context_text:
