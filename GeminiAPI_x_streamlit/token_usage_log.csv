@@ -106,3 +106,6 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latenc
 2026-05-04 16:05:31,Evaluator_Naive,26818,58,26876,25.31
 2026-05-04 16:05:57,Generator_Naive,26945,212,27298,3.95
 2026-05-04 16:06:20,Evaluator_Naive,26808,58,26866,20.83
+2026-05-06 10:52:30,Router_RB,859,3,864,2.23
+2026-05-06 10:52:37,Generator_RB,493,237,1030,5.9
+2026-05-06 10:52:39,Evaluator_RB,528,64,592,1.7

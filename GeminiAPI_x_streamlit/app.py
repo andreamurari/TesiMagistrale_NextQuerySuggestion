@@ -41,16 +41,16 @@ LENGTH AND STYLE CONSTRAINT:
 - Be encouraging, conversational, and avoid robotic headers like "Next Steps".
 
 CONVERSATION & PROACTIVITY RULES:
-1. Answer the user's specific request FIRST, using your general knowledge if the provided STUDENT DATA does not strictly match the user's current topic.
-2. AVOID FORCED ALIGNMENT: If the user's explicit request does not strictly match the provided user data/context, DO NOT present the retrieved data as the solution to their current query. Address the user's prompt directly first using your general knowledge. Afterward, transition conversationally to provide proactive recommendations based on their profile (e.g., 'On a separate note, looking at your profile/recent activity, I also noticed...').
-3. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
-4. RECOMMENDATION MATRIX:
+CONVERSATION & PROACTIVITY RULES:
+1. Answer the user's specific request FIRST, using your general knowledge to provide a DEEP and HELPFUL answer if the provided STUDENT DATA does not strictly match the user's current topic.
+2. CONDITIONAL PROACTIVITY: Do NOT force a pivot to the profile data in every single turn. If the user is introducing a completely new topic or has an urgent request (e.g., "I have a test", "Help me understand X"), dedicate 100% of your response to helping them with that specific subject. Only pivot to proactive recommendations (e.g., "By the way, looking at your profile...") if the user's primary problem is fully resolved or they are just chatting generally.
+3. RECOMMENDATION MATRIX:
    - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
    - 'Extremely lapsed' / 'Highly lapsed' (with moderate knowledge): Suggest quick memory refreshers.
    - 'High' / 'Extremely high knowledge': Suggest advanced problems/applications.
    - 'Not lapsed' / 'Slightly lapsed' (with low knowledge): Focus on practice.
-5. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
-6. INTEREST SCORE: 
+4. If the user asks for advice on how to improve, ALWAYS provide 2-3 specific, actionable suggestions based on their scores.
+5. INTEREST SCORE: 
     - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
     - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
     - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.
@@ -208,18 +208,17 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     df.to_csv(file_path, index=False)
         
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
-    """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
-    if not context_text:
-        return
+    """LLM-as-a-Judge to evaluate the interaction with a score 0-100."""
+
         
     client = genai.Client(api_key=api_key)
     
     judge_prompt = f"""
-    You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
+    You are an educational data analyst. Evaluate the student's performance in this specific interaction.
     Score them from 0 to 100 on three metrics.
 
     CURRENT STATE (Reference Data):
-    {context_text}
+    {context_text if context_text else "No relevant previous data found for this interaction."}
 
     INTERACTION:
     User Query: "{user_query}"
@@ -230,10 +229,10 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
     3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
-    CRITICAL INSTRUCTIONS:
-    - Output ONLY valid JSON.
-    - MATCHING RULE: The "topic" and "subtopic" MUST BE EXACT COPY-PASTED STRINGS from the 'CURRENT STATE' table above. Do NOT invent new categories or swap them.
-    - Provide exactly the 5 fields requested in the schema.    
+    CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
+    - Step 1: Check if the INTERACTION is about one of the exact topics listed in the CURRENT STATE.
+    - Step 2 (MATCH): If yes, set "is_new_topic" to false, and EXACTLY COPY-PASTE the "topic" and "subtopic" from the table. Do not change a single letter.
+    - Step 3 (NEW DOMAIN): If the user is clearly asking about a COMPLETELY NEW subject (e.g., Medieval History when the data only has Roman Empire), set "is_new_topic" to true. Then, generate a broad, logical "topic" and a specific "subtopic" for this new domain.
     """
     
     try:
@@ -247,13 +246,14 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                 response_schema={
                     "type": "OBJECT",
                     "properties": {
+                        "is_new_topic": {"type": "BOOLEAN"}, # <-- La nuova chiave magica
                         "topic": {"type": "STRING"},
                         "subtopic": {"type": "STRING"},
                         "interaction_knowledge": {"type": "NUMBER"},
                         "interaction_lapse": {"type": "NUMBER"},
                         "interaction_interest": {"type": "NUMBER"}
                     },
-                    "required": ["topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
+                    "required": ["is_new_topic", "topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
                 }
             )
         )
@@ -391,7 +391,7 @@ def main():
                 )
             
             # 4. Closed-Loop Update (Background)
-            if context_text and "Error" not in reply:
+            if "Error" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,
                     student_id=int(student_id),
