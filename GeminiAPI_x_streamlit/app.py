@@ -232,7 +232,8 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
     - Step 1: Check if the INTERACTION is about one of the exact topics listed in the CURRENT STATE.
     - Step 2 (MATCH): If yes, set "is_new_topic" to false, and EXACTLY COPY-PASTE the "topic" and "subtopic" from the table. Do not change a single letter.
-    - Step 3 (NEW DOMAIN): If the user is clearly asking about a COMPLETELY NEW subject (e.g., Medieval History when the data only has Roman Empire), set "is_new_topic" to true. Then, generate a broad, logical "topic" and a specific "subtopic" for this new domain.
+    - Step 3 (NEW DOMAIN): If the user is asking about a COMPLETELY NEW subject, set "is_new_topic" to true. Generate a broad academic "topic" (e.g., "History", "Physics") and a specific subject-matter "subtopic" (e.g., "Medieval History", "Kinematics").
+    - CRITICAL RULE FOR NEW DOMAINS: The subtopic MUST be a domain of knowledge. NEVER use meta-activities, intents, or conversational actions as subtopics (DO NOT use "Test Preparation", "Homework Help", "Study Strategies", "General Chat", etc.).
     """
     
     try:
