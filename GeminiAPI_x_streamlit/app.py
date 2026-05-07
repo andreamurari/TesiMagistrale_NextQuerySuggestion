@@ -7,6 +7,7 @@ from google.genai import types
 from dotenv import load_dotenv
 import time
 from datetime import datetime
+import traceback
 
 load_dotenv()
 DEFAULT_MODEL_LITE = "gemini-2.5-flash-lite"
@@ -40,7 +41,6 @@ LENGTH AND STYLE CONSTRAINT:
 - {selected_rule}
 - Be encouraging, conversational, and avoid robotic headers like "Next Steps".
 
-CONVERSATION & PROACTIVITY RULES:
 CONVERSATION & PROACTIVITY RULES:
 1. Answer the user's specific request FIRST, using your general knowledge to provide a DEEP and HELPFUL answer if the provided STUDENT DATA does not strictly match the user's current topic.
 2. CONDITIONAL PROACTIVITY: Do NOT force a pivot to the profile data in every single turn. If the user is introducing a completely new topic or has an urgent request (e.g., "I have a test", "Help me understand X"), dedicate 100% of your response to helping them with that specific subject. Only pivot to proactive recommendations (e.g., "By the way, looking at your profile...") if the user's primary problem is fully resolved or they are just chatting generally.
@@ -141,13 +141,12 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
     """Save chat interaction logs to a CSV file for thesis case study analysis."""
     log_file = "chat_logs.csv"
     
-    # Clean the text to avoid breaking the CSV or Excel
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
-    safe_response = ai_response.replace('\n', ' \\n ') # Manteniamo un segno di a capo per leggerlo poi
+    safe_response = ai_response.replace('\n', ' \\n ')
     
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Architecture": architecture, # 'Router-Based' o 'Naive Full DB'
+        "Architecture": architecture,
         "Active_Topics": active_topics,
         "User_Query": safe_query,
         "AI_Response": safe_response
@@ -209,8 +208,6 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
     """LLM-as-a-Judge to evaluate the interaction with a score 0-100."""
-
-        
     client = genai.Client(api_key=api_key)
     
     judge_prompt = f"""
@@ -230,13 +227,17 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
     CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
-    - Step 1: Check if the INTERACTION is about one of the exact topics listed in the CURRENT STATE.
-    - Step 2 (MATCH): If yes, set "is_new_topic" to false, and EXACTLY COPY-PASTE the "topic" and "subtopic" from the table. Do not change a single letter.
-    - Step 3 (NEW DOMAIN): If the user is asking about a COMPLETELY NEW subject, set "is_new_topic" to true. Generate a broad academic "topic" (e.g., "History", "Physics") and a specific subject-matter "subtopic" (e.g., "Medieval History", "Kinematics").
-    - CRITICAL RULE FOR NEW DOMAINS: The subtopic MUST be a domain of knowledge. NEVER use meta-activities, intents, or conversational actions as subtopics (DO NOT use "Test Preparation", "Homework Help", "Study Strategies", "General Chat", etc.).
+    - Step 1 (STRICT MATCHING): Compare the INTERACTION subject directly to the 'Subtopic' column in the CURRENT STATE. "Medieval History" is NOT "The Roman Empire". 
+    - Step 2 (KNOWN DOMAIN): If and ONLY if the interaction is explicitly about the exact same specific subtopic present in the table, set "is_new_topic" to false. EXACTLY COPY-PASTE the "Topic" and "Subtopic" strings from the table.
+    - Step 3 (NEW DOMAIN): If the interaction explores a different specific subject (even if it belongs to the same broad category, e.g., both are 'History'), set "is_new_topic" to true.
+    - Step 4 (CREATION): If "is_new_topic" is true, generate a broad academic "topic" (e.g., "History") and a specific subject-matter "subtopic" (e.g., "Medieval History"). Do NOT reuse the old subtopic from the table.
+    - CRITICAL RULE: The subtopic MUST be a domain of knowledge. NEVER use meta-activities like "Test Preparation" or "Study Strategies".
     """
     
     try:
+        # PAUSA CRITICA: previene il 503 dopo la chiamata di generazione
+        time.sleep(2.5)
+        
         start_time = time.time()
         response = client.models.generate_content(
             model=DEFAULT_MODEL_LITE, 
@@ -247,7 +248,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                 response_schema={
                     "type": "OBJECT",
                     "properties": {
-                        "is_new_topic": {"type": "BOOLEAN"}, # <-- La nuova chiave magica
+                        "is_new_topic": {"type": "BOOLEAN"},
                         "topic": {"type": "STRING"},
                         "subtopic": {"type": "STRING"},
                         "interaction_knowledge": {"type": "NUMBER"},
@@ -262,6 +263,10 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         latency = time.time() - start_time
         log_token_usage("Evaluator_RB", response.usage_metadata, latency)
         
+        if not response.text:
+             print("Background evaluation failed: Modello ha restituito un testo vuoto.")
+             return
+             
         result = json.loads(response.text)
         update_context_data(
             student_id=student_id,
@@ -275,6 +280,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         
     except Exception as e:
         print(f"Background evaluation failed: {e}")
+        traceback.print_exc()
 
 def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str, user_prompt: str, temperature: float) -> str:
     client = genai.Client(api_key=api_key)
@@ -286,23 +292,33 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
     )
     
     try:
+        # PAUSA CRITICA: Dà respiro all'API dopo la chiamata di Routing iniziale
+        time.sleep(2.5) 
+        
         start_time = time.time()
         response = client.models.generate_content(
             model=model,
             contents=full_prompt,
             config=types.GenerateContentConfig(
                 temperature=temperature,
-                tools=[types.Tool(google_search=types.GoogleSearch())],
+                # CORREZIONE SINTASSI TOOL RICERCA
+                tools=[{"google_search": {}}], 
             ),
         )
         
         latency = time.time() - start_time
         log_token_usage("Generator_RB", response.usage_metadata, latency)
         
-        return (response.text or "").strip()
+        # CORREZIONE FILTRI SICUREZZA: previene l'errore strip() on None
+        if not response.text:
+            return "Errore: La risposta restituita è vuota. Potrebbe essere intervenuto un filtro di sicurezza."
+            
+        return response.text.strip()
+        
     except Exception as e:
-        print(f"Generation error: {e}")
-        return f"Error: {e}"
+        # STAMPA L'ERRORE REALE NEL TERMINALE
+        traceback.print_exc()
+        return f"Errore durante la generazione: {str(e)}"
         
 def main():
     st.set_page_config(page_title="Context-Aware Consultant", layout="wide")
@@ -376,13 +392,14 @@ def main():
                 reply = call_gemini(api_key, DEFAULT_MODEL_PRO, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
-                reply = f"Error during generation: {e}"
+                reply = f"Error during processing: {e}"
+                traceback.print_exc()
 
             # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
-            if "Error" not in reply:
+            if "Errore" not in reply and "Error" not in reply:
                 topics_str = ", ".join(st.session_state.active_topics) if st.session_state.active_topics else "None"
                 log_chat_interaction(
                     architecture="RB",
@@ -392,7 +409,7 @@ def main():
                 )
             
             # 4. Closed-Loop Update (Background)
-            if "Error" not in reply:
+            if "Errore" not in reply and "Error" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,
                     student_id=int(student_id),

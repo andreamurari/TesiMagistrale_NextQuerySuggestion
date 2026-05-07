@@ -317,7 +317,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Time Management and Productivity,"""Getting Things Done"" (GTD) Method",89.0,94.0,43.0,Not lapsed,Extremely high knowledge,Moderate interest
 80,Time Management and Productivity,Deep Work and Intense Concentration,56.0,73.0,77.0,Moderately lapsed,High knowledge,High interest
 80,Time Management and Productivity,Eliminating Digital Distractions,78.0,37.0,59.0,Slightly lapsed,Low knowledge,Moderate interest
-80,Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),5.0,21.0,33.0,Extremely lapsed,Extremely low knowledge,Low interest
+80,Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),5.0,21.0,33.0,Extremely lapsed,Low knowledge,Low interest
 80,Time Management and Productivity,Energy Management vs Time Management,26.0,79.0,25.0,Highly lapsed,High knowledge,Low interest
 80,Time Management and Productivity,Morning and Evening Routines of Top Performers,2.0,27.0,40.0,Extremely lapsed,Low knowledge,Low interest
 80,Time Management and Productivity,Effective Delegation and Outsourcing,4.0,99.0,23.0,Extremely lapsed,Extremely high knowledge,Low interest
@@ -471,7 +471,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Aerospace and Aeronautical Engineering,Global Air Traffic Management,71.0,37.0,100.0,Slightly lapsed,Low knowledge,Extremely high interest
 80,Aerospace and Aeronautical Engineering,Flight Safety and Accident Investigation,31.0,76.0,58.0,Highly lapsed,High knowledge,Moderate interest
 80,Aerospace and Aeronautical Engineering,Helicopters and Rotor Physics,3.0,9.0,95.0,Extremely lapsed,Extremely low knowledge,Extremely high interest
-80,Aerospace and Aeronautical Engineering,Wing Design and Lift,20.0,64.0,27.0,Extremely lapsed,High knowledge,Low interest
+80,Aerospace and Aeronautical Engineering,Wing Design and Lift,20.0,64.0,27.0,Highly lapsed,High knowledge,Low interest
 80,Aerospace and Aeronautical Engineering,Hydrogen as Aviation Fuel,81.0,19.0,12.0,Not lapsed,Extremely low knowledge,Extremely low interest
 80,Sociology of Work and Organization,Smart Working and Hybrid Work,77.0,19.0,35.0,Slightly lapsed,Extremely low knowledge,Low interest
 80,Sociology of Work and Organization,Servant Leadership and Talent Management,15.0,46.0,15.0,Extremely lapsed,Moderate knowledge,Extremely low interest
@@ -778,7 +778,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Comparative Mythology and Folklore,Urban Legends in the Digital Age (Creepypasta),72.0,36.0,57.0,Slightly lapsed,Low knowledge,Moderate interest
 80,Comparative Mythology and Folklore,Solar and Lunar Deities in Different Cultures,95.0,65.0,3.0,Not lapsed,High knowledge,Extremely low interest
 80,Comparative Mythology and Folklore,"Monsters and Legendary Creatures (Dragons, Chimeras, Yokai)",35.0,94.0,80.0,Highly lapsed,Extremely high knowledge,High interest
-80,Comparative Mythology and Folklore,Evolution of Folktales (from Grimm to Disney),3.0,38.0,59.0,Extremely lapsed,Low knowledge,High interest
+80,Comparative Mythology and Folklore,Evolution of Folktales (from Grimm to Disney),3.0,38.0,59.0,Extremely lapsed,Low knowledge,Moderate interest
 80,Comparative Mythology and Folklore,Cults of the Dead and World Funerary Traditions,12.0,40.0,92.0,Extremely lapsed,Moderate knowledge,Extremely high interest
 80,Comparative Mythology and Folklore,"Nature Spirits: Fairies, Gnomes, and Nymphs",32.0,98.0,21.0,Highly lapsed,Extremely high knowledge,Low interest
 80,Comparative Mythology and Folklore,Animal Symbolism in Myths,39.0,99.0,71.0,Highly lapsed,Extremely high knowledge,High interest
@@ -875,7 +875,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Textile Materials Engineering,The Use of Silver and Copper as Antibacterials in Fabrics,10.0,62.0,78.0,Extremely lapsed,High knowledge,High interest
 80,Behavioral Economics (Nudge Theory),Choice Architecture: Guiding Without Forcing,93.0,94.0,43.0,Not lapsed,Extremely high knowledge,Moderate interest
 80,Behavioral Economics (Nudge Theory),Confirmation Bias in Financial Decisions,25.0,82.0,18.0,Highly lapsed,Extremely high knowledge,Extremely low interest
-80,Behavioral Economics (Nudge Theory),The Anchoring Effect in Prices,3.0,90.0,40.0,Extremely lapsed,Extremely high knowledge,Moderate interest
+80,Behavioral Economics (Nudge Theory),The Anchoring Effect in Prices,3.0,90.0,40.0,Extremely lapsed,Extremely high knowledge,Low interest
 80,Behavioral Economics (Nudge Theory),Loss Aversion,94.0,23.0,100.0,Not lapsed,Low knowledge,Extremely high interest
 80,Behavioral Economics (Nudge Theory),Hyperbolic Discounting: Immediate vs Future Gratification,64.0,92.0,47.0,Slightly lapsed,Extremely high knowledge,Moderate interest
 80,Behavioral Economics (Nudge Theory),Social Norms as Economic Incentives,74.0,16.0,9.0,Slightly lapsed,Extremely low knowledge,Extremely low interest
@@ -1023,6 +1023,8 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Futurology and Tomorrow's Scenarios,The Impact of First Contact with Alien Civilizations,40.0,50.0,60.0,Highly lapsed,Moderate knowledge,High interest
 80,Futurology and Tomorrow's Scenarios,Resource Management on a Earth of 10 Billion People,60.0,57.0,74.0,Slightly lapsed,Moderate knowledge,High interest
 80,Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",46.0,16.0,9.0,Moderately lapsed,Extremely low knowledge,Extremely low interest
-80,History,The Roman Empire: Rise and Fall,13.023999999999997,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest
+80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",33.0,15.0,55.0,Highly lapsed,Extremely low knowledge,Moderate interest
 80,Travel and Tourism,City Guides,80.0,95.0,74.0,Not lapsed,Extremely high knowledge,High interest
+80,History,Medieval History,10.0,10.0,70.0,Extremely lapsed,Extremely low knowledge,High interest
+80,Physics,Fluid Dynamics,60.0,75.0,70.0,Slightly lapsed,High knowledge,High interest
