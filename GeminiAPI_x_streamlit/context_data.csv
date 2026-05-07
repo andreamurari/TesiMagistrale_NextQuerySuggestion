@@ -54,7 +54,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Space Exploration,Artemis and the Return to the Moon,67.0,82.0,100.0,Slightly lapsed,Extremely high knowledge,Extremely high interest
 80,Space Exploration,Exophysics and Habitable Planets,59.0,46.0,77.0,Moderately lapsed,Moderate knowledge,High interest
 80,Mental Health and Wellness,Neuroplasticity and Habits,40.0,78.0,91.0,Highly lapsed,High knowledge,Extremely high interest
-80,Mental Health and Wellness,Impact of Social Media on the Psyche,41.0,12.0,98.0,Highly lapsed,Extremely low knowledge,Extremely high interest
+80,Mental Health and Wellness,Impact of Social Media on the Psyche,41.0,12.0,98.0,Moderately lapsed,Extremely low knowledge,Extremely high interest
 80,Mental Health and Wellness,Meditation and Mindfulness,46.0,13.0,70.0,Moderately lapsed,Extremely low knowledge,High interest
 80,Mental Health and Wellness,Anxiety Disorders in the Digital Age,31.0,69.0,62.0,Highly lapsed,High knowledge,High interest
 80,Mental Health and Wellness,Biohacking and Sleep Optimization,70.0,95.0,27.0,Slightly lapsed,Extremely high knowledge,Low interest
@@ -79,7 +79,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,History of Ancient Civilizations,"Pre-Columbian Civilizations (Maya, Aztecs, Inca)",7.0,3.0,10.0,Extremely lapsed,Extremely low knowledge,Extremely low interest
 80,History of Ancient Civilizations,The Silk Road and Cultural Exchange,39.0,32.0,33.0,Highly lapsed,Low knowledge,Low interest
 80,History of Ancient Civilizations,The Chinese Imperial Dynasties,5.0,15.0,67.0,Extremely lapsed,Extremely low knowledge,High interest
-80,History of Ancient Civilizations,Mesopotamia: The Cradle of Writing,49.0,48.0,60.0,Moderately lapsed,Moderate knowledge,Moderate interest
+80,History of Ancient Civilizations,Mesopotamia: The Cradle of Writing,49.0,48.0,60.0,Moderately lapsed,Moderate knowledge,High interest
 80,History of Ancient Civilizations,The Vikings and Norse Expansion,59.0,46.0,4.0,Moderately lapsed,Moderate knowledge,Extremely low interest
 80,History of Ancient Civilizations,The Islamic Golden Age,15.0,73.0,28.0,Extremely lapsed,High knowledge,Low interest
 80,History of Ancient Civilizations,Underwater Archaeology,53.0,7.0,83.0,Moderately lapsed,Extremely low knowledge,Extremely high interest
@@ -317,7 +317,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Time Management and Productivity,"""Getting Things Done"" (GTD) Method",89.0,94.0,43.0,Not lapsed,Extremely high knowledge,Moderate interest
 80,Time Management and Productivity,Deep Work and Intense Concentration,56.0,73.0,77.0,Moderately lapsed,High knowledge,High interest
 80,Time Management and Productivity,Eliminating Digital Distractions,78.0,37.0,59.0,Slightly lapsed,Low knowledge,Moderate interest
-80,Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),5.0,21.0,33.0,Extremely lapsed,Extremely low knowledge,Low interest
+80,Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),5.0,21.0,33.0,Extremely lapsed,Low knowledge,Low interest
 80,Time Management and Productivity,Energy Management vs Time Management,26.0,79.0,25.0,Highly lapsed,High knowledge,Low interest
 80,Time Management and Productivity,Morning and Evening Routines of Top Performers,2.0,27.0,40.0,Extremely lapsed,Low knowledge,Low interest
 80,Time Management and Productivity,Effective Delegation and Outsourcing,4.0,99.0,23.0,Extremely lapsed,Extremely high knowledge,Low interest
@@ -437,7 +437,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Meteorology and Climatology,"Extreme Phenomena: Hurricanes, Tornadoes, and Cyclones",41.0,56.0,7.0,Moderately lapsed,Moderate knowledge,Extremely low interest
 80,Meteorology and Climatology,Gulf Stream and Thermohaline Circulation,55.0,13.0,78.0,Moderately lapsed,Extremely low knowledge,High interest
 80,Meteorology and Climatology,Jet Stream Dynamics,2.0,94.0,92.0,Extremely lapsed,Extremely high knowledge,Extremely high interest
-80,Meteorology and Climatology,Urban Microclimates and Heat Islands,29.0,88.0,21.0,Highly lapsed,Extremely high knowledge,Extremely low interest
+80,Meteorology and Climatology,Urban Microclimates and Heat Islands,29.0,88.0,21.0,Highly lapsed,Extremely high knowledge,Low interest
 80,Meteorology and Climatology,"Meteorological Instrumentation (Radar, Satellites, Buoys)",17.0,85.0,11.0,Extremely lapsed,Extremely high knowledge,Extremely low interest
 80,Meteorology and Climatology,Cloud Physics and Precipitation,85.0,29.0,55.0,Not lapsed,Low knowledge,Moderate interest
 80,Meteorology and Climatology,Paleoclimatology: Studying the Climate of the Past,96.0,80.0,2.0,Not lapsed,High knowledge,Extremely low interest
@@ -471,7 +471,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Aerospace and Aeronautical Engineering,Global Air Traffic Management,71.0,37.0,100.0,Slightly lapsed,Low knowledge,Extremely high interest
 80,Aerospace and Aeronautical Engineering,Flight Safety and Accident Investigation,31.0,76.0,58.0,Highly lapsed,High knowledge,Moderate interest
 80,Aerospace and Aeronautical Engineering,Helicopters and Rotor Physics,3.0,9.0,95.0,Extremely lapsed,Extremely low knowledge,Extremely high interest
-80,Aerospace and Aeronautical Engineering,Wing Design and Lift,20.0,64.0,27.0,Extremely lapsed,High knowledge,Low interest
+80,Aerospace and Aeronautical Engineering,Wing Design and Lift,20.0,64.0,27.0,Highly lapsed,High knowledge,Low interest
 80,Aerospace and Aeronautical Engineering,Hydrogen as Aviation Fuel,81.0,19.0,12.0,Not lapsed,Extremely low knowledge,Extremely low interest
 80,Sociology of Work and Organization,Smart Working and Hybrid Work,77.0,19.0,35.0,Slightly lapsed,Extremely low knowledge,Low interest
 80,Sociology of Work and Organization,Servant Leadership and Talent Management,15.0,46.0,15.0,Extremely lapsed,Moderate knowledge,Extremely low interest
@@ -528,7 +528,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Experimental Neuroscience,Processes of Memorization and Forgetting,1.0,16.0,36.0,Extremely lapsed,Extremely low knowledge,Low interest
 80,Experimental Neuroscience,Neurobiology of Addictions,79.0,50.0,39.0,Slightly lapsed,Moderate knowledge,Low interest
 80,Experimental Neuroscience,Sensory Perception and Synesthesia,76.0,36.0,54.0,Slightly lapsed,Low knowledge,Moderate interest
-80,Experimental Neuroscience,Brain Development in Childhood and Adolescence,66.0,81.0,90.0,Slightly lapsed,High knowledge,Extremely high interest
+80,Experimental Neuroscience,Brain Development in Childhood and Adolescence,66.0,81.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest
 80,Experimental Neuroscience,"Neurodegenerative Diseases (Alzheimer's, Parkinson's)",90.0,32.0,49.0,Not lapsed,Low knowledge,Moderate interest
 80,Experimental Neuroscience,The Role of Dopamine and Serotonin,95.0,13.0,7.0,Not lapsed,Extremely low knowledge,Extremely low interest
 80,Experimental Neuroscience,REM Sleep and Dream Activity,10.0,79.0,63.0,Extremely lapsed,High knowledge,High interest
@@ -774,12 +774,12 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Developmental Psychology,Moral Development and Sense of Justice in Children,67.0,63.0,11.0,Slightly lapsed,High knowledge,Extremely low interest
 80,Developmental Psychology,Sibling Dynamics and Birth Order,11.0,16.0,18.0,Extremely lapsed,Extremely low knowledge,Extremely low interest
 80,Comparative Mythology and Folklore,"Universal Archetypes (The Great Flood, The Tree of Life)",67.0,50.0,22.0,Slightly lapsed,Moderate knowledge,Low interest
-80,Comparative Mythology and Folklore,"Mythologies of Arctic Populations (Inuit, Sami)",76.0,60.0,58.0,Slightly lapsed,Moderate knowledge,Moderate interest
+80,Comparative Mythology and Folklore,"Mythologies of Arctic Populations (Inuit, Sami)",76.0,60.0,58.0,Slightly lapsed,High knowledge,Moderate interest
 80,Comparative Mythology and Folklore,Urban Legends in the Digital Age (Creepypasta),72.0,36.0,57.0,Slightly lapsed,Low knowledge,Moderate interest
 80,Comparative Mythology and Folklore,Solar and Lunar Deities in Different Cultures,95.0,65.0,3.0,Not lapsed,High knowledge,Extremely low interest
 80,Comparative Mythology and Folklore,"Monsters and Legendary Creatures (Dragons, Chimeras, Yokai)",35.0,94.0,80.0,Highly lapsed,Extremely high knowledge,High interest
 80,Comparative Mythology and Folklore,Evolution of Folktales (from Grimm to Disney),3.0,38.0,59.0,Extremely lapsed,Low knowledge,Moderate interest
-80,Comparative Mythology and Folklore,Cults of the Dead and World Funerary Traditions,12.0,40.0,92.0,Extremely lapsed,Low knowledge,Extremely high interest
+80,Comparative Mythology and Folklore,Cults of the Dead and World Funerary Traditions,12.0,40.0,92.0,Extremely lapsed,Moderate knowledge,Extremely high interest
 80,Comparative Mythology and Folklore,"Nature Spirits: Fairies, Gnomes, and Nymphs",32.0,98.0,21.0,Highly lapsed,Extremely high knowledge,Low interest
 80,Comparative Mythology and Folklore,Animal Symbolism in Myths,39.0,99.0,71.0,Highly lapsed,Extremely high knowledge,High interest
 80,Comparative Mythology and Folklore,Festivals and Rituals Linked to Solstices and Equinoxes,75.0,59.0,90.0,Slightly lapsed,Moderate knowledge,Extremely high interest
@@ -883,7 +883,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Behavioral Economics (Nudge Theory),Psychology of Taxes and Compliance,4.0,21.0,54.0,Extremely lapsed,Low knowledge,Moderate interest
 80,Behavioral Economics (Nudge Theory),Prospect Theory by Kahneman and Tversky,82.0,14.0,61.0,Not lapsed,Extremely low knowledge,High interest
 80,Behavioral Economics (Nudge Theory),"The Impact of ""Default"" in Opt-in/Opt-out Options",36.0,61.0,9.0,Highly lapsed,High knowledge,Extremely low interest
-80,Paleontology and Prehistoric Life,Mass Extinctions: Causes and Consequences,28.0,76.0,40.0,Highly lapsed,High knowledge,Low interest
+80,Paleontology and Prehistoric Life,Mass Extinctions: Causes and Consequences,28.0,76.0,40.0,Highly lapsed,High knowledge,Moderate interest
 80,Paleontology and Prehistoric Life,Evolution of Flying Reptiles (Pterosaurs),64.0,46.0,68.0,Slightly lapsed,Moderate knowledge,High interest
 80,Paleontology and Prehistoric Life,The Transition from Water to Land,28.0,55.0,94.0,Highly lapsed,Moderate knowledge,Extremely high interest
 80,Paleontology and Prehistoric Life,Feathered Dinosaurs: The Link to Birds,51.0,3.0,31.0,Moderately lapsed,Extremely low knowledge,Low interest
@@ -896,7 +896,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Computational Linguistics,Neural Machine Translation Algorithms,49.0,8.0,80.0,Moderately lapsed,Extremely low knowledge,High interest
 80,Computational Linguistics,Speech Recognition and Text-to-Speech (TTS),43.0,43.0,56.0,Moderately lapsed,Moderate knowledge,Moderate interest
 80,Computational Linguistics,Sentiment Analysis on Social Media,17.0,50.0,43.0,Extremely lapsed,Moderate knowledge,Moderate interest
-80,Computational Linguistics,Large Language Models (LLM),59.0,54.0,86.0,Moderately lapsed,Moderate knowledge,Extremely high interest
+80,Computational Linguistics,Large Language Models (LLM),59.0,54.0,86.0,Slightly lapsed,Moderate knowledge,Extremely high interest
 80,Computational Linguistics,Named Entity Recognition (NER),42.0,33.0,27.0,Moderately lapsed,Low knowledge,Low interest
 80,Computational Linguistics,Word Embeddings and Vector Representation,47.0,71.0,46.0,Moderately lapsed,High knowledge,Moderate interest
 80,Computational Linguistics,Automated Syntactic Parsing,58.0,71.0,33.0,Moderately lapsed,High knowledge,Low interest
@@ -989,7 +989,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Advanced Viticulture and Oenology,Heroic Viticulture on Terraces,55.0,97.0,56.0,Moderately lapsed,Extremely high knowledge,Moderate interest
 80,Advanced Viticulture and Oenology,Amphora Vinification and Alternative Wine Vessels,8.0,100.0,34.0,Extremely lapsed,Extremely high knowledge,Low interest
 80,Advanced Viticulture and Oenology,Chemistry of Polyphenols and Tannins,65.0,66.0,13.0,Slightly lapsed,High knowledge,Extremely low interest
-80,Advanced Viticulture and Oenology,Oxygen Management and Micro-oxygenation,80.0,61.0,37.0,Slightly lapsed,High knowledge,Low interest
+80,Advanced Viticulture and Oenology,Oxygen Management and Micro-oxygenation,80.0,61.0,37.0,Not lapsed,High knowledge,Low interest
 80,Advanced Viticulture and Oenology,"Organic, Biodynamic, and Natural Wines",42.0,49.0,60.0,Moderately lapsed,Moderate knowledge,High interest
 80,Advanced Viticulture and Oenology,Global Wine Market and Appellations of Origin,3.0,87.0,47.0,Extremely lapsed,Extremely high knowledge,Moderate interest
 80,Advanced Viticulture and Oenology,Climate Change and the Shifting of Wine Regions,69.0,58.0,32.0,Slightly lapsed,Moderate knowledge,Low interest
@@ -998,7 +998,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Atmospheric Sciences and Aeronomy,"Optical Phenomena: Rainbows, Sun Dogs, and Glories",83.0,26.0,26.0,Not lapsed,Low knowledge,Low interest
 80,Atmospheric Sciences and Aeronomy,Atmospheric Electricity and the Genesis of Lightning,49.0,16.0,57.0,Moderately lapsed,Extremely low knowledge,Moderate interest
 80,Atmospheric Sciences and Aeronomy,Ionosphere and Long-distance Radio Communications,72.0,16.0,8.0,Slightly lapsed,Extremely low knowledge,Extremely low interest
-80,Atmospheric Sciences and Aeronomy,Transboundary Pollution of Air Masses,10.0,81.0,80.0,Extremely lapsed,Extremely high knowledge,High interest
+80,Atmospheric Sciences and Aeronomy,Transboundary Pollution of Air Masses,10.0,81.0,80.0,Extremely lapsed,Extremely high knowledge,Extremely high interest
 80,Atmospheric Sciences and Aeronomy,Interaction between Ocean and Atmosphere,82.0,24.0,36.0,Not lapsed,Low knowledge,Low interest
 80,Atmospheric Sciences and Aeronomy,Space Weather and Auroras,4.0,84.0,52.0,Extremely lapsed,Extremely high knowledge,Moderate interest
 80,Atmospheric Sciences and Aeronomy,Greenhouse Effect and Radiative Forcings,43.0,19.0,67.0,Moderately lapsed,Extremely low knowledge,High interest
@@ -1028,4 +1028,4 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,History,Medieval History,10.0,10.0,70.0,Extremely lapsed,Extremely low knowledge,High interest
 80,Physics,Fluid Dynamics,62.0,77.0,74.0,Slightly lapsed,High knowledge,High interest
 80,Travel and Tourism,Verona Tourism,90.0,95.0,85.0,Not lapsed,Extremely high knowledge,Extremely high interest
-80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,85.0,95.0,Not lapsed,Extremely high knowledge,Extremely high interest
+80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest
