@@ -385,7 +385,7 @@ def main():
                 if target_topics and not full_df.empty:
                     st.session_state.active_topics = target_topics 
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
-                    df_slim = filtered_df[['Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
+                    df_slim = filtered_df[['Topic', 'Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
                 else:
