@@ -168,14 +168,26 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         for col in ['knowledge_score', 'lapse_score', 'interest_score']:
             if col in df.columns:
                 df[col] = df[col].astype(float)
+                
+    # 1. Make sure student_id is int and topic/subtopic are stripped strings to avoid hidden mismatches
+    df['student_id'] = df['student_id'].astype(int)
+    student_id_clean = int(student_id)
     
-    mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
+    # 2. Remove leading/trailing whitespace from 'Topic' and 'Subtopic' columns in the DataFrame to ensure clean matching
+    df['Topic'] = df['Topic'].astype(str).str.strip()
+    df['Subtopic'] = df['Subtopic'].astype(str).str.strip()
+    
+    topic_clean = str(topic).strip()
+    subtopic_clean = str(subtopic).strip()
+    
+    # 3. Use cleaned variables for matching
+    mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
     if df[mask].empty:
         new_row = pd.DataFrame([{
-            'student_id': student_id,
-            'Topic': topic,
-            'Subtopic': subtopic,
+            'student_id': student_id_clean,
+            'Topic': topic_clean,
+            'Subtopic': subtopic_clean,
             'knowledge_score': float(inter_k),
             'lapse_score': float(inter_l),
             'interest_score': float(inter_i),

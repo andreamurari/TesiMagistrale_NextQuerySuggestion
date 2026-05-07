@@ -7,6 +7,7 @@ from google.genai import types
 from dotenv import load_dotenv
 from datetime import datetime
 import time
+import traceback
 
 load_dotenv()
 
@@ -64,21 +65,27 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         df = pd.DataFrame(columns=cols)
     else:
         df = pd.read_csv(file_path)
-        
-        # --- FIX PANDAS DTYPE CRASH ---
-        # Forza le colonne dei punteggi a essere float (decimali) in modo che possano
-        # accogliere i risultati con la virgola dell'EMA senza andare in errore int64.
         for col in ['knowledge_score', 'lapse_score', 'interest_score']:
             if col in df.columns:
                 df[col] = df[col].astype(float)
+                
+    # --- FIX PANDAS STRING MATCHING (PULIZIA DATI) ---
+    df['student_id'] = df['student_id'].astype(int)
+    student_id_clean = int(student_id)
     
-    mask = (df['student_id'] == student_id) & (df['Topic'] == topic) & (df['Subtopic'] == subtopic)
+    df['Topic'] = df['Topic'].astype(str).str.strip()
+    df['Subtopic'] = df['Subtopic'].astype(str).str.strip()
+    
+    topic_clean = str(topic).strip()
+    subtopic_clean = str(subtopic).strip()
+    
+    mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
     if df[mask].empty:
         new_row = pd.DataFrame([{
-            'student_id': student_id,
-            'Topic': topic,
-            'Subtopic': subtopic,
+            'student_id': student_id_clean,
+            'Topic': topic_clean,
+            'Subtopic': subtopic_clean,
             'knowledge_score': float(inter_k),
             'lapse_score': float(inter_l),
             'interest_score': float(inter_i),
@@ -110,17 +117,14 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
     """LLM-as-a-Judge per valutare l'interazione con voti da 0 a 100."""
-    if not context_text:
-        return
-        
     client = genai.Client(api_key=api_key)
     
     judge_prompt = f"""
-    You are an educational data analyst. Evaluate the student's performance in this specific interaction ONLY.
+    You are an educational data analyst. Evaluate the student's performance in this specific interaction.
     Score them from 0 to 100 on three metrics.
 
     CURRENT STATE (Reference Data):
-    {context_text}
+    {context_text if context_text else "No relevant previous data found for this interaction."}
 
     INTERACTION:
     User Query: "{user_query}"
@@ -131,13 +135,18 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
     3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
-    CRITICAL INSTRUCTIONS:
-    - Output ONLY valid JSON.
-    - MATCHING RULE: The "topic" and "subtopic" MUST BE EXACT COPY-PASTED STRINGS from the 'CURRENT STATE' table above. Do NOT invent new categories or swap them.
-    - Provide exactly the 5 fields requested in the schema.    
+    CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
+    - Step 1 (STRICT MATCHING): Compare the INTERACTION subject directly to the 'Subtopic' column in the CURRENT STATE. 
+    - Step 2 (KNOWN DOMAIN): If and ONLY if the interaction is explicitly about the exact same specific subtopic present in the table, set "is_new_topic" to false. EXACTLY COPY-PASTE the "Topic" and "Subtopic" strings from the table.
+    - Step 3 (NEW DOMAIN): If the interaction explores a different specific subject, set "is_new_topic" to true.
+    - Step 4 (CREATION): If "is_new_topic" is true, generate a broad academic "topic" and a specific subject-matter "subtopic".
+    - CRITICAL RULE FOR NEW DOMAINS: The subtopic MUST represent a core subject matter, skill, or area of interest. It must define WHAT the user is exploring, not HOW they are consuming it. NEVER use media formats, platforms, resources, or task-oriented actions as subtopics (STRICTLY FORBIDDEN: "YouTube Channels", "Books", "Test Preparation", "Itinerary Planning", "Study Strategies").
     """
     
     try:
+        # PAUSA CRITICA
+        time.sleep(2.5)
+        
         start_time = time.time()
         response = client.models.generate_content(
             model=DEFAULT_MODEL_LITE, 
@@ -148,13 +157,14 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                 response_schema={
                     "type": "OBJECT",
                     "properties": {
+                        "is_new_topic": {"type": "BOOLEAN"},
                         "topic": {"type": "STRING"},
                         "subtopic": {"type": "STRING"},
                         "interaction_knowledge": {"type": "NUMBER"},
                         "interaction_lapse": {"type": "NUMBER"},
                         "interaction_interest": {"type": "NUMBER"}
                     },
-                    "required": ["topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
+                    "required": ["is_new_topic", "topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
                 }
             )
         )
@@ -162,6 +172,10 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         latency = time.time() - start_time
         log_token_usage("Evaluator_Naive", response.usage_metadata, latency)
         
+        if not response.text:
+             print("Background evaluation failed: Modello ha restituito un testo vuoto.")
+             return
+             
         result = json.loads(response.text)
         update_context_data(
             student_id=student_id,
@@ -175,6 +189,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         
     except Exception as e:
         print(f"Background evaluation failed: {e}")
+        traceback.print_exc()
 
 def build_system_prompt(context_data: str) -> str:
     return f"""
@@ -187,7 +202,7 @@ ENTIRE STUDENT DATABASE:
 CONVERSATION & PROACTIVITY RULES:
 1. Identify the relevant topic from the database above based on the user's prompt.
 2. Answer the user's specific request FIRST.
-3. AVOID FORCED ALIGNMENT: If the user's explicit request does not strictly match the provided user data/context, DO NOT present the retrieved data as the solution to their current query. Address the user's prompt directly first using your general knowledge. Afterward, transition conversationally to provide proactive recommendations based on their profile (e.g., 'On a separate note, looking at your profile/recent activity, I also noticed...').
+3. CONDITIONAL PROACTIVITY: Do NOT force a pivot to the profile data in every single turn. If the user is introducing a completely new topic or has an urgent request, dedicate 100% of your response to helping them with that specific subject. Only pivot to proactive recommendations (e.g., "By the way, looking at your profile...") if the user's primary problem is fully resolved.
 4. PROACTIVITY: Guide the user naturally based on their data. NEVER copy-paste recommendations.
 5. RECOMMENDATION MATRIX:
    - 'Extremely low' / 'Low knowledge': Suggest foundational basics.
@@ -197,7 +212,6 @@ CONVERSATION & PROACTIVITY RULES:
 6. INTEREST SCORE: 
     - If the user has a 'High interest' score, suggest engaging, real-world applications. If 'Low interest', suggest ways to spark curiosity.
     - If the user asks for suggestions, keep in mind to provide suggestions that are in line with their interest level.
-    - If you have to use general knowledge due to lack of data, use the interest score to guide your suggestions.
 
 Response style:
 - Be encouraging, conversational, and concise.
@@ -243,6 +257,9 @@ def call_gemini(
     )
 
     try:
+        # PAUSA CRITICA
+        time.sleep(2.5)
+        
         start_time = time.time()
             
         response = client.models.generate_content(
@@ -257,9 +274,13 @@ def call_gemini(
         latency = time.time() - start_time
         log_token_usage("Generator_Naive", response.usage_metadata, latency)
         
-        return (response.text or "").strip()
+        if not response.text:
+            return "Errore: La risposta restituita è vuota. Potrebbe essere intervenuto un filtro di sicurezza."
+            
+        return response.text.strip()
     except Exception as e:
         print(f"Generation error: {e}")
+        traceback.print_exc()
         return f"Error: {e}"
 
 def main():
@@ -323,7 +344,7 @@ def main():
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
-            if "Error" not in reply:
+            if "Error" not in reply and "Errore" not in reply:
                 log_chat_interaction(
                     architecture="Naive",
                     user_query=user_prompt,
@@ -331,7 +352,8 @@ def main():
                     active_topics="Entire Database"
                 )
                 
-            if context_text and "Error" not in reply:
+            # Evaluator gira sempre se non ci sono errori nella generazione
+            if "Error" not in reply and "Errore" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,
                     student_id=int(student_id),
