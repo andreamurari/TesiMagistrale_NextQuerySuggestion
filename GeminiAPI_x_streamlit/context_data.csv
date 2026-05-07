@@ -457,7 +457,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Video Games and Virtual Reality (Gaming),History of Consoles and Home Computing,57.0,39.0,95.0,Moderately lapsed,Low knowledge,Extremely high interest
 80,Video Games and Virtual Reality (Gaming),Open World Architecture,30.0,31.0,10.0,Highly lapsed,Low knowledge,Extremely low interest
 80,Video Games and Virtual Reality (Gaming),"Graphics Engines (Unreal Engine, Unity)",69.0,83.0,5.0,Slightly lapsed,Extremely high knowledge,Extremely low interest
-80,Video Games and Virtual Reality (Gaming),Augmented Reality (AR) applied to Gaming,59.0,81.0,71.0,Moderately lapsed,Extremely high knowledge,High interest
+80,Video Games and Virtual Reality (Gaming),Augmented Reality (AR) applied to Gaming,59.0,81.0,71.0,Moderately lapsed,High knowledge,High interest
 80,Video Games and Virtual Reality (Gaming),Interactive Narrative and Branching Storylines,60.0,87.0,27.0,Slightly lapsed,Extremely high knowledge,Low interest
 80,Video Games and Virtual Reality (Gaming),Economy in MMO Games and Microtransactions,43.0,4.0,78.0,Moderately lapsed,Extremely low knowledge,High interest
 80,Video Games and Virtual Reality (Gaming),Evolution of Artificial Intelligence in Enemies,38.0,77.0,73.0,Highly lapsed,High knowledge,High interest
@@ -746,7 +746,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Network Theory and Complex Systems,Small Worlds: Six Degrees of Separation Theory,52.0,19.0,93.0,Moderately lapsed,Extremely low knowledge,Extremely high interest
 80,Network Theory and Complex Systems,Robustness of Networks to Attacks and Failures,58.0,64.0,7.0,Moderately lapsed,High knowledge,Extremely low interest
 80,Network Theory and Complex Systems,Spread of Epidemics and Information in Networks,20.0,67.0,70.0,Highly lapsed,High knowledge,High interest
-80,Network Theory and Complex Systems,Biological vs Artificial Neural Networks,35.0,60.0,53.0,Highly lapsed,High knowledge,Moderate interest
+80,Network Theory and Complex Systems,Biological vs Artificial Neural Networks,35.0,60.0,53.0,Highly lapsed,Moderate knowledge,Moderate interest
 80,Network Theory and Complex Systems,Network Economics and Interconnected Markets,80.0,96.0,40.0,Slightly lapsed,Extremely high knowledge,Low interest
 80,Network Theory and Complex Systems,Topology of the Internet and the Web,70.0,12.0,71.0,Slightly lapsed,Extremely low knowledge,High interest
 80,Network Theory and Complex Systems,Synchronization in Biological Systems,94.0,88.0,88.0,Not lapsed,Extremely high knowledge,Extremely high interest
@@ -843,7 +843,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Soft Robotics,Modeling of Deformable Solids,30.0,22.0,19.0,Highly lapsed,Low knowledge,Extremely low interest
 80,Soft Robotics,Soft Robotics for Space Exploration,57.0,98.0,12.0,Moderately lapsed,Extremely high knowledge,Extremely low interest
 80,Soft Robotics,Safe Human-Robot Interaction (Collaborative Soft Robots),53.0,81.0,70.0,Moderately lapsed,Extremely high knowledge,High interest
-80,Digital Criminology and Forensics,Analysis of Markets on the Dark Web,59.0,92.0,59.0,Slightly lapsed,Extremely high knowledge,High interest
+80,Digital Criminology and Forensics,Analysis of Markets on the Dark Web,59.0,92.0,59.0,Moderately lapsed,Extremely high knowledge,Moderate interest
 80,Digital Criminology and Forensics,Tracking Suspicious Cryptocurrency Transactions,65.0,50.0,11.0,Slightly lapsed,Moderate knowledge,Extremely low interest
 80,Digital Criminology and Forensics,Digital Footprinting and OSINT Investigations,86.0,82.0,48.0,Not lapsed,Extremely high knowledge,Moderate interest
 80,Digital Criminology and Forensics,Cloud Systems Forensic Analysis,17.0,54.0,24.0,Extremely lapsed,Moderate knowledge,Low interest
@@ -891,7 +891,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Paleontology and Prehistoric Life,Pleistocene Megafauna: Mammoths and Saber-toothed Tigers,77.0,4.0,79.0,Slightly lapsed,Extremely low knowledge,High interest
 80,Paleontology and Prehistoric Life,Exceptionally Preserved Fossils (Lagerstätten),77.0,57.0,83.0,Slightly lapsed,Moderate knowledge,Extremely high interest
 80,Paleontology and Prehistoric Life,Paleoecology: Reconstructing Past Ecosystems,51.0,22.0,81.0,Moderately lapsed,Low knowledge,Extremely high interest
-80,Paleontology and Prehistoric Life,The Cambrian Explosion and the Origin of Body Plans,16.0,60.0,80.0,Extremely lapsed,High knowledge,Extremely high interest
+80,Paleontology and Prehistoric Life,The Cambrian Explosion and the Origin of Body Plans,16.0,60.0,80.0,Extremely lapsed,High knowledge,High interest
 80,Paleontology and Prehistoric Life,Ancient DNA Analysis from Fossil Remains,29.0,96.0,69.0,Highly lapsed,Extremely high knowledge,High interest
 80,Computational Linguistics,Neural Machine Translation Algorithms,49.0,8.0,80.0,Moderately lapsed,Extremely low knowledge,Extremely high interest
 80,Computational Linguistics,Speech Recognition and Text-to-Speech (TTS),43.0,43.0,56.0,Moderately lapsed,Moderate knowledge,Moderate interest

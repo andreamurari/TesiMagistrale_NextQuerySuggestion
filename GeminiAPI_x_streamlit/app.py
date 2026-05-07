@@ -73,27 +73,26 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     result = pd.read_csv("context_data.csv")
     return result
 
-def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list, active_topics: list) -> list:
-    """Multi-label router with State Tracking."""
+def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list, active_topics: list, topic_mapping_str: str) -> list:
+    """Multi-label router with Hierarchical State Tracking."""
     if not unique_topics:
         return []
         
     client = genai.Client(api_key=api_key)
-    topics_str = ",".join(unique_topics)
     active_str = ",".join(active_topics) if active_topics else "None"
     
     router_prompt = (
-            f"Previous Active Topics: [{active_str}]\n\n"
-            f"Current User Query: '{user_prompt}'\n\n"
-            f"Available Topics: [{topics_str}]\n\n"
-            "Task: Analyze the user query IN CONTEXT of the Previous Active Topics.\n"
-            "Apply these STRICT rules to output ONLY a JSON array of exact string matches from Available Topics:\n"
-            "1. IMPLICIT CONTINUATION: If the query is ambiguous ('give me an exercise', 'tell me more') OR answers a question the AI just asked, output the 'Previous Active Topics'.\n"
-            "2. META-QUERIES: If the user asks about their grades, status, progress, or situation (e.g., 'how am I doing?', 'what is my situation?'), DO NOT invent topics. Output the 'Previous Active Topics' so the system can evaluate their data.\n"
-            "3. FUZZY MAPPING: If the user mentions a general interest or broad category WITHOUT specifying the exact subtopic, intelligently select 2 to 4 of the closest matching foundational topics from the 'Available Topics' list.\n"
-            "4. TOPIC SWITCH: If the query explicitly introduces a NEW specific subject, ignore previous topics and select the new relevant topics from 'Available Topics'.\n"
-            "Return ONLY a JSON array of strings."
-        )
+        f"Previous Active Topics: [{active_str}]\n\n"
+        f"Current User Query: '{user_prompt}'\n\n"
+        f"Available Database Knowledge (Topic -> Subtopics):\n{topic_mapping_str}\n\n"
+        "Task: Analyze the user query IN CONTEXT of the Previous Active Topics.\n"
+        "Apply these STRICT rules to output ONLY a JSON array of exact string matches representing the MAIN Topics (e.g., 'Physics', 'History'):\n"
+        "1. IMPLICIT CONTINUATION & RESOURCES: If the query is ambiguous, asks for study resources (e.g., 'YouTube channels', 'books'), OR answers a question the AI just asked, output the EXACT 'Previous Active Topics'.\n"
+        "2. META-QUERIES: If the user asks about their grades, status, progress, or situation, DO NOT invent topics. Output the 'Previous Active Topics'.\n"
+        "3. HIERARCHICAL MAPPING: Look at the 'Available Database Knowledge'. If the user's query matches any of the specific Subtopics (e.g., 'Fluid Dynamics'), you MUST output its parent MAIN Topic (e.g., 'Physics').\n"
+        "4. TOPIC SWITCH: If the query introduces a NEW subject not found in the Database Knowledge, intelligently select the closest MAIN Topic, or return an empty array [] if nothing is relevant.\n"
+        "Return ONLY a JSON array of strings containing MAIN Topics."
+    )
 
     try:
         start_time = time.time()
@@ -115,7 +114,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
     except Exception as e:
         print(f"Routing error: {e}")
         return []
-
+    
 def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0):
     """Save token usage and latency data to a CSV file."""
     if not usage_metadata:
@@ -232,6 +231,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     - Step 3 (NEW DOMAIN): If the interaction explores a different specific subject (even if it belongs to the same broad category, e.g., both are 'History'), set "is_new_topic" to true.
     - Step 4 (CREATION): If "is_new_topic" is true, generate a broad academic "topic" (e.g., "History") and a specific subject-matter "subtopic" (e.g., "Medieval History"). Do NOT reuse the old subtopic from the table.
     - CRITICAL RULE: The subtopic MUST be a domain of knowledge. NEVER use meta-activities like "Test Preparation" or "Study Strategies".
+    - CRITICAL RULE FOR NEW DOMAINS: The subtopic MUST represent a core subject matter, skill, or area of interest (e.g., "Navier-Stokes Equations", "Verona Tourism", "Personal Finance"). It must define WHAT the user is exploring, not HOW they are consuming it. NEVER use media formats, platforms, resources, or task-oriented actions as subtopics (STRICTLY FORBIDDEN: "YouTube Channels", "Books", "Test Preparation", "Itinerary Planning", "Study Strategies").
     """
     
     try:
@@ -339,10 +339,17 @@ def main():
 
     try:
         full_df = load_context_data(int(student_id))
-        unique_topics = full_df['Topic'].unique().tolist() if not full_df.empty else []
+        if not full_df.empty:
+            unique_topics = full_df['Topic'].unique().tolist()
+            mapping = full_df.groupby('Topic')['Subtopic'].apply(lambda x: ', '.join(x.unique())).to_dict()
+            topic_mapping_str = "\n".join([f"- '{k}' (contains: {v})" for k, v in mapping.items()])
+        else:
+            unique_topics = []
+            topic_mapping_str = "None"
     except Exception as e:
         full_df = pd.DataFrame()
         unique_topics = []
+        topic_mapping_str = "None"
         st.error(f"Data loading failed: {e}")
 
     for msg in st.session_state.messages:
@@ -370,7 +377,8 @@ def main():
                     DEFAULT_MODEL_LITE, 
                     user_prompt, 
                     unique_topics, 
-                    st.session_state.active_topics
+                    st.session_state.active_topics,
+                    topic_mapping_str
                 )
                 
                 # 2. Context Extraction
