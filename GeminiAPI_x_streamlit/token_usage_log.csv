@@ -1,4 +1,4 @@
-Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latency (s)
+Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens,Latency (s)
 2026-04-19 16:44:36,Router_RB,668,14,682
 2026-04-19 16:44:39,Generator_RB,486,205,691
 2026-04-19 16:46:11,Router_RB,661,25,686
@@ -59,13 +59,13 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens, Latenc
 2026-04-22 11:40:31,Generator_Naive,22730,327,23057
 2026-04-22 11:43:44,Generator_Naive,23363,1526,24889
 2026-04-24 11:33:10,Router_RB,926,5,933
-2026-04-24 11:33:15,Generator_RB(Main RAG),389,318,707
+2026-04-24 11:33:15,Generator_RB,389,318,707
 2026-04-24 11:45:07,Generator_Naive,22682,58,22740
-2026-04-24 11:45:28,Generator_Naive(NAIVE RAG - Full DB),22747,337,45854
-2026-04-24 11:56:52,Router_RB(Topic Extraction),926,5,931
-2026-04-24 11:57:55,Router_RB(Topic Extraction),927,5,934,1.07
-2026-04-24 11:58:01,Generator_RB(Main RAG),391,404,795,2.67
-2026-04-24 12:10:01,Router_RB(Topic Extraction),927,5,934,1.81
+2026-04-24 11:45:28,Generator_Naive,22747,337,45854
+2026-04-24 11:56:52,Router_RB,926,5,931
+2026-04-24 11:57:55,Router_RB,927,5,934,1.07
+2026-04-24 11:58:01,Generator_RB,391,404,795,2.67
+2026-04-24 12:10:01,Router_RB,927,5,934,1.81
 2026-04-24 12:13:41,Generator_Naive,22682,219,23424,
 2026-04-24 12:22:44,Generator_Naive,22682,238,23466,5.28
 2026-04-24 12:24:44,Generator_Naive,22681,196,23713,12.08
