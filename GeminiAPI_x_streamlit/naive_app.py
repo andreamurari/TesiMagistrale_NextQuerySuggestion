@@ -103,16 +103,16 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         df.loc[mask, 'lapse_score']     = (old_l * ALPHA) + (inter_l * (1 - ALPHA))
         df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
 
-    try:
-        df['lapse_category'] = pd.qcut(df['lapse_score'].rank(method='first'), q=5, 
-                                       labels=['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed'])
-        df['knowledge_category'] = pd.qcut(df['knowledge_score'].rank(method='first'), q=5, 
-                                           labels=['Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge'])
-        df['interest_category'] = pd.qcut(df['interest_score'].rank(method='first'), q=5, 
-                                          labels=['Extremely low interest', 'Low interest', 'Moderate interest', 'High interest', 'Extremely high interest'])
-    except ValueError as e:
-        print(f"Warning: Not enough diverse data to qcut yet. {e}")
+    bins = [0, 20, 40, 60, 80, 100]
+    
+    lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
+    know_labels = ['Extremely low knowledge', 'Low knowledge', 'Moderate knowledge', 'High knowledge', 'Extremely high knowledge']
+    int_labels = ['Extremely low interest', 'Low interest', 'Moderate interest', 'High interest', 'Extremely high interest']
 
+    df['lapse_category'] = pd.cut(df['lapse_score'], bins=bins, labels=lapse_labels, include_lowest=True)
+    df['knowledge_category'] = pd.cut(df['knowledge_score'], bins=bins, labels=know_labels, include_lowest=True)
+    df['interest_category'] = pd.cut(df['interest_score'], bins=bins, labels=int_labels, include_lowest=True)
+    
     df.to_csv(file_path, index=False)
     
 def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str, user_query: str, tutor_response: str):
