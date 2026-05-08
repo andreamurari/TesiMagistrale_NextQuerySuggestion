@@ -60,3 +60,5 @@ If I talnk about a new topic that is not in context_data, it seems to lead the u
 2026-05-04 16:03:41
 2026-05-04 16:05:04
 2026-05-04 16:05:57)
+
+If I keep the Hierarchical Context Routing (implemented to improve the performances of context updater) the token for the router increase drastically
