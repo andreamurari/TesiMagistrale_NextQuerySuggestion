@@ -239,12 +239,11 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
     CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
-    - Step 1 (STRICT MATCHING): Compare the INTERACTION subject directly to the 'Subtopic' column in the CURRENT STATE. "Medieval History" is NOT "The Roman Empire". 
+    - Step 1 (STRICT MATCHING): Compare the INTERACTION subject directly to the 'Subtopic' column in the CURRENT STATE.
     - Step 2 (KNOWN DOMAIN): If and ONLY if the interaction is explicitly about the exact same specific subtopic present in the table, set "is_new_topic" to false. EXACTLY COPY-PASTE the "Topic" and "Subtopic" strings from the table.
     - Step 3 (NEW DOMAIN): If the interaction explores a different specific subject (even if it belongs to the same broad category, e.g., both are 'History'), set "is_new_topic" to true.
     - Step 4 (CREATION): If "is_new_topic" is true, generate a broad academic "topic" (e.g., "History") and a specific subject-matter "subtopic" (e.g., "Medieval History"). Do NOT reuse the old subtopic from the table.
-    - CRITICAL RULE: The subtopic MUST be a domain of knowledge. NEVER use meta-activities like "Test Preparation" or "Study Strategies".
-    - CRITICAL RULE FOR NEW DOMAINS: The subtopic MUST represent a core subject matter, skill, or area of interest (e.g., "Navier-Stokes Equations", "Verona Tourism", "Personal Finance"). It must define WHAT the user is exploring, not HOW they are consuming it. NEVER use media formats, platforms, resources, or task-oriented actions as subtopics (STRICTLY FORBIDDEN: "YouTube Channels", "Books", "Test Preparation", "Itinerary Planning", "Study Strategies").
+    - CRITICAL RULE: Subtopics MUST be pure knowledge domains/concepts (WHAT the user explores, e.g., "Navier-Stokes"). STRICTLY FORBIDDEN to use actions, media formats, or meta-tasks (HOW they explore it, e.g., "YouTube", "Test Prep", "Planning").
     """
     
     try:
