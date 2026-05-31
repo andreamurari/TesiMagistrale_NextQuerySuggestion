@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import time
 from datetime import datetime
 import traceback
+import math
 
 load_dotenv()
 DEFAULT_MODEL_LITE = "gemini-2.5-flash-lite"
@@ -70,8 +71,29 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     if not os.path.exists("context_data.csv"):
         return pd.DataFrame()
         
-    result = pd.read_csv("context_data.csv")
-    return result
+    df = pd.read_csv("context_data.csv")
+    now = datetime.now()
+    
+    # 1. Se la colonna della data esiste, calcoliamo il Lapse Score al volo
+    if 'last_interaction_date' in df.columns:
+        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'])
+        
+        def calculate_lapse(row):
+            delta_days = (now - row['last_interaction_date']).days
+            # S (Forza della memoria - Formula EdTech per semestri universitari)
+            S = 30 + (row.get('knowledge_score', 50) / 2.0)
+            # Applica Ebbinghaus: 100 = ricordo perfetto, 0 = obliato
+            decay = 100 * math.exp(-max(delta_days, 0) / S)
+            return decay
+
+        df['lapse_score'] = df.apply(calculate_lapse, axis=1)
+        
+        # 2. Ricalcola la categoria testuale aggiornata
+        bins = [0, 20, 40, 60, 80, 100]
+        lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
+        df['lapse_category'] = pd.cut(df['lapse_score'], bins=bins, labels=lapse_labels, include_lowest=True)
+        
+    return df
 
 def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_topics: list, active_topics: list, topic_mapping_str: str) -> list:
     """Multi-label router with Hierarchical State Tracking."""
@@ -156,7 +178,7 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
-def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_l: float, inter_i: float, file_path: str = "context_data.csv"):
+def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_i: float, file_path: str = "context_data.csv"):
     """Apply EMA to scores and recalculate categories."""
     ALPHA = 0.8 
     
@@ -183,13 +205,16 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     # 3. Use cleaned variables for matching
     mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
     if df[mask].empty:
         new_row = pd.DataFrame([{
             'student_id': student_id_clean,
             'Topic': topic_clean,
             'Subtopic': subtopic_clean,
             'knowledge_score': float(inter_k),
-            'lapse_score': float(inter_l),
+            'lapse_score': 100.0, 
+            'last_interaction_date': now_str,
             'interest_score': float(inter_i),
             'knowledge_category': 'Moderate knowledge',
             'lapse_category': 'Not lapsed',
@@ -198,12 +223,12 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
         df = pd.concat([df, new_row], ignore_index=True)
     else:
         old_k = df.loc[mask, 'knowledge_score'].values[0]
-        old_l = df.loc[mask, 'lapse_score'].values[0]
         old_i = df.loc[mask, 'interest_score'].values[0]
         
         df.loc[mask, 'knowledge_score'] = (old_k * ALPHA) + (inter_k * (1 - ALPHA))
-        df.loc[mask, 'lapse_score']     = (old_l * ALPHA) + (inter_l * (1 - ALPHA))
+        df.loc[mask, 'lapse_score']     = 100
         df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
+        df.loc[mask, 'last_interaction_date'] = now_str
     
     
     bins = [0, 20, 40, 60, 80, 100]
@@ -235,8 +260,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
 
     SCORING RULES (0 to 100):
     1. interaction_knowledge: 0 (completely failed/clueless) to 100 (perfect understanding/correct answer).
-    2. interaction_lapse: 0 (completely forgot the basics) to 100 (fresh memory, no hesitation).
-    3. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
+    2. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
     
     CRITICAL INSTRUCTIONS FOR TOPIC SELECTION:
     - Step 1 (STRICT MATCHING): Compare the INTERACTION subject directly to the 'Subtopic' column in the CURRENT STATE.
@@ -264,10 +288,9 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                         "topic": {"type": "STRING"},
                         "subtopic": {"type": "STRING"},
                         "interaction_knowledge": {"type": "NUMBER"},
-                        "interaction_lapse": {"type": "NUMBER"},
                         "interaction_interest": {"type": "NUMBER"}
                     },
-                    "required": ["is_new_topic", "topic", "subtopic", "interaction_knowledge", "interaction_lapse", "interaction_interest"]
+                    "required": ["is_new_topic", "topic", "subtopic", "interaction_knowledge", "interaction_interest"]
                 }
             )
         )
@@ -285,7 +308,6 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
             topic=result["topic"],
             subtopic=result["subtopic"],
             inter_k=result["interaction_knowledge"],
-            inter_l=result["interaction_lapse"],
             inter_i=result["interaction_interest"]
         )
         print(f"EMA Update Success for: {result['subtopic']}")
