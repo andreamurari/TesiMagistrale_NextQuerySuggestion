@@ -219,7 +219,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Education and Learning,Gamification of Educational Processes,42.0,59.0,68.0,Moderately lapsed,Moderate knowledge,High interest,2026-05-30
 80,Education and Learning,Neuroscience of Learning,38.0,36.0,85.0,Highly lapsed,Low knowledge,Extremely high interest,2026-05-30
 80,Education and Learning,Soft Skills vs. Hard Skills,78.0,68.0,20.0,Slightly lapsed,High knowledge,Extremely low interest,2026-05-31
-80,Education and Learning,The Future of Universities,22.0,77.0,80.0,Highly lapsed,High knowledge,High interest,2026-05-30
+80,Education and Learning,The Future of Universities,100.0,75.6,81.0,Not lapsed,High knowledge,Extremely high interest,2026-06-06 14:34:19
 80,Education and Learning,Homeschooling and Self-directed Learning,37.0,27.0,2.0,Highly lapsed,Low knowledge,Extremely low interest,2026-05-30
 80,Education and Learning,Digital Literacy and Media Education,73.0,96.0,67.0,Slightly lapsed,Extremely high knowledge,High interest,2026-05-31
 80,Education and Learning,Inclusive Teaching and Special Educational Needs (SEN),21.0,48.0,55.0,Highly lapsed,Moderate knowledge,Moderate interest,2026-05-30
@@ -1030,4 +1030,3 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Travel and Tourism,Verona Tourism,100.0,95.0,86.8,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 13:49:33
 80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
-80,Travel Planning,Rome Itinerary Planning,90.0,95.0,90.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31

@@ -239,30 +239,27 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     
     judge_prompt = f"""
     You are an educational data analyst. Evaluate the student's performance in this specific interaction.
-    Score them from 0 to 100 on three metrics.
-
+    
     CURRENT STATE (Reference Data):
     {context_text if context_text else "No relevant previous data found for this interaction."}
 
     INTERACTION:
     User Query: "{user_query}"
     Tutor Response: "{tutor_response}"
+    
+    CRITICAL DECISION (THE BYPASS RULE):
+    Determine if this interaction is a "Learning/Exploration Event" (discussing concepts, theories, facts, academic subjects) OR a "Task/Execution Event" (asking the AI to plan a trip, give career advice, generate a quiz, summarize a text).
+    If it is a Task/Execution Event, set "is_valid_tracking_event" to FALSE and set all other fields to null/empty/0. Do not track tasks.
 
-    SCORING RULES (0 to 100):
-    1. interaction_knowledge: 0 (completely failed/clueless) to 100 (perfect understanding/correct answer).
-    2. interaction_interest: 0 (bored, minimum effort) to 100 (curious, enthusiastic, asking follow-ups).
+    SCORING RULES (Only if is_valid_tracking_event is TRUE):
+    1. interaction_knowledge: 0 to 100.
+    2. interaction_interest: 0 to 100.
     
-    CRITICAL INSTRUCTIONS FOR TOPIC SELECTION (PREVENT ONTOLOGY BLOAT):
-    - Step 1 (GREEDY MATCHING): Review the CURRENT STATE. Can the core subject of this interaction be reasonably grouped or clustered under an existing Subtopic? If yes, you MUST reuse it. Do NOT create a new subtopic for a mere detail or sub-branch of an existing one.
-    - Step 2 (KNOWN DOMAIN): If a match is found, set "is_new_topic" to false. EXACTLY COPY-PASTE the "Topic" and "Subtopic" strings from the table.
-    - Step 3 (HIGH THRESHOLD FOR CREATION): Set "is_new_topic" to true ONLY IF the interaction represents a complete paradigm shift to a drastically different subject.
-    - Step 4 (CREATION RULES): If "is_new_topic" is true, generate a broad "topic" and a specific "subtopic". 
-    - STRICT NEGATIVE CONSTRAINT: The subtopic MUST represent a purely academic or factual knowledge domain (WHAT is being studied). It is STRICTLY FORBIDDEN to use verbs, meta-tasks, media formats, or actions as subtopics.
-    
-    EXAMPLES OF BAD VS GOOD NEW SUBTOPICS:
-    * User: "Plan a 3-day itinerary for Verona" -> BAD: "Itinerary Generation" (Task). GOOD: "Geography and Tourism of Verona" (Domain).
-    * User: "Help me study for my math test on derivatives" -> BAD: "Test Preparation" (Action). GOOD: "Calculus and Derivatives" (Domain).
-    * User: "What college major should I choose?" -> BAD: "College Major Selection" (Choice). GOOD: "Higher Education Pathways" (Domain).
+    CRITICAL INSTRUCTIONS FOR TOPIC SELECTION (Only if is_valid_tracking_event is TRUE):
+    - Step 1 (GREEDY MATCHING): Review the CURRENT STATE. Can the core subject of this interaction be reasonably grouped under an existing Subtopic? If yes, reuse it.
+    - Step 2: If a match is found, set "is_new_topic" to false. EXACTLY COPY-PASTE the "Topic" and "Subtopic" strings.
+    - Step 3: Set "is_new_topic" to true ONLY IF the interaction represents a complete paradigm shift to a drastically different academic subject.
+    - Step 4: If creating a new topic, it MUST be a pure knowledge domain. 
     """
     
     try:
@@ -278,13 +275,14 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                 response_schema={
                     "type": "OBJECT",
                     "properties": {
+                        "is_valid_tracking_event": {"type": "BOOLEAN"},
                         "is_new_topic": {"type": "BOOLEAN"},
                         "topic": {"type": "STRING"},
                         "subtopic": {"type": "STRING"},
                         "interaction_knowledge": {"type": "NUMBER"},
                         "interaction_interest": {"type": "NUMBER"}
                     },
-                    "required": ["is_new_topic", "topic", "subtopic", "interaction_knowledge", "interaction_interest"]
+                    "required": ["is_valid_tracking_event"] # Gli altri non sono più strettamente required se facciamo bypass
                 }
             )
         )
@@ -293,10 +291,15 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         log_token_usage("Evaluator_Flat", response.usage_metadata, latency)
         
         if not response.text:
-             print("Background evaluation failed: Modello ha restituito un testo vuoto.")
+             print("Background evaluation failed.")
              return
              
         result = json.loads(response.text)
+        
+        if not result.get("is_valid_tracking_event", True):
+             print("Task Execution detected: Bypass database update. No state tracked.")
+             return
+         
         update_context_data(
             student_id=student_id,
             topic=result["topic"],
