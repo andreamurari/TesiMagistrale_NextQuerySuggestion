@@ -1031,6 +1031,3 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Travel Planning,Rome Itinerary Planning,90.0,95.0,90.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
-80,Travel Planning,Itinerary Generation,100.0,85.0,70.0,Not lapsed,Extremely high knowledge,High interest,2026-06-06 13:39:19
-80,Education and Learning,College Major Selection,100.0,89.88000000000001,90.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 14:05:34
-80,Applied Mathematics and Theoretical Physics,Interdisciplinary Complex Systems,100.0,85.5,92.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 14:06:50
