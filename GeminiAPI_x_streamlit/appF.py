@@ -264,9 +264,15 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     Tutor Response: "{tutor_response}"
     
     CRITICAL DECISION (THE BYPASS RULE):
-    Determine if this interaction is a "Learning/Exploration Event" (discussing concepts, theories, facts, academic subjects) OR a "Task/Execution Event" (asking the AI to plan a trip, give career advice, generate a quiz, summarize a text).
-    If it is a Task/Execution Event, set "is_valid_tracking_event" to FALSE and set all other fields to null/empty/0. Do not track tasks.
-
+    Determine if this interaction is a "Learning/Exploration Event" (discussing concepts, theories, facts, academic subjects) OR a "Task/Execution Event" (asking the AI to plan a trip, give career advice, suggest a gift, generate a quiz, summarize a text).
+    If it is a Task/Execution Event, set "is_valid_tracking_event" to FALSE and stop.
+    
+    EXAMPLES:
+    * "Plan an itinerary for Verona" -> is_valid_tracking_event: FALSE (Task)
+    * "Suggest a gift based on my interests" -> is_valid_tracking_event: FALSE (Task)
+    * "What college major should I choose?" -> is_valid_tracking_event: FALSE (Task)
+    * "I don't understand the difference between Newtonian and non-Newtonian fluids" -> is_valid_tracking_event: TRUE (Learning)
+    
     SCORING RULES (Only if is_valid_tracking_event is TRUE):
     1. interaction_knowledge: 0 to 100.
     2. interaction_interest: 0 to 100.
