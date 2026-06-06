@@ -191,3 +191,6 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens,Latency
 2026-06-06 14:35:13,Router_Flat,752,16,768,0.7
 2026-06-06 14:35:24,Generator_Flat,1033,530,1982,5.51
 2026-06-06 14:35:30,Evaluator_Flat,1485,59,1544,1.01
+2026-06-06 14:56:38,Router_Flat,743,13,758,0.93
+2026-06-06 14:56:58,Generator_Flat,804,1164,4333,13.94
+2026-06-06 14:57:04,Evaluator_Flat,1826,59,1885,0.78

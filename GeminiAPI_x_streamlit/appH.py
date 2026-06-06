@@ -154,17 +154,33 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
-def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: str = "All (Naive)"):
-    """Save chat interaction logs to a CSV file for thesis case study analysis."""
+def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: list, active_subtopics: list = None, full_db_size: int = 0):
     log_file = "chat_logs.csv"
     
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
     safe_response = ai_response.replace('\n', ' \\n ')
     
+    if active_subtopics is None:
+        active_subtopics = []
+    
+    if architecture == "Naive":
+        topics_str = "Entire Database"
+        subtopics_str = "Entire Database"
+        topic_count = full_db_size
+        subtopic_count = full_db_size
+    else:
+        topics_str = ", ".join(active_topics) if active_topics else "None"
+        subtopics_str = ", ".join(active_subtopics) if active_subtopics else "None"
+        topic_count = len(active_topics)
+        subtopic_count = len(active_subtopics)
+        
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Architecture": architecture,
-        "Active_Topics": active_topics,
+        "Topic_Count": topic_count,
+        "Subtopic_Count": subtopic_count,
+        "Active_Topics": topics_str,
+        "Active_Subtopics": subtopics_str,
         "User_Query": safe_query,
         "AI_Response": safe_response
     }])
@@ -173,7 +189,7 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
         new_data.to_csv(log_file, index=False)
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
-
+        
 def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_i: float, file_path: str = "context_data.csv"):
     """Apply EMA to scores and recalculate categories."""
     ALPHA = 0.8 
@@ -413,9 +429,14 @@ def main():
                     topic_mapping_str
                 )
                 
+                current_subtopics = []
+                
                 if target_topics and not full_df.empty:
                     st.session_state.active_topics = target_topics 
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
+                    
+                    current_subtopics = filtered_df['Subtopic'].unique().tolist() 
+                    
                     df_slim = filtered_df[['Topic', 'Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
                     st.info(f"🎯 Found {len(filtered_df)} records for topics: {', '.join(target_topics)}")
@@ -423,7 +444,7 @@ def main():
                     st.session_state.active_topics = [] 
                     context_text = ""
                     st.info("🌐 No relevant topics found. Using general knowledge.")
-
+                    
                 system_prompt = build_system_prompt(context_text)
                 history_text = build_history_text(st.session_state.messages[:-1], max_turns=3)
 
@@ -437,14 +458,14 @@ def main():
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
             if "Errore" not in reply and "Error" not in reply:
-                topics_str = ", ".join(st.session_state.active_topics) if st.session_state.active_topics else "None"
                 log_chat_interaction(
-                    architecture="HRB",
+                    architecture="HRB", 
                     user_query=user_prompt,
                     ai_response=reply,
-                    active_topics=topics_str
+                    active_topics=st.session_state.active_topics,
+                    active_subtopics=current_subtopics 
                 )
-            
+                
             if "Errore" not in reply and "Error" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,

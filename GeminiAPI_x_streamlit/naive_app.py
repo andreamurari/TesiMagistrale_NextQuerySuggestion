@@ -36,17 +36,33 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
-def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: str = "All (Naive)"):
-    """Salva i log della conversazione in un CSV per l'analisi dei case studies della tesi."""
+def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: list, active_subtopics: list = None, full_db_size: int = 0):
     log_file = "chat_logs.csv"
     
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
-    safe_response = ai_response.replace('\n', ' \\n ') 
+    safe_response = ai_response.replace('\n', ' \\n ')
     
+    if active_subtopics is None:
+        active_subtopics = []
+    
+    if architecture == "Naive":
+        topics_str = "Entire Database"
+        subtopics_str = "Entire Database"
+        topic_count = full_db_size
+        subtopic_count = full_db_size
+    else:
+        topics_str = ", ".join(active_topics) if active_topics else "None"
+        subtopics_str = ", ".join(active_subtopics) if active_subtopics else "None"
+        topic_count = len(active_topics)
+        subtopic_count = len(active_subtopics)
+        
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Architecture": architecture, 
-        "Active_Topics": active_topics,
+        "Architecture": architecture,
+        "Topic_Count": topic_count,
+        "Subtopic_Count": subtopic_count,
+        "Active_Topics": topics_str,
+        "Active_Subtopics": subtopics_str,
         "User_Query": safe_query,
         "AI_Response": safe_response
     }])
@@ -367,11 +383,14 @@ def main():
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
             if "Error" not in reply and "Errore" not in reply:
+                unique_topic_count = len(full_df['Topic'].unique()) if not full_df.empty else 0
+                
                 log_chat_interaction(
                     architecture="Naive",
                     user_query=user_prompt,
                     ai_response=reply,
-                    active_topics="Entire Database"
+                    active_topics=[],
+                    full_db_size=unique_topic_count
                 )
                 
             if "Error" not in reply and "Errore" not in reply:
