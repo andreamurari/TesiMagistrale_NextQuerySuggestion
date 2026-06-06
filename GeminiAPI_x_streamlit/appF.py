@@ -74,21 +74,17 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     df = pd.read_csv("context_data.csv")
     now = datetime.now()
     
-    # 1. Se la colonna della data esiste, calcoliamo il Lapse Score al volo
     if 'last_interaction_date' in df.columns:
-        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'])
+        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'], format='mixed', errors='coerce')
         
         def calculate_lapse(row):
             delta_days = (now - row['last_interaction_date']).days
-            # S (Forza della memoria - Formula EdTech per semestri universitari)
             S = 30 + (row.get('knowledge_score', 50) / 2.0)
-            # Applica Ebbinghaus
             decay = 100 * math.exp(-max(delta_days, 0) / S)
             return decay
 
         df['lapse_score'] = df.apply(calculate_lapse, axis=1)
         
-        # 2. Ricalcola la categoria testuale aggiornata
         bins = [0, 20, 40, 60, 80, 100]
         lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
         df['lapse_category'] = pd.cut(df['lapse_score'], bins=bins, labels=lapse_labels, include_lowest=True)
@@ -103,7 +99,6 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
     client = genai.Client(api_key=api_key)
     active_str = ",".join(active_topics) if active_topics else "None"
     
-    # PROMPT FLAT: Solo macro argomenti e Fuzzy Mapping
     router_prompt = (
         f"Previous Active Topics: [{active_str}]\n\n"
         f"Current User Query: '{user_prompt}'\n\n"
@@ -182,7 +177,6 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     ALPHA = 0.8 
     
     if not os.path.exists(file_path):
-        # Aggiunto last_interaction_date all'inizializzazione
         cols = ['student_id', 'Topic', 'Subtopic', 'lapse_score', 'knowledge_score', 'interest_score', 'lapse_category', 'knowledge_category', 'interest_category', 'last_interaction_date']
         df = pd.DataFrame(columns=cols)
     else:
@@ -191,18 +185,15 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
             if col in df.columns:
                 df[col] = df[col].astype(float)
                 
-    # 1. Make sure student_id is int and topic/subtopic are stripped strings to avoid hidden mismatches
     df['student_id'] = df['student_id'].astype(int)
     student_id_clean = int(student_id)
     
-    # 2. Remove leading/trailing whitespace from 'Topic' and 'Subtopic' columns in the DataFrame to ensure clean matching
     df['Topic'] = df['Topic'].astype(str).str.strip()
     df['Subtopic'] = df['Subtopic'].astype(str).str.strip()
     
     topic_clean = str(topic).strip()
     subtopic_clean = str(subtopic).strip()
     
-    # 3. Use cleaned variables for matching
     mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -270,7 +261,6 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     """
     
     try:
-        # PAUSA CRITICA: previene il 503 dopo la chiamata di generazione
         time.sleep(2.5)
         
         start_time = time.time()
@@ -325,7 +315,6 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
     )
     
     try:
-        # PAUSA CRITICA: Dà respiro all'API dopo la chiamata di Routing iniziale
         time.sleep(2.5) 
         
         start_time = time.time()
@@ -370,7 +359,6 @@ def main():
     try:
         full_df = load_context_data(int(student_id))
         if not full_df.empty:
-            # ESTRAZIONE FLAT: Solo la lista dei Topic, uniti da virgola. Niente Subtopic CSV!
             unique_topics = full_df['Topic'].unique().tolist()
             topic_mapping_str = ", ".join(unique_topics)
         else:
@@ -426,21 +414,19 @@ def main():
                 system_prompt = build_system_prompt(context_text)
                 history_text = build_history_text(st.session_state.messages[:-1], max_turns=3)
 
-                # 3. Generation
                 reply = call_gemini(api_key, DEFAULT_MODEL_PRO, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
                 reply = f"Error during processing: {e}"
                 traceback.print_exc()
 
-            # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
             if "Errore" not in reply and "Error" not in reply:
                 topics_str = ", ".join(st.session_state.active_topics) if st.session_state.active_topics else "None"
                 log_chat_interaction(
-                    architecture="Flat_RB",
+                    architecture="FRB",
                     user_query=user_prompt,
                     ai_response=reply,
                     active_topics=topics_str

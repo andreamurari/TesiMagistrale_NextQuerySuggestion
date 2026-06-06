@@ -40,13 +40,12 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
     """Salva i log della conversazione in un CSV per l'analisi dei case studies della tesi."""
     log_file = "chat_logs.csv"
     
-    # Pulizia del testo per evitare che le virgole rompano il CSV o l'Excel
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
-    safe_response = ai_response.replace('\n', ' \\n ') # Manteniamo un segno di a capo per leggerlo poi
+    safe_response = ai_response.replace('\n', ' \\n ') 
     
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Architecture": architecture, # 'Router-Based' o 'Naive Full DB'
+        "Architecture": architecture, 
         "Active_Topics": active_topics,
         "User_Query": safe_query,
         "AI_Response": safe_response
@@ -70,7 +69,6 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
             if col in df.columns:
                 df[col] = df[col].astype(float)
                 
-    # --- FIX PANDAS STRING MATCHING (PULIZIA DATI) ---
     df['student_id'] = df['student_id'].astype(int)
     student_id_clean = int(student_id)
     
@@ -147,7 +145,6 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     """
     
     try:
-        # PAUSA CRITICA
         time.sleep(2.5)
         
         start_time = time.time()
@@ -243,9 +240,8 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     df = pd.read_csv("context_data.csv")
     now = datetime.now()
     
-    # 1. Calcolo dinamico del Lapse
     if 'last_interaction_date' in df.columns:
-        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'])
+        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'], format='mixed', errors='coerce')
         
         def calculate_lapse(row):
             delta_days = (now - row['last_interaction_date']).days
@@ -255,7 +251,6 @@ def load_context_data(student_id: int) -> pd.DataFrame:
 
         df['lapse_score'] = df.apply(calculate_lapse, axis=1)
         
-        # 2. Ricalcolo categorie
         bins = [0, 20, 40, 60, 80, 100]
         lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
         df['lapse_category'] = pd.cut(df['lapse_score'], bins=bins, labels=lapse_labels, include_lowest=True)
@@ -279,7 +274,6 @@ def call_gemini(
     )
 
     try:
-        # PAUSA CRITICA
         time.sleep(2.5)
         
         start_time = time.time()
@@ -347,7 +341,6 @@ def main():
     with st.chat_message("assistant"):
         with st.spinner("Processing entire database..."):
             try:
-                # DUMP DELL'INTERO DATAFRAME
                 if not full_df.empty:
                     df_slim = full_df[['Topic', 'Subtopic', 'knowledge_category', 'lapse_category', 'interest_category']]
                     context_text = df_slim.to_csv(index=False)
@@ -357,7 +350,6 @@ def main():
                 system_prompt = build_system_prompt(context_text)
                 history_text = build_history_text(st.session_state.messages[:-1], max_turns=1)
 
-                # Chiamata diretta senza routing
                 reply = call_gemini(api_key, model, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
@@ -374,7 +366,6 @@ def main():
                     active_topics="Entire Database"
                 )
                 
-            # Evaluator gira sempre se non ci sono errori nella generazione
             if "Error" not in reply and "Errore" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,

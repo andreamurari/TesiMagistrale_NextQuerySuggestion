@@ -74,21 +74,17 @@ def load_context_data(student_id: int) -> pd.DataFrame:
     df = pd.read_csv("context_data.csv")
     now = datetime.now()
     
-    # 1. Se la colonna della data esiste, calcoliamo il Lapse Score al volo
     if 'last_interaction_date' in df.columns:
-        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'])
+        df['last_interaction_date'] = pd.to_datetime(df['last_interaction_date'], format='mixed', errors='coerce')
         
         def calculate_lapse(row):
             delta_days = (now - row['last_interaction_date']).days
-            # S (Forza della memoria - Formula EdTech per semestri universitari)
             S = 30 + (row.get('knowledge_score', 50) / 2.0)
-            # Applica Ebbinghaus: 100 = ricordo perfetto, 0 = obliato
             decay = 100 * math.exp(-max(delta_days, 0) / S)
             return decay
 
         df['lapse_score'] = df.apply(calculate_lapse, axis=1)
         
-        # 2. Ricalcola la categoria testuale aggiornata
         bins = [0, 20, 40, 60, 80, 100]
         lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
         df['lapse_category'] = pd.cut(df['lapse_score'], bins=bins, labels=lapse_labels, include_lowest=True)
@@ -271,7 +267,6 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
     """
     
     try:
-        # PAUSA CRITICA: previene il 503 dopo la chiamata di generazione
         time.sleep(2.5)
         
         start_time = time.time()
@@ -326,7 +321,6 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
     )
     
     try:
-        # PAUSA CRITICA: Dà respiro all'API dopo la chiamata di Routing iniziale
         time.sleep(2.5) 
         
         start_time = time.time()
@@ -335,7 +329,6 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
             contents=full_prompt,
             config=types.GenerateContentConfig(
                 temperature=temperature,
-                # CORREZIONE SINTASSI TOOL RICERCA
                 tools=[{"google_search": {}}], 
             ),
         )
@@ -343,14 +336,12 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
         latency = time.time() - start_time
         log_token_usage("Generator_HRB", response.usage_metadata, latency)
         
-        # CORREZIONE FILTRI SICUREZZA: previene l'errore strip() on None
         if not response.text:
             return "Errore: La risposta restituita è vuota. Potrebbe essere intervenuto un filtro di sicurezza."
             
         return response.text.strip()
         
     except Exception as e:
-        # STAMPA L'ERRORE REALE NEL TERMINALE
         traceback.print_exc()
         return f"Errore durante la generazione: {str(e)}"
         
@@ -405,7 +396,6 @@ def main():
     with st.chat_message("assistant"):
         with st.spinner("Analyzing intent..."):
             try:
-                # 1. Routing
                 target_topics = extract_relevant_topics(
                     api_key, 
                     DEFAULT_MODEL_LITE, 
@@ -415,7 +405,6 @@ def main():
                     topic_mapping_str
                 )
                 
-                # 2. Context Extraction
                 if target_topics and not full_df.empty:
                     st.session_state.active_topics = target_topics 
                     filtered_df = full_df[full_df['Topic'].isin(target_topics)]
@@ -430,27 +419,24 @@ def main():
                 system_prompt = build_system_prompt(context_text)
                 history_text = build_history_text(st.session_state.messages[:-1], max_turns=3)
 
-                # 3. Generation
                 reply = call_gemini(api_key, DEFAULT_MODEL_PRO, system_prompt, history_text, user_prompt, temperature)
                 
             except Exception as e:
                 reply = f"Error during processing: {e}"
                 traceback.print_exc()
 
-            # Mostra la risposta all'utente
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
             
             if "Errore" not in reply and "Error" not in reply:
                 topics_str = ", ".join(st.session_state.active_topics) if st.session_state.active_topics else "None"
                 log_chat_interaction(
-                    architecture="RB",
+                    architecture="HRB",
                     user_query=user_prompt,
                     ai_response=reply,
                     active_topics=topics_str
                 )
             
-            # 4. Closed-Loop Update (Background)
             if "Errore" not in reply and "Error" not in reply:
                 evaluate_and_update_scores(
                     api_key=api_key,
