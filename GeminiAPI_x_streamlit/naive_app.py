@@ -72,9 +72,10 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
-def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_i: float, file_path: str = "context_data.csv"):
-    """Apply EMA to scores and recalculate categories."""
-    ALPHA = 0.8 
+def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_i: float, file_path: str = "context_data.csv", is_learning_event: bool = True):
+    """Apply EMA to scores and recalculate categories with Asymmetric Retrieval Smoothing."""
+    ALPHA_K = 0.8 
+    ALPHA_LAPSE = 0.85
     
     if not os.path.exists(file_path):
         cols = ['student_id', 'Topic', 'Subtopic', 'lapse_score', 'knowledge_score', 'interest_score', 'lapse_category', 'knowledge_category', 'interest_category', 'last_interaction_date']
@@ -96,7 +97,8 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     
     mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now_dt = datetime.now()
+    now_str = now_dt.strftime("%Y-%m-%d %H:%M:%S")
     
     if df[mask].empty:
         new_row = pd.DataFrame([{
@@ -115,12 +117,26 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     else:
         old_k = df.loc[mask, 'knowledge_score'].values[0]
         old_i = df.loc[mask, 'interest_score'].values[0]
+        last_date_str = df.loc[mask, 'last_interaction_date'].values[0]
         
-        df.loc[mask, 'knowledge_score'] = (old_k * ALPHA) + (inter_k * (1 - ALPHA))
-        df.loc[mask, 'lapse_score']     = 100.0
-        df.loc[mask, 'interest_score']  = (old_i * ALPHA) + (inter_i * (1 - ALPHA))
-        df.loc[mask, 'last_interaction_date'] = now_str
-
+        try:
+            last_date = pd.to_datetime(last_date_str)
+            delta_days = (now_dt - last_date).days
+        except Exception:
+            delta_days = 0
+            
+        S = 30 + (old_k / 2.0)
+        current_lapse = 100 * math.exp(-max(delta_days, 0) / S)
+        
+        if is_learning_event:
+            df.loc[mask, 'lapse_score'] = (current_lapse * ALPHA_LAPSE) + (100.0 * (1 - ALPHA_LAPSE))
+            df.loc[mask, 'last_interaction_date'] = now_str
+        else:
+            df.loc[mask, 'lapse_score'] = current_lapse
+        
+        df.loc[mask, 'knowledge_score'] = (old_k * ALPHA_K) + (inter_k * (1 - ALPHA_K))
+        df.loc[mask, 'interest_score']  = (old_i * ALPHA_K) + (inter_i * (1 - ALPHA_K))
+    
     bins = [0, 20, 40, 60, 80, 100]
     
     lapse_labels = ['Extremely lapsed', 'Highly lapsed', 'Moderately lapsed', 'Slightly lapsed', 'Not lapsed']
@@ -188,7 +204,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
                         "interaction_knowledge": {"type": "NUMBER"},
                         "interaction_interest": {"type": "NUMBER"}
                     },
-                    "required": ["is_valid_tracking_event"] # Gli altri non sono più strettamente required se facciamo bypass
+                    "required": ["is_valid_tracking_event"] 
                 }
             )
         )
@@ -201,8 +217,9 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
              return
              
         result = json.loads(response.text)
+        is_learning_event = result.get("is_valid_tracking_event", True)
         
-        if not result.get("is_valid_tracking_event", True):
+        if not is_learning_event:
              print("Task Execution detected: Bypass database update. No state tracked.")
              return
          
@@ -211,7 +228,8 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
             topic=result["topic"],
             subtopic=result["subtopic"],
             inter_k=result["interaction_knowledge"],
-            inter_i=result["interaction_interest"]
+            inter_i=result["interaction_interest"],
+            is_learning_event=is_learning_event
         )
         print(f"EMA Update Success for: {result['subtopic']}")
         
