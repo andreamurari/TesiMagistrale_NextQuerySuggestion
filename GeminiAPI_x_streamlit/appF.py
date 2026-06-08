@@ -122,7 +122,7 @@ def extract_relevant_topics(api_key: str, model: str, user_prompt: str, unique_t
             ),
         )
         latency = time.time() - start_time
-        log_token_usage("Router_Flat", response.usage_metadata, latency)
+        log_token_usage("Router_FRB", response.usage_metadata, latency)
         
         extracted_topics = json.loads(response.text)
         return [t for t in extracted_topics if t in unique_topics]
@@ -325,7 +325,7 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
         )
         
         latency = time.time() - start_time
-        log_token_usage("Evaluator_Flat", response.usage_metadata, latency)
+        log_token_usage("Evaluator_FRB", response.usage_metadata, latency)
         
         if not response.text:
              print("Background evaluation failed.")
@@ -375,7 +375,7 @@ def call_gemini(api_key: str, model: str, system_prompt: str, history_text: str,
         )
         
         latency = time.time() - start_time
-        log_token_usage("Generator_Flat", response.usage_metadata, latency)
+        log_token_usage("Generator_FRB", response.usage_metadata, latency)
         
         if not response.text:
             return "Errore: La risposta restituita è vuota. Potrebbe essere intervenuto un filtro di sicurezza."
