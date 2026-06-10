@@ -102,3 +102,4 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens,Latency
 2026-06-10 12:29:45,Router_FRB,736,76,812,1.1
 2026-06-10 12:30:02,Generator_FRB,3500,391,5699,11.7
 2026-06-10 12:30:08,Evaluator_FRB,3916,75,3991,0.97
+2026-06-10 12:31:54,Generator_HRB,474,285,937,3.24
