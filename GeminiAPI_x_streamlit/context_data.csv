@@ -264,11 +264,11 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Astronomy and Astrophysics,Cataclysmic Events (Supernovae and Gamma-ray Bursts),42.0,83.0,1.0,Moderately lapsed,Extremely high knowledge,Extremely low interest,2026-05-30
 80,Astronomy and Astrophysics,The Arrow of Time in Cosmology,66.0,12.0,75.0,Slightly lapsed,Extremely low knowledge,High interest,2026-05-31
 80,Gastronomy and Culinary Cultures,"Fermentation (Koji, Kombucha, Kimchi)",100.0,52.0,18.0,Not lapsed,Moderate knowledge,Extremely low interest,2026-05-31
-80,Gastronomy and Culinary Cultures,History of Spices and Trade Routes,90.0,7.0,53.0,Not lapsed,Extremely low knowledge,Moderate interest,2026-05-31
+80,Gastronomy and Culinary Cultures,History of Spices and Trade Routes,78.06360333159742,9.6,57.400000000000006,Slightly lapsed,Extremely low knowledge,Moderate interest,2026-06-10 17:08:49
 80,Gastronomy and Culinary Cultures,Fusion Cuisine and Cultural Identity,16.0,9.0,58.0,Extremely lapsed,Extremely low knowledge,Moderate interest,2026-05-30
 80,Gastronomy and Culinary Cultures,Street Food as Human Heritage,51.0,7.0,60.0,Moderately lapsed,Extremely low knowledge,Moderate interest,2026-05-30
 80,Gastronomy and Culinary Cultures,Oenology: Terroir and Native Grape Varieties,28.0,51.0,27.0,Highly lapsed,Moderate knowledge,Low interest,2026-05-30
-80,Gastronomy and Culinary Cultures,Specialty Coffee and Extraction Techniques,21.0,100.0,65.0,Highly lapsed,Extremely high knowledge,High interest,2026-05-30
+80,Gastronomy and Culinary Cultures,Specialty Coffee and Extraction Techniques,100.0,89.2,71.4,Not lapsed,Extremely high knowledge,High interest,2026-06-10 17:12:06
 80,Gastronomy and Culinary Cultures,Sourdough Baking,92.0,79.0,10.0,Not lapsed,High knowledge,Extremely low interest,2026-05-31
 80,Gastronomy and Culinary Cultures,Technical Pastry and Chemical Balancing,69.0,90.0,70.0,Slightly lapsed,Extremely high knowledge,High interest,2026-05-31
 80,Gastronomy and Culinary Cultures,Umami: The Fifth Taste,61.0,24.0,92.0,Slightly lapsed,Low knowledge,Extremely high interest,2026-05-30
@@ -1026,7 +1026,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest,2026-05-30
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",28.12,16.8,60.400000000000006,Highly lapsed,Extremely low knowledge,High interest,2026-05-30
 80,History,Medieval History,77.07637875136537,10.0,73.0,Slightly lapsed,Extremely low knowledge,High interest,2026-06-10 16:29:51
-80,Physics,Fluid Dynamics,62.0,77.0,74.0,Slightly lapsed,High knowledge,High interest,2026-05-30
+80,Physics,Fluid Dynamics,100.0,81.7232,82.64640000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-10 16:48:11
 80,Travel and Tourism,Verona Tourism,100.0,95.0,86.8,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 13:49:33
 80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
