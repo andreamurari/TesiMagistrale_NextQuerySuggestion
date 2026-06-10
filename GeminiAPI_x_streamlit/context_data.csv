@@ -1025,7 +1025,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",46.0,16.0,9.0,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
 80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest,2026-05-30
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",28.12,16.8,60.400000000000006,Highly lapsed,Extremely low knowledge,High interest,2026-05-30
-80,History,Medieval History,10.0,10.0,70.0,Extremely lapsed,Extremely low knowledge,High interest,2026-05-30
+80,History,Medieval History,77.07637875136537,10.0,73.0,Slightly lapsed,Extremely low knowledge,High interest,2026-06-10 16:29:51
 80,Physics,Fluid Dynamics,62.0,77.0,74.0,Slightly lapsed,High knowledge,High interest,2026-05-30
 80,Travel and Tourism,Verona Tourism,100.0,95.0,86.8,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 13:49:33
 80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31

@@ -63,3 +63,4 @@ If I talnk about a new topic that is not in context_data, it seems to lead the u
 
 If I keep the Hierarchical Context Routing (implemented to improve the performances of context updater) the token for the router increase drastically. -> mostra sia hierarchical che no e cita embedding
 for weak point of the architecture: flat an hierarchical see only the topic and subtopic so if I ask a general question (ex. suggest me a new hobby) then it will not see the intesets score before having choosen the topics.
+The task discriminator does not work perfectly and sometimes in updates context data eve if it should not
