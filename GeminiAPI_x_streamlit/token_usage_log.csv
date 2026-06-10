@@ -97,3 +97,5 @@ Timestamp,Step,Input Tokens (Prompt),Output Tokens (Answer),Total Tokens,Latency
 2026-06-08 19:14:21,Router_HRB,9416,8,9424,1.12
 2026-06-08 19:14:33,Generator_HRB,796,732,3049,8.13
 2026-06-08 19:14:37,Evaluator_HRB,1531,72,1603,1.12
+2026-06-10 12:24:49,Generator_Naive,26772,299,40626,57.33
+2026-06-10 12:24:55,Evaluator_Naive,27150,73,27223,1.17
