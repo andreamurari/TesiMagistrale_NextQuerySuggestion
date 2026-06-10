@@ -8,7 +8,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Differentiation,Partial Differentiation,98.0,88.0,18.0,Not lapsed,Extremely high knowledge,Extremely low interest,2026-05-31
 80,Discrete Mathematics,Recursivity,21.0,33.0,11.0,Highly lapsed,Low knowledge,Extremely low interest,2026-05-30
 80,Discrete Mathematics,Set Theory,23.0,96.0,51.0,Highly lapsed,Extremely high knowledge,Moderate interest,2026-05-30
-80,Fundamental Mathematics,"Algebraic expressions, Equations, and Inequalities",31.6,54.400000000000006,46.0,Highly lapsed,Moderate knowledge,Moderate interest,2026-05-30
+80,Fundamental Mathematics,"Algebraic expressions, Equations, and Inequalities",85.12950219334556,55.52000000000001,50.8,Not lapsed,Moderate knowledge,Moderate interest,2026-06-10 17:36:02
 80,Fundamental Mathematics,Elementary Geometry,87.0,38.0,44.0,Not lapsed,Low knowledge,Moderate interest,2026-05-31
 80,Graph Theory,Graph Theory,7.0,74.0,78.0,Extremely lapsed,High knowledge,High interest,2026-05-29
 80,Integration,Double Integration,54.0,67.0,6.0,Moderately lapsed,High knowledge,Extremely low interest,2026-05-30

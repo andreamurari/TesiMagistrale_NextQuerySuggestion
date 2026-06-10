@@ -36,7 +36,7 @@ def log_token_usage(step_name: str, usage_metadata, latency_seconds: float = 0.0
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
 
-def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: list, active_subtopics: list = None, full_db_size: int = 0):
+def log_chat_interaction(architecture: str, user_query: str, ai_response: str, active_topics: list, active_subtopics: list = None, topic_count: int = 0, subtopic_count: int = 0):
     log_file = "chat_logs.csv"
     
     safe_query = user_query.replace('\n', ' ').replace('\r', '')
@@ -48,19 +48,19 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
     if architecture == "Naive":
         topics_str = "Entire Database"
         subtopics_str = "Entire Database"
-        topic_count = full_db_size
-        subtopic_count = full_db_size
+        query_topic_count = topic_count
+        query_subtopic_count = subtopic_count
     else:
         topics_str = ", ".join(active_topics) if active_topics else "None"
         subtopics_str = ", ".join(active_subtopics) if active_subtopics else "None"
-        topic_count = len(active_topics)
-        subtopic_count = len(active_subtopics)
+        query_topic_count = len(active_topics)
+        query_subtopic_count = len(active_subtopics)
         
     new_data = pd.DataFrame([{
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Architecture": architecture,
-        "Topic_Count": topic_count,
-        "Subtopic_Count": subtopic_count,
+        "Topic_Count": query_topic_count,
+        "Subtopic_Count": query_subtopic_count,
         "Active_Topics": topics_str,
         "Active_Subtopics": subtopics_str,
         "User_Query": safe_query,
@@ -408,13 +408,15 @@ def main():
             
             if "Error" not in reply and "Errore" not in reply:
                 unique_topic_count = len(full_df['Topic'].unique()) if not full_df.empty else 0
+                unique_subtopic_count = len(full_df['Subtopic'].unique()) if not full_df.empty else 0
                 
                 log_chat_interaction(
                     architecture="Naive",
                     user_query=user_prompt,
                     ai_response=reply,
                     active_topics=[],
-                    full_db_size=unique_topic_count
+                    topic_count=unique_topic_count,
+                    subtopic_count=unique_subtopic_count
                 )
                 
             if "Error" not in reply and "Errore" not in reply:
