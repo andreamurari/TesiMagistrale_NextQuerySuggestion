@@ -1023,9 +1023,9 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Futurology and Tomorrow's Scenarios,The Impact of First Contact with Alien Civilizations,40.0,50.0,60.0,Highly lapsed,Moderate knowledge,Moderate interest,2026-05-30
 80,Futurology and Tomorrow's Scenarios,Resource Management on a Earth of 10 Billion People,60.0,57.0,74.0,Moderately lapsed,Moderate knowledge,High interest,2026-05-30
 80,Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",46.0,16.0,9.0,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
-80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest,2026-05-30
+80,History,The Roman Empire: Rise and Fall,23.429152947721853,26.4384,47.72479999999999,Highly lapsed,Low knowledge,Moderate interest,2026-06-11 16:51:51
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",100.0,17.752000000000002,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-10 17:38:58
-80,History,Medieval History,84.5887534479141,10.0,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-11 16:41:01
+80,History,Medieval History,93.16194803259218,17.4912,78.37540608,Not lapsed,Extremely low knowledge,High interest,2026-06-11 16:54:52
 80,Physics,Fluid Dynamics,100.0,85.37856000000001,86.11712000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:40:25
 80,Travel and Tourism,Verona Tourism,95.72419571017004,95.0,88.44,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:44:46
 80,Gastronomy and Culinary Cultures,Itinerary Planning,80.86655997864368,88.60000000000001,94.2,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:46:42
