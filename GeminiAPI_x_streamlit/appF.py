@@ -80,7 +80,11 @@ def load_context_data(student_id: int) -> pd.DataFrame:
         def calculate_lapse(row):
             delta_days = (now - row['last_interaction_date']).days
             S = 30 + (row.get('knowledge_score', 50) / 2.0)
-            decay = 100 * math.exp(-max(delta_days, 0) / S)
+            base_lapse = row.get('lapse_score', 100.0)
+            if pd.isna(base_lapse):
+                base_lapse = 100.0
+                
+            decay = base_lapse * math.exp(-max(delta_days, 0) / S)
             return decay
 
         df['lapse_score'] = df.apply(calculate_lapse, axis=1)
@@ -233,6 +237,7 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     else:
         old_k = df.loc[mask, 'knowledge_score'].values[0]
         old_i = df.loc[mask, 'interest_score'].values[0]
+        old_lapse = df.loc[mask, 'lapse_score'].values[0]
         last_date_str = df.loc[mask, 'last_interaction_date'].values[0]
         
         try:
@@ -242,8 +247,8 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
             delta_days = 0
             
         S = 30 + (old_k / 2.0)
-        current_lapse = 100 * math.exp(-max(delta_days, 0) / S)
-        
+        current_lapse = old_lapse * math.exp(-max(delta_days, 0) / S)
+    
         if is_learning_event:
             df.loc[mask, 'lapse_score'] = (current_lapse * ALPHA_LAPSE) + (100.0 * (1 - ALPHA_LAPSE))
             df.loc[mask, 'last_interaction_date'] = now_str
