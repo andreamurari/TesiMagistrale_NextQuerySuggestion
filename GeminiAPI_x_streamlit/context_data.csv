@@ -1030,4 +1030,5 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Travel and Tourism,Verona Tourism,95.72419571017004,95.0,88.44,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:44:46
 80,Gastronomy and Culinary Cultures,Itinerary Planning,80.86655997864368,88.60000000000001,94.2,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:46:42
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
-80,Mathematics,Logic Puzzles,100.0,10.0,18.2,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 15:56:32
+80,Mathematics,Logic Puzzles,100.0,10.0,17.56,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:03:57
+80,Mathematics,Probability and Statistics in Gambling,100.0,26.263999999999996,25.327999999999996,Not lapsed,Low knowledge,Low interest,2026-06-11 16:08:18
