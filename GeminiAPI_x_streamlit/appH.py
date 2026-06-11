@@ -213,7 +213,7 @@ def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: flo
     topic_clean = str(topic).strip()
     subtopic_clean = str(subtopic).strip()
     
-    mask = (df['student_id'] == student_id_clean) & (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
+    mask = (df['Topic'] == topic_clean) & (df['Subtopic'] == subtopic_clean)
     
     now_dt = datetime.now()
     now_str = now_dt.strftime("%Y-%m-%d %H:%M:%S")
