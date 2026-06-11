@@ -46,7 +46,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Space Exploration,Colonization of Mars,58.0,54.0,64.0,Moderately lapsed,Moderate knowledge,High interest,2026-05-30
 80,Space Exploration,Commercial Space Tourism,9.0,14.0,11.0,Extremely lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
 80,Space Exploration,Asteroid Mining,63.0,62.0,52.0,Slightly lapsed,High knowledge,Moderate interest,2026-05-30
-80,Space Exploration,Space Telescopes (James Webb and successors),85.0,81.0,100.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
+80,Space Exploration,Space Telescopes (James Webb and successors),76.81239793622903,83.8,99.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:41:53
 80,Space Exploration,Ion and Nuclear Propulsion,58.0,87.0,90.0,Moderately lapsed,Extremely high knowledge,Extremely high interest,2026-05-30
 80,Space Exploration,Search for Extraterrestrial Life (SETI),51.0,88.0,100.0,Moderately lapsed,Extremely high knowledge,Extremely high interest,2026-05-30
 80,Space Exploration,Private Space Stations,38.0,39.0,86.0,Highly lapsed,Low knowledge,Extremely high interest,2026-05-30
@@ -185,7 +185,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Nutrition and Food Science,Hydration and Cognitive Performance,45.0,39.0,20.0,Moderately lapsed,Low knowledge,Extremely low interest,2026-05-30
 80,Literature and Writing,The Dystopian Genre in the 20th Century,10.0,19.0,52.0,Extremely lapsed,Extremely low knowledge,Moderate interest,2026-05-30
 80,Literature and Writing,Contemporary Poetry and Slam Poetry,75.0,72.0,15.0,Slightly lapsed,High knowledge,Extremely low interest,2026-05-31
-80,Literature and Writing,Creative Writing and World-building,88.0,94.0,91.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
+80,Literature and Writing,Creative Writing and World-building,79.84246690131357,94.2,91.8,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:38:37
 80,Literature and Writing,Post-colonial Literature,30.0,43.0,23.0,Highly lapsed,Moderate knowledge,Low interest,2026-05-30
 80,Literature and Writing,The Role of Literary Prizes,50.0,64.0,94.0,Moderately lapsed,High knowledge,Extremely high interest,2026-05-30
 80,Literature and Writing,Self-publishing and the Digital Revolution,45.0,73.0,32.0,Moderately lapsed,High knowledge,Low interest,2026-05-30
@@ -315,7 +315,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Marine Sciences (Oceanography),Underwater Mineral Resources,58.0,50.0,83.0,Moderately lapsed,Moderate knowledge,Extremely high interest,2026-05-30
 80,Time Management and Productivity,Pomodoro Technique and Time Blocking,45.0,38.0,28.0,Moderately lapsed,Low knowledge,Low interest,2026-05-30
 80,Time Management and Productivity,"""Getting Things Done"" (GTD) Method",89.0,94.0,43.0,Not lapsed,Extremely high knowledge,Moderate interest,2026-05-31
-80,Time Management and Productivity,Deep Work and Intense Concentration,56.0,73.0,77.0,Moderately lapsed,High knowledge,High interest,2026-05-30
+80,Time Management and Productivity,Deep Work and Intense Concentration,54.74092977960636,74.4,79.6,Moderately lapsed,High knowledge,High interest,2026-06-11 12:41:18
 80,Time Management and Productivity,Eliminating Digital Distractions,78.0,37.0,59.0,Slightly lapsed,Low knowledge,Moderate interest,2026-05-31
 80,Time Management and Productivity,Eisenhower Matrix (Urgent vs Important),5.0,21.0,33.0,Extremely lapsed,Low knowledge,Low interest,2026-05-29
 80,Time Management and Productivity,Energy Management vs Time Management,26.0,79.0,25.0,Highly lapsed,High knowledge,Low interest,2026-05-30
@@ -1026,7 +1026,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest,2026-05-30
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",100.0,17.752000000000002,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-10 17:38:58
 80,History,Medieval History,77.07637875136537,10.0,73.0,Slightly lapsed,Extremely low knowledge,High interest,2026-06-10 16:29:51
-80,Physics,Fluid Dynamics,100.0,81.7232,82.64640000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-10 16:48:11
-80,Travel and Tourism,Verona Tourism,100.0,95.0,86.8,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-06 13:49:33
-80,Gastronomy and Culinary Cultures,Itinerary Planning,90.0,87.0,94.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
+80,Physics,Fluid Dynamics,100.0,85.37856000000001,86.11712000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:40:25
+80,Travel and Tourism,Verona Tourism,95.72419571017004,95.0,88.44,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:44:46
+80,Gastronomy and Culinary Cultures,Itinerary Planning,80.86655997864368,88.60000000000001,94.2,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:46:42
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
