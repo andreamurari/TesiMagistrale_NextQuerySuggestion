@@ -129,7 +129,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Social and Behavioral Psychology,Non-verbal Communication,75.0,70.0,9.0,Slightly lapsed,High knowledge,Extremely low interest,2026-05-31
 80,Social and Behavioral Psychology,Persuasion and Sensory Marketing,58.0,22.0,81.0,Moderately lapsed,Low knowledge,Extremely high interest,2026-05-30
 80,Social and Behavioral Psychology,Game Theory Applied to Social Sciences,22.0,73.0,31.0,Highly lapsed,High knowledge,Low interest,2026-05-30
-80,Social and Behavioral Psychology,Empathy and Mirror Neurons,90.0,53.0,4.0,Not lapsed,Moderate knowledge,Extremely low interest,2026-05-31
+80,Social and Behavioral Psychology,Empathy and Mirror Neurons,81.27139849737075,49.120000000000005,34.959999999999994,Not lapsed,Moderate knowledge,Low interest,2026-06-11 16:26:09
 80,Social and Behavioral Psychology,Leadership and Charisma,38.0,46.0,10.0,Highly lapsed,Moderate knowledge,Extremely low interest,2026-05-30
 80,Social and Behavioral Psychology,Conflict Resolution,95.0,28.0,64.0,Not lapsed,Low knowledge,High interest,2026-05-31
 80,Social and Behavioral Psychology,Consumer Psychology,39.0,69.0,39.0,Highly lapsed,High knowledge,Low interest,2026-05-30
@@ -194,7 +194,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Literature and Writing,Historical Novel vs. Magical Realism,78.0,94.0,99.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Literature and Writing,Editorial Translation and Linguistic Challenges,52.0,88.0,44.0,Moderately lapsed,Extremely high knowledge,Moderate interest,2026-05-30
 80,Modern Physics,Quantum Mechanics and Entanglement,8.0,91.0,48.0,Extremely lapsed,Extremely high knowledge,Moderate interest,2026-05-29
-80,Modern Physics,Einstein's General Relativity,63.0,64.0,98.0,Slightly lapsed,High knowledge,Extremely high interest,2026-05-30
+80,Modern Physics,Einstein's General Relativity,70.46911625748515,58.864,72.8,Slightly lapsed,Moderate knowledge,High interest,2026-06-11 16:20:20
 80,Modern Physics,Dark Matter and Dark Energy,32.0,46.0,65.0,Highly lapsed,Moderate knowledge,High interest,2026-05-30
 80,Modern Physics,Particle Physics (CERN),97.0,90.0,85.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Modern Physics,String Theory,68.0,33.0,97.0,Slightly lapsed,Low knowledge,Extremely high interest,2026-05-31
@@ -1025,10 +1025,14 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",46.0,16.0,9.0,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
 80,History,The Roman Empire: Rise and Fall,13.023999999999996,28.047999999999995,44.65599999999999,Extremely lapsed,Low knowledge,Moderate interest,2026-05-30
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",100.0,17.752000000000002,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-10 17:38:58
-80,History,Medieval History,77.07637875136537,10.0,73.0,Slightly lapsed,Extremely low knowledge,High interest,2026-06-10 16:29:51
+80,History,Medieval History,84.5887534479141,10.0,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-11 16:41:01
 80,Physics,Fluid Dynamics,100.0,85.37856000000001,86.11712000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:40:25
 80,Travel and Tourism,Verona Tourism,95.72419571017004,95.0,88.44,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:44:46
 80,Gastronomy and Culinary Cultures,Itinerary Planning,80.86655997864368,88.60000000000001,94.2,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:46:42
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Mathematics,Logic Puzzles,100.0,10.0,17.56,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:03:57
-80,Mathematics,Probability and Statistics in Gambling,100.0,26.263999999999996,25.327999999999996,Not lapsed,Low knowledge,Low interest,2026-06-11 16:08:18
+80,Mathematics,Probability and Statistics in Gambling,100.0,26.264,25.328,Not lapsed,Low knowledge,Low interest,2026-06-11 16:08:18
+80,Psychology,Emotions and Social Cognition,100.0,2.0,4.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:23:07
+80,Information and Software Engineering,Algorithms and Data Structures,100.0,8.2,57.8,Not lapsed,Extremely low knowledge,Moderate interest,2026-06-11 16:29:15
+80,Computer Science,Concurrency and Parallelism,100.0,20.0,72.0,Not lapsed,Extremely low knowledge,High interest,2026-06-11 16:30:14
+80,Role-Playing and Persona,Sarcastic Butler Persona,100.0,10.0,19.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:32:19
