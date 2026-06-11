@@ -23,7 +23,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Real Functions of a Single Variable,"Domain, Image and Graphics",91.0,27.0,49.0,Not lapsed,Low knowledge,Moderate interest,2026-05-31
 80,Real Functions of a Single Variable,Limits and Continuity,98.0,14.0,20.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-05-31
 80,Statistics,Statistics,26.0,94.0,78.0,Highly lapsed,Extremely high knowledge,High interest,2026-05-30
-80,Artificial Intelligence (AI),Machine Learning and Deep Learning,7.0,2.0,64.0,Extremely lapsed,Extremely low knowledge,High interest,2026-05-29
+80,Artificial Intelligence (AI),Machine Learning and Deep Learning,41.413885033656705,9.104,73.248,Moderately lapsed,Extremely low knowledge,High interest,2026-06-11 13:39:37
 80,Artificial Intelligence (AI),AI Ethics and Algorithmic Bias,54.0,77.0,40.0,Moderately lapsed,High knowledge,Low interest,2026-05-30
 80,Artificial Intelligence (AI),"Generative AI (text, images, video)",81.0,64.0,48.0,Not lapsed,High knowledge,Moderate interest,2026-05-31
 80,Artificial Intelligence (AI),Automation and the Future of Work,34.0,74.0,74.0,Highly lapsed,High knowledge,High interest,2026-05-30
