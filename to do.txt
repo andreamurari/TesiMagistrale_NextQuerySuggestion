@@ -62,7 +62,8 @@ If I talnk about a new topic that is not in context_data, it seems to lead the u
 2026-05-04 16:05:57)
 
 If I keep the Hierarchical Context Routing (implemented to improve the performances of context updater) the token for the router increase drastically. -> mostra sia hierarchical che no e cita embedding
-for weak point of the architecture: flat an hierarchical see only the topic and subtopic so if I ask a general question (ex. suggest me a new hobby) then it will not see the intesets score before having choosen the topics.
-The task discriminator does not work perfectly and sometimes in updates context data eve if it should not
 
-If I ask a very general question (ex. what are my interests?), the naive can answer better but it takes much more time compared to FRB and HRB
+for weak point of the architecture: flat an hierarchical see only the topic and subtopic so if I ask a general question (ex. suggest me a new hobby) then it will not see the intesets score before having choosen the topics.
+- The task discriminator does not work perfectly and sometimes in updates context data eve if it should not
+- Cite embedding as a possible solution for token
+- If I ask a very general question (ex. what are my interests?), the naive can answer better but it takes much more time compared to FRB and HRB
