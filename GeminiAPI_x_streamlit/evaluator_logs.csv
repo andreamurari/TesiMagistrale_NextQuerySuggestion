@@ -2,4 +2,7 @@ Timestamp,Architecture,User_Query,is_valid_tracking_event,is_new_topic,topic,sub
 2026-06-17 15:44:20,Naive,I'm going to London next weekend. Can you plan a 3-day itinerary focusing on museums?,False,,,,,
 2026-06-17 15:46:30,FRB,I'm going to London next weekend. Can you plan a 3-day itinerary focusing on museums?,False,,,,,
 2026-06-17 15:56:34,HRB,I'm going to London next weekend. Can you plan a 3-day itinerary focusing on museums?,False,,,,,
-2026-06-17 16:03:54,Naive,Can you write a polite email to my professor asking for a two-day extension on my history essay?,False,,,,,
+2026-06-17 16:08:40,Naive,"I've been trying to understand Schrödinger's cat, but the concept of quantum superposition is really confusing me. Can you explain it simply?",True,False,Modern Physics,Quantum Mechanics and Entanglement,95.0,80.0
+2026-06-17 16:21:16,FRB,"I've been trying to understand Schrödinger's cat, but the concept of quantum superposition is really confusing me. Can you explain it simply?",True,False,Modern Physics,Quantum Mechanics and Entanglement,30,70
+2026-06-17 16:23:20,HRB,"I've been trying to understand Schrödinger's cat, but the concept of quantum superposition is really confusing me. Can you explain it simply?",True,True,Physics,Quantum Mechanics,75,80
+2026-06-17 16:24:58,Naive,"I'm reviewing for my calculus final. I'm pretty solid on basic integrals, so let's jump straight into advanced integration by parts. Give me a hard problem.",True,False,Integration,Integration Techniques,75,80
