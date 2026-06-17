@@ -12,7 +12,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Fundamental Mathematics,Elementary Geometry,87.0,38.0,44.0,Not lapsed,Low knowledge,Moderate interest,2026-05-31
 80,Graph Theory,Graph Theory,7.0,74.0,78.0,Extremely lapsed,High knowledge,High interest,2026-05-29
 80,Integration,Double Integration,54.0,67.0,6.0,Moderately lapsed,High knowledge,Extremely low interest,2026-05-30
-80,Integration,Integration Techniques,16.0,62.0,54.0,Extremely lapsed,High knowledge,Moderate interest,2026-05-30
+80,Integration,Integration Techniques,36.35607970582529,73.08,65.96000000000001,Highly lapsed,High knowledge,High interest,2026-06-17 16:45:17
 80,Integration,Surface Integrals,42.0,63.0,21.0,Moderately lapsed,High knowledge,Low interest,2026-05-30
 80,Integration,Triple Integration,53.0,97.0,70.0,Moderately lapsed,Extremely high knowledge,High interest,2026-05-30
 80,Linear Algebra,Eigenvalues and Eigenvectors,31.0,44.0,90.0,Highly lapsed,Moderate knowledge,Extremely high interest,2026-05-30
@@ -24,7 +24,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Real Functions of a Single Variable,Limits and Continuity,98.0,14.0,20.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-05-31
 80,Statistics,Statistics,26.0,94.0,78.0,Highly lapsed,Extremely high knowledge,High interest,2026-05-30
 80,Artificial Intelligence (AI),Machine Learning and Deep Learning,41.41388503365671,9.104,73.248,Moderately lapsed,Extremely low knowledge,High interest,2026-06-11 13:39:37
-80,Artificial Intelligence (AI),AI Ethics and Algorithmic Bias,54.0,77.0,40.0,Moderately lapsed,High knowledge,Low interest,2026-05-30
+80,Artificial Intelligence (AI),AI Ethics and Algorithmic Bias,50.2932382443265,77.6,50.0,Moderately lapsed,High knowledge,Moderate interest,2026-06-17 16:50:10
 80,Artificial Intelligence (AI),"Generative AI (text, images, video)",81.0,64.0,48.0,Not lapsed,High knowledge,Moderate interest,2026-05-31
 80,Artificial Intelligence (AI),Automation and the Future of Work,34.0,74.0,74.0,Highly lapsed,High knowledge,High interest,2026-05-30
 80,Artificial Intelligence (AI),NLP (Natural Language Processing),13.0,87.0,13.0,Extremely lapsed,Extremely high knowledge,Extremely low interest,2026-05-30
@@ -194,7 +194,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Literature and Writing,Historical Novel vs. Magical Realism,78.0,94.0,99.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Literature and Writing,Editorial Translation and Linguistic Challenges,52.0,88.0,44.0,Moderately lapsed,Extremely high knowledge,Moderate interest,2026-05-30
 80,Modern Physics,Quantum Mechanics and Entanglement,8.0,91.0,48.0,Extremely lapsed,Extremely high knowledge,Moderate interest,2026-05-29
-80,Modern Physics,Einstein's General Relativity,70.46911625748515,58.864,72.8,Slightly lapsed,Moderate knowledge,High interest,2026-06-11 16:20:20
+80,Modern Physics,Einstein's General Relativity,69.14685557539384,58.0912,75.24,Slightly lapsed,Moderate knowledge,High interest,2026-06-17 16:48:52
 80,Modern Physics,Dark Matter and Dark Energy,32.0,46.0,65.0,Highly lapsed,Moderate knowledge,High interest,2026-05-30
 80,Modern Physics,Particle Physics (CERN),97.0,90.0,85.0,Not lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
 80,Modern Physics,String Theory,68.0,33.0,97.0,Slightly lapsed,Low knowledge,Extremely high interest,2026-05-31
@@ -377,7 +377,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Criminology and Law,Scientific Investigation Techniques (Forensics),26.0,11.0,69.0,Highly lapsed,Extremely low knowledge,High interest,2026-05-30
 80,Criminology and Law,History of Punishment and Prison Systems,52.0,44.0,64.0,Moderately lapsed,Moderate knowledge,High interest,2026-05-30
 80,Criminology and Law,Cybercrime and Transnational Crimes,64.0,26.0,34.0,Slightly lapsed,Low knowledge,Low interest,2026-05-31
-80,Criminology and Law,International Law and Human Rights,26.0,56.0,6.0,Highly lapsed,Moderate knowledge,Extremely low interest,2026-05-30
+80,Criminology and Law,International Law and Human Rights,31.20358932449889,57.8,20.8,Highly lapsed,Moderate knowledge,Low interest,2026-06-17 16:53:51
 80,Criminology and Law,Serial Killers: Analysis of Historical Cases,60.0,15.0,3.0,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
 80,Criminology and Law,Penal Mediation and Restorative Justice,18.0,56.0,98.0,Extremely lapsed,Moderate knowledge,Extremely high interest,2026-05-30
 80,Criminology and Law,Corruption and White-collar Crimes,23.0,81.0,44.0,Highly lapsed,Extremely high knowledge,Moderate interest,2026-05-30
@@ -484,7 +484,7 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Sociology of Work and Organization,Automation and Job Displacement,56.0,55.0,95.0,Moderately lapsed,Moderate knowledge,Extremely high interest,2026-05-30
 80,Sociology of Work and Organization,Managing Multicultural and Remote Teams,11.0,88.0,53.0,Extremely lapsed,Extremely high knowledge,Moderate interest,2026-05-30
 80,Chemistry and Biochemistry,Periodic Table: Rare and Transuranic Elements,42.0,3.0,37.0,Moderately lapsed,Extremely low knowledge,Low interest,2026-05-30
-80,Chemistry and Biochemistry,Organic Chemistry and Drug Synthesis,53.2,18.6,17.599999999999998,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
+80,Chemistry and Biochemistry,Organic Chemistry and Drug Synthesis,43.60336017824162,17.28,15.679999999999998,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-06-17 16:46:39
 80,Chemistry and Biochemistry,Polymers and Plastics Chemistry,38.0,29.0,40.0,Highly lapsed,Low knowledge,Low interest,2026-05-30
 80,Chemistry and Biochemistry,Enzymes and Biological Catalysis,26.8,69.4,22.6,Highly lapsed,High knowledge,Low interest,2026-05-30
 80,Chemistry and Biochemistry,Electrochemistry: Batteries and Fuel Cells,96.0,100.0,42.0,Not lapsed,Extremely high knowledge,Moderate interest,2026-05-31
@@ -1023,16 +1023,19 @@ student_id,Topic,Subtopic,lapse_score,knowledge_score,interest_score,lapse_categ
 80,Futurology and Tomorrow's Scenarios,The Impact of First Contact with Alien Civilizations,40.0,50.0,60.0,Highly lapsed,Moderate knowledge,Moderate interest,2026-05-30
 80,Futurology and Tomorrow's Scenarios,Resource Management on a Earth of 10 Billion People,60.0,57.0,74.0,Moderately lapsed,Moderate knowledge,High interest,2026-05-30
 80,Futurology and Tomorrow's Scenarios,"The Search for the ""Theory of Everything"" in Physics",46.0,16.0,9.0,Moderately lapsed,Extremely low knowledge,Extremely low interest,2026-05-30
-80,History,The Roman Empire: Rise and Fall,23.429152947721853,26.4384,47.72479999999999,Highly lapsed,Low knowledge,Moderate interest,2026-06-11 16:51:51
+80,History,The Roman Empire: Rise and Fall,32.73912845090359,23.150720000000003,56.179839999999984,Highly lapsed,Low knowledge,Moderate interest,2026-06-17 16:47:43
 80,Algebra,"Algebraic expressions, Equations, and Inequalities",100.0,17.752000000000002,69.256,Not lapsed,Extremely low knowledge,High interest,2026-06-10 17:38:58
 80,History,Medieval History,96.43049413518834,33.788395519999995,79.51056633036801,Not lapsed,Low knowledge,High interest,2026-06-11 17:01:41
 80,Physics,Fluid Dynamics,100.0,85.37856000000001,86.11712000000001,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:40:25
 80,Travel and Tourism,Verona Tourism,95.72419571017004,95.0,88.44,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:44:46
 80,Gastronomy and Culinary Cultures,Itinerary Planning,80.86655997864368,88.60000000000001,94.2,Not lapsed,Extremely high knowledge,Extremely high interest,2026-06-11 12:46:42
 80,Vernacular and Traditional Architecture,Japanese Traditional Architecture,80.0,95.0,90.0,Slightly lapsed,Extremely high knowledge,Extremely high interest,2026-05-31
-80,Mathematics,Logic Puzzles,100.0,10.0,17.56,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:03:57
+80,Mathematics,Logic Puzzles,86.60913753742557,12.0,30.047999999999995,Not lapsed,Extremely low knowledge,Low interest,2026-06-17 16:54:23
 80,Mathematics,Probability and Statistics in Gambling,100.0,26.264,25.328,Not lapsed,Low knowledge,Low interest,2026-06-11 16:08:18
 80,Psychology,Emotions and Social Cognition,100.0,2.0,4.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:23:07
 80,Information and Software Engineering,Algorithms and Data Structures,100.0,8.2,57.8,Not lapsed,Extremely low knowledge,Moderate interest,2026-06-11 16:29:15
 80,Computer Science,Concurrency and Parallelism,100.0,20.0,72.0,Not lapsed,Extremely low knowledge,High interest,2026-06-11 16:30:14
 80,Role-Playing and Persona,Sarcastic Butler Persona,100.0,10.0,19.0,Not lapsed,Extremely low knowledge,Extremely low interest,2026-06-11 16:32:19
+80,Biophysics and Biomechanics,Biomechanics of Bone Remodeling and Tissue Response,100.0,35.0,90.0,Not lapsed,Low knowledge,Extremely high interest,2026-06-17 16:52:04
+80,Military Tactics,Tactical Maneuvers,100.0,60.0,85.0,Not lapsed,Moderate knowledge,Extremely high interest,2026-06-17 16:52:43
+80,Accounting,Accrual Accounting and Revenue Recognition,100.0,75.0,85.0,Not lapsed,High knowledge,Extremely high interest,2026-06-17 16:53:19
