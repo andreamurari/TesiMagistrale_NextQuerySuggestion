@@ -193,6 +193,28 @@ def log_chat_interaction(architecture: str, user_query: str, ai_response: str, a
         new_data.to_csv(log_file, index=False)
     else:
         new_data.to_csv(log_file, mode='a', header=False, index=False)
+
+def log_evaluator_output(architecture: str, user_query: str, evaluator_json: dict):
+    """Salva l'output JSON grezzo dell'Evaluator per analisi qualitativa."""
+    log_file = "evaluator_logs.csv"
+    safe_query = user_query.replace('\n', ' ').replace('\r', '')
+    
+    new_data = pd.DataFrame([{
+        "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Architecture": architecture,
+        "User_Query": safe_query,
+        "is_valid_tracking_event": evaluator_json.get("is_valid_tracking_event", ""),
+        "is_new_topic": evaluator_json.get("is_new_topic", ""),
+        "topic": evaluator_json.get("topic", ""),
+        "subtopic": evaluator_json.get("subtopic", ""),
+        "interaction_knowledge": evaluator_json.get("interaction_knowledge", ""),
+        "interaction_interest": evaluator_json.get("interaction_interest", "")
+    }])
+    
+    if not os.path.exists(log_file):
+        new_data.to_csv(log_file, index=False)
+    else:
+        new_data.to_csv(log_file, mode='a', header=False, index=False)
         
 def update_context_data(student_id: int, topic: str, subtopic: str, inter_k: float, inter_i: float, file_path: str = "context_data.csv", is_learning_event: bool = True):
     """Apply EMA to scores and recalculate categories with Asymmetric Retrieval Smoothing."""
@@ -341,6 +363,8 @@ def evaluate_and_update_scores(api_key: str, student_id: int, context_text: str,
              
         result = json.loads(response.text)
         
+        log_evaluator_output("HRB", user_query, result)
+
         is_learning_event = result.get("is_valid_tracking_event", True)
         
         if not is_learning_event:
