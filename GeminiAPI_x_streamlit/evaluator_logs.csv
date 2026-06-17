@@ -1,0 +1,3 @@
+Timestamp,Architecture,User_Query,is_valid_tracking_event,is_new_topic,topic,subtopic,interaction_knowledge,interaction_interest
+2026-06-17 15:44:20,Naive,I'm going to London next weekend. Can you plan a 3-day itinerary focusing on museums?,False,,,,,
+2026-06-17 15:46:30,FRB,I'm going to London next weekend. Can you plan a 3-day itinerary focusing on museums?,False,,,,,
