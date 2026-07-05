@@ -1,0 +1,29 @@
+1. Titolo (1 slide)
+Titolo: Dynamic User Profile Injection: A Closed-Loop RAG Architecture for Context-Aware LLMs.  Candidato e Relatore.
+
+2. Il Problema e il Contesto (1 slide)
+Contesto: Progetto europeo DataGEMS e piattaforma MathE.  Problema: I Large Language Models sono intrinsecamente "stateless" (senza memoria).  Impatto: Un AI Tutor standard non si adatta allo studente, non ricorda le sue lacune e non calcola il degrado della memoria.  
+
+3. La Soluzione: Architettura Closed-Loop (1 slide)
+Usa il bellissimo diagramma di flusso della tua architettura (Figura 5.3).  Spiega a voce i tre pilastri: Hierarchical Routing, Generator e Asynchronous Evaluator.  
+
+4. Modellazione dello Studente (1 slide)
+Mostra solo i concetti chiave: tracciamento di Knowledge (K), Lapse (L) e Interest (I).  Mostra la transizione dai numeri crudi alle etichette semantiche (Semantic Discretization) per evitare allucinazioni dell'LLM. Evita di incollare tutte le formule dell'EMA e dell'Ebbinghaus Curve, accennale a voce.  
+
+5. Il collo di bottiglia del RAG e il Routing (2 slide)
+Mostra il problema della baseline Naive: esplosione del payload (oltre 26.000 token) e latenza inaccettabile.  Mostra la tua soluzione: il Hierarchical Router-Based (HRB). Sottolinea come previene l'estrazione eccessiva (semantic noise) rispetto al Flat Router.  
+
+6. Il Giudice Asincrono (1 slide)
+Spiega come aggiorni il database in modo invisibile all'utente usando il paradigma LLM-as-a-Judge.  Cita i meccanismi di sicurezza: il Semantic Bypass ("Kill Switch") per bloccare le interazioni non didattiche.  
+
+7. Risultati Quantitativi: Costi e Latenza (1 slide)
+Usa il grafico End-to-End (Figura 6.5). È il grafico più forte che hai.  Evidenzia il crollo dei token da 59.299 (Naive) a 12.553 (HRB) mantenendo una latenza perfetta per l'utente.  
+
+8. Risultati Qualitativi (1 slide)
+Mostra uno dei tuoi Case Study (ti consiglio il 3, sulla Proactive Recommendation Matrix) per far vedere come l'AI Tutor adatta magicamente il tono in base all'interesse alto e alla conoscenza bassa.  
+
+9. Limiti (1 slide)
+Essere onesti sui limiti dimostra grande maturità ingegneristica.Cita il Global Profile Query Dilemma (l'HRB fatica sulle meta-domande) e la dipendenza dalle API (vendor lock-in e costi di scalabilità).  
+
+10. Sviluppi Futuri e Conclusione (1 slide)
+Intent Classifier a monte.  Passaggio ai Vector Databases e Dense Retrieval per scalare a livello Enterprise.  Frase di chiusura d'impatto sul fatto che l'AI non deve solo "rispondere", ma imparare come "insegnare".  
